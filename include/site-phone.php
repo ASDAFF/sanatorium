@@ -1,0 +1,1 @@
+<a href="tel:+70000000000" rel="nofollow"><span>+7 (000)</span> 000-00-00</a><a href="tel:+70000000000" rel="nofollow"><span>+7 (000)</span> 000-00-00</a>

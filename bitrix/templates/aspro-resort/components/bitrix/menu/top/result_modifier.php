@@ -1,0 +1,1 @@
+<?$arResult = CResort::getChilds($arResult);?>

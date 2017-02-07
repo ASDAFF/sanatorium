@@ -1,0 +1,22 @@
+<table class="adaptive-table">
+<tr>
+<td>
+<h4>Heading:</h4>
+<ul class="list icons list-unstyled">
+<li><i class="fa fa-check"></i>item.</li>
+<li><i class="fa fa-check"></i>item</li>
+<li><i class="fa fa-check"></i>item.</li>
+<li><i class="fa fa-check"></i>item.</li>
+</ul>
+</td>
+<td>
+<h4>Heading</h4>
+<ul class="list icons list-unstyled">
+<li><i class="fa fa-check"></i>item.</li>
+<li><i class="fa fa-check"></i>item</li>
+<li><i class="fa fa-check"></i>item.</li>
+<li><i class="fa fa-check"></i>item.</li>
+</ul>
+</td>
+</tr>
+</table>
