@@ -7,6 +7,12 @@ $arUrlRewrite = array(
 		"PATH" => "/bitrix/services/ymarket/index.php",
 	),
 	array(
+		"CONDITION" => "#^/company/partners/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/info/partners/index.php",
+	),
+	array(
 		"CONDITION" => "#^/company/licenses/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
@@ -19,28 +25,22 @@ $arUrlRewrite = array(
 		"PATH" => "/company/partners/index.php",
 	),
 	array(
-		"CONDITION" => "#^/company/partners/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/info/partners/index.php",
-	),
-	array(
 		"CONDITION" => "#^/company/reviews/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/company/reviews/index.php",
 	),
 	array(
-		"CONDITION" => "#^/company/history/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/company/history/index.php",
-	),
-	array(
 		"CONDITION" => "#^/company/vacancy/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/company/vacancy/index.php",
+	),
+	array(
+		"CONDITION" => "#^/company/history/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/company/history/index.php",
 	),
 	array(
 		"CONDITION" => "#^/info/articles/#",
@@ -55,16 +55,22 @@ $arUrlRewrite = array(
 		"PATH" => "/company/staff/index.php",
 	),
 	array(
-		"CONDITION" => "#^/info/promo/#",
+		"CONDITION" => "#^/sanatorium/#",
 		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/info/promo/index.php",
+		"ID" => "tim:catalog",
+		"PATH" => "/sanatorium/index.php",
 	),
 	array(
 		"CONDITION" => "#^/info/stock/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/info/stock/index.php",
+	),
+	array(
+		"CONDITION" => "#^/info/promo/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/info/promo/index.php",
 	),
 	array(
 		"CONDITION" => "#^/services/#",
@@ -83,18 +89,6 @@ $arUrlRewrite = array(
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/projects/index.php",
-	),
-	array(
-		"CONDITION" => "#^/catalog/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/catalog/index.php",
-	),
-	array(
-		"CONDITION" => "#^/catalog/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/catalog/index_old.php",
 	),
 	array(
 		"CONDITION" => "#^/events/#",
