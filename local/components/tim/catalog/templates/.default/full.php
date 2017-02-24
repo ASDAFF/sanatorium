@@ -102,8 +102,6 @@ $products = $component->products['ITEMS'];
 <br />
 <?
 
-\Local\Utils\Remarketing::setPageType('category');
-
 foreach ($filter['BC'] as $i => $item)
 	$APPLICATION->AddChainItem($item['NAME'], $item['HREF']);
 
