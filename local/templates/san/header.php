@@ -18,10 +18,20 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.flexslider-min.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/scripts.js');
-    $assets->addJs(SITE_TEMPLATE_PATH . '/js/catalog.js');
+    
+    $page = $APPLICATION->GetCurPage();
+    if($page == "/"){
+        $assets->addJs(SITE_DIR . 'js/filter.js');
+    }else{
+        $assets->addJs(SITE_DIR . 'js/catalog.js');
+    }
+    
+    //$assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.js');
+    $assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 
 
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
+    $assets->addCss(SITE_TEMPLATE_PATH . '/css/media.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.structure.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.theme.css');
@@ -30,61 +40,64 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
     ?>
+
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>
-<div class="engBox-body"></div>
-<div id="head_full">
-    <nav id="head" class="engBox-body">
-        <ul>
-            <li><a>ЖЕЛЕЗНОВОДСК</a></li>
-            <li><a>ПЯТИГОРСК</a></li>
-            <li><a>ЕССЕНТУКИ</a></li>
-            <li><a>КИСЛОВОДСК</a></li>
-            <li><a>Профили лечения</a></li>
-            <li><a>Акции</a></li>
-            <li><a>Новости</a></li>
-            <li><a>Контакты</a></li>
-        </ul>
-        <a href="#" id="pull">Меню</a>
-    </nav>
-</div>
-<div id="head_pun_full">
-    <div id="head_pun" class="engBox-body">
-        <li><a class="icon1">Официальные цены санаториев</a></li>
-        <li><a class="icon2">Бесплатный трансфер</a></li>
-        <li><a href="" id="haad_pun-bnt">подробнее</a></li>
-    </div>
-</div>
-<div id="cron_full">
-    <div id="cron" class="engBox-body">
-        <div id="cron-right">
-            <div id="reviewStars-input">
-                <input id="star-4" type="radio" name="reviewStars"/>
-                <label title="gorgeous" for="star-4"></label>
+<header class="header">
+	<div class="header-line_wbg engBox-body">
+		<div class="header-logo"><?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?></div>
+		<div class="header-time-work"><?$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));?></div>
+		<div class="header-adress"><?$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?></div>
+		<div class="header-account"><a href="#">Личный кабинет</a></div>
+		<div class="header-phone">
+			<?$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php",array(),array("MODE"=>"html"));?>
+		</div>
+	</div>
+	<div class="head_full">
+		<nav class="engBox-body main-menu p-head">
+			<?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"topHor", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "bottom",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "2",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "topHor"
+	),
+	false
+);?>
 
-                <input id="star-3" type="radio" name="reviewStars"/>
-                <label title="good" for="star-3"></label>
-
-                <input id="star-2" type="radio" name="reviewStars"/>
-                <label title="regular" for="star-2"></label>
-
-                <input id="star-1" type="radio" name="reviewStars"/>
-                <label title="poor" for="star-1"></label>
-
-                <input id="star-0" type="radio" name="reviewStars"/>
-                <label title="bad" for="star-0"></label>
-            </div>
-            <div>
-                Цена от <b>1500</b> руб<br><span>за номер в сутки</span>
-            </div>
-        </div><?
-
-	    $APPLICATION->IncludeComponent('bitrix:breadcrumb', '', Array());
-
-	    ?>
-        <div id="cron-title"><h1><? $APPLICATION->ShowTitle(false, false); ?></h1></div>
-    </div>
-</div>
-
-<div class="engBox-body">
+			<div class="nav_search">
+				<form class="searchbox">
+					<input type="search" placeholder="Введите название санатория......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+					<input type="submit" class="searchbox-submit" value="Найти">
+					<span class="searchbox-icon"><img src="<?=SITE_TEMPLATE_PATH;?>/images/icon_serch_btn.jpg"></span>
+				</form>
+				<div class="searchbox-close"></div>
+			</div>
+			<a href="#" id="pull">Меню</a>
+		</nav>
+	</div>
+	<div class="head_pun_full">
+		<ul class="engBox-body clearfix bl head_pun">
+			<li><a class="icon1" href="#">Официальные цены санаториев</a></li>
+			<li><a class="icon2" href="#">Бесплатный трансфер</a></li>
+			<li class="sale">
+				<p class="sale-text">
+					<b>Нашли дешевле?</b>
+					<span>Мы предложим вам СКИДКУ!</span>
+				</p>
+				<a class="sale-link" href="#" id="haad_pun-bnt">подробнее</a>
+			</li>
+		</ul>
+	</div>
+</header>
