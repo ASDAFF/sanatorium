@@ -12,7 +12,8 @@ $filter = $component->filter;
 $products = $component->products['ITEMS'];
 
 ?>
-<div id="catalog-wrap">
+
+	<div class="el-search-select engBox-body" id="el-search-select"  style="display: block;">
 
 <div id="filters-panel">
 	<input type="hidden" name="q" value="<?= $component->searchQuery ?>">
@@ -31,7 +32,9 @@ $products = $component->products['ITEMS'];
 		$class = $closed[$i] ? ' closed' : '';
 		?>
 		<div class="filter-group<?= $class ?>">
-			<h3><?= $group['NAME'] ?><s></s></h3><?
+			<div class="title"><?= $group['NAME'] ?><s></s></div>
+		<fieldset class="profiles">
+		<?
 
 			if ($group['TYPE'] == 'price')
 			{
@@ -48,8 +51,8 @@ $products = $component->products['ITEMS'];
 			else
 			{
 				?>
-				<div<?= $style ?>>
-					<ul><?
+				<?/*<div<?= $style ?>>*/?>
+				<?/*</ul>*/?><?
 
 						foreach ($group['ITEMS'] as $code => $item)
 						{
@@ -65,20 +68,20 @@ $products = $component->products['ITEMS'];
 							$disabled = $item['CNT'] ? '' : ' disabled';
 
 							?>
-							<li<?= $class ?><?= $style ?>>
+							<?/*<li<?= $class ?><?= $style ?>>*/?>
 								<b></b><label>
-									<input type="checkbox" name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
+									<input class="el-search-dop-input" type="checkbox" name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
 									<?= $item['NAME'] ?> (<i><?= $item['CNT'] ?></i>)
 								</label>
-							</li><?
+							<?/*</li>*/?><?
 						}
 
 						?>
-					</ul>
-				</div><?
+						<?/*</ul>*/?>
+				<?/*</div>*/?><?
 			}
 			?>
-		</div><?
+			</fieldset></div><?
 
 		$i++;
 	}

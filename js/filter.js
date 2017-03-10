@@ -27,7 +27,6 @@ var Filters = {
 		this.priceInit();
 		
 		$(".filter_find").on('click', function(e) {
-		    //console.log("dfdf");
 		    Filters.updateProducts();
         });
 
@@ -47,9 +46,16 @@ var Filters = {
 		this.inputFrom.on('change', Filters.priceChange);
 		this.inputTo.on('change', Filters.priceChange);
 	},
+
+	priceChange: function() {
+		Filters.price_from = Filters.inputFrom.val();
+		Filters.price_to = Filters.inputTo.val();
+	},
+
 	updateProducts: function() {
 		var url = Filters.catalogPath;
-		Filters.groups.each(function() {
+
+        Filters.groups.each(function() {
 			var cb = $(this).find('input[type=checkbox]:checked');
 			var part = '';
 			cb.each(function() {
@@ -60,11 +66,17 @@ var Filters = {
 			if (part)
 				url += part + '/';
 		});
+
+        url += $("#city-vibor option:selected").attr("name") + '/';
+
+
 		var params = '';
 		if (Filters.q) {
 			params += params ? '&' : '?';
 			params += 'q=' + Filters.q;
 		}
+
+		Filters.priceChange();
 		if (Filters.price_from <= Filters.price_to) {
 			if (Filters.price_from > Filters.price_min) {
 				params += params ? '&' : '?';
@@ -76,10 +88,10 @@ var Filters = {
 			}
 		}
 		url += params;
-		//console.log(url);
 		location.href = url;
 	}
 };
+
 
 $(document).ready(function() {
 	Filters.init();

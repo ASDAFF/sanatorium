@@ -75,16 +75,17 @@ $(function() {
                 closeClick	: false,
 
           });
-	  $( "#slider-range" ).slider({
-		range: true,
-		min: 0,
-		max: 20000,
-		values: [ 1500, 15000    ],
-		slide: function( event, ui ) {
-			$("#slider-range-value1").text(ui.values[0]);
-			$("#slider-range-value2").text(ui.values[1]);
-		}
-	});
+	// перенес в шаблон кампонента
+	//   $( "#slider-range" ).slider({
+	// 	range: true,
+	// 	min: 0,
+	// 	max: 20000,
+	// 	values: [ 1500, 15000    ],
+	// 	slide: function( event, ui ) {
+	// 		$("#slider-range-value1").text(ui.values[0]);
+	// 		$("#slider-range-value2").text(ui.values[1]);
+	// 	}
+	// });
 	var btn = $('#el-search-btn');
 		list = $('#el-search-select');
 		icon = $('#icon-down-top');
@@ -119,18 +120,21 @@ $(function() {
 			sync: "#carousel"
 		});
 	});
-	
-$( ".el-search-dop-input" ).checkboxradio();
-$( "#slider-range-d" ).slider({
-	range: true,
-	min: 0,
-	max: 20000,
-	values: [ 1500, 15000    ],
-	slide: function( event, ui ) {
-		$("#slider-range-value01").text(ui.values[0]);
-		$("#slider-range-value02").text(ui.values[1]);
-	}
-});
+
+	var l = $(".price-group").attr("data-min");
+	var r = $(".price-group").attr("data-max");
+	$( "#slider-range" ).slider({
+		range: true,
+		min: l,
+		max: r,
+		values: [l, r],
+		slide: function( event, ui ) {
+			$("#slider-range-value1").text(ui.values[0]);
+			$("#slider-range-value2").text(ui.values[1]);
+			$(".from").val(ui.values[0]);
+			$(".to").val(ui.values[1]);
+		}
+	});
 
 	var btn_d = $('#el-search-btn-d');
 	list_d = $('#el-search-select-d');
