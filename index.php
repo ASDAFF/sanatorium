@@ -4,10 +4,11 @@ $APPLICATION->SetTitle("");?><?$APPLICATION->SetTitle("Главная");?> <!-- 
 <?
 $APPLICATION->IncludeComponent('tim:filter', '', array());
 ?>
+
 <?
-$APPLICATION->IncludeComponent('tim:empty', '', array());
+$APPLICATION->IncludeComponent('tim:empty', 'main_san', array());
 ?>
-	<div class="el-full-bg-ser">
+<?/*	<div class="el-full-bg-ser">
 		<div class="el-sanat-list engBox-body">
 			<div class="title">
 				Санаторий - ТОП 12
@@ -95,9 +96,11 @@ $APPLICATION->IncludeComponent('tim:empty', '', array());
 				</form>
 			</div>
 		</div>
-	</div>
-
-<div class="el-lech engBox-body">
+	</div>*/?>
+<?
+$APPLICATION->IncludeComponent('tim:empty', 'main_slide_city', array());
+?>
+<? /*<div class="el-lech engBox-body">
 	<div class="title">
 		 О лечении в городах КМВ
 	</div>
@@ -173,8 +176,14 @@ $APPLICATION->IncludeComponent('tim:empty', '', array());
 			 Железноводск </li>
 		</ul>
 	</div>
-</div>
-<div id="comments">
+</div>*/?>
+
+
+<?
+$APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
+?>
+
+<?/*<div id="comments">
 	<div class="engBox-body">
 		<div class="title">
 			 Отзывы
@@ -218,4 +227,5 @@ $APPLICATION->IncludeComponent('tim:empty', '', array());
 		</div>
 	</div>
 </div>
+*/?>
  <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -13,5 +13,7 @@ CModule::AddAutoloadClasses(
 		'Local\\Catalog\\Profiles' => '/local/lib/Catalog/Profiles.php',
 		'Local\\Catalog\\Seo' => '/local/lib/Catalog/Seo.php',
 		'Local\\Catalog\\Sitemap' => '/local/lib/Catalog/Sitemap.php',
+        //
+        'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
 	)
 );
