@@ -4,6 +4,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $pagen = $_GET["PAGEN_1"];
 $reviews = \Local\Catalog\Reviews::getAll($pagen, array(), array(), array());
 $page = "";
+
+$uri = $_SERVER['REQUEST_URI'];
+$url = explode("/", $uri);
 ?>
 <div id="cron_full" class="head_block">
     <div id="cron" class="engBox-body">
@@ -11,21 +14,20 @@ $page = "";
         <div class="nav-sections">
             <span class="nav-sections-title">Отзывы о санаториях:</span>
             <ul class="ul_city">
-                <li id="164" class="active"><a href="#">Пятигорск</a></li>
-                <li id="165"><a href="#">Ессентуки</a></li>
-                <li id="166"><a href="#">Кисловодск</a></li>
-                <li id="167"><a href="#">Железноводск</a></li>
+                <li class="<?= ($url[2] == "pyatigorsk" ? 'active' : '')?>"><a href="/reviews/pyatigorsk/">Пятигорск</a></li>
+                <li class="<?= ($url[2] == "essentuki" ? 'active' : '')?>"><a href="/reviews/essentuki/">Ессентуки</a></li>
+                <li class="<?= ($url[2] == "kislovodsk" ? 'active' : '')?>"><a href="/reviews/kislovodsk/">Кисловодск</a></li>
+                <li class="<?= ($url[2] == "zheleznovodsk" ? 'active' : '')?>"><a href="/reviews/zheleznovodsk/">Железноводск</a></li>
              </ul>
         </div>
         <div id="cron-crox">
             <span>Главная</span> -
             <span>Пятигорск</span> -
-            <a href="">Отзывы</a>
+            <a href="/reviews/">Отзывы</a>
         </div>
         <div id="cron-title"><h1>Отзывы</h1></div>
     </div>
 </div>
-
 
 <div class="engBox-body clearfix">
     <div class="engBox-center">
@@ -70,7 +72,7 @@ $page = "";
                         <div class="rev-item-rate">
                             <div class="mark">
                                 <?for ($i = 5; $i>=1; $i--) { ?>
-                                    <input type="radio" name="<?="mark-".$i?>" value="<?=$i?>" <?= ($i == $item['MARK']) ? "checked" : "" ?>/><label title="<?=$i?>"><?=$i?></label>
+                                    <input type="radio" name="<?="mark-".$item['ID']?>" value="<?=$i?>" <?= ($i == $item['MARK']) ? "checked" : "" ?>/><label title="<?=$i?>"><?=$i?></label>
                                 <?}?>
                             </div>
                         </div>
@@ -143,25 +145,7 @@ $page = "";
         return false;
     });
 
-    /*$(".ul_city li").click(function () {
-        $('.ul_city li').removeClass("active");
-        $(this).addClass("active");
-        $.ajax({
-            type: "GET",
-            url: "/local/components/tim/empty/templates/reviews/san_city.php?iblock_id="+$(this).attr('id'),
-            cache: false,
-            beforeSend: function () {
-                $(".b_preloader").addClass('active');
-            },
-            success: function (html) {
-                p++;
-                $(".b_preloader").removeClass('active');
-                $("#it-blocks").append(html);
-            }
-        });
-    })*/
-
-    $('.ul_city li').click(function () {
+    /*$('.ul_city li').click(function () {
         $('.ul_city li').removeClass("active");
         $(this).addClass("active");
         $.ajax({
@@ -172,5 +156,5 @@ $page = "";
                 $("#for_city").html(msg);
             }});
         return false;
-    });
+    });*/
 </script>
