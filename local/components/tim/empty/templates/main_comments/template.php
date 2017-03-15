@@ -7,18 +7,22 @@ $return = array();
 
 $iblockElement = new \CIBlockElement();
 $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
-    'IBLOCK_ID' => 7,
+    'IBLOCK_ID' => 30,
     'ACTIVE' => 'Y',
 ), false, Array("nTopCount" => 2), array(
     'ID',
     'NAME',
     'PREVIEW_TEXT',
+    'PROPERTY_CITY',
+    'PROPERTY_DATE',
 ));
 while ($item = $rsItems->Fetch()) {
     $return[$item['ID']] = array(
         'ID' => $item['ID'],
         'NAME' => $item['NAME'],
         'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
+        'PROPERTY_CITY' => $item['PROPERTY_CITY_VALUE'],
+        'PROPERTY_DATE' => $item['PROPERTY_DATE_VALUE'],
     );
 }
 
@@ -32,13 +36,13 @@ while ($item = $rsItems->Fetch()) {
         <? foreach ($return as $item) {?>
             <div class="item mobile icon-comment-full">
                 <div class="date icon-comment">
-                    26 октября 2016
+                    <?=$item['PROPERTY_DATE']?>
                 </div>
                 <div class="title">
                     <?=$item['NAME']?>
                 </div>
                 <div class="city">
-                    г. Санкт-Петербург
+                    <?=$item['PROPERTY_CITY']?>
                 </div>
                 <div class="text">
                     <?=$item['PREVIEW_TEXT']?>
@@ -49,7 +53,7 @@ while ($item = $rsItems->Fetch()) {
             </div>
         <?}?>
         <div class="btn">
-            <a href=""> Все отзывы</a>
+            <a href="<?=SITE_DIR . 'reviews'?>">Все отзывы</a>
         </div>
     </div>
 </div>

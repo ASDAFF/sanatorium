@@ -581,12 +581,15 @@ class Sanatorium
             'NAME',
             'IBLOCK_ID',
             'PROPERTY_PRICE',
+            'PROPERTY_PROFILES',
         ));
         while ($item = $rsItems->Fetch()) {
             $return[$item['ID']] = array(
                 'ID' => $item['ID'],
                 'NAME' => $item['NAME'],
                 'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
+                'PROFILES' => $item['PROPERTY_PROFILES_VALUE'],
+                'IBLOCK_ID' => $item['IBLOCK_ID'],
             );
         }
 

@@ -36,7 +36,7 @@ $arTemplateParameters = array(
 	'FORM_URL' => array(
 		'NAME' => GetMessage('FORM_URL'),
 		'TYPE' => 'STRING',
-		'DEFAULT' => SITE_DIR."filter/",
+		'DEFAULT' => SITE_DIR."filter_top/",
 	),
 );
 ?>

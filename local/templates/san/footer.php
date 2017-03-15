@@ -1,35 +1,42 @@
 <?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();?>
+<?
+$APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
+?>
+<?
+/*
+ * <div class="engBox-body">
+<div id="people">
+<div class="title">Остались вопросы? Задайте их менеджеру!</div>
 
-<div class="engBox-body">
-    <div id="people">
-        <div class="title">Остались вопросы? Задайте их менеджеру!</div>
-        <div class="item">
-            <div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-            <div class="name">Владислав Некрасов</div>
-            <div class="phone icon-phone">8 800 800 00 00</div>
-            <div class="btn"><a href="">Заказать звонок</a></div>
-        </div>
-        <div class="item">
-            <div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-            <div class="name">Владислав Некрасов</div>
-            <div class="phone icon-phone">8 800 800 00 00</div>
-            <div class="btn"><a href="">Заказать звонок</a></div>
-        </div>
-        <div class="item">
-            <div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-            <div class="name">Владислав Некрасов</div>
-            <div class="phone icon-phone">8 800 800 00 00</div>
-            <div class="btn"><a href="">Заказать звонок</a></div>
-        </div>
-        <div class="item">
-            <div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-            <div class="name">Владислав Некрасов</div>
-            <div class="phone icon-phone">8 800 800 00 00</div>
-            <div class="btn"><a href="">Заказать звонок</a></div>
-        </div>
-    </div>
+<div class="item">
+<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
+<div class="name">Владислав Некрасов</div>
+<div class="phone icon-phone">8 800 800 00 00</div>
+<div class="btn"><a href="">Заказать звонок</a></div>
+</div>
+<div class="item">
+<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
+<div class="name">Владислав Некрасов</div>
+<div class="phone icon-phone">8 800 800 00 00</div>
+<div class="btn"><a href="">Заказать звонок</a></div>
+</div>
+<div class="item">
+<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
+<div class="name">Владислав Некрасов</div>
+<div class="phone icon-phone">8 800 800 00 00</div>
+<div class="btn"><a href="">Заказать звонок</a></div>
+</div>
+<div class="item">
+<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
+<div class="name">Владислав Некрасов</div>
+<div class="phone icon-phone">8 800 800 00 00</div>
+<div class="btn"><a href="">Заказать звонок</a></div>
 </div>
 
+    </div>
+</div>
+ */
+?>
 <div id="phone">
     <div class="engBox-body">
         <div class="phone"><i class="icon-phome-mega"></i>8 800 800 00 00</div>
@@ -51,9 +58,14 @@
         </div>
     </div>
 </footer>
-<!-- Нижний фиксированный поиск, появлющийся при скролле   -->
 
-<div class="search-fix">
+<?
+$APPLICATION->IncludeComponent('tim:filter_top', 'bottom', array());
+?>
+
+<?
+/*
+ <div class="search-fix">
 <div class="el-search-select engBox-body" id="el-search-select-d"  style="display: none;">
     <div class="title">Направление лечения</div>
     <fieldset class="profiles">
@@ -70,7 +82,7 @@
         <label for="checkbox-6d">Желудочныо-кишечный тракт</label>
         <input class="el-search-dop-input" type="checkbox" name="checkbox-6d" id="checkbox-6d">
     </fieldset>
-	
+
 	<div class="title">Направление лечения</div>
     <fieldset class="profiles">
         <label for="checkbox-1d0">Лечение гастроэнтерологических заболеваний</label>
@@ -116,9 +128,10 @@
 	<div class="el-search-btn" id="el-search-btn-d">Расширенный поиск<i id="icon-down-top-d"></i></div>
 </div>
 </div>
-<!-- Нижний фиксированный поиск, появлющийся при скролле   END-->
 
 
 </div>
+ */
+?>
 </body>
 </html>

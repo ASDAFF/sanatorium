@@ -13,8 +13,8 @@ if($arTheme['FILTER_VIEW']['VALUE'] !== 'NONE' && $itemsCnt){
 		$this->__component->__template->SetViewTarget('under_sidebar_content');
 	}
 		$APPLICATION->IncludeComponent(
-			// 'bitrix:catalog.smart.filter', 'corp',
-			'bitrix:catalog.smart.filter', 'catalog',
+			// 'bitrix:catalog.smart.filter_top', 'corp',
+			'bitrix:catalog.smart.filter_top', 'catalog',
 			array(
 				'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
 				'IBLOCK_ID' => $arParams['IBLOCK_ID'],

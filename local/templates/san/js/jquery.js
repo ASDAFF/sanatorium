@@ -1128,7 +1128,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		return !document.getElementsByName || !document.getElementsByName( expando ).length;
 	});
 
-	// ID find and filter
+	// ID find and filter_top
 	if ( support.getById ) {
 		Expr.find["ID"] = function( id, context ) {
 			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
@@ -1623,7 +1623,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( match[0] );
 				}
 
-				// numeric x and y parameters for Expr.filter.CHILD
+				// numeric x and y parameters for Expr.filter_top.CHILD
 				// remember that false/true cast respectively to 0/1
 				match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
 				match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
@@ -1660,7 +1660,7 @@ Expr = Sizzle.selectors = {
 				match[2] = unquoted.slice( 0, excess );
 			}
 
-			// Return only captures needed by the pseudo filter method (type and argument)
+			// Return only captures needed by the pseudo filter_top method (type and argument)
 			return match.slice( 0, 3 );
 		}
 	},
@@ -1849,7 +1849,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
 			// The user may use createPseudo to indicate that
-			// arguments are needed to create the filter function
+			// arguments are needed to create the filter_top function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
 				return fn( argument );
@@ -2761,7 +2761,7 @@ var rsingleTag = ( /^<([\w-]+)\s*\/?>(?:<\/\1>|)$/ );
 
 var risSimple = /^.[^:#\[\.,]*$/;
 
-// Implement the identical functionality for filter and not
+// Implement the identical functionality for filter_top and not
 function winnow( elements, qualifier, not ) {
 	if ( jQuery.isFunction( qualifier ) ) {
 		return jQuery.grep( elements, function( elem, i ) {
@@ -4302,7 +4302,7 @@ var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
 var isHidden = function( elem, el ) {
 
-		// isHidden might be called from jQuery#filter function;
+		// isHidden might be called from jQuery#filter_top function;
 		// in that case, element will be second argument
 		elem = el || elem;
 		return jQuery.css( elem, "display" ) === "none" ||
@@ -6529,7 +6529,7 @@ var documentElement = document.documentElement;
 	div.style.cssText = "float:left;opacity:.5";
 
 	// Support: IE<9
-	// Make sure that element opacity exists (as opposed to filter)
+	// Make sure that element opacity exists (as opposed to filter_top)
 	support.opacity = div.style.opacity === "0.5";
 
 	// Verify style float existence
@@ -6714,7 +6714,7 @@ if ( window.getComputedStyle ) {
 
 		computed = computed || getStyles( elem );
 
-		// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+		// getPropertyValue is only needed for .css('filter_top') in IE9, see #12537
 		ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined;
 
 		// Support: Opera 12.1x only
@@ -7241,25 +7241,25 @@ if ( !support.opacity ) {
 			style.zoom = 1;
 
 			// if setting opacity to 1, and no other filters exist -
-			// attempt to remove filter attribute #6652
+			// attempt to remove filter_top attribute #6652
 			// if value === "", then remove inline opacity #12685
 			if ( ( value >= 1 || value === "" ) &&
 					jQuery.trim( filter.replace( ralpha, "" ) ) === "" &&
 					style.removeAttribute ) {
 
-				// Setting style.filter to null, "" & " " still leave "filter:" in the cssText
-				// if "filter:" is present at all, clearType is disabled, we want to avoid this
+				// Setting style.filter_top to null, "" & " " still leave "filter_top:" in the cssText
+				// if "filter_top:" is present at all, clearType is disabled, we want to avoid this
 				// style.removeAttribute is IE Only, but so apparently is this code path...
 				style.removeAttribute( "filter" );
 
-				// if there is no filter style applied in a css rule
+				// if there is no filter_top style applied in a css rule
 				// or unset inline opacity, we are done
 				if ( value === "" || currentStyle && !currentStyle.filter ) {
 					return;
 				}
 			}
 
-			// otherwise, set new filter values
+			// otherwise, set new filter_top values
 			style.filter = ralpha.test( filter ) ?
 				filter.replace( ralpha, opacity ) :
 				filter + " " + opacity;
@@ -10107,7 +10107,7 @@ jQuery.fn.extend( {
 	serializeArray: function() {
 		return this.map( function() {
 
-			// Can add propHook for "elements" to filter or add form elements
+			// Can add propHook for "elements" to filter_top or add form elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
 		} )

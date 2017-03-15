@@ -34,7 +34,7 @@ $this->setFrameMode(true);
 <?endif?>
 <?if($arParams["USE_FILTER"]=="Y"):?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.filter",
+	"bitrix:catalog.filter_top",
 	"",
 	Array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

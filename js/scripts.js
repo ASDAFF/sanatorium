@@ -135,6 +135,18 @@ $(function() {
 			$(".to").val(ui.values[1]);
 		}
 	});
+	$( "#slider-range-d" ).slider({
+		range: true,
+		min: l,
+		max: r,
+		values: [l, r],
+		slide: function( event, ui ) {
+			$("#slider-range-value01").text(ui.values[0]);
+			$("#slider-range-value02").text(ui.values[1]);
+			$(".from").val(ui.values[0]);
+			$(".to").val(ui.values[1]);
+		}
+	});
 
 	var btn_d = $('#el-search-btn-d');
 	list_d = $('#el-search-select-d');

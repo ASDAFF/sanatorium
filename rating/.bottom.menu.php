@@ -1,0 +1,32 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Кисловодск", 
+		"/rating/kislovodsk/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Пятигорск", 
+		"/rating/pyatigorsk/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Железноводск", 
+		"/rating/zheleznovodsk/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Ессентуки", 
+		"/rating/essentuki/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

@@ -18,7 +18,7 @@ var Filters = {
 		this.catalogPath = this.panel.find('input[name=catalog_path]').val();
 		this.separator = this.panel.find('input[name=separator]').val();
 		this.q = this.panel.find('input[name=q]').val();
-		this.groups = this.panel.find('.filter-group');
+		this.groups = this.panel.find('.filter_top-group');
 		this.cb = this.panel.find('input[type=checkbox]');
 		this.ajaxCont = $('#catalog-list');
 		this.bcCont = $('#cron-crox');

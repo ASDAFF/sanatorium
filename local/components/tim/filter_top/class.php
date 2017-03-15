@@ -295,7 +295,7 @@ class TimCatalog extends \CBitrixComponent
 
 			/*
 			Пока отключил обработку галочки "Применять к дочерним фильтрам"
-			$parts = $this->filter['SEO']['PARTS'];
+			$parts = $this->filter_top['SEO']['PARTS'];
 			while (!$this->seo)
 			{
 				array_pop($parts);

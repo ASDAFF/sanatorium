@@ -19,7 +19,7 @@ h3, .h3 { display: block; margin: 0; padding: 0; font-size: 17px; line-height: 1
 h4, .h4 { display: block; margin: 0; padding: 0; font-size: 12px; line-height: 1.2em; color: #1d1d1d; font-weight: bold }
 .clear { clear: both; }
 .engBox-center, .engBox-center-right, .engBox-right { position: relative; float: left; }
-.engBox-body { width: 1110px; margin: auto; clear: both; }
+.engBox-body { width: 1131px; margin: auto; clear: both; }
 .engBox-center { width: 840px; padding-right: 10px; }
 .engBox-center-mini { width: 640px; margin: auto; }
 .engBox-right { width: 270px; }
@@ -1998,3 +1998,13 @@ textarea:required+.required{display: inline-block;}
     position: relative;
 }
 textarea:required+.required:after {right:15px;top:25px;}
+
+.diis{
+	border: none;
+	border-radius: 1px;
+	margin-left: 6px;
+	height: 45px;
+	background-color: #333333;
+	color: #a0a0a0;
+	font-size: 17px;
+}

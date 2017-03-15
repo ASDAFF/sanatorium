@@ -2,9 +2,8 @@
 $APPLICATION->SetTitle("");?><?$APPLICATION->SetTitle("Главная");?> <!-- Каталог !-->
 
 <?
-$APPLICATION->IncludeComponent('tim:filter', '', array());
+$APPLICATION->IncludeComponent('tim:filter_top', '', array());
 ?>
-
 <?
 $APPLICATION->IncludeComponent('tim:empty', 'main_san', array());
 ?>
