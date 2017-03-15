@@ -13,5 +13,9 @@ CModule::AddAutoloadClasses(
 		'Local\\Catalog\\Profiles' => '/local/lib/Catalog/Profiles.php',
 		'Local\\Catalog\\Seo' => '/local/lib/Catalog/Seo.php',
 		'Local\\Catalog\\Sitemap' => '/local/lib/Catalog/Sitemap.php',
+        'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
+        'Local\\Catalog\\Reviews' => '/local/lib/Catalog/Reviews.php',
+        'Local\\Catalog\\ReviewsServ' => '/local/lib/Catalog/ReviewsServ.php',
+        'Local\\Catalog\\FilterDark' => '/local/lib/Catalog/FilterDark.php',
 	)
 );
