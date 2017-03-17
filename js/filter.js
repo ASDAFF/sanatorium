@@ -26,7 +26,7 @@ var Filters = {
 
 		this.priceInit();
 		
-		$(".filter_find").on('click', function(e) {
+		$(".filter_find").on('click', function() {
 		    Filters.updateProducts();
         });
 

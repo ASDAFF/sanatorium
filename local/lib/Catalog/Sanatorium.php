@@ -52,6 +52,14 @@ class Sanatorium
                 'PREVIEW_PICTURE',
                 'CITY_NAME',
                 'PROPERTY_PRICES',
+                'PROPERTY_DISTANCE',
+                'PROPERTY_INFRASTRUCTURES',
+                'PROPERTY_PROGRAMMS',
+                'PROPERTY_VIDEO',
+                #'PROPERTY_FOOD',
+                'PROPERTY_FOR_CHILD',
+                'PROPERTY_FOOD1',
+                'PROPERTY_SHARES',
             );
             $flagsSelect = Flags::getForSelect();
             $select = array_merge($select, $flagsSelect);
@@ -74,7 +82,14 @@ class Sanatorium
                     'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
                     'CITY_NAME' => $city['NAME'],
                     'PRICES' => $item['PROPERTY_PRICES_VALUE'],
-
+                    'DISTANCE' => $item['PROPERTY_DISTANCE_VALUE'],
+                    'INFRASTRUCTURES' => $item['PROPERTY_INFRASTRUCTURES_VALUE'],
+                    'PROGRAMMS' => $item['PROPERTY_PROGRAMMS_VALUE'],
+                    'VIDEO' => $item['PROPERTY_VIDEO_VALUE'],
+                    #'FOOD' => $item['PROPERTY_FOOD_VALUE'],
+                    'FOOD1' => $item['PROPERTY_FOOD1_VALUE'],
+                    'FOR_CHILD' => $item['PROPERTY_FOR_CHILD_VALUE'],
+                    'SHARES' => $item['PROPERTY_SHARES_VALUE'],
                 );
 
                 foreach ($codes as $code)
@@ -616,6 +631,91 @@ class Sanatorium
             $return[] = array(
                 'ID' => $item['ID'],
                 'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
+            );
+        }
+
+        return $return;
+    }
+
+    public static function getInfo($id)
+    {
+        $return = array();
+
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
+            'IBLOCK_ID' => 34,
+            'ID' => $id,
+            'ACTIVE' => 'Y',
+        ), false, array("nTopCount" => 2), array(
+            'ID',
+            'NAME',
+            'IBLOCK_ID',
+            'PREVIEW_PICTURE',
+        ));
+        while ($item = $rsItems->GetNext()) {
+            $return[] = array(
+                'ID' => $item['ID'],
+                'NAME' => $item['NAME'],
+                'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
+            );
+        }
+
+        return $return;
+    }
+
+    public static function getParam($id)
+    {
+        $return = array();
+
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array(), array(
+            'IBLOCK_ID' => 24,
+            'ID' => $id,
+            'ACTIVE' => 'Y',
+        ), false, array(), array(
+            'ID',
+            'NAME',
+            'IBLOCK_ID',
+            'DETAIL_TEXT',
+            'PREVIEW_TEXT',
+
+        ));
+        while ($item = $rsItems->GetNext()) {
+            $return[] = array(
+                'ID' => $item['ID'],
+                'NAME' => $item['NAME'],
+                'DETAIL_TEXT' => $item['DETAIL_TEXT'],
+                'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
+            );
+        }
+
+        return $return;
+    }
+    public static function getShares($id)
+    {
+        $return = array();
+
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array(), array(
+            'IBLOCK_ID' => 9,
+            'ID' => $id,
+            'ACTIVE' => 'Y',
+        ), false, array(), array(
+            'ID',
+            'NAME',
+            'IBLOCK_ID',
+            'PROPERTY_PERIOD',
+            'PREVIEW_TEXT',
+            'DETAIL_TEXT',
+
+        ));
+        while ($item = $rsItems->GetNext()) {
+            $return[] = array(
+                'ID' => $item['ID'],
+                'NAME' => $item['NAME'],
+                'DETAIL_TEXT' => $item['DETAIL_TEXT'],
+                'PROPERTY_PERIOD_VALUE' => $item['PROPERTY_PERIOD_VALUE'],
+                'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
             );
         }
 
