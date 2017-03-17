@@ -8,9 +8,7 @@ $banners = \Local\Catalog\Sanatorium::getAll(array(), array(), array());
 
 foreach ($banners as $item) {
 
-    $events = \Local\Main\Event::getById($item['EVENT']);
-    $hall = \Local\Main\Hall::getById($events['PRODUCT']['HALL']);
-    $run = \Local\Main\Run::getClosest($events['RUNS']);
+
 
     $price = $events['PRODUCT']['PRICE'];
     if ($events['PRODUCT']['PRICE'] != $events['PRODUCT']['PRICE_TO'])

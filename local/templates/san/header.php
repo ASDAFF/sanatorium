@@ -41,6 +41,30 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	$APPLICATION->ShowHead();
     ?>
 
+
+	<script type="text/javascript" charset="utf-8">
+		$(window).load(function() {
+			// The slider being synced must be initialized first
+			$('#carousel').flexslider({
+				animation: "slide",
+				controlNav: false,
+				animationLoop: false,
+				slideshow: false,
+				itemWidth: 120,
+				itemHeight: 50,
+				itemMargin: 5,
+				asNavFor: '#slider'
+			});
+
+			$('#slider').flexslider({
+				animation: "slide",
+				controlNav: false,
+				animationLoop: false,
+				slideshow: false,
+				sync: "#carousel"
+			});
+		});
+	</script>
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>
