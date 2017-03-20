@@ -83,7 +83,7 @@ class Profiles
 
         $return = array();
 
-            $arSelect = Array("ID", "NAME", "PREVIEW_TEXT");
+            $arSelect = Array("ID", "NAME", "PREVIEW_TEXT","DETAIL_PICTURE");
         $arFilter = Array("IBLOCK_ID"=>self::IBLOCK_ID, "ID"=>$id);
         $iblockElement = new \CIBlockElement();
         $rsItems = $iblockElement->GetList(array(), $arFilter, false, false, $arSelect);
@@ -92,6 +92,7 @@ class Profiles
                 'ID' => $ob['ID'],
                 'NAME' => $ob['NAME'],
                 'PREVIEW_TEXT' => $ob['PREVIEW_TEXT'],
+                'DETAIL_PICTURE' => \CFile::GetPath($ob['DETAIL_PICTURE']),
             ));
         }
         return $return;

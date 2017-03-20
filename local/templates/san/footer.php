@@ -49,7 +49,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
     <div class="engBox-body">
         <div>
             <div class="left">
-                <a href=""><img src="<?=SITE_TEMPLATE_PATH;?>/images/logo.png"></a>
+                <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
             </div>
             <div class="center">© 2016 «Санатории Кавказа»</div>
             <div class="right">
