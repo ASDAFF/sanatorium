@@ -74,7 +74,31 @@ class Profiles
 		return $all['ITEMS'][$id];
 	}
 
-	/**
+    /**
+     * Возвращает профиль лечения по ID элемента
+     * @param $id
+     * @return mixed
+     */
+    public static function getList($id) {
+
+        $return = array();
+
+            $arSelect = Array("ID", "NAME", "PREVIEW_TEXT");
+        $arFilter = Array("IBLOCK_ID"=>self::IBLOCK_ID, "ID"=>$id);
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array(), $arFilter, false, false, $arSelect);
+        while($ob = $rsItems->GetNext()) {
+            array_push($return, array(
+                'ID' => $ob['ID'],
+                'NAME' => $ob['NAME'],
+                'PREVIEW_TEXT' => $ob['PREVIEW_TEXT'],
+            ));
+        }
+        return $return;
+    }
+
+
+    /**
 	 * Возвращает ID профиля по коду
 	 * @param $code
 	 * @return mixed
