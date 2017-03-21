@@ -123,7 +123,7 @@ $APPLICATION->SetTitle("Каталог");
 		"T_DOCS" => "",
 		"T_PROJECTS" => "",
 		"T_CHARACTERISTICS" => "",
-		"FILTER_URL_TEMPLATE" => "#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
+		"FILTER_URL_TEMPLATE" => "#SECTION_CODE_PATH#/filter_top/#SMART_FILTER_PATH#/apply/",
 		"COMPONENT_TEMPLATE" => "san",
 		"SET_LAST_MODIFIED" => "N",
 		"T_VIDEO" => "",

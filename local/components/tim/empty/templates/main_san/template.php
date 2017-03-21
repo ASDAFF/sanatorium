@@ -1,5 +1,6 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $sanatorium = \Local\Catalog\Sanatorium::getAll(array(), array(), array());
 ?>
 

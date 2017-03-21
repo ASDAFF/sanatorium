@@ -17,7 +17,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery-ui.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.flexslider-min.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.js');
-    $assets->addJs(SITE_TEMPLATE_PATH . '/js/scripts.js');
+    $assets->addJs(SITE_DIR . 'js/scripts.js');
     
     $page = $APPLICATION->GetCurPage();
     if($page == "/"){
@@ -40,8 +40,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
     ?>
-
-
 	<script type="text/javascript" charset="utf-8">
 		$(window).load(function() {
 			// The slider being synced must be initialized first

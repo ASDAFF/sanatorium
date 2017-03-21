@@ -4947,7 +4947,7 @@ var widgetsSelectable = $.widget( "ui.selectable", $.ui.mouse, {
 
 		this.dragged = false;
 
-		// Cache selectee children based on filter
+		// Cache selectee children based on filter_top
 		this.refresh = function() {
 			that.elementPos = $( that.element[ 0 ] ).offset();
 			that.selectees = $( that.options.filter, that.element[ 0 ] );
@@ -7572,7 +7572,7 @@ var widgetsMenu = $.widget( "ui.menu", {
 				this.active.nextAll( ".ui-menu-item" ) :
 				match;
 
-			// If no matches on the current filter, reset to the last character pressed
+			// If no matches on the current filter_top, reset to the last character pressed
 			// to move down the menu to the first item that starts with that character
 			if ( !match.length ) {
 				character = String.fromCharCode( event.keyCode );
@@ -8908,7 +8908,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 
 		children = this.childWidgets;
 
-		// We filter here because we need to track all childWidgets not just the visible ones
+		// We filter_top here because we need to track all childWidgets not just the visible ones
 		if ( this.options.onlyVisible ) {
 			children = children.filter( ":visible" );
 		}

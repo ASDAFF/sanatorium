@@ -60,7 +60,8 @@ class Sanatorium
                 'PROPERTY_FOR_CHILD',
                 'PROPERTY_FOOD1',
                 'PROPERTY_SHARES',
-                'PROPERTY_YMAPS',
+                'PROPERTY_LINK_MAPS',
+                'PROPERTY_ADDRESS',
             );
             $flagsSelect = Flags::getForSelect();
             $select = array_merge($select, $flagsSelect);
@@ -91,7 +92,8 @@ class Sanatorium
                     'FOOD1' => $item['PROPERTY_FOOD1_VALUE'],
                     'FOR_CHILD' => $item['PROPERTY_FOR_CHILD_VALUE'],
                     'SHARES' => $item['PROPERTY_SHARES_VALUE'],
-                    'YMAPS' => $item['PROPERTY_YMAPS_VALUE'],
+                    'LINK_MAPS' => $item['PROPERTY_LINK_MAPS_VALUE'],
+                    'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
                 );
 
                 foreach ($codes as $code)
@@ -718,6 +720,53 @@ class Sanatorium
                 'DETAIL_TEXT' => $item['DETAIL_TEXT'],
                 'PROPERTY_PERIOD_VALUE' => $item['PROPERTY_PERIOD_VALUE'],
                 'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
+            );
+        }
+
+        return $return;
+    }
+
+    public static function getRo($id)
+    {
+        $return = array();
+
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array(), array(
+            'IBLOCK_ID' => 26,
+            'ID' => $id,
+            'ACTIVE' => 'Y',
+        ), false, array(), array(
+            'ID',
+            'NAME',
+            'IBLOCK_ID',
+            'PREVIEW_PICTURE',
+            'PROPERTY_ROOM_SIZE',
+            'PROPERTY_SINGLE_BED',
+            'PROPERTY_DOUBLE_BED',
+            'PROPERTY_PRICE',
+            'PROPERTY_MORE_PHOTO',
+            'PROPERTY_MAIN_PLACES',
+            'PROPERTY_ADD_PLACES',
+            'PROPERTY_PRICE_FULL',
+            'PROPERTY_CHILD_PLACES_PRICE',
+            'PROPERTY_PLACES_PRICE',
+        ));
+        while ($item = $rsItems->GetNext()) {
+            $return[] = array(
+                'ID' => $item['ID'],
+                'NAME' => $item['NAME'],
+                'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
+                'ROOM_SIZE' => $item['PROPERTY_ROOM_SIZE_VALUE'],
+                'SINGLE_BED' => $item['PROPERTY_SINGLE_BED_VALUE'],
+                'DOUBLE_BED' => $item['PROPERTY_DOUBLE_BED_VALUE'],
+                'PRICE' => $item['PROPERTY_PRICE_VALUE'],
+                'MORE_PHOTO' => $item['PROPERTY_MORE_PHOTO_VALUE'],
+                'EXTRA' => $item['PROPERTY_EXTRA_VALUE'],
+                'MAIN_PLACES' => $item['PROPERTY_MAIN_PLACES_VALUE'],
+                'ADD_PLACES' => $item['PROPERTY_ADD_PLACES_VALUE'],
+                'PRICE_FULL' => $item['PROPERTY_PRICE_FULL_VALUE'],
+                'CHILD_PLACES_PRICE' => $item['PROPERTY_CHILD_PLACES_PRICE_VALUE'],
+                'PROPERTY_PLACES_PRICE' => $item['PROPERTY_PLACES_PRICE_VALUE'],
             );
         }
 

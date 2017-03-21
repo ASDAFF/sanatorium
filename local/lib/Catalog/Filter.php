@@ -639,38 +639,38 @@ class Filter
 						{
 							foreach ($cities['ITEMS'] as $city)
 							{
-								$filter = array();
+								$filter_top = array();
 								$url = self::$CATALOG_PATH;
 
-								$filter['CITY'][$city['ID']] = $city['ID'];
+								$filter_top['CITY'][$city['ID']] = $city['ID'];
 								$url .= $city['CODE'] . '/';
 								if ($fCode1)
 								{
-									$filter[$fProp1['CODE']] = true;
+									$filter_top[$fProp1['CODE']] = true;
 									$url .= $fCode1 . '/';
 								}
 								if ($fCode2)
 								{
-									$filter[$fProp2['CODE']] = true;
+									$filter_top[$fProp2['CODE']] = true;
 									$url .= $fCode2 . '/';
 								}
 								if ($fCode3)
 								{
-									$filter[$fProp3['CODE']] = true;
+									$filter_top[$fProp3['CODE']] = true;
 									$url .= $fCode3 . '/';
 								}
 								if ($fCode4)
 								{
-									$filter[$fProp4['CODE']] = true;
+									$filter_top[$fProp4['CODE']] = true;
 									$url .= $fCode4 . '/';
 								}
 								if ($pid)
 								{
-									$filter['PROFILES'][$pid] = $pid;
+									$filter_top['PROFILES'][$pid] = $pid;
 									$url .= $profileCode . '/';
 								}
 
-								$ex = Sanatorium::ex3ByFilter($filter);
+								$ex = Sanatorium::ex3ByFilter($filter_top);
 
 								if ($ex)
 								{

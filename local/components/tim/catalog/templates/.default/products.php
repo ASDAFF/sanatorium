@@ -34,22 +34,25 @@ foreach ($products as $id => $item) {
     $pr = \Local\Catalog\Profiles::getList($item['PROFILES']);
     $info = \Local\Catalog\Sanatorium::getInfo($item['INFRASTRUCTURES']);
     $program = \Local\Catalog\Sanatorium::getParam($item['PROGRAMMS']);
-//    echo "<pre>";
-//    print_r($item);
-//    echo "</pre>";
+
+    //debugmessage($item);
     ?>
+
     <div class="el-search-list engBox-body">
     <div class="item">
         <div class="img">
             <img src="<?= $item['PREVIEW_PICTURE'] ?>">
         </div>
         <div class="text">
-            <a href="" class="title">Санаторий <?= $item['NAME'] ?></a>
+ <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a>
             <b>Направление лечения:</b>
             <span>
-                <? foreach ($pr as $value): ?>
-                    <?= $value['NAME'] ?>
-                <?endforeach ?>
+                <?if(!empty($item['PROFILES'])){
+                    foreach ($pr as $value): ?>
+                        <?= $value['NAME'] ?>,
+                    <?endforeach;
+                }
+                ?>
             </span>
             <b>Дополнительные параметры:</b>
             <div class="el-icon-list">
@@ -73,12 +76,19 @@ foreach ($products as $id => $item) {
                     Расстояние до бюФета <?= $item['DISTANCE'] ?>м</span><?
                 } ?>
                 </li>
-                <? foreach ($info as $value): ?>
-                    <li>
-                        <i class="in-icon"><img src="<?= $value['PREVIEW_PICTURE'] ?>"></i>
-                        <span><?= $value['NAME'] ?></span>
-                    </li>
-                <?endforeach ?>
+                <?
+                    $s=1;
+                    $f=2;
+                ?>
+                <?if(!empty($item['INFRASTRUCTURES'])){
+                    foreach ($info as $value) if($s++ <= $f ) {?>
+                        <li>
+                            <i class="in-icon"><img src="<?= $value['PREVIEW_PICTURE'] ?>"></i>
+                            <span><?= $value['NAME'] ?></span>
+                        </li>
+                    <?}?>
+                <?}
+                ?>
             </div>
         </div>
         <div class="inf">
