@@ -372,13 +372,12 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
         </div>
         <div class="engBox-right card-form">
             <div id="right-form">
-                <form>
+                <form method="POST" id="formx" action="javascript:void(null);" onsubmit="call()">
                     <div class="controlgroup mobile" style="color: #505050;">
                         <div class="title">Забронируйте номер<br><span>Прямо сейчас!</span></div>
                         <input type="text" name="name" placeholder="Введите имя" autocomplete="off" class="icon-user">
-                        <input type="text" name="famil" placeholder="Введите номер телефона" autocomplete="off"
-                               class="icon-phone2">
-                        <select id="car-type3" class="input-right icon-key">
+                        <input type="text" name="phone" placeholder="Введите номер телефона" autocomplete="off" class="icon-phone2">
+                        <select id="car-type3" name="room" class="input-right icon-key">
                             <option>Выберите номер</option>
 							<? foreach ($ro as $item) { ?>
                             	<option><?=$item["NAME"]?></option>
@@ -387,7 +386,7 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                         <br><br>
                         <div style="margin-top: 30px; ">
                             <div style="float: right;">
-                                <select id="car-type" class="input-right">
+                                <select id="car-type" name="adults" class="input-right">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -400,7 +399,7 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                         <br>
                         <div>
                             <div style="float: right">
-                                <select id="car-type2" class="input-right">
+                                <select id="car-type2" name="child" class="input-right">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -408,17 +407,17 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
 									<option>5</option>
                                 </select>
                             </div>
-                            <div style="padding: 4px 8px;">Взрослых</div>
+                            <div style="padding: 4px 8px;">Детей</div>
                         </div>
-                        <input type="text" id="datepicker" placeholder="Дата заезда" class="icon-date">
-                        <input type="text" id="datepicker2" placeholder="Дата выезда" class="icon-date">
+                        <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
+                        <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
                         <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                         <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
-                        <input type="button" class="btn various" href="#bron" value="ЗАБРОНИРОВАТЬ">
+                        <input type="submit" id="form_btn" class="btn" value="ЗАБРОНИРОВАТЬ">
                     </div>
                 </form>
                 <div id="bron" class="okno" style="display: none">
-                    <div class="title">Оздоровительная санаторно-курортная путевка</div>
+                    <?/*<div class="title">Оздоровительная санаторно-курортная путевка</div>
                     <p>Санаторно-курортная путевка с классическим набором лечебно-диагностических процедур при различных
                         заболевания.</p>
                     <p> Показания: заболевания органов пищеварения и нарушение обмена веществ (в т.ч. сахарный диабет и
@@ -454,17 +453,14 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                         <input type="button"
                                class="btn-okno various ui-widget ui-controlgroup-item ui-button ui-corner-right"
                                href="#bron" value="ЗАБРОНИРОВАТЬ" role="button">
-                    </div>
+                    </div>*/?>
                 </div>
             </div>
         </div>
         <div class="engBox-right">
-            <div id="right-ban">
-                <a href=""><img src="images/ban1.jpg"></a>
-                <a href=""><img src="images/ban2.jpg"></a>
-                <a href=""><img src="images/ban3.jpg"></a>
-                <a href=""><img src="images/ban4.jpg"></a>
-            </div>
+            <?
+            $APPLICATION->IncludeComponent('tim:empty', 'main_shares', array());
+            ?>
         </div>
     </div>
     <div id="map" class="clear">
@@ -473,7 +469,21 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
 <?
 $APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
 ?>
-
+    <script>
+        function call() {
+            console.log("AAAAAAAAAAAAAAA");
+            var form_data   = $('#formx').serialize();
+            $.ajax({
+                type: 'POST',
+                url: '/local/components/tim/catalog/templates/add_bron.php',
+                data: form_data,
+                success: function(data) {
+                    console.log(data);
+                    $("#formx")[0].reset();
+                }
+            });
+        };
+    </script>
 <? /*$tabs = array(
 	'main' => 'Главная',
 	't2' => 'Еще вкладка',

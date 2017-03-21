@@ -65,7 +65,7 @@ $(function() {
 		});
 		$("#tabs").tabs();
 		$("#tabs2").tabs();
-		$(".various").fancybox({
+		/*$(".various").fancybox({
                 maxWidth	: 800,
                 maxHeight	: 600,
                 fitToView	: false,
@@ -74,7 +74,7 @@ $(function() {
                 autoSize	: false,
                 closeClick	: false,
 
-          });
+          });*/
 	// перенес в шаблон кампонента
 	//   $( "#slider-range" ).slider({
 	// 	range: true,
@@ -221,4 +221,73 @@ function buttonUp(){
                     $('.searchbox-icon').css('display','block');
                 }
             }
-            
+
+$(document).ready(function(){
+
+	$(window).scroll(function() {
+		if ($(".el-full-bg-ser").length != 0) {
+			var off = $(".el-full-bg-ser").offset();
+			if($(this).scrollTop() >= off.top) {
+				$('.search-fix').fadeIn();
+			} else {
+				$('.search-fix').fadeOut();
+			}
+		}
+	});
+
+	$('.preview-text a').on('click', function(e) {
+		e.preventDefault();
+		$.fancybox({
+			content: $(this).parent().parent().find('.detail-text'),
+			maxWidth: $(window).width() - 200,
+			maxHeight: $(window).height() - 100,
+			fitToView: false,
+			padding: '0',
+			width: '700',
+			height: '600',
+			autoSize: true,
+			closeClick: false,
+		})
+	});
+
+	var size = 520,
+		newsContent= $('.preview-text-inner'),
+		newsText = newsContent.text();
+
+	if(newsText.length > size){
+		newsContent.text(newsText.slice(0, size) + ' ...');
+	}
+
+	$(document).on('click', '#popup-bron-btn', function() {
+		$.fancybox.close();
+		var scroll_el = $('#right-form');
+		if ($(scroll_el).length != 0) {
+			$('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500);
+			$('#right-form input[name="name"]').focus();
+		}
+		return false;
+	});
+
+
+	$(window).load(function() {
+		$('#carousel-popap-1').flexslider({
+			animation: "slide",
+			controlNav: false,
+			animationLoop: false,
+			slideshow: true,
+			itemWidth: 100,
+			itemHeight: 50,
+			itemMargin: 5,
+			asNavFor: '#slider-popap-1'
+		});
+
+		$('#slider-popap-1').flexslider({
+			animation: "slide",
+			controlNav: false,
+			animationLoop: false,
+			slideshow: false,
+			sync: "#carousel-popap-1"
+		});
+	});
+
+});
