@@ -27,8 +27,12 @@ class Sanatorium
      * @param bool|false $refreshCache
      * @return array
      */
-    public static function getAll($refreshCache = false)
+    public static function getAll($count,$refreshCache = false)
     {
+        $count_el = array();
+        if(!empty($count)){
+            $count_el = array("nTopCount" => $count);
+        }
         $return = array();
 
         $extCache = new ExtCache(
@@ -71,7 +75,7 @@ class Sanatorium
             $rsItems = $iblockElement->GetList(array(), array(
                 'IBLOCK_ID' => self::IBLOCK_ID,
                 'ACTIVE' => 'Y',
-            ), false, false, $select);
+            ), false, $count_el, $select);
             while ($item = $rsItems->Fetch()) {
                 $cityId = intval($item['IBLOCK_SECTION_ID']);
                 $city = City::getById($cityId);
