@@ -11,7 +11,7 @@ $product = $component->product;
 $tabCode = $component->tabCode;
 
 $pr = \Local\Catalog\Profiles::getList($product["PRODUCT"]['PROFILES']);
-$info = \Local\Catalog\Sanatorium::getInfo($product["PRODUCT"]['INFRASTRUCTURES']);
+$info = \Local\Catalog\Sanatorium::getInfo("", $product["PRODUCT"]['INFRASTRUCTURES']);
 $program = \Local\Catalog\Sanatorium::getParam($product["PRODUCT"]['PROGRAMMS']);
 $shares = \Local\Catalog\Sanatorium::getShares($product["PRODUCT"]['SHARES']);
 $ro = \Local\Catalog\Sanatorium::getRo($product["PRODUCT"]['PRICES']);

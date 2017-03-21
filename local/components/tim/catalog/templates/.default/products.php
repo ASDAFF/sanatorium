@@ -32,7 +32,7 @@ if (count($products) <= 0) {
 foreach ($products as $id => $item) {
     $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($item['PRICES']);
     $pr = \Local\Catalog\Profiles::getList($item['PROFILES']);
-    $info = \Local\Catalog\Sanatorium::getInfo($item['INFRASTRUCTURES']);
+    $info = \Local\Catalog\Sanatorium::getInfo(2, $item['INFRASTRUCTURES']);
     $program = \Local\Catalog\Sanatorium::getParam($item['PROGRAMMS']);
 
     //debugmessage($item);
@@ -76,12 +76,8 @@ foreach ($products as $id => $item) {
                     Расстояние до бюФета <?= $item['DISTANCE'] ?>м</span><?
                 } ?>
                 </li>
-                <?
-                    $s=1;
-                    $f=2;
-                ?>
                 <?if(!empty($item['INFRASTRUCTURES'])){
-                    foreach ($info as $value) if($s++ <= $f ) {?>
+                    foreach ($info as $value) {?>
                         <li>
                             <i class="in-icon"><img src="<?= $value['PREVIEW_PICTURE'] ?>"></i>
                             <span><?= $value['NAME'] ?></span>

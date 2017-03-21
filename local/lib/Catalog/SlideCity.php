@@ -4,10 +4,10 @@ namespace Local\Catalog;
 use Local\System\ExtCache;
 
 /**
- * Class City Города
+ * Class SlideCity Города
  * @package Local\Catalog
  */
-class City
+class SlideCity
 {
 	/**
 	 * Путь для кеширования

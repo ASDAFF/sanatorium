@@ -106,5 +106,47 @@ class Reviews
 
 		return $return;
 	}
+    public static function getTwo($refreshCache = false)
+    {
+        $return = array();
+
+        $extCache = new ExtCache(
+            array(
+                __FUNCTION__,
+            ),
+            static::CACHE_PATH . __FUNCTION__ . '/',
+            static::CACHE_TIME
+        );
+        if(!$refreshCache && $extCache->initCache()) {
+            $return = $extCache->getVars();
+        } else {
+            $extCache->startDataCache();
+
+        $iblockElement = new \CIBlockElement();
+        $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
+            'IBLOCK_ID' => self::IBLOCK_ID,
+            'ACTIVE' => 'Y',
+        ), false, Array("nTopCount" => 2), array(
+            'ID',
+            'NAME',
+            'PREVIEW_TEXT',
+            'PROPERTY_CITY',
+            'PROPERTY_DATE',
+        ));
+        while ($item = $rsItems->Fetch()) {
+            $return[$item['ID']] = array(
+                'ID' => $item['ID'],
+                'NAME' => $item['NAME'],
+                'TEXT' => $item['PREVIEW_TEXT'],
+                'CITY' => $item['PROPERTY_CITY_VALUE'],
+                'DATE' => $item['PROPERTY_DATE_VALUE'],
+            );
+        }
+            $extCache->endDataCache($return);
+        }
+
+        return $return;
+    }
+
 }
 

@@ -641,16 +641,21 @@ class Sanatorium
         return $return;
     }
 
-    public static function getInfo($id)
+    public static function getInfo($count, $id)
     {
         $return = array();
+        $count_el = array();
+
+        if (!empty($count)) {
+            $count_el = array("nTopCount" => $count);
+        }
 
         $iblockElement = new \CIBlockElement();
         $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
             'IBLOCK_ID' => 34,
             'ID' => $id,
             'ACTIVE' => 'Y',
-        ), false, array("nTopCount" => 2), array(
+        ), false, $count_el, array(
             'ID',
             'NAME',
             'IBLOCK_ID',
