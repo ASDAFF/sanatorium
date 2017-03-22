@@ -64,21 +64,22 @@ $filter = $component->filter;
             </fieldset>
         </div>
 
-
+            <input type="hidden" id="select-city" />
         <div class="search-dark">
             <div class="el-search engBox-body">
                 <div class="line">
                     <div class="eng-icon-city"></div>
                     <div class="select city">
-                        <select id="city-vibor" class="diis">
+                        <a href="javascript:void(0);" class="slct">Выберите город</a>
+                        <ul id="city-vibor" class="drop">
                             <? foreach ($filter['GROUPS'] as $group) {
                                 if ($group['TYPE'] == 'city') {
                                     foreach ($group['ITEMS'] as $code => $item) {?>
-                                        <option name="<?= $code ?>"><?= $item['NAME'] ?> </option>
+                                        <li name="<?= $code ?>"><?= $item['NAME'] ?></li>
                                     <?}
                                 }
                             }?>
-                        </select>
+                        </ul>
                         <input type="hidden" id="select-city"/>
                     </div>
                     <div class="eng-icon-city-grey"></div>

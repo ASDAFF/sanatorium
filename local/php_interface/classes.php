@@ -18,5 +18,6 @@ CModule::AddAutoloadClasses(
         'Local\\Catalog\\FilterDark' => '/local/lib/Catalog/FilterDark.php',
         'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
         'Local\\Catalog\\Manager' => '/local/lib/Catalog/Manager.php',
+        'Local\\Catalog\\Shares' => '/local/lib/Catalog/Shares.php',
 	)
 );

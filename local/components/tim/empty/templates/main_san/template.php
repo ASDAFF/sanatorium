@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$sanatorium = \Local\Catalog\Sanatorium::getAll(array(), array(), array());
+$sanatorium = \Local\Catalog\Sanatorium::getAll(12, array(), array(), array());
 ?>
 
 <div class="el-full-bg-ser">
@@ -10,11 +10,7 @@ $sanatorium = \Local\Catalog\Sanatorium::getAll(array(), array(), array());
             Санаторий - ТОП 12
             <span>Кавказские Минеральные Воды</span>
         </div>
-        <?
-        $startTop12 = 1;
-        $endTop12 = 12;
-        ?>
-        <? foreach ($sanatorium as $item) if($startTop12++ <= $endTop12) {
+        <? foreach ($sanatorium as $item) {
             $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($item['PRICES']);?>
             <a href="" class="item">
                 <div class="img"><img src="<?=$item['PREVIEW_PICTURE']?>"></div>
