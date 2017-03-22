@@ -42,7 +42,8 @@ if(CModule::IncludeModule('iblock')) {
     );
 
     if ($PRODUCT_ID = $el->Add($arLoadProductArray))
-        echo "New ID: " . $PRODUCT_ID;
+        //echo "New ID: " . $PRODUCT_ID;
+        echo "Спасибо. Мы с Вами свяжемся";
     else
         echo "Error: " . $el->LAST_ERROR;
 }

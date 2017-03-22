@@ -121,59 +121,35 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                                         </div>
                                         <span>за номер в сутки</span>
                                         <a href="#bron<?=$item['ID']?>" class="btn various">Подробнее</a>
-                                        <script type="text/javascript">
-                                            $(function () {
-                                                $('#slider-popap-1').flexslider({
-                                                    animation: "slide",
-                                                    controlNav: false,
-                                                    animationLoop: false,
-                                                    slideshow: false,
-                                                    sync: "#carousel-popap-1",
-                                                });
-                                                // The slider being synced must be initialized first
-                                                $('#carousel-popap-1').flexslider({
-                                                    animation: "slide",
-                                                    controlNav: false,
-                                                    animationLoop: false,
-                                                    slideshow: true,
-                                                    itemWidth: 100,
-                                                    itemHeight: 50,
-                                                    itemMargin: 5,
-                                                    asNavFor: '#slider-popap-1',
-                                                });
 
-
-                                            });
-
-                                        </script>
 
                                     </div>
 
-                                    <div id="bron<?=$item['ID']?>" class="okno" style="display: none">
+									<div id="bron<?=$item['ID']?>" class="okno" style="display:none;">
                                         <div class="title"><?=$item['NAME']?></div>
                                         <div class="el-nomer-popap">
                                             <div class="left">
                                                 <div class="slider">
-                                                    <div id="slider-popap-1" class="flexslider">
+                                                    <div class="popap-slider">
+
+															<?foreach ($item["MORE_PHOTO"] as $value): ?>
+                                                                <div class="item">
+                                                                    <img src="<?= \CFile::GetPath($value) ?>"/>
+                                                                </div>
+															<? endforeach ?>
+
+                                                    </div>
+                                                    <!--<div id="carousel-popap-1" class="flexslider carousel">
                                                         <ul class="slides">
-                                                            <? foreach ($item["MORE_PHOTO"] as $value): ?>
+															<?/* foreach ($item["MORE_PHOTO"] as $value): ?>
                                                                 <li>
                                                                     <img src="<?= \CFile::GetPath($value) ?>"/>
                                                                 </li>
-                                                            <? endforeach ?>
-                                                            <!-- items mirrored twice, total of 12 -->
+															<? endforeach*/ ?>
+
+
                                                         </ul>
-                                                    </div>
-                                                    <div id="carousel-popap-1" class="flexslider carousel">
-                                                        <ul class="slides">
-                                                            <? foreach ($item["MORE_PHOTO"] as $value): ?>
-                                                                <li>
-                                                                    <img src="<?= \CFile::GetPath($value) ?>"/>
-                                                                </li>
-                                                            <? endforeach ?>
-                                                            <!-- items mirrored twice, total of 12 -->
-                                                        </ul>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                                 <div class="info-bottom">
                                                     <div class="right">
@@ -416,7 +392,7 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                         <input type="submit" id="form_btn" class="btn" value="ЗАБРОНИРОВАТЬ">
                     </div>
                 </form>
-                <div id="bron" class="okno" style="display: none">
+                <div id="bronx" class="okno" style="display: none">
                     <?/*<div class="title">Оздоровительная санаторно-курортная путевка</div>
                     <p>Санаторно-курортная путевка с классическим набором лечебно-диагностических процедур при различных
                         заболевания.</p>
@@ -480,6 +456,8 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
                 success: function(data) {
                     console.log(data);
                     $("#formx")[0].reset();
+                    $("#bronx").css("display", "block");
+                    $("#bronx").html(data);
                 }
             });
         };

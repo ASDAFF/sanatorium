@@ -195,14 +195,40 @@ $(document).ready(function(){
 				
 			
         });
+$(document).ready(function(){
 function buttonUp(){
-                var inputVal = $('.searchbox-input').val();
-                inputVal = $.trim(inputVal).length;
-                if( inputVal !== 0){
-                    $('.searchbox-icon').css('display','none');
-                } else {
-                    $('.searchbox-input').val('');
-                    $('.searchbox-icon').css('display','block');
-                }
-            }
+	var inputVal = $('.searchbox-input').val();
+	inputVal = $.trim(inputVal).length;
+	if( inputVal !== 0){
+		$('.searchbox-icon').css('display','none');
+	} else {
+		$('.searchbox-input').val('');
+		$('.searchbox-icon').css('display','block');
+	}
+}
+
+$('.preview-text a').on('click', function(e) {
+        e.preventDefault();
+        $.fancybox({
+            content: $(this).parent().find('.detail-text'),
+            maxWidth: $(window).width() - 200,
+            maxHeight: $(window).height() - 100,
+            fitToView: false,
+            width: '700',
+            height: '600',
+            autoSize: true,
+            closeClick: false,
+        })
+	});
+	
+var size = 520,
+    newsContent= $('.preview-text-inner'),
+    newsText = newsContent.text();
+    
+if(newsText.length > size){
+	newsContent.text(newsText.slice(0, size) + ' ...');
+}
+});
+
+ });
             

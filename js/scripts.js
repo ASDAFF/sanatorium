@@ -24,57 +24,58 @@ $('.slct').click(function(){
 
 $(function() {
 	 
-        $( ".search-fix .controlgroup" ).controlgroup({
-			position: { my : "left top", at: "left top", of: ".search-fix #city-vibor" }
-		});
-		$( ".controlgroup" ).controlgroup()
-        $( ".controlgroup-vertical" ).controlgroup({
-          "direction": "vertical"
-        });
-         $( "#datepicker" ).datepicker();
-         $( "#datepicker2" ).datepicker();
-		$( ".controlgroup" ).controlgroup( "option", "position", { my : "left top", at: "left top", of: ".search-dark" } );
-		
-		var pull 		= $('#pull');
-			menu 		= $('nav ul');
-			menuHeight	= menu.height();
+$( ".search-fix .controlgroup" ).controlgroup({
+	position: { my : "left top", at: "left top", of: ".search-fix #city-vibor" }
+});
+$( ".controlgroup" ).controlgroup()
+$( ".controlgroup-vertical" ).controlgroup({
+  "direction": "vertical"
+});
+ $( "#datepicker" ).datepicker();
+ $( "#datepicker2" ).datepicker();
+$( ".controlgroup" ).controlgroup( "option", "position", { my : "left top", at: "left top", of: ".search-dark" } );
 
-		$(pull).on('click', function(e) {
-			e.preventDefault();
-			menu.slideToggle();
-		});
+var pull 		= $('#pull');
+	menu 		= $('nav ul');
+	menuHeight	= menu.height();
 
-		$(window).resize(function(){
-			var w = $(window).width();
-			if(w > 320 && menu.is(':hidden')) {
-				menu.removeAttr('style');
-			}
-		});
-		var pull_2 = $('#content-menu-pun');
-			menu_2 = $('#content-menu-show');
-			value = 0;
+$(pull).on('click', function(e) {
+	e.preventDefault();
+	menu.slideToggle();
+});
 
-		$(pull_2).on('click', function(e) {
-			if(value == 0 ){
-			menu_2.css("height", "100%");
-			value = 1; pull_2.text('свернуть');
-			}else {
-			menu_2.css("height", "20px");
-			value = 0; pull_2.text('развернуть');
-			}
-		});
-		$("#tabs").tabs();
-		$("#tabs2").tabs();
-		/*$(".various").fancybox({
-                maxWidth	: 800,
-                maxHeight	: 600,
-                fitToView	: false,
-                width		: '700',
-                height		: '600',
-                autoSize	: false,
-                closeClick	: false,
+$(window).resize(function(){
+	var w = $(window).width();
+	if(w > 320 && menu.is(':hidden')) {
+		menu.removeAttr('style');
+	}
+});
+var pull_2 = $('#content-menu-pun');
+	menu_2 = $('#content-menu-show');
+	value = 0;
 
-          });*/
+$(pull_2).on('click', function(e) {
+	if(value == 0 ){
+	menu_2.css("height", "100%");
+	value = 1; pull_2.text('свернуть');
+	}else {
+	menu_2.css("height", "20px");
+	value = 0; pull_2.text('развернуть');
+	}
+});
+$("#tabs").tabs();
+$("#tabs2").tabs();
+$(".various").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		padding:'0',
+		fitToView	: false,
+		width		: '700',
+		height		: '600',
+		autoSize	: false,
+		closeClick	: false
+
+  });
 	// перенес в шаблон кампонента
 	//   $( "#slider-range" ).slider({
 	// 	range: true,
@@ -100,26 +101,7 @@ $(function() {
 				icon.css("background-position-y","-7px");}
 	});
 	$( ".el-search-dop-input" ).checkboxradio();
-	$(window).load(function() {
-		// The slider being synced must be initialized first
-		$('#carousel').flexslider({
-			animation: "slide",
-			controlNav: false,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 110,
-			itemMargin: 5,
-			asNavFor: '#slider'
-		});
 
-		$('#slider').flexslider({
-			animation: "slide",
-			controlNav: false,
-			animationLoop: false,
-			slideshow: false,
-			sync: "#carousel"
-		});
-	});
 
 	var l = $(".price-group").attr("data-min");
 	var r = $(".price-group").attr("data-max");
@@ -162,13 +144,7 @@ $(function() {
 			icon_d.css("background-position-y","-7px");}
 	});
 	
-$(window).scroll(function() {
-	if($(this).scrollTop() != 0) {
-	$('.search-fix').fadeIn();
-	} else {
-	$('.search-fix').fadeOut();
-	}
-});
+
 $(".p-head li:has(ul)").addClass("menu_parent");
     $(".menu_parent").click(
       function(){
@@ -180,60 +156,49 @@ $(".p-head li:has(ul)").addClass("menu_parent");
 });
 
 $(document).ready(function(){
-            var submitIcon = $('.searchbox-icon');
-            var inputBox = $('.searchbox-input');
-            var searchBox = $('.searchbox');
-            var isOpen = false;
-            submitIcon.click(function(){
-                if(isOpen == false){
-                    searchBox.addClass('searchbox-open');
-                    inputBox.focus();
-                    isOpen = true;
-                } else {
-                    searchBox.removeClass('searchbox-open');
-                    inputBox.focusout();
-                  inputBox.val('');
-                    isOpen = false;
-                }
-            });  
-             submitIcon.mouseup(function(){
-                    return false;
-                });
-            searchBox.mouseup(function(){
-                    return false;
-                });
-            $(document).mouseup(function(){
-                    if(isOpen == true){
-                        $('.searchbox-icon').css('display','block');
-                        submitIcon.click();
-                    }
-                });
-				
-			
-        });
+	var submitIcon = $('.searchbox-icon');
+	var inputBox = $('.searchbox-input');
+	var searchBox = $('.searchbox');
+	var isOpen = false;
+	submitIcon.click(function(){
+		if(isOpen == false){
+			searchBox.addClass('searchbox-open');
+			inputBox.focus();
+			isOpen = true;
+		} else {
+			searchBox.removeClass('searchbox-open');
+			inputBox.focusout();
+		  inputBox.val('');
+			isOpen = false;
+		}
+	});  
+	 submitIcon.mouseup(function(){
+			return false;
+		});
+	searchBox.mouseup(function(){
+			return false;
+		});
+	$(document).mouseup(function(){
+			if(isOpen == true){
+				$('.searchbox-icon').css('display','block');
+				submitIcon.click();
+			}
+		});
 function buttonUp(){
-                var inputVal = $('.searchbox-input').val();
-                inputVal = $.trim(inputVal).length;
-                if( inputVal !== 0){
-                    $('.searchbox-icon').css('display','none');
-                } else {
-                    $('.searchbox-input').val('');
-                    $('.searchbox-icon').css('display','block');
-                }
-            }
+	var inputVal = $('.searchbox-input').val();
+	inputVal = $.trim(inputVal).length;
+	if( inputVal !== 0){
+		$('.searchbox-icon').css('display','none');
+	} else {
+		$('.searchbox-input').val('');
+		$('.searchbox-icon').css('display','block');
+	}
+}
+	
+});
+
 
 $(document).ready(function(){
-
-	$(window).scroll(function() {
-		if ($(".el-full-bg-ser").length != 0) {
-			var off = $(".el-full-bg-ser").offset();
-			if($(this).scrollTop() >= off.top) {
-				$('.search-fix').fadeIn();
-			} else {
-				$('.search-fix').fadeOut();
-			}
-		}
-	});
 
 	$('.preview-text a').on('click', function(e) {
 		e.preventDefault();
@@ -269,25 +234,52 @@ $(document).ready(function(){
 	});
 
 
-	$(window).load(function() {
-		$('#carousel-popap-1').flexslider({
-			animation: "slide",
-			controlNav: false,
-			animationLoop: false,
-			slideshow: true,
-			itemWidth: 100,
-			itemHeight: 50,
-			itemMargin: 5,
-			asNavFor: '#slider-popap-1'
+$(".popap-slider").owlCarousel({
+	 navigation : true,
+    singleItem : true,
+	navigationText : ["<img src='/local/templates/san/images/left.png'>","<img src='/local/templates/san/images/right.png'>"],
+    transitionStyle : "fade"
+});
+ if ($(window).width() < 500) {
+      $('.actions-item').readmore({
+		maxHeight: 418,
+		moreLink: '<a href="#"><span>Подробнее</span></a>',
+		lessLink: '<a href="#"><span>Скрыть</span></a>'
+});
+    } else {
+      $('.actions-item').readmore({
+			maxHeight: 218,
+			moreLink: '<a href="#"><span>Подробнее</span></a>',
+			lessLink: '<a href="#"><span>Скрыть</span></a>'
 		});
-
-		$('#slider-popap-1').flexslider({
-			animation: "slide",
-			controlNav: false,
-			animationLoop: false,
-			slideshow: false,
-			sync: "#carousel-popap-1"
-		});
+    }	
+$("#people .btn>a").fancybox({padding:0});
+$('.seo-content .seo-content-inner').readmore({
+		maxHeight: 140,
+		moreLink: '<a href="#"><span>Подробнее</span></a>',
+		lessLink: '<a href="#"><span>Скрыть</span></a>'
+});
+});
+$(window).load(function() {
+	// The slider being synced must be initialized first
+	$('#carousel').flexslider({
+		animation: "slide",
+		controlNav: false,
+		animationLoop: false,
+		slideshow: false,
+		itemWidth: 110,
+		itemMargin: 5,
+		asNavFor: '#slider'
 	});
+
+	$('#slider').flexslider({
+		animation: "slide",
+		controlNav: false,
+		animationLoop: false,
+		slideshow: false,
+		sync: "#carousel"
+	});
+
+
 
 });

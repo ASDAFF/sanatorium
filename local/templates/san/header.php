@@ -7,16 +7,19 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 ?><!doctype html>
 <html lang="<?= LANGUAGE_ID ?>">
 <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><? $APPLICATION->ShowTitle(); ?></title><?
 	
     $assets = \Bitrix\Main\Page\Asset::getInstance();
-    
-    CJSCore::init(array('jquery2'));
+
+	 CJSCore::init(array('jquery2'));
+
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery-ui.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.flexslider-min.js');
     $assets->addJs(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.js');
+	$assets->addJs(SITE_TEMPLATE_PATH . '/js/owl/owl.carousel.min.js');
+	$assets->addJs(SITE_DIR . 'js/readmore.min.js');
+
     $assets->addJs(SITE_DIR . 'js/scripts.js');
     
     $page = $APPLICATION->GetCurPage();
@@ -27,8 +30,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     }
     
     //$assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.js');
-    $assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 
+	$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/media.css');
@@ -37,32 +40,40 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.theme.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/flexslider.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.css');
+	$assets->addCss(SITE_TEMPLATE_PATH . '/js/owl/owl.carousel.css');
 	
 	$APPLICATION->ShowHead();
     ?>
-	<script type="text/javascript" charset="utf-8">
-		$(window).load(function() {
-			// The slider being synced must be initialized first
-			$('#carousel').flexslider({
-				animation: "slide",
-				controlNav: false,
-				animationLoop: false,
-				slideshow: false,
-				itemWidth: 120,
-				itemHeight: 50,
-				itemMargin: 5,
-				asNavFor: '#slider'
-			});
 
-			$('#slider').flexslider({
-				animation: "slide",
-				controlNav: false,
-				animationLoop: false,
-				slideshow: false,
-				sync: "#carousel"
-			});
-		});
-	</script>
+
+<? if($_SERVER['REQUEST_URI']!='/') {?>
+<script>
+$(function(){
+$(window).scroll(function() {
+	if($(this).scrollTop() != 0) {
+	$('.search-fix').fadeIn();
+	} else {
+	$('.search-fix').fadeOut();
+	}
+});
+});
+</script>
+<?} else {?>
+<script>
+$(function(){
+$(window).scroll(function() {
+	if ($(".el-full-bg-ser").length != 0) {
+		var off = $(".el-full-bg-ser").offset();
+		if($(this).scrollTop() >= off.top) {
+		$('.search-fix').fadeIn();
+		} else {
+		$('.search-fix').fadeOut();
+		}
+	}
+});
+});
+</script>
+<?}?>
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>

@@ -1,429 +1,357 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Прайс-лист");
-?><h2>Цены на услуги базы отдыха «Аспро Resort»</h2>
-<p>
-	 На нашей базе предусмотрено несколько вариантов отдыха от самого бюджетного варианта до all-inclusive.
-</p>
- <br>
-<h2>Бесплатные услуги базы:</h2>
-<ul>
-	<li>
-	проход на территорию; </li>
-	<li>
-	пользование пляжем, детскими и спортивными площадками.</li>
-</ul>
- <br>
- <br>
-<h3>Цены на проживание</h3>
-<table class="table table-striped" id="top">
-<thead>
-<tr>
-	<th>
-		 №
-	</th>
-	<th>
-		 Наименование
-	</th>
-	<th>
-		 Ед.изм.
-	</th>
-	<th>
-		 Цена(ед.)
-	</th>
-</tr>
-</thead>
-<tbody>
-<tr height="21">
-	<td colspan="4" class="title_centerzag big_size_table">
-		<h4>Проживание и питание</h4>
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 1
-	</td>
-	<td class="title_left">
-		 Кемпинг
-	</td>
-	<td class="title_center">
-		 за палатку/сутки
-	</td>
-	<td class="title_center">
-		 300,00р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 2
-	</td>
-	<td class="title_left">
-		 Лесной домик
-	</td>
-	<td class="title_center">
-		 чел/сутки
-	</td>
-	<td class="title_center">
-		 560,00р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 3
-	</td>
-	<td class="title_left">
-		 Путевка в дом отдыха*
-	</td>
-	<td class="title_center">
-		 чел/сутки<br>
-	</td>
-	<td class="title_center">
-		 3200 р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 4
-	</td>
-	<td class="title_left">
-		 Трехразовое питание
-	</td>
-	<td class="title_center">
-		 чел
-	</td>
-	<td class="title_center">
-		 1080,00р.
-	</td>
-</tr>
-</tbody>
-</table>
- <br>
- *В путевку включены 5-разовое питание, бесплатное пользование зоной отдыха по карточке проживающего, теннисным кортом, спортивным залом Дома отдыха<br>
-<h3 id="buildings"><br>
- </h3>
-<h3 id="buildings">Цены на услуги базы</h3>
-<table class="table table-striped" id="">
-<thead>
-<tr>
-	<th>
-		 №
-	</th>
-	<th>
-		 Наименование
-	</th>
-	<th>
-		 Ед.изм.
-	</th>
-	<th>
-		 Цена(ед.)
-	</th>
-</tr>
-</thead>
-<tbody>
-<tr height="21">
-	<td colspan="4" class="title_centerzag big_size_table">
-		<h4>Прокат и спортивные площадки</h4>
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 1
-	</td>
-	<td class="title_left">
-		 Стоянка транспорта
-	</td>
-	<td class="title_center">
-		 сутки
-	</td>
-	<td class="title_center">
-		 200р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 2
-	</td>
-	<td class="title_left">
-		 Трансфер на легковом автомобиле<br>
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 85р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 3
-	</td>
-	<td class="title_left">
-		 Трансфер на микроавтобусе
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 200р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 4
-	</td>
-	<td class="title_left">
-		 Трансфер на автобусе
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 500р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 5
-	</td>
-	<td class="title_left">
-		 Мангальная зона
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 200р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 6
-	</td>
-	<td class="title_left">
-		 Прокат лодок/катамаранов
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 200р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 7
-	</td>
-	<td class="title_left">
-		 Прокат велосипедов/роликов
-	</td>
-	<td class="title_center">
-		 час
-		<p>
-		</p>
-	</td>
-	<td class="title_center">
-		 150р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 8
-	</td>
-	<td class="title_left">
-		 Теннисный корт
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 300р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 9
-	</td>
-	<td class="title_left">
-		 Пейнтбольная площадка
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 300р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 10
-	</td>
-	<td class="title_left">
-		 Аренда банкетного зала на торжество
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 300р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 11
-	</td>
-	<td class="title_left">
-		 Аренда беседки для свадьбы
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 300р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 12
-	</td>
-	<td class="title_left">
-		 Билет в зону отдыха (без путевки в дом отдыха)
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 50р
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 13
-	</td>
-	<td class="title_left">
-		 Посещение банного комплекса
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 300
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 14
-	</td>
-	<td class="title_left">
-		 Аренда бани
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 500
-	</td>
-</tr>
-</tbody>
-</table>
-<h3 id="materials"><br>
- </h3>
-<h3 id="materials">Цена на услуги пляжа</h3>
-<table class="table table-striped">
-<thead>
-<tr>
-	<th>
-		 №
-	</th>
-	<th>
-		 Наименование
-	</th>
-	<th>
-		 Ед.изм.
-	</th>
-	<th>
-		 Цена(ед.)
-	</th>
-</tr>
-</thead>
-<tbody>
-<tr height="21">
-	<td colspan="4" class="title_centerzag big_size_table">
-		<h4>Пляжный прайс</h4>
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 1
-	</td>
-	<td class="title_left">
-		 Аренда лежаков/шезлонгов
-	</td>
-	<td class="title_center">
-		 час
-	</td>
-	<td class="title_center">
-		 138р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 2
-	</td>
-	<td class="title_left">
-		 Детский батут<br>
-	</td>
-	<td class="title_center">
-		 10 минут
-	</td>
-	<td class="title_center">
-		 50р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 3
-	</td>
-	<td class="title_left">
-		 Инструктор по плаванию (детский)
-	</td>
-	<td class="title_center">
-		 час.
-	</td>
-	<td class="title_center">
-		 172р.
-	</td>
-</tr>
-<tr>
-	<td class="title_center">
-		 4
-	</td>
-	<td class="title_left">
-		 Инструктор по плаванию (взрослый)
-	</td>
-	<td class="title_center">
-		 час.
-	</td>
-	<td class="title_center">
-		 19р.
-	</td>
-</tr>
-<tr>
-	<td rowspan="2" class="title_center">
-		 5
-	</td>
-	<td rowspan="2" class="title_left">
-		 Аттракционы (катание на банане, зорбинг, вейкборд, тарзанка и др.)
-	</td>
-	<td rowspan="2" class="title_center">
- <br>
-	</td>
-	<td rowspan="2" class="title_center">
-		 150р
-	</td>
-</tr>
-<tr>
-</tr>
-</tbody>
-</table>
- <br>
+?>
+<div id="cron_full" class="head_block">
+    <div id="cron" class="engBox-body">
+       
+		<ul class="nav-sections">
+			<li class="active"><a href="#">Цены в Кисловодске</a></li>
+			<li><a href="#">Цены в Железноводске</a></li>
+			<li><a href="#">Цены в Пятигорске</a></li>
+			<li><a href="#">Цены в Ессентуках</a></li>
+		</ul>
+       
+        <div id="cron-crox">
+            <span>Главная</span> -
+            <span>Пятигорск</span> -
+            <a href="">Цены</a>
+        </div>
+        <div id="cron-title"><h1>Цены</h1></div>
+    </div>
+</div>
+
+<div class="el-full-bg-grey">
+    <div class="engBox-body el-search-result clearfix">
+		<div class="sort">
+			<b>Сортировать по:</b>
+			<span>цене путевки</span>
+			<a href="">рейтингу санатория</a>
+		</div>
+		<div class="number"><b>Показывать по:</b>
+			<a href="">10</a>
+			<span>25</span>
+			<a href="">40</a>
+		санаториев на странице
+		</div>
+	</div>
+	<div class="engBox-body prices">
+	<div class="el-sanat-list">
+       <div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+
+        </a>
+		
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="banners">
+			<div class="banners-item"><img src="/images/ban.jpg"></div>
+			<div class="banners-item"><img src="/images/ban.jpg"></div>
+			<div class="banners-item"><img src="/images/ban.jpg"></div>
+			<div class="banners-item"><img src="/images/ban.jpg"></div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+		<div class="prices-item">
+        <a href="" class="item">
+			<div class="img"><img src="/images/img2.jpg"></div>
+            <div class="text eng-animations">
+                <b>Санаторий машук</b>
+                <span>КМВ, Пятигорск</span>
+                <i href="">Забронировать</i>
+            </div>
+            <div class="money"><b>от 3000 р.</b><span>СУТКИ</span></div>
+        </a>
+		<div class="directions">
+			<b>Направления лечения:</b>
+			<p>Урология, желудочно-кишечный тракт, гинекология, урология, жкт, гинекология, гинекология гинекология, гинекология, жкт, гинекология, гинекология гинекология, гинекология.</p>
+		</div>
+		<div class="extra-options">
+			<b>Дополнительные параметры:</b>
+			<ul>
+				<li>Отдых с детьми от 4 лет</li>
+				<li>Расстояние до бювета 500м</li>
+				<li>Бассейн</li>
+				<li>Wi-Fi</li>
+			</ul>
+		</div>
+		</div>
+    </div>
+	</div>
+</div>
+<div class="el-full-bg-white">
+    <div class="el-page engBox-body">
+        <ul>
+            <li><span>1</span></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            ...
+            <li><a href="">10</a></li>
+        </ul>
+        <a href="">Следующая страница<div class="eng-icon-right"></div></a>
+    </div>
+</div>
+
+<div class="prices-feedback">
+	 <div class="engBox-body">
+	     <form class="feedback-form">
+			<div class="feedback-form-ttl">
+				<b>Вам нужна помощь в выборе санатория?</b>
+				<b>Не знаете, какой профиль лечения Вам необходим?</b>
+				<i>Напиши нам и наши опытные менеджеры помогут Вам!</i>
+
+			</div>
+			<div class="feedback-form-left">
+				<input type="text" class="feedback-form-name" placeholder="Ваше имя">
+				<input type="text" class="feedback-form-city" placeholder="Номер телефона">
+				<input type="text" class="feedback-form-tel" placeholder="E-mail">
+			</div>
+			<div class="feedback-form-right">
+				<textarea placeholder="Ваш комментарий"></textarea>
+			</div>
+			<div class="feedback-form-line">
+				<div class="feedback-form-checkbox"><input type="checkbox" id="tell-t" name="type"><label for="tell-t">Перезвоните мне</label></div>
+				<div class="feedback-form-checkbox"><input type="checkbox" id="mail-t" name="type"><label for="mail-t">Ответьте мне по электронной почте</label></div>
+				<input class="feedback-form-btn" type="submit" value="Задать вопрос">
+			</div>
+			</form>
+	 </div>
+</div>
+
+<div class="prices-rate">
+	 <div class="engBox-body">
+			<div class="prices-rate-ttl">Рейтинг цен в санатории г. Пятигорска</div>
+			<p>Предлагаем рейтинг цен и услуг санаториев в виде интерактивной таблицы.  Вы можете сортировать таблицу по любому из приведенных столбцов.</p>
+			<p>Сортировка происходит путем простого нажатия на заголовок столбца, таким образом Вы можете отсортировать по интересующему вас пункту.</p>
+			<table class="prices-rate-tbl">
+				<thead>
+					<tr>
+						<td data-label="Санатории Пятигорска">
+						Санатории Пятигорска
+							<!--<div class="select rate-select">
+								<a href="javascript:void(0);" class="slct">Выберите город</a>
+								<ul class="drop">
+									<li>Санатории Пятигорска</li>
+									<li>Санатории Железноводска</li>
+								</ul>
+								<input type="hidden" id="select" />
+							</div>-->
+						</td>
+						<td data-label="Цена">Цена</td>
+						<td data-label="Интернет Wi-Fi">Интернет Wi-Fi</td>
+						<td data-label="Бассейн">Бассейн</td>
+						<td data-label="Расстояние до бювета">Расстояние до бювета</td>
+						<td data-label="Семейный отдых">Семейный отдых</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-label="Санаторий">Машук</td>
+						<td data-label="Цена">3300</td>
+						<td data-label="Интернет Wi-Fi">да</td>
+						<td data-label="Бассейн">да</td>
+						<td data-label="Расстояние до бювета">500 м</td>
+						<td data-label="Семейный отдых">да</td>
+					</tr>
+					<tr>
+						<td data-label="Санаторий">Машук</td>
+						<td data-label="Цена">3300</td>
+						<td data-label="Интернет Wi-Fi">да</td>
+						<td data-label="Бассейн">да</td>
+						<td data-label="Расстояние до бювета">500 м</td>
+						<td data-label="Семейный отдых">да</td>
+					</tr>
+					<tr>
+						<td data-label="Санаторий">Машук</td>
+						<td data-label="Цена">3300</td>
+						<td data-label="Интернет Wi-Fi">да</td>
+						<td data-label="Бассейн">да</td>
+						<td data-label="Расстояние до бювета">500 м</td>
+						<td data-label="Семейный отдых">да</td>
+					</tr>
+					<tr>
+						<td data-label="Санаторий">Машук</td>
+						<td data-label="Цена">3300</td>
+						<td data-label="Интернет Wi-Fi">да</td>
+						<td data-label="Бассейн">да</td>
+						<td data-label="Расстояние до бювета">500 м</td>
+						<td data-label="Семейный отдых">да</td>
+					</tr>
+					<tr>
+						<td data-label="Санаторий">Машук</td>
+						<td data-label="Цена">3300</td>
+						<td data-label="Интернет Wi-Fi">да</td>
+						<td data-label="Бассейн">да</td>
+						<td data-label="Расстояние до бювета">500 м</td>
+						<td data-label="Семейный отдых">да</td>
+					</tr>
+				</tbody>
+			</table>
+	 </div>
+</div>
+
+
  <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -1,6 +1,40 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Контакты");?>
-<div class="row contacts" itemscope itemtype="http://schema.org/Organization">
+
+	<div id="cron_full" class="head_block">
+		<div id="cron" class="engBox-body">
+
+			<div id="cron-crox">
+				<span>Главная</span> -
+				<span>Пятигорск</span> -
+				<a href="">Контакты</a>
+			</div>
+			<div id="cron-title"><h1>Контакты</h1></div>
+		</div>
+	</div>
+
+
+	<div class="engBox-body clearfix">
+		<div class="page-contacts">
+			<div class="page-contacts-box">
+				<div class="block-inline-sm">
+					<div class="company-name">Какое-нибудь название организации</div><br>
+					<div class="sm-title"><span class="place-icon"></span>Адрес</div>
+					г. Пятигорск<br>
+					ул. Дзержинского, 122<br><br>
+				</div>
+				<div class="block-inline-sm">
+					<div class="sm-title"><span class="phone-icon"></span>Телефон</div>
+					8(8793)45-65-22
+				</div>
+			</div>
+			<div class="page-contacts-map">
+				<iframe src="https://api-maps.yandex.ru/frame/v1/-/CZX9vZmR" width="100%" height="400" frameborder="0"></iframe>
+			</div>
+		</div>
+	</div>
+
+<?/*<div class="row contacts" itemscope itemtype="http://schema.org/Organization">
 	<div class="col-md-12">
 		<div class="row contacts">
 			<div class="col-md-5"> 
@@ -143,6 +177,6 @@ $APPLICATION->SetTitle("Контакты");?>
 			</div>
 		</div>
 	</div>
-</div>	
+</div>*/?>
 	
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
