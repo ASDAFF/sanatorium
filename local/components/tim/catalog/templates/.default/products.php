@@ -8,19 +8,36 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @global CMain $APPLICATION */
 /** @var Local\Catalog\TimCatalog $component */
 
-if ($filter['CUR_FILTERS']) {
-    ?>
-    <div id="current-filters"><?
-
-    foreach ($filter['CUR_FILTERS'] as $item) {
-        ?><span><a href="<?= $item['HREF'] ?>">x</a><?= $item['NAME'] ?></span><?
-    }
-
-    ?>
-    </div><?
-}
-
 ?>
+
+    <div class="el-full-bg2">
+        <div class="el-search-result engBox-body">
+            <div class="title">
+                Санатории Кавказских Минеральных Вод с бассейном
+            </div>
+            <div class="city">
+                <?
+                if ($filter['CUR_FILTERS']) {
+                    foreach ($filter['CUR_FILTERS'] as $item) {
+                        ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>:
+                    <? }
+                } ?>10 вариантов
+            </div>
+            <div class="sort">
+                <b>Сортировать по:</b>
+                <span>цене путевки</span>
+                <a href="">рейтингу санатория</a>
+            </div>
+            <div class="number"><b>Показывать по:</b>
+                <a href="">10</a>
+                <span>25</span>
+                <a href="">40</a>
+                санаториев на странице
+            </div>
+        </div>
+    </div>
+
+
     <div id="sanatorium">
 
 <?
@@ -34,8 +51,6 @@ foreach ($products as $id => $item) {
     $pr = \Local\Catalog\Profiles::getList($item['PROFILES']);
     $info = \Local\Catalog\Sanatorium::getInfo(2, $item['INFRASTRUCTURES']);
     $program = \Local\Catalog\Sanatorium::getParam($item['PROGRAMMS']);
-
-    //debugmessage($item);
     ?>
 
     <div class="el-search-list engBox-body">
@@ -44,10 +59,10 @@ foreach ($products as $id => $item) {
             <img src="<?= $item['PREVIEW_PICTURE'] ?>">
         </div>
         <div class="text">
- <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a>
+            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a>
             <b>Направление лечения:</b>
             <span>
-                <?if(!empty($item['PROFILES'])){
+                <? if (!empty($item['PROFILES'])) {
                     foreach ($pr as $value): ?>
                         <?= $value['NAME'] ?>,
                     <?endforeach;
@@ -76,14 +91,16 @@ foreach ($products as $id => $item) {
                     Расстояние до бюФета <?= $item['DISTANCE'] ?>м</span><?
                 } ?>
                 </li>
-                <?if(!empty($item['INFRASTRUCTURES'])){
-                    foreach ($info as $value) {?>
+                <? if (!empty($item['INFRASTRUCTURES'])) {
+                    foreach ($info as $value) { ?>
                         <li>
                             <i class="in-icon"><img src="<?= $value['PREVIEW_PICTURE'] ?>"></i>
                             <span><?= $value['NAME'] ?></span>
                         </li>
-                    <?}?>
-                <?}
+                        <?
+                    } ?>
+                    <?
+                }
                 ?>
             </div>
         </div>

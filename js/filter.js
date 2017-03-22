@@ -18,7 +18,7 @@ var Filters = {
 		this.catalogPath = this.panel.find('input[name=catalog_path]').val();
 		this.separator = this.panel.find('input[name=separator]').val();
 		this.q = this.panel.find('input[name=q]').val();
-		this.groups = this.panel.find('.filter_top-group');
+		this.groups = this.panel.find('.filter-group');
 		this.cb = this.panel.find('input[type=checkbox]');
 		this.ajaxCont = $('#catalog-list');
 		this.bcCont = $('#cron-crox');
@@ -26,7 +26,7 @@ var Filters = {
 
 		this.priceInit();
 		
-		$(".filter_find").on('click', function() {
+		$(".filter_find").on('click', function(e) {
 		    Filters.updateProducts();
         });
 
@@ -67,8 +67,7 @@ var Filters = {
 				url += part + '/';
 		});
 
-        url += $("#city-vibor option:selected").attr("name") + '/';
-
+		url += $("#city-vibor option:selected").attr("name") + '/';
 
 		var params = '';
 		if (Filters.q) {

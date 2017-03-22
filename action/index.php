@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("Title");
 				<li><a href="#">Ессентуки</a></li>
 				<li><a href="#">Кисловодск</a></li>
 				<li><a href="#">Железноводск</a></li>
-			</u>
+			</ul>
 		</div>
        
         <div id="cron-crox">

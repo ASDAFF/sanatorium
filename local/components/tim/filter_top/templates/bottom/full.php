@@ -64,7 +64,7 @@ $filter = $component->filter;
             </fieldset>
         </div>
 
-            <input type="hidden" id="select-city" />
+        <input type="hidden" id="select-city"/>
         <div class="search-dark">
             <div class="el-search engBox-body">
                 <div class="line">
@@ -74,11 +74,12 @@ $filter = $component->filter;
                         <ul id="city-vibor" class="drop">
                             <? foreach ($filter['GROUPS'] as $group) {
                                 if ($group['TYPE'] == 'city') {
-                                    foreach ($group['ITEMS'] as $code => $item) {?>
+                                    foreach ($group['ITEMS'] as $code => $item) { ?>
                                         <li name="<?= $code ?>"><?= $item['NAME'] ?></li>
-                                    <?}
+                                        <?
+                                    }
                                 }
-                            }?>
+                            } ?>
                         </ul>
                         <input type="hidden" id="select-city"/>
                     </div>

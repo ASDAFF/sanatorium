@@ -28,8 +28,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     }else{
         $assets->addJs(SITE_DIR . 'js/catalog.js');
     }
-    
-    //$assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.js');
 
 	$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 
