@@ -30,25 +30,39 @@ $(function () {
 		if (value == 0) {
 			menu_2.css("height", "100%");
 			value = 1;
-			pull_2.text('ñâåðíóòü');
+			pull_2.text('Ð¡Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ');
 		} else {
 			menu_2.css("height", "20px");
 			value = 0;
-			pull_2.text('ðàçâåðíóòü');
+			pull_2.text('Ð Ð°Ð·Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ');
 		}
 	});
 
-	$("#tabs").tabs();
+	//$("#tabs").tabs();
 	$("#tabs2").tabs();
 
-	$(".various").fancybox({
-		maxWidth: 800,
-		maxHeight: 600,
-		fitToView: false,
-		width: '700',
-		height: '600',
-		autoSize: false,
-		closeClick: false,
-		beforeShow: function(){$(window).resize();$(window).resize();$(window).resize();$(window).resize();$(window).resize()}
-	});
+});
+
+$(function() {
+ 	$(window).scroll(function() {
+		if($(this).scrollTop() != 0) {
+	$('.to-top').fadeIn();
+		} else {
+	$('.to-top').fadeOut();
+}
+});
+	$('.to-top').click(function() {
+	$('body,html').animate({scrollTop:0},800);
+});
+});
+
+
+$(function() {
+	$("#head li:has(ul)").addClass("menu_parent");
+    $(".menu_parent").click(
+      function(){
+        $(this).find(">ul").toggleClass("menu_expanded");
+        $(this).toggleClass("menu_parent_exp");
+      }
+    )  
 });

@@ -35,15 +35,21 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <? $APPLICATION->ShowPanel(); ?>
 <div class="engBox-body"></div>
 <div id="head_full">
-    <nav id="head" class="engBox-body">
+    <nav id="head" class="engBox-body main-menu">
         <ul>
-            <li><a>ЖЕЛЕЗНОВОДСК</a></li>
-            <li><a>ПЯТИГОРСК</a></li>
-            <li><a>ЕССЕНТУКИ</a></li>
-            <li><a>КИСЛОВОДСК</a></li>
-            <li><a>Профили лечения</a></li>
+            <li><a>О сервисе</a></li>
+            <li><a>Снатории</a>
+				<ul class='submenu'>
+					<li><a>Пятигорск</a></li>
+					<li><a>Железноводск</a></li>
+ 					<li><a>Еcсентуки</a></li>
+            		<li><a>Кисловодск</a></li>
+				</ul>
+			</li>
             <li><a>Акции</a></li>
-            <li><a>Новости</a></li>
+            <li><a>Отзывы</a></li>
+            <li><a>Рейтинг санаториев</a></li>
+            <li><a>Цены</a></li>
             <li><a>Контакты</a></li>
         </ul>
         <a href="#" id="pull">Меню</a>

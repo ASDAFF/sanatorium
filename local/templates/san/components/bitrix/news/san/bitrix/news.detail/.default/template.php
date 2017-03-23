@@ -15,49 +15,70 @@ $this->setFrameMode(true);
 <div class="engBox-center">
     <div id="content">
         <div id="content-top"><?=empty($arResult['PROPERTIES']['ADDRESS']['VALUE']) ? '&nbsp;' : $arResult['PROPERTIES']['ADDRESS']['VALUE']?></div>
-        
-        <?php
-        $gallery = array();
-        foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $fileId)
-            $gallery[] = CFile::GetPath($fileId);
-        ?>
+
         <div id="slider" class="flexslider">
             <ul class="slides">
-                <? foreach ($gallery as $image): ?>
+                <? foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE_PATH'] as $image): ?>
                     <li><img src="<?= $image; ?>" alt="<?= $arResult['NAME'] ?>"></li>
                 <? endforeach; ?>
             </ul>
         </div>
         <div id="carousel" class="flexslider carousel">
             <ul class="slides">
-                <? foreach ($gallery as $image): ?>
+                <? foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE_PATH'] as $image): ?>
                     <li><img src="<?= $image; ?>" alt="<?= $arResult['NAME'] ?>"></li>
                 <? endforeach; ?>
             </ul>
         </div>
         <div id="tabs" class="content-menu">
             <ul id="content-menu-show">
-                <li><a href="#tabs-1">О санатории</a></li>
-                <li><a href="#tabs-2">Номера</a></li>
-                <li><a href="#tabs-3">Профили лечения</a></li>
-                <li><a href="#tabs-4">Программы лечения</a></li>
-                <li><a href="#tabs-5">Инфраструктура</a></li>
-                <li><a href="#tabs-6">Питание</a></li>
-                <li><a href="#tabs-7">Детям</a></li>
-                <li><a href="#tabs-8">Видео</a></li>
-                <li><a href="#tabs-9">Акции</a></li>
+                <li<?=activeTabClass('about', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>about/" data-id="about">О санатории</a>
+                </li>
+                <li<?=activeTabClass('rooms', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>rooms/" data-id="rooms">Номера</a></li>
+                <li<?=activeTabClass('profiles', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>profiles/" data-id="profiles">Профили лечения</a>
+                </li>
+                <li<?=activeTabClass('programms', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>programms/" data-id="programms">Программы лечения</a>
+                </li>
+                <li<?=activeTabClass('infrastructure', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>infrastructure/" data-id="infrastructure">Инфраструктура</a>
+                </li>
+                <li<?=activeTabClass('food', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>food/" data-id="food">Питание</a>
+                </li>
+                <li<?=activeTabClass('child', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>child/" data-id="child">Детям</a>
+                </li>
+                <li<?=activeTabClass('video', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>video/" data-id="video">Видео</a>
+                </li>
+                <li<?=activeTabClass('actions', $arResult['ACTIVE_TAB'], true);?>>
+                    <a href="<?=$arResult['TAB_URL']?>actions/" data-id="actions">Акции</a>
+                </li>
             </ul>
-            <div id="content-menu-pun">развернуть</div>
+          
             <div class="content-border"></div>
-            <div id="tabs-1">
-                <?=$arResult['DETAIL_TEXT'];?>
-            </div>
-            <div id="tabs-2">
+            <?//if(isActiveTab('about', $arResult['ACTIVE_TAB'])):?>
+                <div class="tab-content<?=activeTabClass('about', $arResult['ACTIVE_TAB']);?>" id="about">
+                    <?=$arResult['DETAIL_TEXT'];?>
+                </div>
+            <?//endif;?>
+            <?//if(isActiveTab('rooms', $arResult['ACTIVE_TAB'])):?>
+                <div class="tab-content<?=activeTabClass('rooms', $arResult['ACTIVE_TAB']);?>" id="rooms">
                 <? foreach ($arResult['DISPLAY_PROPERTIES']['PRICES']['PROPERTIES_VALUE'] as $k => $el): ?>
-                <?php
-                $props = $arResult['DISPLAY_PROPERTIES']['PRICES']['ALL_PROPERTIES_VALUE'][$k];
-                $fields = $arResult['DISPLAY_PROPERTIES']['PRICES']['FIELDS_VALUE'][$k];
-                ?>
+                    <?php
+                    $props = $arResult['DISPLAY_PROPERTIES']['PRICES']['ALL_PROPERTIES_VALUE'][$k];
+                    $fields = $arResult['DISPLAY_PROPERTIES']['PRICES']['FIELDS_VALUE'][$k];
+                    $comfortProps = $arResult['DISPLAY_PROPERTIES']['PRICES']['ICONS'][$k];
+
+                    $photos = $arResult['DISPLAY_PROPERTIES']['PRICES']['PROPERTIES_VALUE'][$k]['MORE_PHOTO']['VALUE_PATH'];
+
+                    $totalPlaces = (int) ($props['DOUBLE_BED']['VALUE'] + $props['SINGLE_BED']['VALUE']);
+                    $additionalPlaces = (int) count($props['EXTRA']['VALUE']);
+                    ?>
                     <div class="el-nomer">
                         <div class="item">
                             <div class="img">
@@ -67,9 +88,9 @@ $this->setFrameMode(true);
                             </div>
                             <div class="text">
                                 <a href="#bron<?=$fields['ID'];?>" class="title various"><?=$fields['NAME'];?></a><br>
-                                <b>Площадь:</b> <?=$props['ROOM_SIZE']['VALUE']?> <br><br>
-                                <b>Кровати:</b> <?=$props['BED_TYPE']['VALUE']?><br><br>
-                                <b>Включено:</b> прожив<br><br>
+                                <b>Площадь:</b> <?=$props['ROOM_SIZE']['VALUE']?> м<sup>2</sup><br><br>
+                                <b>Кровати:</b> <?= $totalPlaces ?><br><br>
+                                <b>Включено:</b> питание, проживание, лечение<br><br>
                             </div>
                             <div class="inf">
                                 <div class="money">
@@ -77,79 +98,40 @@ $this->setFrameMode(true);
                                 </div>
                                 <span>за номер в сутки</span>
                                 <a href="#bron<?=$fields['ID'];?>" class="btn various">забронировать</a>
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $('#slider-popap-<?=$fields['ID'];?>').flexslider({
-                                            animation: "slide",
-                                            controlNav: false,
-                                            animationLoop: false,
-                                            slideshow: false,
-                                            sync: "#carousel-popap-<?=$fields['ID'];?>",
-                                        });
-                                        $('#carousel-popap-<?=$fields['ID'];?>').flexslider({
-                                            animation: "slide",
-                                            controlNav: false,
-                                            animationLoop: false,
-                                            slideshow: true,
-                                            itemWidth: 100,
-                                            itemHeight: 50,
-                                            itemMargin: 5,
-                                            asNavFor: '#slider-popap-<?=$fields['ID'];?>',
-                                        });
-                                    });
-                                </script>
                             </div>
                             <div id="bron<?=$fields['ID'];?>" class="okno" style="display: none">
                                 <div class="title"><?=$fields['NAME'];?></div>
                                 <div class="el-nomer-popap">
                                     <div class="left">
                                         <div class="slider">
-                                            <div id="slider-popap-<?=$fields['ID'];?>" class="flexslider">
+                                            <div id="slider-popap-<?=$fields['ID'];?>" class="flexslider popup">
                                                 <ul class="slides">
-                                                    <?php foreach($props['MORE_PHOTO']['VALUE'] as $imgId):?>
+                                                    <?php foreach($photos as $path):?>
                                                         <li>
-                                                            <img src="<?=CFile::GetPath($imgId);?>" alt="<?=$arResult['NAME']?>"/>
+                                                            <img src="<?=$path;?>" alt="<?=$arResult['NAME']?>"/>
                                                         </li>
                                                     <?php endforeach;?>
                                                 </ul>
                                             </div>
                                             <div id="carousel-popap-<?=$fields['ID'];?>" class="flexslider carousel" >
                                                 <ul class="slides">
-                                                    <?php foreach($props['MORE_PHOTO']['VALUE'] as $imgId):?>
+                                                    <?php foreach($photos as $path):?>
                                                         <li>
-                                                            <img src="<?=CFile::GetPath($imgId);?>" alt="<?=$arResult['NAME']?>"/>
+                                                            <img src="<?=$path;?>" alt="<?=$arResult['NAME']?>"/>
                                                         </li>
                                                     <?php endforeach;?>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="inf">
-                                            <div class="tit">Стоимость основных мест:</div>
-                                            <ul>
-                                                <li>
-                                                    <span class="first">одноместное (с подселением)</span>
-                                                    <span class="second">650р</span>
-                                                </li>
-                                                <li>
-                                                    <span class="first">одноместное (за номер)</span>
-                                                    <span class="second">650р</span>
-                                                </li>
-                                                <li>
-                                                    <span class="first">за номер (2-х местное размещение)</span>
-                                                    <span class="second">650р</span>
-                                                </li>
-                                            </ul>
-                                            <div class="tit">Стоимость дополнительных мест:</div>
-                                            <ul>
-                                                <li>
-                                                    <span class="first">взрослое</span>
-                                                    <span class="second">650р</span>
-                                                </li>
-                                                <li>
-                                                    <span class="first">детское</span>
-                                                    <span class="second">650р</span>
-                                                </li>
-                                            </ul>
+                                            <div class="inf">
+                                                <div class="money">
+                                                    Цена от <b><?=$props['PRICE']['VALUE']?></b> руб
+                                                    <span>за номер в сутки</span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <?=$fields['PREVIEW_TEXT'];?>
                                         </div>
                                         <div style="text-align: center">
                                             <input type="button" class="btn-okno ui-widget ui-controlgroup-item ui-button ui-corner-right" href="" value="ЗАБРОНИРОВАТЬ" role="button">
@@ -157,26 +139,46 @@ $this->setFrameMode(true);
                                     </div>
                                     <div class="right">
                                         <div class="text">
-                                            <b>Площадь:</b> <?=$props['ROOM_SIZE']['VALUE']?> <br>
-                                            <b>Кровати:</b> большая двуспальная<br>
-                                            <b>Включено:</b> прожив<br>
+                                            <b>Площадь:</b> <?=$props['ROOM_SIZE']['VALUE']?> м<sup>2</sup> <br>
+                                            <b>Кровати:</b><br>
+                                            <?if(!empty($props['DOUBLE_BED']['VALUE'])):?>
+                                                <?= $props['DOUBLE_BED']['VALUE'];?>
+                                                <?=pluralize($props['DOUBLE_BED']['VALUE'], array('двуспальная кровать', 'двуспальные кровати', 'двуспальных кроватей'));?>
+                                                <br>
+                                            <?endif;?>
+                                            <?if(!empty($props['SINGLE_BED']['VALUE'])):?>
+                                                <?= $props['SINGLE_BED']['VALUE'];?>
+                                                <?=pluralize($props['SINGLE_BED']['VALUE'], array('односпальная кровать', 'односпальные кровати', 'односпальных кроватей'));?>
+                                                <br>
+                                            <?endif;?>
+
+                                            <b>Включено:</b> питание, проживание, лечение<br>
                                             <b>Максимальная вместимость номера:</b><br>
-                                            3 человека
+                                            <?=$additionalPlaces + $totalPlaces;?> <?=pluralize($additionalPlaces + $totalPlaces, array('человек', 'человека', 'человек'));?>
                                             <ul>
-                                                <li><span class="first">основных мест - 2 шт</span></li>
-                                                <li><span class="first">дополнительных - 1 шт</span></li>
+                                                <li><span class="first">основных мест - <?=$totalPlaces?> шт</span></li>
+                                                <li><span class="first">дополнительных - <?=$additionalPlaces?> шт</span></li>
                                             </ul>
                                         </div>
                                         <div class="icon">
                                             <b>Удобства:</b>
-                                            <li>
-                                                <img src="<?=SITE_TEMPLATE_PATH?>/images/icon/диван.png" alt="<?=$arResult['NAME']?>">
-                                                <span>Отдых с детьми от 4 лет</span>
-                                            </li>
-                                            <li>
-                                                <img src="<?=SITE_TEMPLATE_PATH?>/images/icon/диван.png" alt="<?=$arResult['NAME']?>">
-                                                <span>Отдых с детьми от 4 лет</span>
-                                            </li>
+                                            <br>
+                                            <ul>
+                                                <?if(empty($comfortProps)):?>
+                                                    <li>Не указано</li>
+                                                <?else:?>
+                                                    <?foreach($comfortProps as $name => $path):?>
+                                                        <?php
+                                                        if(empty($path))
+                                                            continue;
+                                                        ?>
+                                                        <li>
+                                                            <img src="<?=$path?>" alt="<?=$name?>">
+                                                            <span><?=$name?></span>
+                                                        </li>
+                                                    <?endforeach;?>
+                                                <?endif;?>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -185,54 +187,75 @@ $this->setFrameMode(true);
                     </div>
                 <? endforeach; ?>
             </div>
-            <div id="tabs-3">
+            <?//endif;?>
+            <div class="tab-content<?=activeTabClass('profiles', $arResult['ACTIVE_TAB']);?>" id="profiles">
                 <? foreach ($arResult['DISPLAY_PROPERTIES']['PROFILES']['DISPLAY_VALUE'] as $el): ?>
                     <div><?= $el; ?></div>
                 <? endforeach; ?>
             </div>
-            <div id="tabs-4">
+            <?//endif;?>
+            <?//if(isActiveTab('programms', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('programms', $arResult['ACTIVE_TAB']);?>" id="programms">
                 <div class="posts">
                     <? foreach ($arResult['DISPLAY_PROPERTIES']['PROGRAMMS']['PROPERTIES_VALUE'] as $el): ?>
                         <div class="item">
                             <div class="title"><?=$el['NAME']?></div>
-                            <div class="text">
+                            <div class="text preview-text">
                                 <?=$el['PREVIEW_TEXT']?>
-                                <a href="<?=$el['DETAIL_PAGE_URL']?>">Подробнее</a>
+                                <a href="#">Подробнее</a>
+                            </div>
+                            <div class="text okno detail-text hidden">
+                                <h3 class="title"><?=$el['NAME']?></h3>
+                                <?=$el['DETAIL_TEXT'];?>
                             </div>
                         </div>
                     <? endforeach; ?>
                 </div>
             </div>
-            <div id="tabs-5">
+            <?//endif;?>
+            <?//if(isActiveTab('infrastructure', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('infrastructure', $arResult['ACTIVE_TAB']);?>" id="infrastructure">
                 <div class="posts">
-                    <? foreach ($arResult['DISPLAY_PROPERTIES']['PRICES']['PROPERTIES_VALUE'] as $k => $el): ?>
-                            <div class="item">
-                                <div class="title"><?=$arResult['DISPLAY_PROPERTIES']['PRICES']['DISPLAY_VALUE'][$k]?></div>
-                                <div class="text">
-                                    <?if(!empty($arResult['DISPLAY_PROPERTIES']['PRICES']['PROPERTIES_VALUE_STR'][$k])):?>
-                                        <p>В номере: <?=join(', ', $arResult['DISPLAY_PROPERTIES']['PRICES']['PROPERTIES_VALUE_STR'][$k]);?></p>
+                    <div class="item">
+                        <div class="title">Инфраструктура</div>
+                        <div class="text">
+                            <div class="icon">
+                                <?foreach($arResult['DISPLAY_PROPERTIES']['INFRASTRUCTURE']['ICONS'] as $name => $path):?>
+                                    <?if(!empty($path)):?>
+                                        <img src="<?=$path?>" alt="<?=$name?>">
                                     <?endif;?>
-                                    <div class="icon">
-                                        <?foreach($el as $prop):?>
-                                            <?if(is_scalar($prop['VALUE']) && !empty($prop['ICON'])):?>
-                                                <img src="<?=$prop['ICON']?>" alt="<?=$prop['NAME']?>">
-                                            <?endif;?>
-                                        <?endforeach;?>
-                                    </div>
-                                    <p>
-                                        <b>Показания: </b>заболевания органов пищеварения и нарушение обмена веществ (в т.ч. сахарный диабет и ожирение),
-                                        заболевания опорно-двигательного аппарата, нервной системы, гинекологические и урологические заболевания
-                                    </p>
-                                </div>
+                                <?endforeach;?>
                             </div>
-                    <? endforeach; ?>
+                            <?if(!empty($arResult['DISPLAY_PROPERTIES']['INFRASTRUCTURE']['VALUE'])):?>
+                                <p><?=join(', ', $arResult['DISPLAY_PROPERTIES']['INFRASTRUCTURE']['VALUE']);?></p>
+                            <?endif;?>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="tabs-6">2</div>
-            <div id="tabs-7">2</div>
-            <div id="tabs-8">2</div>
-            <div id="tabs-9">2</div>
+            <?//endif;?>
+            <?//if(isActiveTab('food', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('food', $arResult['ACTIVE_TAB']);?>" id="food">
+                <?=\Bitrix\Main\Text\String::htmlDecode($arResult['DISPLAY_PROPERTIES']['FOOD']['VALUE']['TEXT']);?>
+            </div>
+            <?//endif;?>
+            <?//if(isActiveTab('child', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('child', $arResult['ACTIVE_TAB']);?>" id="child">
+                <?=\Bitrix\Main\Text\String::htmlDecode($arResult['DISPLAY_PROPERTIES']['FOR_CHILD']['VALUE']['TEXT']);?>
+            </div>
+            <?//endif;?>
+            <?//if(isActiveTab('video', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('video', $arResult['ACTIVE_TAB']);?>" id="video">
+                <?=\Bitrix\Main\Text\String::htmlDecode(join('<br>', $arResult['DISPLAY_PROPERTIES']['VIDEO']['VALUE']));?>
+            </div>
+            <?//endif;?>
+            <?//if(isActiveTab('actions', $arResult['ACTIVE_TAB'])):?>
+            <div class="tab-content<?=activeTabClass('actions', $arResult['ACTIVE_TAB']);?>" id="actions">
+
+            </div>
+            <?//endif;?>
         </div>
+
     </div>
 </div>
 <div class="engBox-right">
@@ -242,7 +265,7 @@ $this->setFrameMode(true);
                 <div class="title">Забронируйте номер<br><span>Прямо сейчас!</span></div>
                 <input type="text" name="name" placeholder="Введите имя" autocomplete="off" class="icon-user">
                 <input type="text" name="famil" placeholder="Введите номер телефона" autocomplete="off" class="icon-phone2">
-                <select id="car-type3" class="input-right icon-key">
+                <select id="car-type3" name="room" class="input-right icon-key">
                     <option>Выберите номер</option>
                     <? foreach ($arResult['DISPLAY_PROPERTIES']['PRICES']['LINK_ELEMENT_VALUE'] as $k => $el): ?>
                         <option value="<?= $k ?>"><?= $el['NAME']; ?></option>
@@ -251,11 +274,10 @@ $this->setFrameMode(true);
                 <br><br>
                 <div style="margin-top: 30px; ">
                     <div style="float: right;">
-                        <select id="car-type" class="input-right">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select name="adults" id="car-type" class="input-right">
+                            <?for($i = 1; $i < 11; ++$i):?>
+                                <option value="<?=$i?>"><?=$i?></option>
+                            <?endfor;?>
                         </select>
                     </div>
                     <div style=" padding: 4px 8px;">Взрослых</div>
@@ -263,17 +285,18 @@ $this->setFrameMode(true);
                 <br>
                 <div>
                     <div style="float: right">
-                        <select id="car-type2" class="input-right">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select name="childs" id="car-type2" class="input-right">
+                            <?for($i = 1; $i < 11; ++$i):?>
+                                <option value="<?=$i?>"><?=$i?></option>
+                            <?endfor;?>
                         </select>
                     </div>
                     <div style="padding: 4px 8px;">Детей</div>
                 </div>
-                <input type="text" id="datepicker" placeholder="Дата заезда" class="icon-date">
-                <input type="text" id="datepicker2" placeholder="Дата выезда" class="icon-date">
+                <input name="date_start" type="text" id="datepicker" placeholder="Дата заезда" class="icon-date">
+                <input name="date_end" type="text" id="datepicker2" placeholder="Дата выезда" class="icon-date">
+				<input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr" />
+				<label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
                 <input type="button" class="btn various" href="#bron" value="ЗАБРОНИРОВАТЬ">
             </div>
         </form>

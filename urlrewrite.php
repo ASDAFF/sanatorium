@@ -1,22 +1,28 @@
 <?
 $arUrlRewrite = array(
 	array(
+		"CONDITION" => "#^/catalog/([^/]+)/([^/]+)/(?:([^/]+)/)?(?:\\?(.*))?\$#",
+		"RULE" => "SECTION_CODE=\$1&ELEMENT_CODE=\$2&ELEMENT_SECTION=\$3&\$4",
+		"ID" => "",
+		"PATH" => "/catalog/index.php",
+	),
+	array(
 		"CONDITION" => "#^/bitrix/services/ymarket/#",
 		"RULE" => "",
 		"ID" => "",
 		"PATH" => "/bitrix/services/ymarket/index.php",
 	),
 	array(
-		"CONDITION" => "#^/company/partners/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/info/partners/index.php",
-	),
-	array(
 		"CONDITION" => "#^/company/licenses/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/company/licenses/index.php",
+	),
+	array(
+		"CONDITION" => "#^/company/partners/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/info/partners/index.php",
 	),
 	array(
 		"CONDITION" => "#^/company/partners/#",
@@ -61,16 +67,16 @@ $arUrlRewrite = array(
 		"PATH" => "/sanatorium/index.php",
 	),
 	array(
-		"CONDITION" => "#^/info/stock/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/info/stock/index.php",
-	),
-	array(
 		"CONDITION" => "#^/info/promo/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/info/promo/index.php",
+	),
+	array(
+		"CONDITION" => "#^/info/stock/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/info/stock/index.php",
 	),
 	array(
 		"CONDITION" => "#^/services/#",
@@ -79,16 +85,28 @@ $arUrlRewrite = array(
 		"PATH" => "/services/index.php",
 	),
 	array(
+		"CONDITION" => "#^/projects/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/projects/index.php",
+	),
+	array(
 		"CONDITION" => "#^/info/faq/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/info/faq/index.php",
 	),
 	array(
-		"CONDITION" => "#^/projects/#",
+		"CONDITION" => "#^/catalog/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/projects/index.php",
+		"PATH" => "/catalog/index.php",
+	),
+	array(
+		"CONDITION" => "#^/catalog/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/catalog/index_old.php",
 	),
 	array(
 		"CONDITION" => "#^/events/#",

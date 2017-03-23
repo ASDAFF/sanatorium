@@ -51,5 +51,6 @@
         </div>
     </div>
 </footer>
+ <div class="to-top"><img src="<?=SITE_TEMPLATE_PATH;?>/images/scroll_up.png"></div>
 </body>
 </html>
