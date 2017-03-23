@@ -12,28 +12,6 @@ class Flags
 	const CACHE_PATH = 'Local/Catalog/Flags/';
 
 	private static $all = array(
-		'Маркетинговые' => array(
-			'new' => array(
-				'CODE' => 'NEW',
-				'NAME' => 'Новинка',
-			    'MAP' => true,
-			),
-			'action' => array(
-				'CODE' => 'ACTION',
-				'NAME' => 'Акция',
-				'MAP' => true,
-			),
-			'hit' => array(
-				'CODE' => 'HIT',
-				'NAME' => 'Хит',
-				'MAP' => true,
-			),
-			'recommend' => array(
-				'CODE' => 'RECOMMEND',
-				'NAME' => 'Мы рекомендуем',
-				'MAP' => true,
-			),
-		),
 		'Инфраструктура' => array(
 			'bath' => array(
 				'CODE' => 'BATH',

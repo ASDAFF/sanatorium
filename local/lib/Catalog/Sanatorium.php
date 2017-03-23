@@ -28,12 +28,8 @@ class Sanatorium
      * @param bool|false $refreshCache
      * @return array
      */
-    public static function getAll($count,$refreshCache = false)
+    public static function getAll($refreshCache = false)
     {
-        $count_el = array();
-        if(!empty($count)){
-            $count_el = array("nTopCount" => $count);
-        }
         $return = array();
 
         $extCache = new ExtCache(
@@ -54,19 +50,6 @@ class Sanatorium
                 'IBLOCK_SECTION_ID',
                 'PROPERTY_PRICE',
                 'PROPERTY_PROFILES',
-                'PREVIEW_PICTURE',
-                'CITY_NAME',
-                'PROPERTY_PRICES',
-                'PROPERTY_DISTANCE',
-                'PROPERTY_INFRASTRUCTURES',
-                'PROPERTY_PROGRAMMS',
-                'PROPERTY_VIDEO',
-                #'PROPERTY_FOOD',
-                'PROPERTY_FOR_CHILD',
-                'PROPERTY_FOOD1',
-                'PROPERTY_SHARES',
-                'PROPERTY_LINK_MAPS',
-                'PROPERTY_ADDRESS',
             );
             $flagsSelect = Flags::getForSelect();
             $select = array_merge($select, $flagsSelect);
@@ -76,7 +59,7 @@ class Sanatorium
             $rsItems = $iblockElement->GetList(array(), array(
                 'IBLOCK_ID' => self::IBLOCK_ID,
                 'ACTIVE' => 'Y',
-            ), false, $count_el, $select);
+            ), false, false, $select);
             while ($item = $rsItems->Fetch()) {
                 $cityId = intval($item['IBLOCK_SECTION_ID']);
                 $city = City::getById($cityId);
@@ -86,19 +69,6 @@ class Sanatorium
                     'CITY' => intval($city['ID']),
                     'PROFILES' => $item['PROPERTY_PROFILES_VALUE'],
                     'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
-                    'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
-                    'CITY_NAME' => $city['NAME'],
-                    'PRICES' => $item['PROPERTY_PRICES_VALUE'],
-                    'DISTANCE' => $item['PROPERTY_DISTANCE_VALUE'],
-                    'INFRASTRUCTURES' => $item['PROPERTY_INFRASTRUCTURES_VALUE'],
-                    'PROGRAMMS' => $item['PROPERTY_PROGRAMMS_VALUE'],
-                    'VIDEO' => $item['PROPERTY_VIDEO_VALUE'],
-                    #'FOOD' => $item['PROPERTY_FOOD_VALUE'],
-                    'FOOD1' => $item['PROPERTY_FOOD1_VALUE'],
-                    'FOR_CHILD' => $item['PROPERTY_FOR_CHILD_VALUE'],
-                    'SHARES' => $item['PROPERTY_SHARES_VALUE'],
-                    'LINK_MAPS' => $item['PROPERTY_LINK_MAPS_VALUE'],
-                    'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
                 );
 
                 foreach ($codes as $code)
