@@ -1,41 +1,8 @@
-<?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();?>
-<?
+<?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+/** @var CMain $APPLICATION */
 $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
-?>
-<?
-/*
- * <div class="engBox-body">
-<div id="people">
-<div class="title">Остались вопросы? Задайте их менеджеру!</div>
 
-<div class="item">
-<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-<div class="name">Владислав Некрасов</div>
-<div class="phone icon-phone">8 800 800 00 00</div>
-<div class="btn"><a href="">Заказать звонок</a></div>
-</div>
-<div class="item">
-<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-<div class="name">Владислав Некрасов</div>
-<div class="phone icon-phone">8 800 800 00 00</div>
-<div class="btn"><a href="">Заказать звонок</a></div>
-</div>
-<div class="item">
-<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-<div class="name">Владислав Некрасов</div>
-<div class="phone icon-phone">8 800 800 00 00</div>
-<div class="btn"><a href="">Заказать звонок</a></div>
-</div>
-<div class="item">
-<div class="img"><img src="<?=SITE_TEMPLATE_PATH;?>/images/ava.jpg"></div>
-<div class="name">Владислав Некрасов</div>
-<div class="phone icon-phone">8 800 800 00 00</div>
-<div class="btn"><a href="">Заказать звонок</a></div>
-</div>
-
-    </div>
-</div>
- */
 ?>
 <div id="phone">
     <div class="engBox-body">

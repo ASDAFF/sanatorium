@@ -21,16 +21,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	$assets->addJs(SITE_DIR . 'js/readmore.min.js');
 
     $assets->addJs(SITE_DIR . 'js/scripts.js');
-    
-    $page = $APPLICATION->GetCurPage();
-    if($page == "/"){
-        $assets->addJs(SITE_DIR . 'js/filter.js');
-    }else{
-        $assets->addJs(SITE_DIR . 'js/catalog.js');
-    }
-
+    $assets->addJs(SITE_DIR . 'js/catalog.js');
 	$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
-
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/css/media.css');
     $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.css');
@@ -105,11 +97,13 @@ $(window).scroll(function() {
 		"COMPONENT_TEMPLATE" => "topHor"
 	),
 	false
-);?>
+);
 
+			?>
 			<div class="nav_search">
-				<form class="searchbox">
-					<input type="search" placeholder="Введите название санатория......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+				<form class="searchbox" action="/sanatorium/">
+					<input type="search" placeholder="Введите название санатория......" name="q"
+					       class="searchbox-input" onkeyup="buttonUp();" required>
 					<input type="submit" class="searchbox-submit" value="Найти">
 					<span class="searchbox-icon"><img src="<?=SITE_TEMPLATE_PATH;?>/images/icon_serch_btn.jpg"></span>
 				</form>

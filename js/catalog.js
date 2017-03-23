@@ -205,6 +205,9 @@ var Detail = {
 	}
 };
 
+/**
+ * Старт
+ */
 $(document).ready(function() {
 	Filters.init();
 	Detail.init();
