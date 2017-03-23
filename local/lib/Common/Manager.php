@@ -1,11 +1,11 @@
 <?
-namespace Local\Catalog;
+namespace Local\Common;
 use Local\System\ExtCache;
 
 
 /**
  * Class Manager Менеджеры
- * @package Local\Catalog
+ * @package Local\Common
  */
 class Manager
 {
@@ -14,7 +14,7 @@ class Manager
     /**
      * Путь для кеширования
      */
-    const CACHE_PATH = 'Local/Catalog/Manager/';
+    const CACHE_PATH = 'Local/Common/Manager/';
 
     /**
      * Возвращает все санатории со свойствами, которые нужны для построения панели фильтров

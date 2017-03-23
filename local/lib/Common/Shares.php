@@ -1,18 +1,18 @@
 <?
-namespace Local\Catalog;
+namespace Local\Common;
 
 use Local\System\ExtCache;
 
 /**
  * Class Shares акции карточки
- * @package Local\Catalog
+ * @package Local\Common
  */
 class Shares
 {
 	/**
 	 * Путь для кеширования
 	 */
-	const CACHE_PATH = 'Local/Catalog/Shares/';
+	const CACHE_PATH = 'Local/Common/Shares/';
 
 	/**
 	 * Возвращает акции

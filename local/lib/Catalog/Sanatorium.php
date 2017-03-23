@@ -16,6 +16,7 @@ class Sanatorium
     const IBLOCK_ID = 21;
     const IB_ROOMS = 26;
     const CACHE_TIME = 86400;
+	const SANATORIUM_PROP_ID = 196;
 
     /**
      * Путь для кеширования
@@ -842,6 +843,68 @@ class Sanatorium
         }
 
     }
+
+	/**
+	 * Корректировка цены санатория (но минимальной цене номера)
+	 * @param $id
+	 * @param int $excludeRoomId
+	 */
+	public static function correctPrice($id, $excludeRoomId = 0)
+	{
+		$rooms = self::getRooms($id);
+		$price = false;
+		foreach ($rooms as $room)
+		{
+			if ($room['PRICE'] && $room['ID'] != $excludeRoomId)
+				if ($price === false || $price > $room['PRICE'])
+					$price = $room['PRICE'];
+		}
+		if ($price)
+		{
+			$iblockElement = new \CIBlockElement();
+			$rsItems = $iblockElement->GetList(array(), array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'ID' => $id,
+			), false, false, array(
+				'ID',
+				'PROPERTY_PRICE',
+			));
+			if ($item = $rsItems->Fetch())
+			{
+				$oldPrice = intval($item['PROPERTY_PRICE_VALUE']);
+				if ($price != $oldPrice)
+				{
+					$iblockElement->SetPropertyValuesEx($id, self::IBLOCK_ID, array(
+						'PRICE' => $price,
+					));
+				}
+			}
+		}
+	}
+
+	/**
+	 * обработчик изменения элемента - нужно обновить цену санатория, если изменили номер
+	 * @param $id
+	 */
+	public static function onUpdateRoom($id) {
+		$rsProduct = \CIBlockElement::GetProperty(self::IB_ROOMS, $id, array(),
+			Array('ID' => self::SANATORIUM_PROP_ID)
+		);
+		if ($product = $rsProduct->Fetch())
+			self::correctPrice($product['VALUE']);
+	}
+
+	/**
+	 * обработчик удаление элемента - нужно обновить цену санатория, если удалили номер
+	 * @param $id
+	 */
+	public static function onDeleteRoom($id) {
+		$rsProduct = \CIBlockElement::GetProperty(self::IB_ROOMS, $id, array(),
+			Array('ID' => self::SANATORIUM_PROP_ID)
+		);
+		if ($product = $rsProduct->Fetch())
+			self::correctPrice($product['VALUE'], $id);
+	}
 
     /**
      * Очищает кеш каталога

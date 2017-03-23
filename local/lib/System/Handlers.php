@@ -28,6 +28,12 @@ class Handlers
 				array(__NAMESPACE__ . '\Handlers', 'iBlockPropertyBuildList'));
 			AddEventHandler('main', 'OnBeforeProlog',
 				array(__NAMESPACE__ . '\Handlers', 'beforeProlog'));
+			AddEventHandler('iblock', 'OnAfterIBlockElementAdd',
+				array(__NAMESPACE__ . '\Handlers', 'elementAdd'));
+			AddEventHandler('iblock', 'OnAfterIBlockElementUpdate',
+				array(__NAMESPACE__ . '\Handlers', 'elementUpdate'));
+			AddEventHandler('iblock', 'OnIBlockElementDelete',
+				array(__NAMESPACE__ . '\Handlers', 'elementDelete'));
 			AddEventHandler('search', 'BeforeIndex',
 				array(__NAMESPACE__ . '\Handlers', 'beforeSearchIndex'));
 		}
@@ -94,6 +100,38 @@ class Handlers
 			$arFields = Sanatorium::beforeSearchIndex($arFields);
 
 		return $arFields;
+	}
+
+	/**
+	 * Добавление элемента
+	 * @param $arFields
+	 */
+	public static function elementAdd($arFields) {
+		if ($arFields['IBLOCK_ID'] == Sanatorium::IB_ROOMS)
+			Sanatorium::onUpdateRoom($arFields['ID']);
+	}
+
+	/**
+	 * Обновление элемента
+	 * @param $arFields
+	 */
+	public static function elementUpdate($arFields) {
+		// нужно обновить цену санатория (вдруг ее вручную кто-то поменял)
+		if ($arFields['IBLOCK_ID'] == Sanatorium::IBLOCK_ID)
+			Sanatorium::correctPrice($arFields['ID']);
+		elseif ($arFields['IBLOCK_ID'] == Sanatorium::IB_ROOMS)
+			Sanatorium::onUpdateRoom($arFields['ID']);
+	}
+
+	/**
+	 * Удаление элемента
+	 * @param $id
+	 */
+	public static function elementDelete($id) {
+		$iblockId = self::getIblockByElementId($id);
+		// нужно обновить цену санатория, если удалили номер
+		if ($iblockId == Sanatorium::IB_ROOMS)
+			Sanatorium::onDeleteRoom($id);
 	}
 
 	/**
