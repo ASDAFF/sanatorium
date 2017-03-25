@@ -14,56 +14,26 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 	 CJSCore::init(array('jquery2'));
 
-    $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery-ui.js');
-    $assets->addJs(SITE_TEMPLATE_PATH . '/js/jquery.flexslider-min.js');
-    $assets->addJs(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.js');
-	$assets->addJs(SITE_TEMPLATE_PATH . '/js/owl/owl.carousel.min.js');
+    $assets->addJs(SITE_DIR . 'js/jquery-ui.js');
+    $assets->addJs(SITE_DIR . 'js/jquery.flexslider-min.js');
+    $assets->addJs(SITE_DIR . 'js/fancybox/jquery.fancybox.js');
+	$assets->addJs(SITE_DIR . 'js/owl/owl.carousel.min.js');
 	$assets->addJs(SITE_DIR . 'js/readmore.min.js');
 
     $assets->addJs(SITE_DIR . 'js/scripts.js');
     $assets->addJs(SITE_DIR . 'js/catalog.js');
-	$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/css/media.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.structure.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/js/jquery-ui.theme.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/css/flexslider.css');
-    $assets->addCss(SITE_TEMPLATE_PATH . '/js/fancybox/jquery.fancybox.css');
-	$assets->addCss(SITE_TEMPLATE_PATH . '/js/owl/owl.carousel.css');
+//$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+    $assets->addCss(SITE_DIR . 'css/style.css');
+    $assets->addCss(SITE_DIR . 'css/media.css');
+    $assets->addCss(SITE_DIR . 'js/jquery-ui.css');
+    $assets->addCss(SITE_DIR . 'js/jquery-ui.structure.css');
+    $assets->addCss(SITE_DIR . 'js/jquery-ui.theme.css');
+    $assets->addCss(SITE_DIR . 'css/flexslider.css');
+    $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
+	$assets->addCss(SITE_DIR . 'js/owl/owl.carousel.css');
 	
 	$APPLICATION->ShowHead();
     ?>
-
-
-<? if($_SERVER['REQUEST_URI']!='/') {?>
-<script>
-$(function(){
-$(window).scroll(function() {
-	if($(this).scrollTop() != 0) {
-	$('.search-fix').fadeIn();
-	} else {
-	$('.search-fix').fadeOut();
-	}
-});
-});
-</script>
-<?} else {?>
-<script>
-$(function(){
-$(window).scroll(function() {
-	if ($(".el-full-bg-ser").length != 0) {
-		var off = $(".el-full-bg-ser").offset();
-		if($(this).scrollTop() >= off.top) {
-		$('.search-fix').fadeIn();
-		} else {
-		$('.search-fix').fadeOut();
-		}
-	}
-});
-});
-</script>
-<?}?>
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>

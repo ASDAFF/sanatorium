@@ -1,0 +1,381 @@
+@media screen and (max-width: 1200px) {
+	.el-full-bg2{background-size:cover;background-repeat:no-repeat;background-position-y: 50%;}
+	.header-time-work{display:none;}
+	.header-line_wbg{text-align:right;}
+	.header-logo{float:left;}
+	.header-line_wbg:after{
+		content:'';
+		display:table;
+		clear:both;
+	}
+	.el-search-result>div{margin: 0px 10px;}
+	.el-search-result {padding: 0px 0 20px;}
+	.p-head{padding:0px;}
+	.nav_search{display:none;}
+	.el-lech {overflow: hidden;}
+	#comments .item {margin: 0px;}
+	#comments{background-size: cover;}
+	.header .head_pun{padding:0px;}
+	.head_pun li a {margin: 0px;}
+	.sale-text {display: none;}
+	nav ul {width: 100%;}
+	.el-search .line>.city{border:none;}
+	.el-search .line>.btn{
+		max-width: 200px;
+		margin: 40px auto;
+		border-radius: 5px;
+	}
+	.el-search .line>.city .ui-selectmenu-text{text-align:center;}
+	.el-search .line>.city .ui-selectmenu-text {
+    text-align: center;
+    font-size: 18px;
+    padding-left: 20px;
+}
+}
+
+@media screen and (max-width: 1100px) {
+	.programs-item{width:100%;}
+	.engBox-body.clearfix{padding:0px 25px;}
+	.engBox-body.el-search-result.clearfix {
+		padding: 20px 15px;
+	}
+	.prices-item {
+    min-width: 265px;
+	}
+	#head.engBox-body{padding:0px;}
+	#right-ban{
+		font-size:0px;
+		margin:40px -5px 0px;
+	}
+	#right-ban a {
+    display: inline-block;
+    width: 33.33%;
+    padding: 5px;
+    margin-bottom: 10px;
+	vertical-align:top;
+}
+nav .p-submenu a,.page-inner-menu li{background: #fff;}
+.page-card .engBox-center{
+	width:calc(100% - 280px);
+}
+.engBox-right.card-form{
+	width:270px;
+	margin-left: 10px;
+}
+}
+@media screen and (max-width: 1000px) {
+.nav-sections{
+	margin-right: -15px;
+	bottom:10px;
+	left: 60%;
+	text-align: right;
+}
+.nav-sections-title {
+    padding-right: 15px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.nav-sections li {
+    line-height: 14px;
+    padding-left: 0px;
+	float:right;
+	padding-right: 15px;
+}
+.nav-sections li a{
+	font-size:12px;
+}
+}
+@media screen and (max-width: 900px) {
+
+	.el-search .title.title-bg {
+		font-size: 28px;
+		line-height: 42px;
+	}
+	.el-search-select {padding:5px 10px;}
+	.header-account {top: 12px;}
+	.header-line_wbg{position:relative;}
+	.header-account,
+	.header-adress{
+		position:absolute;
+		right: 225px;
+	}
+	.header-time-work{top:15px;}
+	.header-adress{bottom:15px;font-size:15px;}
+	.el-lech .item >.img,
+	.el-lech .item >.inf	{
+    width: 100%;
+	}
+	.page-card .engBox-center{
+	width:100%;
+}
+.engBox-right.card-form{
+	width:100%;
+	margin-left: 0px;
+	order: -1;
+    margin-bottom: 30px;
+}
+.engBox-body.page-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+}
+@media screen and (max-width: 700px) {
+.info-bottom .right,
+.info-bottom .inf{width:100%;}
+.fancybox-inner,.fancybox-opened {width: 90% !important;margin:0 auto !important;}
+.el-nomer-popap .right .icon,
+.el-nomer-popap .right .text,
+.infra-list{width:100%;}
+.page-contacts-box,
+.page-contacts-map{width:100%;}
+.block-inline-sm{display:inline-block;vertical-align:top;width: 49%;}
+.feedback-popup{width:100%;padding:0px 20px;}
+.el-search .line>.money-vibor>span{
+	width: 70px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0px 15px;
+    font-size: 16px;
+}
+.el-search .line #slider-range {
+    width: calc(100% - 185px);
+    margin:0px;
+}
+footer div{
+	margin:0px;
+}
+footer .left{
+	margin-bottom:10px;
+}
+.btn.btn-all {
+    margin-bottom: 15px;
+}
+.s-searchbox-input{margin-left: 0px;}
+.el-search .title.title-bg {
+    font-size: 22px;
+    line-height: 32px;
+}
+.el-search .title {
+    padding: 35px 0px 10px;
+}
+.title-sm{font-size: 19px;}
+.head_pun li a.icon1 {margin-right: 0px;}
+#haad_pun-bnt {padding: 8px 11px;}
+.header .head_pun li a,
+.header .head_pun li a.icon2 {
+    font-size: 14px;
+    padding: 8px 11px 5px 25px;
+    background-size: auto 20px;
+    background-position-y: 50% !important;
+}
+.header-account, .header-adress {display: none;}
+.el-search-result .sort {
+    float: none;
+}
+.prices-feedback .feedback-form-left,
+.prices-feedback .feedback-form-right {
+    width: 100%;
+}
+.prices-rate-tbl td {
+    display: block;
+    width: 100%;
+    border: none;
+}
+.prices-rate thead td:first-child {
+    border-radius: 10px;
+}
+.prices-rate-tbl tbody td{
+	  float: left;
+    text-align: right;
+	 border-bottom: 1px dotted #ccc;
+}
+.prices-rate-tbl td :first-child,
+.prices-rate-tbl td:last-child{border-bottom: 0px dotted #ccc;}
+.prices-rate-tbl tbody td:before{
+    content: attr(data-label);
+    float: left;
+    color: #2c9ed7;
+    text-align: left;
+}
+.prices-rate-tbl tbody tr{display:inline-block;margin:5px opx;border-radius: 6px;}
+.prices-rate-tbl tbody tr{border:1px solid #2c9ed7;margin:5px 0px;}
+.feedback-form-checkbox {
+    float: none;
+}
+.prices-feedback .feedback-form-ttl i {
+    color: #282828;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.prices-feedback .feedback-form-ttl b{font-size:18px;}
+.banners-item {
+    width: 50%;
+}
+
+.engBox-body.clearfix{padding:0px 15px;}
+.feedback-form-left {
+    width: 220px;
+}
+.feedback-form-right {
+    width: calc(100% - 230px);
+}
+.pagination {
+    font-size: 0px;
+    height: auto;
+    line-height: 35px;
+    padding: 15px 0px;
+}
+.pagination .next {
+    margin-left: 0px;
+    display: block;
+}
+.prices-rate-tbl thead td:not(:first-child){
+	display:none;
+}
+.prices-rate-tbl thead td:first-child{
+	display:block;
+	width:100%;
+	height: 42px;
+    line-height: 40px;
+}
+.prices-rate-tbl td:first-child {
+    width: 100%;
+}
+#carousel {display: none;}
+}
+@media screen and (max-width: 600px) {
+	.page-inner-menu,.page-inner-content{width:100%;}
+	.page-inner-content{padding:0px;margin-top:15px;}
+}
+@media screen and (max-width: 500px) {
+.block-inline-sm{width: 100%;}
+
+#right-ban {
+    font-size: 0px;
+    margin: 20px -5px 0px;
+}
+#right-ban a {
+    width: 100%;
+    text-align: center;
+}
+.actions-img {
+    margin-bottom: 10px;
+}
+.actions-content{padding:0px 0px;}
+.actions-img,
+.actions-content{
+	width:100%;
+}
+.feedback-form {
+    margin-top: 20px;
+}
+.nav-sections li {
+    line-height: 14px;
+    padding-left: 0px;
+    float: none;
+    padding: 0px 10px;
+}
+.nav-sections{
+	position:static;
+    margin-right: 0px;
+    bottom: 10px;
+    left: 60%;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+}
+@media screen and (max-width: 400px) {
+.feedback-form-checkbox label{margin-right:0px;}
+.banners-item {
+    width: 100%;
+}
+.prices-feedback .feedback-form-btn{margin-top:10px;}
+.head_block{margin-bottom:-30px;z-index:-1;}
+
+.feedback-form-left,
+.feedback-form-star,
+.feedback-form-right {width: 100%;}
+.feedback-form .select{margin-bottom:12px;}	
+.feedback-form-line{text-align:center;}
+.feedback-form-btn,
+.feedback-form-star{
+	float:none;
+	display:inline-block;
+}
+.feedback-form-star {
+    margin-bottom: 12px;
+}
+.header-logo {
+	float:left;
+    padding-left: 0px;
+    margin-left: 0px;
+    width: 130px;
+    margin-top: -8px;
+}
+.header-line_wbg {
+    height: auto;
+    line-height: normal;
+    padding: 15px 10px;
+}
+.header-phone-link {
+    font-size: 21px;
+    line-height: 10px;
+}
+.header-phone{
+	background:none;
+    padding-left: 0px;
+    margin-left: 0px;
+    float: right;
+    line-height: 17px;
+}
+.header .head_pun li a, .header .head_pun li a.icon2{padding: 5px 11px 0px 25px;}
+#haad_pun-bnt {padding: 4px 11px 8px;}
+.el-search .title.title-bg {
+    font-size: 20px;
+	line-height: 27px;
+} 
+.el-search .title.title-bg br{display:none;}
+.title-sm {
+    font-size: 17px;
+    line-height: 20px;
+}
+.el-search .line #slider-range {
+    width: calc(100% - 30px);
+}
+.el-search .line>.btn {
+    padding: 5px;
+    max-width: 150px;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+.el-sanat-list>.title {
+    padding: 33px 0px 15px;
+    font-size: 26px;
+}
+.s-searchbox-input{
+	width:auto;
+}
+.el-lech>.title {
+    padding: 33px 0px 15px;
+    font-size: 28px;
+    line-height: 30px;
+}
+.el-lech {
+    width: 100%;
+}
+.s-searchbox, .s-searchbox input,
+.btn-all {
+    height: 35px;
+    line-height: 35px;
+    border: none;
+}
+.s-searchbox-submit{
+	padding:0px 10px;
+	font-size:13px;
+}
+.el-lech>.title{padding-top:0px;}
+.el-lech .item >.inf{padding:20px 0px;}
+
+#phone{padding:15px 0px 0px;}
+}

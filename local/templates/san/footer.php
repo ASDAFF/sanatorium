@@ -20,7 +20,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             </div>
             <div class="center">© 2016 «Санатории Кавказа»</div>
             <div class="right">
-                <a href=""><img src="<?=SITE_TEMPLATE_PATH;?>/images/webmaster.png"></a>
+                <a href=""><img src="/images/webmaster.png"></a>
             </div>
         </div>
     </div>

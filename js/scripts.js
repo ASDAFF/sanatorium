@@ -287,6 +287,14 @@ $(window).load(function () {
 		slideshow: false,
 		sync: "#carousel"
 	});
-
+$(window).scroll(function() {
+	if($(this).scrollTop() != 0) {
+	$('.search-fix').fadeIn();
+	} else {
+	$('.search-fix').fadeOut();
+	}
+});
 
 });
+
+
