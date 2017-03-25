@@ -50,6 +50,7 @@ class Sanatorium
                 'IBLOCK_SECTION_ID',
                 'PROPERTY_PRICE',
                 'PROPERTY_PROFILES',
+                'PROPERTY_INFRASTRUCTURE',
             );
             $flagsSelect = Flags::getForSelect();
             $select = array_merge($select, $flagsSelect);
@@ -68,6 +69,7 @@ class Sanatorium
                     'NAME' => $item['NAME'],
                     'CITY' => intval($city['ID']),
                     'PROFILES' => $item['PROPERTY_PROFILES_VALUE'],
+                    'INFRA' => $item['PROPERTY_INFRASTRUCTURE_VALUE'],
                     'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
                 );
 

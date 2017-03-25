@@ -45,6 +45,7 @@ class Infra
 				'ACTIVE' => 'Y',
 			), false, false, array(
 				'ID', 'NAME', 'CODE',
+			    'PROPERTY_FILTER'
 			));
 			while ($item = $rsItems->Fetch())
 			{
@@ -52,6 +53,7 @@ class Infra
 					'ID' => $item['ID'],
 					'NAME' => $item['NAME'],
 					'CODE' => $item['CODE'],
+					'FILTER' => $item['PROPERTY_FILTER_VALUE'],
 				);
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
@@ -82,6 +84,26 @@ class Infra
 	public static function getIdByCode($code) {
 		$all = self::getAll();
 		return $all['BY_CODE'][$code];
+	}
+
+	/**
+	 * Возвращает группу для панели фильтров
+	 * @return array
+	 */
+	public static function getGroup()
+	{
+		$return = array();
+
+		$all = self::getAll();
+		foreach ($all['ITEMS'] as $item)
+			if ($item['FILTER'])
+				$return[$item['CODE']] = array(
+					'ID' => $item['ID'],
+					'CODE' => 'INFRA',
+					'NAME' => $item['NAME'],
+				);
+
+		return $return;
 	}
 
 }

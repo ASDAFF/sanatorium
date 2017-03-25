@@ -17,26 +17,16 @@ class TimCatalog extends \CBitrixComponent
 	 * @var array параметры сортировки
 	 */
 	private $sortParams = array(
-		'sort' => array(
-			'ORDER_DEFAULT' => 'asc',
-			'FIELD' => 'SORT',
-			'DEFAULT' => true,
-		    'NAME' => 'По-умолчанию',
-		),
 		'price' => array(
 			'ORDER_DEFAULT' => 'asc',
 			'FIELD' => 'PROPERTY_PRICE',
-			'NAME' => 'По цене',
+			'NAME' => 'цене путевки',
+			'DEFAULT' => true,
 		),
 		'rating' => array(
 			'ORDER_DEFAULT' => 'desc',
 			'FIELD' => 'PROPERTY_RATING',
-			'NAME' => 'По рейтингу',
-		),
-		'date' => array(
-			'ORDER_DEFAULT' => 'desc',
-			'FIELD' => 'created',
-			'NAME' => 'По новизне',
+			'NAME' => 'рейтингу санатория',
 		),
 	);
 
@@ -91,6 +81,12 @@ class TimCatalog extends \CBitrixComponent
 	public $seo = array();
 
 	/**
+	 * @var string количество (2 варианта)
+	 */
+	public $countTitle = '';
+
+	/**
+	 * Запуск компонента
 	 * @inherit
 	 */
 	public function executeComponent()
@@ -130,6 +126,8 @@ class TimCatalog extends \CBitrixComponent
 			{
 				$this->filter = Filter::getData($this->searchIds, $this->searchQuery, $this->urlParams);
 				$this->products = Sanatorium::get($this->sort['QUERY'], $this->filter['PRODUCTS_IDS'], $this->navParams);
+				$this->countTitle = $this->products['NAV']['COUNT'];
+				$this->countTitle .= pluralize($this->countTitle, array(' вариант', ' варианта', ' вариантов'));
 			}
 
 			$this->SetPageProperties();
@@ -292,21 +290,6 @@ class TimCatalog extends \CBitrixComponent
 		elseif ($this->filter)
 		{
 			$this->seo = Seo::getByUrl($this->filter['SEO']['URL']);
-
-			/*
-			Пока отключил обработку галочки "Применять к дочерним фильтрам"
-			$parts = $this->filter_top['SEO']['PARTS'];
-			while (!$this->seo)
-			{
-				array_pop($parts);
-				if (!$parts)
-					break;
-
-				$url = Filter::$CATALOG_PATH . implode('/', $parts) . '/';
-				$seo = Seo::getByUrl($url);
-				if ($seo['CHILDREN'])
-					$this->seo = $seo;
-			}*/
 
 			if (!$this->seo['H1'])
 				$this->seo['H1'] = $this->filter['SEO']['H1'];

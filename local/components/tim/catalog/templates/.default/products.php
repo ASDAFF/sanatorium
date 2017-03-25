@@ -8,100 +8,102 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @global CMain $APPLICATION */
 /** @var Local\Catalog\TimCatalog $component */
 
+//
+// Шапка санаториев
+//
 ?>
-
-    <div class="el-full-bg2">
-        <div class="el-search-result engBox-body">
-            <div class="title">
-                Санатории Кавказских Минеральных Вод с бассейном
-            </div>
-            <div class="city">
-                <?
-                if ($filter['CUR_FILTERS']) {
-                    foreach ($filter['CUR_FILTERS'] as $item) {
-                        ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>:
-                    <? }
-                } ?>10 вариантов
-            </div>
-            <div class="sort">
-                <b>Сортировать по:</b>
-                <span>цене путевки</span>
-                <a href="">рейтингу санатория</a>
-            </div>
-            <div class="number"><b>Показывать по:</b>
-                <a href="">10</a>
-                <span>25</span>
-                <a href="">40</a>
-                санаториев на странице
-            </div>
+<div class="el-full-bg2">
+    <div class="el-search-result engBox-body">
+        <div class="title">
+            Санатории Кавказских Минеральных Вод с бассейном
+        </div>
+        <div class="city">
+            <?
+            if ($filter['CUR_FILTERS'])
+            {
+                foreach ($filter['CUR_FILTERS'] as $item)
+                {
+                    ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>:<?
+                }
+            }
+            ?><?= $component->countTitle ?>
+        </div>
+        <div class="sort">
+            <b>Сортировать по:</b>
+            <span>цене путевки</span>
+            <a href="">рейтингу санатория</a>
+        </div>
+        <div class="number"><b>Показывать по:</b>
+            <a href="">10</a>
+            <span>25</span>
+            <a href="">40</a>
+            санаториев на странице
         </div>
     </div>
+</div><?
 
+//
+// Элементы
+//
+?>
+<div id="sanatorium"><?
 
-    <div id="sanatorium">
-
-<?
-if (count($products) <= 0) {
+if (count($products) <= 0)
+{
     ?>
     <p class="empty">Не найдено ни одного подходящего санатория. Попробуйте отключить какой-нибудь фильтр</p><?
 }
 
-foreach ($products as $id => $item) {
-    $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($item['PRICES']);
-    $pr = \Local\Catalog\Profiles::getList($item['PROFILES']);
-    $info = \Local\Catalog\Sanatorium::getInfo(2, $item['INFRASTRUCTURES']);
-    $program = \Local\Catalog\Sanatorium::getParam($item['PROGRAMMS']);
-    ?>
-
+foreach ($products as $id => $item)
+{
+	?>
     <div class="el-search-list engBox-body">
     <div class="item">
         <div class="img">
             <img src="<?= $item['PREVIEW_PICTURE'] ?>">
         </div>
         <div class="text">
-            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a>
-            <b>Направление лечения:</b>
-            <span>
-                <? if (!empty($item['PROFILES'])) {
-                    foreach ($pr as $value): ?>
-                        <?= $value['NAME'] ?>,
-                    <?endforeach;
-                }
-                ?>
-            </span>
+	        <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a><?
+
+	        //
+	        // Профили лечения
+	        //
+	        if ($item['PROFILES'])
+	        {
+		        ?>
+		        <b>Направление лечения:</b>
+	            <span><?
+		        foreach ($item['PROFILES'] as $i => $pid)
+		        {
+			        if ($i)
+				        echo ', ';
+					$profile = \Local\Catalog\Profiles::getById($pid);
+			        echo $profile['NAME'];
+		        }
+		        ?>
+                </span><?
+	        }
+
+			//
+			// Инфраструктура
+			//
+	        ?>
             <b>Дополнительные параметры:</b>
-            <div class="el-icon-list">
-                <li>
-                    <? if ($item['CHILD4'] != 0 && $item['CHILD1'] != 0) { ?>
-                        <img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png">
-                        <span>Отдых с детьми от 0 лет</span>
-                    <? } elseif ($item['CHILD4'] != 0 && $item['CHILD1'] == 0) { ?>
-                        <img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png">
-                        <span>Отдых с детьми от 4 лет</span><?
-                    } elseif ($item['CHILD4'] == 0 && $item['CHILD1'] != 0) { ?>
-                        <img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png">
-                        <span>Отдых с детьми от 0 лет</span>т<?
-                    } else { ?>
-                        <img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png"><?
-                    } ?>
-                </li>
-                <? if ($item['DISTANCE'] < 500) { ?>
-                    <img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png">
-                <? } else { ?><img src="<?= SITE_TEMPLATE_PATH; ?>/images/icon/диван.png"><span>
-                    Расстояние до бюФета <?= $item['DISTANCE'] ?>м</span><?
-                } ?>
-                </li>
-                <? if (!empty($item['INFRASTRUCTURES'])) {
-                    foreach ($info as $value) { ?>
-                        <li>
-                            <i class="in-icon"><img src="<?= $value['PREVIEW_PICTURE'] ?>"></i>
-                            <span><?= $value['NAME'] ?></span>
-                        </li>
-                        <?
-                    } ?>
-                    <?
-                }
-                ?>
+	        <div class="el-icon-list"><?
+		        $infra = \Local\Catalog\Infra::getAll();
+		        $cnt = 0;
+				foreach ($infra['ITEMS'] as $infraItem)
+				{
+					if (in_array($infraItem['ID'], $item['INFRA']))
+					{
+						?>
+						<li>
+							<i class="in-icon icon-<?= $infraItem['CODE'] ?>"></i>
+							<span><?= $infraItem['NAME'] ?></span>
+						</li><?
+					}
+				}
+		        ?>
             </div>
         </div>
         <div class="inf">
@@ -163,8 +165,9 @@ foreach ($products as $id => $item) {
     </div>
     </div><?
 }
+
 ?>
-    </div><?
+</div><?
 
 //
 // Постраничка

@@ -11,6 +11,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 $filter = $component->filter;
 $products = $component->products['ITEMS'];
 
+foreach ($filter['GROUPS'] as $group)
+{
+	if ($group['TYPE'] == 'city')
+	{
+		//debugmessage($group);
+	}
+}
+
 ?>
     <div class="el-full-bg" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
         <div class="el-search engBox-body">
@@ -21,40 +29,41 @@ $products = $component->products['ITEMS'];
                 <div class="eng-icon-city"></div>
                 <div class="city controlgroup">
                     <select id="city-vibor">
-                        <? foreach ($filter['GROUPS'] as $group) {
-                            if ($group['TYPE'] == 'city') {
-                                foreach ($group['ITEMS'] as $code => $item) { ?>
-                                    <option name="<?= $code ?>"><?= $item['NAME'] ?> </option>
-                                <?
+	                    <option name="0">(любой город)</option><?
+	                    foreach ($filter['GROUPS'] as $group)
+	                    {
+                            if ($group['TYPE'] == 'city')
+                            {
+                                foreach ($group['ITEMS'] as $code => $item)
+                                {
+	                                $selected = $item['CHECKED'] ? ' selected' : '';
+	                                ?>
+                                    <option name="<?= $code ?>"<?= $selected ?>><?= $item['NAME'] ?></option><?
                                 }
                             }
-                        } ?>
+                        }
+	                    ?>
                     </select>
                 </div>
                 <div class="eng-icon-city-grey"></div>
                 <div class="money">
                     Цена в сутки
                 </div>
-                <div class="money-vibor">
-                    <? foreach ($filter['GROUPS'] as $group) {
-                        if ($group['TYPE'] == 'price') {
+                <div class="money-vibor"><?
+	                foreach ($filter['GROUPS'] as $group)
+	                {
+                        if ($group['TYPE'] == 'price')
+                        {
                             $from = $group['FROM'] ? $group['FROM'] : $group['MIN'];
                             $to = $group['TO'] ? $group['TO'] : $group['MAX'];
                             ?>
-                            <div style="display: none" class="price-group"<?= $style ?> data-min="<?= $group['MIN'] ?>"
-                                 data-max="<?= $group['MAX'] ?>">
-                                <div class="inputs">
-                                    <div class="l">от <input type="text" class="from" value="<?= $group['MIN'] ?>"/>
-                                    </div>
-                                    <div class="r">до <input type="text" class="to" value="<?= $group['MAX'] ?>"/></div>
-                                </div>
-                            </div>
 
                             <span id="slider-range-value1"><?= $group['MIN'] ?></span>
                             <div id="slider-range"></div>
-                            <span id="slider-range-value2"><?= $group['MAX'] ?></span>
-                        <? }
-                    } ?>
+                            <span id="slider-range-value2"><?= $group['MAX'] ?></span><?
+                        }
+                    }
+	                ?>
                 </div>
                 <a class="btn filter_find" href="javascript:void(0)">Найти</a>
             </div>
@@ -72,35 +81,19 @@ $products = $component->products['ITEMS'];
             <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
             <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
 
-            /*$closed = array(0, 1, 1, 1, 1, 1, 1);
-            if (isset($_COOKIE['filter_groups']))
-                $closed = explode(',', $_COOKIE['filter_groups']);*/
-            $closed = array();
-
             $i = 0;
-            foreach ($filter['GROUPS'] as $group) {
-                $style = $closed[$i] ? ' style="display:none;"' : '';
-                $class = $closed[$i] ? ' closed' : '';
-                ?>
-            <div class="filter-group<?= $class ?>">
-                <div class="title"><?= $group['NAME'] ?><s></s></div>
-                <fieldset class="profiles">
-                    <?
+            foreach ($filter['GROUPS'] as $group)
+            {
+	            if ($group['TYPE'] == 'price' || $group['TYPE'] == 'city')
+		            continue;
 
-                    if ($group['TYPE'] == 'price') {
-                        $from = $group['FROM'] ? $group['FROM'] : $group['MIN'];
-                        $to = $group['TO'] ? $group['TO'] : $group['MAX'];
-                        ?>
-                    <div class="price-group"<?= $style ?> data-min="<?= $group['MIN'] ?>"
-                         data-max="<?= $group['MAX'] ?>">
-                        <div class="inputs">
-                            <div class="l">от <input type="text" class="from" value="<?= $group['MIN'] ?>"/></div>
-                            <div class="r">до <input type="text" class="to" value="<?= $group['MAX'] ?>"/></div>
-                        </div>
-                        </div><?
-                    } else {
-                        ?><?
-                        foreach ($group['ITEMS'] as $code => $item) {
+                ?>
+                <div class="filter-group">
+	                <div class="title"><?= $group['NAME'] ?><s></s></div>
+	                <fieldset class="profiles"><?
+
+                        foreach ($group['ITEMS'] as $code => $item)
+                        {
                             $style = $item['ALL_CNT'] ? '' : ' style="display:none;"';
                             $class = '';
                             if (!$item['CNT'] && $item['CHECKED'])
@@ -112,7 +105,6 @@ $products = $component->products['ITEMS'];
                             $checked = $item['CHECKED'] ? ' checked' : '';
                             $disabled = $item['CNT'] ? '' : ' disabled';
 
-
                             ?>
                             <b></b><label>
                                 <input class="el-search-dop-input" type="checkbox"
@@ -123,11 +115,9 @@ $products = $component->products['ITEMS'];
                             ?><?
                         }
 
-                        ?>
-                        <?
-                    }
-                    ?>
-                </fieldset></div><?
+	                    ?>
+	                </fieldset>
+	            </div><?
 
                 $i++;
             }

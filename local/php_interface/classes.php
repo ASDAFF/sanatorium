@@ -17,6 +17,7 @@ CModule::AddAutoloadClasses(
         'Local\\Catalog\\ReviewsServ' => '/local/lib/Catalog/ReviewsServ.php',
         'Local\\Catalog\\FilterDark' => '/local/lib/Catalog/FilterDark.php',
         'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
+        'Local\\Catalog\\Infra' => '/local/lib/Catalog/Infra.php',
         'Local\\Common\\Manager' => '/local/lib/Common/Manager.php',
         'Local\\Common\\Shares' => '/local/lib/Common/Shares.php',
 	)

@@ -101,6 +101,12 @@ class Filter
 			'BC' => true,
 		    'ITEMS' => City::getGroup(),
 		);
+		$return[] = array(
+			'NAME' => 'Инфраструктура',
+			'TYPE' => 'infra',
+			'BC' => true,
+			'ITEMS' => Infra::getGroup(),
+		);
 		$flags = Flags::getAll();
 		foreach ($flags as $name => $items)
 			$return[] = array(
