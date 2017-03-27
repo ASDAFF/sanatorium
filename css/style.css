@@ -2513,3 +2513,23 @@ div[id^="slider-popap-"].flexslider .slides img{
     border-left: solid 1px #aaa;
     background-color: #eee;
 }
+#sync1 .item img{
+	height: 526px;
+    width: auto;
+    max-width: inherit;
+    margin: 0 auto;
+}
+#sync2{
+	margin-right:-5px;
+	margin-left:-5px;
+}
+#sync2 .item{
+	margin: 0px 2px;
+	cursor:pointer;
+}
+#sync2 .item img{
+	border:3px solid transparent;
+}
+#sync2 .synced img{
+	border:3px solid #ff8a00;
+}
