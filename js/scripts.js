@@ -65,7 +65,7 @@ $(function () {
 			pull_2.text('развернуть');
 		}
 	});
-	$("#tabs").tabs();
+	//$("#tabs").tabs();
 	$("#tabs2").tabs();
 	$(".various").fancybox({
 		maxWidth: 800,

@@ -3,8 +3,6 @@
 namespace Local\Catalog;
 
 use Bitrix\Iblock\InheritedProperty\ElementValues;
-use Local\Sale\Package;
-use Local\Sale\Postals;
 use Local\System\ExtCache;
 
 /**
@@ -14,9 +12,7 @@ use Local\System\ExtCache;
 class Sanatorium
 {
     const IBLOCK_ID = 21;
-    const IB_ROOMS = 26;
     const CACHE_TIME = 86400;
-	const SANATORIUM_PROP_ID = 196;
 
     /**
      * Путь для кеширования
@@ -328,61 +324,74 @@ class Sanatorium
         } else {
             $extCache->startDataCache();
 
-            if ($productIds) {
-                $return['NAV'] = array(
-                    'COUNT' => count($productIds),
-                    'PAGE' => $nav['iNumPage'],
-                );
+            $return['NAV'] = array(
+                'COUNT' => count($productIds), // Если массив айдишников пустой - то нам и не пригодится это поле
+                'PAGE' => $nav['iNumPage'],
+            );
 
-                // В случае поиска - ручная пагинация
-                if ($sort['SEARCH'] == 'asc' && $nav) {
-                    $l = $nav['nPageSize'];
-                    $offset = ($nav['iNumPage'] - 1) * $l;
-                    $productIds = array_slice($productIds, $offset, $l);
-                    $nav = false;
-                }
+            // В случае поиска - ручная пагинация
+	        $manualSort = false;
+	        if ($sort['SEARCH'] == 'asc' && $nav && $productIds)
+	        {
+		        $l = $nav['nPageSize'];
+		        $offset = ($nav['iNumPage'] - 1) * $l;
+		        $productIds = array_slice($productIds, $offset, $l);
+		        $nav = false;
+		        $manualSort = true;
+		        $sort = array();
+	        }
 
-                if (!isset($sort['ID']))
-                    $sort['ID'] = 'DESC';
+	        if (!$manualSort && !isset($sort['ID']))
+		        $sort['ID'] = 'DESC';
 
-                // Товары
-                $iblockElement = new \CIBlockElement();
-                $rsItems = $iblockElement->GetList($sort, array(
-                    '=ID' => $productIds,
-                ), false, $nav, array(
-                    'ID', 'NAME', 'CODE',
-                    'PREVIEW_PICTURE',
-                ));
-                while ($item = $rsItems->GetNext()) {
-                    $product = self::getSimpleById($item['ID']);
+	        $filter = array(
+		        'IBLOCK_ID' => self::IBLOCK_ID,
+		        'ACTIVE' => 'Y',
+	        );
+	        if ($productIds)
+		        $filter['=ID'] = $productIds;
 
-                    $ipropValues = new ElementValues(self::IBLOCK_ID, $item['ID']);
-                    $iprop = $ipropValues->getValues();
+            // Товары
+            $iblockElement = new \CIBlockElement();
+            $rsItems = $iblockElement->GetList($sort, $filter, false, $nav, array(
+                'ID', 'NAME', 'CODE',
+                'PREVIEW_PICTURE',
+                'PROPERTY_DISTANCE',
+                'PROPERTY_ROOMS_COUNT',
+            ));
+            while ($item = $rsItems->GetNext()) {
+                $product = self::getSimpleById($item['ID']);
 
-                    $city = City::getById($product['CITY']);
-                    $detail = self::getDetailUrl($item, $city['CODE']);
+                $ipropValues = new ElementValues(self::IBLOCK_ID, $item['ID']);
+                $iprop = $ipropValues->getValues();
 
-                    $product['NAME'] = $item['NAME'];
-                    $product['PIC_ALT'] = $iprop['ELEMENT_PREVIEW_PICTURE_FILE_ALT'] ?
-                        $iprop['ELEMENT_PREVIEW_PICTURE_FILE_ALT'] : $item['NAME'];
-                    $product['PIC_TITLE'] = $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] ?
-                        $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] : $item['NAME'];
-                    $product['DETAIL_PAGE_URL'] = $detail;
-                    $product['PREVIEW_PICTURE'] = \CFile::GetPath($item['PREVIEW_PICTURE']);
+                $city = City::getById($product['CITY']);
+                $detail = self::getDetailUrl($item, $city['CODE']);
 
-                    $return['ITEMS'][$item['ID']] = $product;
-                }
+                $product['NAME'] = $item['NAME'];
+                $product['PIC_ALT'] = $iprop['ELEMENT_PREVIEW_PICTURE_FILE_ALT'] ?
+                    $iprop['ELEMENT_PREVIEW_PICTURE_FILE_ALT'] : $item['NAME'];
+                $product['PIC_TITLE'] = $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] ?
+                    $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] : $item['NAME'];
+                $product['DETAIL_PAGE_URL'] = $detail;
+                $product['PREVIEW_PICTURE'] = \CFile::GetPath($item['PREVIEW_PICTURE']);
+                $product['DISTANCE'] = $item['PROPERTY_DISTANCE_VALUE'];
+                $product['ROOMS_COUNT'] = $item['PROPERTY_ROOMS_COUNT_VALUE'];
 
-                // Восстановление сортировки для поиска
-                if ($sort['SEARCH'] == 'asc') {
-                    $items = array();
-                    foreach ($productIds as $id) {
-                        if ($return['ITEMS'][$id])
-                            $items[$id] = $return['ITEMS'][$id];
-                    }
-                    $return['ITEMS'] = $items;
-                }
+                $return['ITEMS'][$item['ID']] = $product;
             }
+
+            // Восстановление сортировки
+	        if ($manualSort)
+	        {
+		        $items = array();
+		        foreach ($productIds as $id)
+		        {
+			        if ($return['ITEMS'][$id])
+				        $items[$id] = $return['ITEMS'][$id];
+		        }
+		        $return['ITEMS'] = $items;
+	        }
 
             $extCache->endDataCache($return);
         }
@@ -488,7 +497,7 @@ class Sanatorium
             );
             $select = array(
                 'ID', 'NAME', 'CODE', 'PREVIEW_PICTURE', 'PREVIEW_TEXT', 'DETAIL_TEXT',
-                'PROPERTY_PHOTOS',
+                'PROPERTY_PHOTOS', 'PROPERTY_ADDRESS',
             );
             $rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
             if ($item = $rsItems->GetNext()) {
@@ -506,7 +515,7 @@ class Sanatorium
                 $file = new \CFile();
                 foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
                     $pictures[] = $file->GetPath($picId);
-                $offers = self::getRooms($item['ID']);
+                $offers = Room::getBySanatorium($item['ID']);
                 $return = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
@@ -517,6 +526,7 @@ class Sanatorium
                     'PREVIEW_PICTURE' => $file->GetPath($item['PREVIEW_PICTURE']),
                     'PREVIEW_TEXT' => $item['~PREVIEW_TEXT'],
                     'DETAIL_TEXT' => $item['~DETAIL_TEXT'],
+                    'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
                     'CITY' => $city,
                     'PICTURES' => $pictures,
                     'PRODUCT' => $product,
@@ -532,38 +542,7 @@ class Sanatorium
         return $return;
     }
 
-    /**
-     * Возвращает номера санатория
-     * @param $productId
-     * @return array
-     */
-    public static function getRooms($productId)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
-            'IBLOCK_ID' => self::IB_ROOMS,
-            'PROPERTY_SANATORIUM' => $productId,
-            'ACTIVE' => 'Y',
-        ), false, false, array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PROPERTY_PRICE',
-        ));
-        while ($item = $rsItems->Fetch()) {
-            $return[$item['ID']] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
-            );
-        }
-
-        return $return;
-    }
-
-    public static function getRoomsByPrice($sanatoriumId)
+    /*public static function getRoomsByPrice($sanatoriumId)
     {
         $return = array();
 
@@ -753,7 +732,7 @@ class Sanatorium
         }
 
         return $return;
-    }
+    }*/
 
     /**
      * Увеличивает счетчики просмотров товара
@@ -800,82 +779,59 @@ class Sanatorium
 
     public static function printTab($sanatorium, $tabCode)
     {
-        if ($tabCode == 'main') {
-            ?>
-            Содержимое первой вкладки<?
-        } elseif ($tabCode == 't2') {
-            ?>
-            Содержимое второй вкладки<?
-        } elseif ($tabCode == 't3') {
-            ?>
-            Содержимое третьей вкладки<?
-        } elseif ($tabCode == 't4') {
-            ?>
-            Содержимое четвертой вкладки<?
+        if ($tabCode == 'main')
+        {
+	        echo $sanatorium['DETAIL_TEXT'];
         }
-
+        elseif ($tabCode == 'rooms')
+        {
+			echo 'Номера';
+        }
     }
 
 	/**
 	 * Корректировка цены санатория (но минимальной цене номера)
+	 * Дополнительно подсчет количества типов номеров
 	 * @param $id
 	 * @param int $excludeRoomId
 	 */
 	public static function correctPrice($id, $excludeRoomId = 0)
 	{
-		$rooms = self::getRooms($id);
+		$rooms = Room::getBySanatorium($id);
 		$price = false;
+		$count = 0;
 		foreach ($rooms as $room)
 		{
 			if ($room['PRICE'] && $room['ID'] != $excludeRoomId)
+			{
 				if ($price === false || $price > $room['PRICE'])
 					$price = $room['PRICE'];
-		}
-		if ($price)
-		{
-			$iblockElement = new \CIBlockElement();
-			$rsItems = $iblockElement->GetList(array(), array(
-				'IBLOCK_ID' => self::IBLOCK_ID,
-				'ID' => $id,
-			), false, false, array(
-				'ID',
-				'PROPERTY_PRICE',
-			));
-			if ($item = $rsItems->Fetch())
-			{
-				$oldPrice = intval($item['PROPERTY_PRICE_VALUE']);
-				if ($price != $oldPrice)
-				{
-					$iblockElement->SetPropertyValuesEx($id, self::IBLOCK_ID, array(
-						'PRICE' => $price,
-					));
-				}
+				$count++;
 			}
 		}
-	}
 
-	/**
-	 * обработчик изменения элемента - нужно обновить цену санатория, если изменили номер
-	 * @param $id
-	 */
-	public static function onUpdateRoom($id) {
-		$rsProduct = \CIBlockElement::GetProperty(self::IB_ROOMS, $id, array(),
-			Array('ID' => self::SANATORIUM_PROP_ID)
-		);
-		if ($product = $rsProduct->Fetch())
-			self::correctPrice($product['VALUE']);
-	}
+		$iblockElement = new \CIBlockElement();
+		$rsItems = $iblockElement->GetList(array(), array(
+			'IBLOCK_ID' => self::IBLOCK_ID,
+			'ID' => $id,
+		), false, false, array(
+			'ID',
+			'PROPERTY_PRICE',
+			'PROPERTY_ROOMS_COUNT',
+		));
+		if ($item = $rsItems->Fetch())
+		{
+			$update = array();
+			$oldPrice = intval($item['PROPERTY_PRICE_VALUE']);
+			$oldCount = intval($item['PROPERTY_ROOMS_COUNT_VALUE']);
+			if ($price && $price != $oldPrice)
+				$update['PRICE'] = $price;
+			if ($count != $oldCount)
+				$update['ROOMS_COUNT'] = $count;
 
-	/**
-	 * обработчик удаление элемента - нужно обновить цену санатория, если удалили номер
-	 * @param $id
-	 */
-	public static function onDeleteRoom($id) {
-		$rsProduct = \CIBlockElement::GetProperty(self::IB_ROOMS, $id, array(),
-			Array('ID' => self::SANATORIUM_PROP_ID)
-		);
-		if ($product = $rsProduct->Fetch())
-			self::correctPrice($product['VALUE'], $id);
+			if ($update)
+				$iblockElement->SetPropertyValuesEx($id, self::IBLOCK_ID, $update);
+		}
 	}
 
     /**

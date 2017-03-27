@@ -2,6 +2,7 @@
 
 namespace Local\System;
 use Local\Catalog\Profiles;
+use Local\Catalog\Room;
 use Local\Catalog\Sanatorium;
 use Local\Sale\Package;
 use Local\Sale\Postals;
@@ -61,7 +62,7 @@ class Handlers
 			$APPLICATION->throwException("\nНельзя просто так взять и удалить санаторий");
 			return false;
 		}
-		elseif ($iblockId == Sanatorium::IB_ROOMS)
+		elseif ($iblockId == Room::IBLOCK_ID)
 		{
 			$APPLICATION->throwException("\nНельзя просто так взять и удалить номер санатория");
 			return false;
@@ -107,8 +108,8 @@ class Handlers
 	 * @param $arFields
 	 */
 	public static function elementAdd($arFields) {
-		if ($arFields['IBLOCK_ID'] == Sanatorium::IB_ROOMS)
-			Sanatorium::onUpdateRoom($arFields['ID']);
+		if ($arFields['IBLOCK_ID'] == Room::IBLOCK_ID)
+			Room::onUpdateRoom($arFields['ID']);
 	}
 
 	/**
@@ -119,8 +120,8 @@ class Handlers
 		// нужно обновить цену санатория (вдруг ее вручную кто-то поменял)
 		if ($arFields['IBLOCK_ID'] == Sanatorium::IBLOCK_ID)
 			Sanatorium::correctPrice($arFields['ID']);
-		elseif ($arFields['IBLOCK_ID'] == Sanatorium::IB_ROOMS)
-			Sanatorium::onUpdateRoom($arFields['ID']);
+		elseif ($arFields['IBLOCK_ID'] == Room::IBLOCK_ID)
+			Room::onUpdateRoom($arFields['ID']);
 	}
 
 	/**
@@ -130,8 +131,8 @@ class Handlers
 	public static function elementDelete($id) {
 		$iblockId = self::getIblockByElementId($id);
 		// нужно обновить цену санатория, если удалили номер
-		if ($iblockId == Sanatorium::IB_ROOMS)
-			Sanatorium::onDeleteRoom($id);
+		if ($iblockId == Room::IBLOCK_ID)
+			Room::onDeleteRoom($id);
 	}
 
 	/**

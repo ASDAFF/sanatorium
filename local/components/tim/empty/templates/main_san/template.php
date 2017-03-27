@@ -1,10 +1,9 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$data = \Local\Catalog\Sanatorium::getDataByFilter(array());
 $items = \Local\Catalog\Sanatorium::get(
 	array('PROPERTY_RATING' => 'desc'),
-	$data['IDS'],
+	array(),
 	array('nPageSize' => 12, 'iNumPage' => 1)
 );
 

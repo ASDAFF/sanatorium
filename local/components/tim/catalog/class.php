@@ -9,14 +9,14 @@ use Bitrix\Main\Loader;
 class TimCatalog extends \CBitrixComponent
 {
 	/**
-	 * Количество элементов на странице
-	 */
-	const PAGE_SIZE = 12;
-
-	/**
 	 * @var array параметры сортировки
 	 */
-	private $sortParams = array(
+	public $sortParams = array(
+		'search' => array(
+			'ORDER_DEFAULT' => 'asc',
+			'FIELD' => 'SEARCH',
+			'NAME' => 'релевантности',
+		),
 		'price' => array(
 			'ORDER_DEFAULT' => 'asc',
 			'FIELD' => 'PROPERTY_PRICE',
@@ -29,6 +29,12 @@ class TimCatalog extends \CBitrixComponent
 			'NAME' => 'рейтингу санатория',
 		),
 	);
+
+	/**
+	 * @var array Количество элементов на странице
+	 */
+	public $pageSizes = array(10, 25, 40);
+	private $defaultPageSize = 25;
 
 	/**
 	 * @var array параметры в урле
@@ -174,11 +180,10 @@ class TimCatalog extends \CBitrixComponent
 		}
 
 		$sortKey = $this->urlParams['sort'];
-		$sortOrder = $this->urlParams['order'];
-		$sortOrder = $sortOrder == 'asc' ? 'asc' : 'desc';
 		// Если задано непосредственно
 		if ($this->sortParams[$sortKey])
 		{
+			$sortOrder = $this->sortParams[$sortKey]['ORDER_DEFAULT'];
 			$this->sort = array(
 				'KEY' => $sortKey,
 				'ORDER' => $sortOrder,
@@ -218,10 +223,10 @@ class TimCatalog extends \CBitrixComponent
 		}
 		else
 		{
-			if ($sortKey == 'shows')
-				$sortQuery['SORT'] = $this->sort['ORDER'] == 'asc' ? 'desc' : 'asc';
 			$sortQuery[$this->sortParams[$this->sort['KEY']]['FIELD']] = $this->sort['ORDER'];
 			$this->sortParams[$this->sort['KEY']]['ORDER'] = $this->sort['ORDER'];
+			$this->sortParams[$this->sort['KEY']]['CURRENT'] = true;
+			unset($this->sortParams['search']);
 		}
 		$this->sort['QUERY'] = $sortQuery;
 
@@ -231,9 +236,16 @@ class TimCatalog extends \CBitrixComponent
 		$page = $this->urlParams['page'];
 		if (intval($page) <= 0)
 			$page = 1;
+		$size = intval($this->urlParams['size']);
+		if (in_array($size, $this->pageSizes))
+			$_SESSION['CATALOG']['SIZE'] = $size;
+		elseif ($_SESSION['CATALOG']['SIZE'] && in_array($_SESSION['CATALOG']['SIZE'], $this->pageSizes))
+			$size = $_SESSION['CATALOG']['SIZE'];
+		else
+			$size = $this->defaultPageSize;
 		$this->navParams = array(
 			'iNumPage' => $page,
-			'nPageSize' => self::PAGE_SIZE,
+			'nPageSize' => $size,
 		);
 	}
 

@@ -166,10 +166,10 @@ var Filters = {
 var Detail = {
 	productId: 0,
 	init: function() {
-		var tabs = $('#tabs');
+		var tabs = $('#content-menu-show');
 		if (tabs.length) {
 			this.productId = tabs.data('id');
-			tabs.find('ul#content-menu-show').find('a').click(function () {
+			tabs.find('a').click(function () {
 				var li = $(this).parent();
 				if (!li.is('.active')) {
 					var url = $(this).attr('href');
@@ -192,7 +192,7 @@ var Detail = {
 	},
 	showTab: function(a, li) {
 		var id = a.data('id');
-		var tab = $('#' + id);
+		var tab = $(id);
 		li.addClass('active').siblings('.active').removeClass('active');
 		tab.addClass('active').siblings('.active').removeClass('active');
 

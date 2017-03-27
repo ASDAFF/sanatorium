@@ -28,7 +28,8 @@ class City
 				__FUNCTION__,
 			),
 			static::CACHE_PATH . __FUNCTION__ . '/',
-			86400000
+			86400000,
+			false
 		);
 		if(!$refreshCache && $extCache->initCache()) {
 			$return = $extCache->getVars();

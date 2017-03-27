@@ -23,20 +23,55 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
             {
                 foreach ($filter['CUR_FILTERS'] as $item)
                 {
-                    ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>:<?
+                    ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>: <?
                 }
             }
             ?><?= $component->countTitle ?>
         </div>
         <div class="sort">
-            <b>Сортировать по:</b>
-            <span>цене путевки</span>
-            <a href="">рейтингу санатория</a>
+	        <b>Сортировать по:</b><?
+
+	        $url = $component->filter['URL'];
+	        if (strpos($url, '?') !== false)
+		        $urlPage = $url . '&sort=';
+	        else
+		        $urlPage = $url . '?sort=';
+			foreach ($component->sortParams as $key => $sort)
+			{
+				if ($sort['CURRENT'])
+				{
+					?>
+					<span><?= $sort['NAME'] ?></span><?
+				}
+				else
+				{
+					?>
+					<a href="<?= $urlPage ?><?= $key ?>"><?= $sort['NAME'] ?></a><?
+				}
+			}
+	        ?>
         </div>
-        <div class="number"><b>Показывать по:</b>
-            <a href="">10</a>
-            <span>25</span>
-            <a href="">40</a>
+	    <div class="number"><b>Показывать по:</b><?
+
+		    $url = $component->filter['URL'];
+		    if (strpos($url, '?') !== false)
+			    $urlPage = $url . '&size=';
+		    else
+			    $urlPage = $url . '?size=';
+			foreach ($component->pageSizes as $size)
+			{
+				if ($size == $component->navParams['nPageSize'])
+				{
+					?>
+					<span><?= $size ?></span><?
+				}
+				else
+				{
+					?>
+					<a href="<?= $urlPage ?><?= $size ?>"><?= $size ?></a><?
+				}
+			}
+		    ?>
             санаториев на странице
         </div>
     </div>
@@ -87,24 +122,35 @@ foreach ($products as $id => $item)
 			//
 			// Инфраструктура
 			//
-	        ?>
-            <b>Дополнительные параметры:</b>
-	        <div class="el-icon-list"><?
-		        $infra = \Local\Catalog\Infra::getAll();
-		        $cnt = 0;
-				foreach ($infra['ITEMS'] as $infraItem)
-				{
-					if (in_array($infraItem['ID'], $item['INFRA']))
-					{
-						?>
-						<li>
-							<i class="in-icon icon-<?= $infraItem['CODE'] ?>"></i>
-							<span><?= $infraItem['NAME'] ?></span>
-						</li><?
-					}
-				}
+	        if ($item['INFRA'])
+	        {
 		        ?>
-            </div>
+		        <b>Дополнительные параметры:</b>
+		        <div class="el-icon-list"><?
+			        $infra = \Local\Catalog\Infra::getAll();
+			        $cnt = 0;
+			        foreach ($infra['ITEMS'] as $infraItem)
+			        {
+				        if (in_array($infraItem['ID'], $item['INFRA']))
+				        {
+					        $name = $infraItem['NAME'];
+					        if ($infraItem['CODE'] == 'buvet' && $item['DISTANCE'])
+						        $name = 'Расстояние до бювета: ' . $item['DISTANCE'];
+
+					        ?>
+					        <li>
+					        <i class="in-icon icon-<?= $infraItem['CODE'] ?>"></i>
+					        <span><?= $name ?></span>
+					        </li><?
+					        $cnt++;
+					        if ($cnt >= 4)
+						        break;
+				        }
+			        }
+			        ?>
+		        </div><?
+	        }
+		    ?>
         </div>
         <div class="inf">
             <div class="star"></div>
@@ -152,12 +198,21 @@ foreach ($products as $id => $item)
                     <input id="star-10" type="radio" name="reviewStars">
                     <label title="bad" for="star-10"></label>
                 </div>
-                <span>10 отзывов</span>
-                <b>Доступно 5 видов номеров</b>
+	            <span>10 отзывов</span><?
+
+	            $cnt = $item['ROOMS_COUNT'];
+	            if ($cnt)
+	            {
+		            $cnt .= pluralize($cnt, array(' вид', ' вида', ' видов'));
+		            ?>
+		            <b>Доступно <?= $cnt ?> номеров</b><?
+	            }
+
+	            ?>
             </div>
 
             <div class="money">
-                от <b><?= $rooms[0]['PRICE'] ?></b> руб
+                от <b><?= $item['PRICE'] ?></b> руб
             </div>
             <span>за номер в сутки</span>
             <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a>
@@ -173,7 +228,7 @@ foreach ($products as $id => $item)
 // Постраничка
 //
 $iCur = $component->products['NAV']['PAGE'];
-$iEnd = ceil($component->products['NAV']['COUNT'] / $component::PAGE_SIZE);
+$iEnd = ceil($component->products['NAV']['COUNT'] / $component->navParams['nPageSize']);
 
 if ($iEnd > 1) {
     $iStart = $iCur - 2;

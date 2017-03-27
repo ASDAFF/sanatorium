@@ -7,6 +7,7 @@ CModule::AddAutoloadClasses(
 		'Local\\System\\UserTypeNYesNo' => '/local/lib/System/UserTypeNYesNo.php',
 		'Local\\System\\Handlers' => '/local/lib/System/Handlers.php',
 		'Local\\Catalog\\Sanatorium' => '/local/lib/Catalog/Sanatorium.php',
+		'Local\\Catalog\\Room' => '/local/lib/Catalog/Room.php',
 		'Local\\Catalog\\Flags' => '/local/lib/Catalog/Flags.php',
 		'Local\\Catalog\\Filter' => '/local/lib/Catalog/Filter.php',
 		'Local\\Catalog\\City' => '/local/lib/Catalog/City.php',

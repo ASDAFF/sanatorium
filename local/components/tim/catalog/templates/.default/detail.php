@@ -9,13 +9,28 @@
 
 $product = $component->product;
 $tabCode = $component->tabCode;
+if (!$tabCode)
+	$tabCode = 'main';
 
-$pr = \Local\Catalog\Profiles::getList($product["PRODUCT"]['PROFILES']);
+$tabs = array(
+	'main' => 'О санатории',
+	'rooms' => 'Номера',
+	'profiles' => 'Профили лечения',
+	'programms' => 'Программы лечения',
+	'infra' => 'Инфраструктура',
+	'feed' => 'Питание',
+	'child' => 'Детям',
+	'video' => 'Видео',
+	'action' => 'Акции',
+	'docs' => 'Документы для заезда',
+);
+
+/*$pr = \Local\Catalog\Profiles::getList($product["PRODUCT"]['PROFILES']);
 $info = \Local\Catalog\Sanatorium::getInfo("", $product["PRODUCT"]['INFRASTRUCTURES']);
 $program = \Local\Catalog\Sanatorium::getParam($product["PRODUCT"]['PROGRAMMS']);
 $shares = \Local\Catalog\Sanatorium::getShares($product["PRODUCT"]['SHARES']);
 $ro = \Local\Catalog\Sanatorium::getRo($product["PRODUCT"]['PRICES']);
-$rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES']);
+$rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES']);*/
 //debugmessage($product);
 ?>
 
@@ -39,45 +54,91 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                     <label title="bad" for="star-0"></label>
                 </div>
                 <div>
-                    Цена от <b><?=$rooms[0]['PRICE']?></b> руб<br><span>за номер в сутки</span>
+                    Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб<br><span>за номер в сутки</span>
                 </div>
             </div>
             <div id="cron-crox">
-                <span>Главная</span> -
-                <span><?= $product["CITY"]["NAME"] ?></span> -
-                <a href="<?= $product['DETAIL_PAGE_URL'] ?>"><?= $product["NAME"] ?></a>
+	            <a href="/">Главная</a> -
+	            <a href="/sanatorium/">Санатории</a> -
+	            <a href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><?= $product['CITY']['NAME'] ?></a> -
+                <span><?= $product['NAME'] ?></span>
             </div>
-            <div id="cron-title"><h1><?= $product["NAME"] ?></h1></div>
+            <div id="cron-title"><h1><?= $product['NAME'] ?></h1></div>
         </div>
     </div>
     <div class="engBox-body page-card">
         <div class="engBox-center">
             <div id="content">
-                <div id="content-top"><?=$product["PRODUCT"]['ADDRESS']?></div>
+                <div id="content-top"><?= $product['ADDRESS'] ?></div>
 
-                <!-- Place somewhere in the <body> of your page -->
                 <div id="slider" class="flexslider">
-                    <ul class="slides">
-
-                        <? foreach ($product["PICTURES"] as $value): ?>
-                            <li>
-                                <img src="<?= $value ?>"/>
-                            </li>
-                        <? endforeach ?>
-
+                    <ul class="slides"><?
+	                    foreach ($product['PICTURES'] as $value)
+	                    {
+		                    ?>
+		                    <li><img src="<?= $value ?>" /></li><?
+	                    }
+	                    ?>
                     </ul>
                 </div>
                 <div id="carousel" class="flexslider carousel">
-                    <ul class="slides">
-
-                        <? foreach ($product["PICTURES"] as $value): ?>
-                            <li>
-                                <img src="<?= $value ?>"/>
-                            </li>
-                        <? endforeach ?>
-
+                    <ul class="slides"><?
+	                    foreach ($product['PICTURES'] as $value)
+	                    {
+		                    ?>
+		                    <li><img src="<?= $value ?>" /></li><?
+	                    }
+	                    ?>
                     </ul>
-                </div>
+                </div><?
+
+				//
+				// Заголовки табов
+				//
+				?>
+                <div id="tabs" class="content-menu content-menu-buttons-box">
+	                <ul id="content-menu-show" class="content-menu-buttons" data-id="<?= $product['ID'] ?>"><?
+
+						foreach ($tabs as $code => $name)
+						{
+							$class = '';
+							if ($code == $tabCode)
+								$class = ' class="active"';
+							$href = $product['DETAIL_PAGE_URL'];
+							if ($code != 'main')
+								$href .= $code . '/';
+							?>
+							<li<?= $class?>><a id="tab-<?= $code ?>" data-id="#<?= $code ?>" href="<?= $href ?>"><?= $name ?></a></li><?
+						}
+						?>
+					</ul>
+	                <div class="content-border"></div><?
+
+					//
+					// Содержание табов
+					//
+					?>
+					<div id="tabs-content"><?
+
+						foreach ($tabs as $code => $name)
+						{
+							$class = $code == $tabCode ? ' active' : ' empty';
+							?>
+							<div class="tab-pane<?= $class ?>" id="<?= $code ?>"><?
+
+								if ($code == $tabCode)
+									\Local\Catalog\Sanatorium::printTab($product, $code);
+
+								?>
+							</div><?
+						}
+
+					?>
+					</div>
+				</div><?
+
+                /*
+                ?>
                 <div id="tabs" class="content-menu content-menu-buttons-box">
                     <ul id="content-menu-show" class="content-menu-buttons">
                         <li><a href="#tabs-1">О санатории</a></li>
@@ -141,11 +202,11 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                                                     </div>
                                                     <!--<div id="carousel-popap-1" class="flexslider carousel">
                                                         <ul class="slides">
-															<?/* foreach ($item["MORE_PHOTO"] as $value): ?>
+															<? foreach ($item["MORE_PHOTO"] as $value): ?>
                                                                 <li>
                                                                     <img src="<?= \CFile::GetPath($value) ?>"/>
                                                                 </li>
-															<? endforeach*/ ?>
+															<? endforeach ?>
 
 
                                                         </ul>
@@ -343,7 +404,9 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                             санаторно-курортная карта в санатории, не продлеваются и не компенсируются. </p>
                         <a class="docs-link" href="/voucher.docx" download>Ваучер (обменная путевка)</a>
                     </div>
-                </div>
+                </div><?*/
+
+                ?>
             </div>
         </div>
         <div class="engBox-right card-form">
@@ -462,66 +525,15 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
             });
         };
     </script>
-<? /*$tabs = array(
-	'main' => 'Главная',
-	't2' => 'Еще вкладка',
-	't3' => 'Третья',
-	't4' => 'Четвертая',
-);
+<?
 
-//
-// Заголовки табов
-//
-?>
-<ul id="tabs" data-id="<?= $product['ID'] ?>"><?
-
-	foreach ($tabs as $code => $name)
-	{
-		$class = '';
-		if ($code == $tabCode)
-			$class = ' class="active"';
-		$href = $product['DETAIL_PAGE_URL'];
-		if ($code != 'main')
-			$href .= $code . '/';
-		?>
-		<li<?= $class?>><a id="tab-<?= $code ?>" data-id="#<?= $code ?>" href="<?= $href ?>"><?= $name ?></a></li><?
-	}
-	?>
-</ul><?
-
-//
-// Содержание табов
-//
-?>
-<div id="tabs-content"><?
-
-	foreach ($tabs as $code => $name)
-	{
-		$class = $code == $tabCode ? ' active' : ' empty';
-		?>
-		<div class="tab-pane<?= $class ?>" id="<?= $code ?>"><?
-
-			if ($code == $tabCode)
-				\Local\Catalog\Sanatorium::printTab($product, $code);
-
-			?>
-		</div><?
-	}
-
-?>
-</div><?
-
-
-debugmessage($product);
-
-
+/*
 $APPLICATION->AddChainItem('Санатории', '/sanatorium/');
 $APPLICATION->AddChainItem($product['CITY']['NAME'], '/sanatorium/' . $product['CITY']['CODE'] . '/');
-$APPLICATION->AddChainItem($product['NAME']);
+$APPLICATION->AddChainItem($product['NAME']);*/
 
 $APPLICATION->SetTitle($product['NAME']);
 if ($product['TITLE'])
 	$APPLICATION->SetPageProperty('title', $product['TITLE']);
 if ($product['DESCRIPTION'])
 	$APPLICATION->SetPageProperty('description', $product['DESCRIPTION']);
-*/
