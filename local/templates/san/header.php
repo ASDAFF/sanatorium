@@ -14,7 +14,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 	 CJSCore::init(array('jquery2'));
 
-    $assets->addJs(SITE_DIR . 'js/jquery-ui.js');
+	$assets->addJs(SITE_DIR . 'js/jquery-ui/jquery-ui.min.js');
     $assets->addJs(SITE_DIR . 'js/jquery.flexslider-min.js');
     $assets->addJs(SITE_DIR . 'js/fancybox/jquery.fancybox.js');
 	$assets->addJs(SITE_DIR . 'js/owl/owl.carousel.min.js');
@@ -22,15 +22,14 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
     $assets->addJs(SITE_DIR . 'js/scripts.js');
     $assets->addJs(SITE_DIR . 'js/catalog.js');
-//$assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
-    $assets->addCss(SITE_DIR . 'css/style.css');
-    $assets->addCss(SITE_DIR . 'css/media.css');
-    $assets->addCss(SITE_DIR . 'js/jquery-ui.css');
-    $assets->addCss(SITE_DIR . 'js/jquery-ui.structure.css');
-    $assets->addCss(SITE_DIR . 'js/jquery-ui.theme.css');
+
+    $assets->addCss(SITE_DIR . 'js/jquery-ui/jquery-ui.min.css');
     $assets->addCss(SITE_DIR . 'css/flexslider.css');
     $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
 	$assets->addCss(SITE_DIR . 'js/owl/owl.carousel.css');
+
+	$assets->addCss(SITE_DIR . 'css/style.css');
+    $assets->addCss(SITE_DIR . 'css/media.css');
 	
 	$APPLICATION->ShowHead();
     ?>

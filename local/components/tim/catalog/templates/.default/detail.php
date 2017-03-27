@@ -56,27 +56,26 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                 <div id="content-top"><?=$product["PRODUCT"]['ADDRESS']?></div>
 
                 <!-- Place somewhere in the <body> of your page -->
-                <div id="slider" class="flexslider">
-                    <ul class="slides">
+                <div id="sync1" class="owl-carousel">
 
                         <? foreach ($product["PICTURES"] as $value): ?>
-                            <li>
+                            <div class="item">
                                 <img src="<?= $value ?>"/>
-                            </li>
+                            </div>
                         <? endforeach ?>
 
-                    </ul>
+
                 </div>
-                <div id="carousel" class="flexslider carousel">
-                    <ul class="slides">
+               <div id="sync2" class="owl-carousel">
+
 
                         <? foreach ($product["PICTURES"] as $value): ?>
-                            <li>
+                            <div class="item">
                                 <img src="<?= $value ?>"/>
-                            </li>
+                            </div>
                         <? endforeach ?>
 
-                    </ul>
+
                 </div>
                 <div id="tabs" class="content-menu content-menu-buttons-box">
                     <ul id="content-menu-show" class="content-menu-buttons">
