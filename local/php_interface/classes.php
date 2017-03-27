@@ -12,6 +12,7 @@ CModule::AddAutoloadClasses(
 		'Local\\Catalog\\Filter' => '/local/lib/Catalog/Filter.php',
 		'Local\\Catalog\\City' => '/local/lib/Catalog/City.php',
 		'Local\\Catalog\\Profiles' => '/local/lib/Catalog/Profiles.php',
+		'Local\\Catalog\\Programms' => '/local/lib/Catalog/Programms.php',
 		'Local\\Catalog\\Seo' => '/local/lib/Catalog/Seo.php',
 		'Local\\Catalog\\Sitemap' => '/local/lib/Catalog/Sitemap.php',
         'Local\\Catalog\\Reviews' => '/local/lib/Catalog/Reviews.php',

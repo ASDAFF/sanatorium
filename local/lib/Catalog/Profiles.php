@@ -45,6 +45,7 @@ class Profiles
 				'ACTIVE' => 'Y',
 			), false, false, array(
 				'ID', 'NAME', 'CODE',
+			    'PROPERTY_SUBITEMS',
 			));
 			while ($item = $rsItems->Fetch())
 			{
@@ -52,6 +53,7 @@ class Profiles
 					'ID' => $item['ID'],
 					'NAME' => $item['NAME'],
 					'CODE' => $item['CODE'],
+				    'SUBITEMS' => $item['PROPERTY_SUBITEMS_VALUE'],
 				);
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
@@ -73,33 +75,6 @@ class Profiles
 		$all = self::getAll();
 		return $all['ITEMS'][$id];
 	}
-
-    /**
-     * Возвращает профиль лечения по ID элемента
-     * @param $id
-     * @return mixed
-     */
-    public static function getList($id) {
-
-        $return = array();
-
-
-        $arSelect = Array("ID", "NAME", "PREVIEW_TEXT","DETAIL_PICTURE");
-
-        $arFilter = Array("IBLOCK_ID"=>self::IBLOCK_ID, "ID"=>$id);
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array(), $arFilter, false, false, $arSelect);
-        while($ob = $rsItems->GetNext()) {
-            array_push($return, array(
-                'ID' => $ob['ID'],
-                'NAME' => $ob['NAME'],
-                'PREVIEW_TEXT' => $ob['PREVIEW_TEXT'],
-                'DETAIL_PICTURE' => \CFile::GetPath($ob['DETAIL_PICTURE']),
-            ));
-        }
-        return $return;
-    }
-
 
     /**
 	 * Возвращает ID профиля по коду

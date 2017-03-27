@@ -497,10 +497,16 @@ class Sanatorium
             );
             $select = array(
                 'ID', 'NAME', 'CODE', 'PREVIEW_PICTURE', 'PREVIEW_TEXT', 'DETAIL_TEXT',
-                'PROPERTY_PHOTOS', 'PROPERTY_ADDRESS',
+                'PROPERTY_PHOTOS',
+                'PROPERTY_ADDRESS',
+                'PROPERTY_PROGRAMMS',
+                'PROPERTY_FEEDING_TAB',
+                'PROPERTY_CHILD_TAB',
+                'PROPERTY_VIDEO',
             );
             $rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
-            if ($item = $rsItems->GetNext()) {
+            if ($item = $rsItems->GetNext())
+            {
                 $product = self::getSimpleById($item['ID']);
 
                 $city = City::getById($product['CITY']);
@@ -517,6 +523,7 @@ class Sanatorium
 	            foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
                     $pictures[] = $file->GetPath($picId);
                 $rooms = Room::getBySanatorium($item['ID']);
+	            $programms = Programms::getByIds($item['PROPERTY_PROGRAMMS_VALUE']);
                 $return = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
@@ -527,14 +534,19 @@ class Sanatorium
                     'PREVIEW_TEXT' => $item['~PREVIEW_TEXT'],
                     'DETAIL_TEXT' => $item['~DETAIL_TEXT'],
                     'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
+                    'FEEDING_TAB' => $item['~PROPERTY_FEEDING_TAB_VALUE']['TEXT'],
+                    'CHILD_TAB' => $item['~PROPERTY_CHILD_TAB_VALUE']['TEXT'],
+                    'VIDEO' => $item['~PROPERTY_VIDEO_VALUE'],
                     'CITY' => $city,
                     'PICTURES' => $pictures,
                     'PRODUCT' => $product,
                     'ROOMS' => $rooms,
+                    'PROGRAMMS' => $programms,
                 );
 
                 $extCache->endDataCache($return);
-            } else
+            }
+            else
                 $extCache->abortDataCache();
 
         }
@@ -788,22 +800,137 @@ class Sanatorium
 			foreach ($sanatorium['ROOMS'] as $room)
 				Room::printRoom($room);
         }
+        elseif ($tabCode == 'profiles')
+        {
+	        ?>
+	        <div class="programs"><?
+	        foreach ($sanatorium['PRODUCT']['PROFILES'] as $pr)
+	        {
+		        $profile = Profiles::getById($pr);
+		        ?>
+		        <div class="programs-item">
+			        <div class="programs-title"><span class="icon icon-<?= $profile['CODE']
+				        ?>"></span><span><?= $profile['NAME'] ?></span></div>
+		            <ul class="programs-list"><?
+
+			            foreach ($profile['SUBITEMS'] as $item)
+			            {
+				            ?>
+				            <li><?= $item ?></li><?
+			            }
+				        ?>
+			        </ul>
+		        </div><?
+	        }
+	        ?>
+	        </div><?
+        }
         elseif ($tabCode == 'programms')
         {
 			?>
-	        <div class="programs"><?
-	        foreach ($pr as $value): ?>
-	        <div class="programs-item">
-		        <div class="programs-title"><span
-				        class="icon" style="background: url(<?=$value['DETAIL_PICTURE']?>) no-repeat 50% 50%;"></span><span><?= $value["NAME"] ?></span></div>
-		        <ul class="programs-list">
-			        <?= $value["PREVIEW_TEXT"] ?>
-		        </ul>
-	        </div>
-        <? endforeach ?>
-
+	        <div class="posts"><?
+		        foreach ($sanatorium['PROGRAMMS'] as $pr)
+		        {
+			        ?>
+			        <div class="item">
+				        <div class="title"><?= $pr['NAME'] ?></div>
+				        <div class="text preview-text">
+					        <div class="preview-text-inner"><?= $pr['PREVIEW_TEXT'] ?></div>
+					        <a href="#">Подробнее</a>
+				        </div>
+				        <div class="text okno detail-text hidden" style="display: none;">
+					        <?= $pr['DETAIL_TEXT'] ?>
+				        </div>
+			        </div><?
+		        }
+		        ?>
 	        </div><?
         }
+        elseif ($tabCode == 'infra')
+        {
+	        $items = array();
+	        $i = 0;
+	        foreach ($sanatorium['PRODUCT']['INFRA'] as $infra)
+	        {
+		        $item = Infra::getById($infra);
+		        if (!$item)
+		            continue;
+
+		        $name = $item['NAME'];
+		        if ($item['CODE'] == 'buvet' && $sanatorium['DISTANCE'])
+			        $name = 'Расстояние до бювета: ' . $sanatorium['DISTANCE'];
+
+
+		        $k = $i % 3;
+		        $items[$k][$item['CODE']] = $name;
+		        $i++;
+	        }
+
+	        ?>
+	        <h2>Инфраструктура</h2>
+	        <div class="infra-box"><?
+		        foreach ($items as $column)
+		        {
+			        ?>
+			        <ul class="infra-list"><?
+				        foreach ($column as $code => $name)
+				        {
+					        ?>
+					        <li><i class="in-icon icon-<?= $code ?>"></i><span><?= $name ?></span></li><?
+				        }
+			            ?>
+			        </ul><?
+		        }
+				?>
+	        </div><?
+        }
+        elseif ($tabCode == 'feed')
+        {
+	        echo $sanatorium['FEEDING_TAB'];
+        }
+        elseif ($tabCode == 'child')
+        {
+	        echo $sanatorium['CHILD_TAB'];
+        }
+        elseif ($tabCode == 'video')
+        {
+			foreach ($sanatorium['VIDEO'] as $video)
+			{
+				?>
+				<div class="card-video"><?= $video ?></div><?
+			}
+        }
+        elseif ($tabCode == 'action')
+        {
+
+        }
+        elseif ($tabCode == 'docs')
+        {
+	        ?>
+	        <h2>Документы, необходимые для заезда в санаторий.</h2>
+	        <h3>Взрослому</h3>
+	        <ul>
+		        <li>путевка на санаторно-курортное лечение;</li>
+		        <li>паспорт;</li>
+		        <li>полис обязательного медицинского страхования;</li>
+		        <li>санаторно-курортная карта (учетная форма 072/у, утвержденная Приказом №834н);</li>
+		        <li>страховое свидетельство обязательного пенсионного страхования (при наличии);</li>
+		        <li> договор (полис) добровольного медицинского страхования (при наличии).</li>
+	        </ul>
+	        <h3>Ребенку</h3>
+	        <ul>
+		        <li>путевка на санаторно-курортное лечение;</li>
+		        <li>свидетельство о рождении (для детей в возрасте до 14 лет);</li>
+		        <li>полис обязательного медицинского страхования;</li>
+		        <li>справка врача-педиатра или врача-эпидемиолога об отсутствии контакта с больными инфекционными заболеваниями</li>
+		        <li>сертификат прививок;</li>
+		        <li>санаторно-курортная карта ребенка (учетная форма 076/у, утвержденная Приказом №834н).</li>
+	        </ul>
+	        <p>До заезда в санаторий, необходимо заранее проконсультироваться с врачом и оформить санаторно-курортную карту, это сэкономит Ваше время и обеспечит возможность начать курс лечения в соответствии со сроком пребывания по путевке.</p>
+	        <p>При отсутствии санаторно-курортной карты при заезде в санаторий, у гостей есть возможность оформить ее за дополнительную плату. Срок оформления санаторно-курортной карты в этом случае может занимать от 1 до 3 рабочих дней. Дни по путевке, в течение которых оформляется санаторно-курортная карта в санатории, не продлеваются и не компенсируются. </p>
+	        <a class="docs-link" href="/upload/voucher.docx" download>Ваучер (обменная путевка)</a><?
+        }
+
     }
 
 	/**

@@ -68,8 +68,6 @@ $(function () {
 			pull_2.text('развернуть');
 		}
 	});
-	//$("#tabs").tabs();
-	$("#tabs2").tabs();
 	$(".various").fancybox({
 		maxWidth: 800,
 		maxHeight: 600,

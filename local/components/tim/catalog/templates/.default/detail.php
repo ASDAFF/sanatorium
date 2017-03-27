@@ -82,25 +82,21 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
 	        // Картинки
 	        //
             ?>
-            <div id="sync1" class="owl-carousel">
-                <ul class="slides"><?
-                    foreach ($product['PICTURES'] as $value)
-                    {
-	                    ?>
-	                    <li><img src="<?= $value ?>" /></li><?
-                    }
+            <div id="sync1" class="owl-carousel"><?
+                foreach ($product['PICTURES'] as $value)
+                {
                     ?>
-                </ul>
+                    <div class="item"><img src="<?= $value ?>" /></div><?
+                }
+                ?>
             </div>
-            <div id="sync2" class="owl-carousel">
-                <ul class="slides"><?
-                    foreach ($product['PICTURES'] as $value)
-                    {
-	                    ?>
-	                    <li><img src="<?= $value ?>" /></li><?
-                    }
+            <div id="sync2" class="owl-carousel"><?
+                foreach ($product['PICTURES'] as $value)
+                {
                     ?>
-                </ul>
+                    <div class="item"><img src="<?= $value ?>" /></div><?
+                }
+                ?>
             </div><?
 
 			//
@@ -154,125 +150,7 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
 
 				?>
 				</div>
-			</div><?
-
-                /*
-
-                    <div id="tabs-3">
-                        <div class="programs">
-                            <? foreach ($pr as $value): ?>
-                                <div class="programs-item">
-                                    <div class="programs-title"><span
-                                            class="icon" style="background: url(<?=$value['DETAIL_PICTURE']?>) no-repeat 50% 50%;"></span><span><?= $value["NAME"] ?></span></div>
-                                    <ul class="programs-list">
-                                        <?= $value["PREVIEW_TEXT"] ?>
-                                    </ul>
-                                </div>
-                            <? endforeach ?>
-
-                        </div>
-
-                    </div>
-                    <div id="tabs-4">
-                        <div class="posts">
-
-                            <? foreach ($program as $value): ?>
-                                <div class="item">
-                                    <div class="title"><?= $value["NAME"] ?></div>
-                                    <div class="text preview-text">
-                                        <div class="preview-text-inner">
-                                            <?= $value["PREVIEW_TEXT"] ?>
-                                        </div>
-                                        <a href="#">Подробнее</a>
-                                    </div>
-                                    <div class="text okno detail-text hidden" style="display: none;">
-                                        <h3 class="title"><?= $value["NAME"] ?></h3>
-                                        <?= $value["DETAIL_TEXT"] ?>
-                                    </div>
-                                </div>
-                            <? endforeach ?>
-
-                        </div>
-
-
-                    </div>
-                    <div id="tabs-5">
-                        <h2>Инфраструктура</h2>
-                        <div class="infra-box">
-                            <ul class="infra-list">
-                                <? foreach ($info as $value): ?>
-                                    <li><i class="in-icon"><img
-                                                src="<?= $value['PREVIEW_PICTURE'] ?>"></i><span><?= $value['NAME'] ?></span>
-                                    </li>
-                                <? endforeach ?>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div id="tabs-6">
-                        <?= $product["PRODUCT"]["FOOD1"]["TEXT"] ?>
-                    </div>
-                    <div id="tabs-7">
-                        <?= $product["PRODUCT"]["FOR_CHILD"]["TEXT"] ?>
-                    </div>
-                    <div id="tabs-8">
-
-                        <? foreach ($product["PRODUCT"]["VIDEO"] as $value): ?>
-                            <div class="card-video">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $value ?>"
-                                        frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        <? endforeach ?>
-                    </div>
-                    <div id="tabs-9">
-                        <div class="tab-actions">
-
-                            <? foreach ($shares as $value): ?>
-                                <div class="tab-actions-item">
-                                    <div class="tab-actions-title"><?= $value["NAME"] ?></div>
-                                    <div class="tab-actions-time"><b>Период
-                                            действия:</b> <?= $value["PROPERTY_PERIOD_VALUE"] ?></div>
-                                    <?= $value["DETAIL_TEXT"] ?>
-                                </div>
-                            <? endforeach ?>
-
-                        </div>
-                    </div>
-                    <div id="tabs-10">
-                        <h2>Документы, необходимые для заезда в санаторий. </h2>
-                        <h3>Взрослому</h3>
-                        <ul>
-                            <li>путевка на санаторно-курортное лечение;</li>
-                            <li>паспорт;</li>
-                            <li>полис обязательного медицинского страхования;</li>
-                            <li>санаторно-курортная карта (учетная форма 072/у, утвержденная Приказом №834н);</li>
-                            <li>страховое свидетельство обязательного пенсионного страхования (при наличии);</li>
-                            <li> договор (полис) добровольного медицинского страхования (при наличии).</li>
-                        </ul>
-                        <h3>Ребенку</h3>
-                        <ul>
-                            <li>путевка на санаторно-курортное лечение;</li>
-                            <li>свидетельство о рождении (для детей в возрасте до 14 лет);</li>
-                            <li>полис обязательного медицинского страхования;</li>
-                            <li>справка врача-педиатра или врача-эпидемиолога об отсутствии контакта с больными
-                                инфекционными заболеваниями
-                            </li>
-                            <li>сертификат прививок;</li>
-                            <li>санаторно-курортная карта ребенка (учетная форма 076/у, утвержденная Приказом №834н).
-                            </li>
-                        </ul>
-                        <p>До заезда в санаторий, необходимо заранее проконсультироваться с врачом и оформить
-                            санаторно-курортную карту, это сэкономит Ваше время и обеспечит возможность начать курс
-                            лечения в соответствии со сроком пребывания по путевке.</p>
-                        <p>При отсутствии санаторно-курортной карты при заезде в санаторий, у гостей есть возможность
-                            оформить ее за дополнительную плату. Срок оформления санаторно-курортной карты в этом случае
-                            может занимать от 1 до 3 рабочих дней. Дни по путевке, в течение которых оформляется
-                            санаторно-курортная карта в санатории, не продлеваются и не компенсируются. </p>
-                        <a class="docs-link" href="/voucher.docx" download>Ваучер (обменная путевка)</a>
-                    </div>
-                </div><?*/
-
-                ?>
+			</div>
         </div>
         </div>
         <div class="engBox-right card-form">
@@ -324,45 +202,6 @@ $rooms = \Local\Catalog\Sanatorium::getMinPriceRooms($product["PRODUCT"]['PRICES
                         <input type="submit" id="form_btn" class="btn" value="ЗАБРОНИРОВАТЬ">
                     </div>
                 </form>
-                <div id="bronx" class="okno" style="display: none">
-                    <?/*<div class="title">Оздоровительная санаторно-курортная путевка</div>
-                    <p>Санаторно-курортная путевка с классическим набором лечебно-диагностических процедур при различных
-                        заболевания.</p>
-                    <p> Показания: заболевания органов пищеварения и нарушение обмена веществ (в т.ч. сахарный диабет и
-                        ожирение), заболевания опорно-двигательного аппарата, нервной системы, гинекологические и
-                        урологические заболевания</p>
-                    <p> Ожидаемые результаты: снятие физического и эмоционального стресса; повышение работоспособности;
-                        улучшение обмена веществ; улучшение эмоционального состояния, прилив жизненных сил.</p>
-                    <p> Продолжительность программы - от 10 дней.</p>
-                    <div class="title">В стоимоимость путевки входит</div>
-                    <div id="tabs2" class="content-menu" style="background: none!important;">
-                        <ul id="okno-menu-show">
-                            <li><a href="#tabs2-1">Лечебные процедуры</a></li>
-                            <li><a href="#tabs2-2">Консультация врачей</a></li>
-                            <li><a href="#tabs2-3">Питание</a></li>
-                            <li><a href="#tabs2-4">Проживание</a></li>
-                        </ul>
-                        <div id="tabs2-1">
-                            <p>Санаторно-курортная путевка с классическим набором лечебно-диагностических процедур при
-                                различных заболевания.</p>
-                            <p> Показания: заболевания органов пищеварения и нарушение обмена веществ (в т.ч. сахарный
-                                диабет и ожирение), заболевания опорно-двигательного аппарата, нервной системы,
-                                гинекологические и урологические заболевания</p>
-                        </div>
-                        <div id="tabs2-2">
-                            текст2
-                        </div>
-                        <div id="tabs2-3">
-                            текст3
-                        </div>
-                        <div id="tabs2-4">
-                            текст4
-                        </div>
-                        <input type="button"
-                               class="btn-okno various ui-widget ui-controlgroup-item ui-button ui-corner-right"
-                               href="#bron" value="ЗАБРОНИРОВАТЬ" role="button">
-                    </div>*/?>
-                </div>
             </div>
         </div>
         <div class="engBox-right">
