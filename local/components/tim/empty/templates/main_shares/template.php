@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$shares = \Local\Catalog\Shares::getAll(array(), array(), array());
+$shares = \Local\Common\Shares::getAll(array(), array(), array());
 ?>
 <div id="right-ban">
     <? foreach ($shares as $item) { ?>

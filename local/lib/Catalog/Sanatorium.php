@@ -513,9 +513,10 @@ class Sanatorium
                     'Шаблон для описания ' . $item['NAME'] . '. (шаблон)';
                 $pictures = array();
                 $file = new \CFile();
-                foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
+	            $pictures[] = $file->GetPath($item['PREVIEW_PICTURE']);
+	            foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
                     $pictures[] = $file->GetPath($picId);
-                $offers = Room::getBySanatorium($item['ID']);
+                $rooms = Room::getBySanatorium($item['ID']);
                 $return = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
@@ -523,14 +524,13 @@ class Sanatorium
                     'DESCRIPTION' => $desc,
                     'CODE' => $item['CODE'],
                     'DETAIL_PAGE_URL' => $detail,
-                    'PREVIEW_PICTURE' => $file->GetPath($item['PREVIEW_PICTURE']),
                     'PREVIEW_TEXT' => $item['~PREVIEW_TEXT'],
                     'DETAIL_TEXT' => $item['~DETAIL_TEXT'],
                     'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
                     'CITY' => $city,
                     'PICTURES' => $pictures,
                     'PRODUCT' => $product,
-                    'OFFERS' => $offers,
+                    'ROOMS' => $rooms,
                 );
 
                 $extCache->endDataCache($return);
@@ -785,7 +785,24 @@ class Sanatorium
         }
         elseif ($tabCode == 'rooms')
         {
-			echo 'Номера';
+			foreach ($sanatorium['ROOMS'] as $room)
+				Room::printRoom($room);
+        }
+        elseif ($tabCode == 'programms')
+        {
+			?>
+	        <div class="programs"><?
+	        foreach ($pr as $value): ?>
+	        <div class="programs-item">
+		        <div class="programs-title"><span
+				        class="icon" style="background: url(<?=$value['DETAIL_PICTURE']?>) no-repeat 50% 50%;"></span><span><?= $value["NAME"] ?></span></div>
+		        <ul class="programs-list">
+			        <?= $value["PREVIEW_TEXT"] ?>
+		        </ul>
+	        </div>
+        <? endforeach ?>
+
+	        </div><?
         }
     }
 

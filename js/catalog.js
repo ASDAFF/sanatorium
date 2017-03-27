@@ -168,7 +168,11 @@ var Detail = {
 	init: function() {
 		var tabs = $('#content-menu-show');
 		if (tabs.length) {
+			this.reserveForm = $('#formx');
 			this.productId = tabs.data('id');
+
+			this.reserveForm.on('submit', this.reserve);
+
 			tabs.find('a').click(function () {
 				var li = $(this).parent();
 				if (!li.is('.active')) {
@@ -202,6 +206,23 @@ var Detail = {
 				tab.removeClass('empty');
 			});
 		}
+	},
+	reserve: function() {
+		console.log("AAAAAAAAAAAAAAA");
+		var form_data   = $('#formx').serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/local/components/tim/catalog/templates/add_bron.php',
+			data: form_data,
+			success: function(data) {
+				console.log(data);
+				$("#formx")[0].reset();
+				$("#bronx").css("display", "block");
+				$("#bronx").html(data);
+			}
+		});
+
+		return false;
 	}
 };
 
