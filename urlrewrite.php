@@ -120,6 +120,12 @@ $arUrlRewrite = array(
 		"ID" => "bitrix:news",
 		"PATH" => "/promo/index.php",
 	),
+	array(
+		"CONDITION" => "#^/reviews/(.*)/(.*)#",
+		"RULE" => "city=\$1",
+		"ID" => "",
+		"PATH" => "/reviews/index.php",
+	),
 );
 
 ?>

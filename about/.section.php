@@ -1,3 +1,3 @@
 <?
-$sSectionName="about";
+$sSectionName="О сервисе";
 ?>

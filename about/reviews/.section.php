@@ -1,3 +1,3 @@
 <?
-$sSectionName="reviews";
+$sSectionName="Отзывы";
 ?>

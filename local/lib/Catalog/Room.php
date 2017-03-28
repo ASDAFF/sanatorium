@@ -266,11 +266,11 @@ class Room
 									<div class="tit">Стоимость основных мест:</div>
 									<ul>
 										<li>
-											<span class="first">одноместное (с подселением)</span>
+											<span class="first">основное взрослое (с подселением)</span>
 											<span class="second"><?= $room['PRICE'] ?>р</span>
 										</li>
 										<li>
-											<span class="first">одноместное детское</span><?
+											<span class="first">детское</span><?
 											if ($room['PRICE_CHILD'])
 											{
 												?>
@@ -279,7 +279,7 @@ class Room
 											?>
 										</li>
 										<li>
-											<span class="first">одноместное (за номер)</span><?
+											<span class="first">размещение одним (выкуп номера)</span><?
 											if ($room['PRICE_FULL'])
 											{
 												?>

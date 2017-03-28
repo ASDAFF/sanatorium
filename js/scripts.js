@@ -371,10 +371,35 @@ var SincSlider = {
 		}
 	}
 	
-}
+};
+
+/**
+ * Отзывы
+ */
+var Review = {
+	init: function() {
+		this.form = $('#review-form');
+		if (!this.form.length)
+			return false;
+
+		this.form.submit(this.send);
+	},
+	send: function () {
+		var form_data = Review.form.serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/ajax/add_review.php',
+			data: form_data,
+			success: function () {
+				//Review.form[0].reset();
+			}
+		});
+		return false;
+	}
+};
 
 jQuery(document).ready(function() {
-	
+	Review.init();
 	SincSlider.init();
 	SearchSelect.init();
 });

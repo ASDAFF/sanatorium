@@ -9,49 +9,57 @@ use Local\System\ExtCache;
  */
 class Reviews
 {
-	const IBLOCK_ID = 30;
-	const CACHE_TIME = 86400;
-    const EL_COUNT = 3;
+	/**
+	 * Количество отзывов на странице
+	 */
+	const PAGE_SIZE = 12;
+
+	/**
+	 * ID инфоблока
+	 */
+	const IBLOCK_ID = 7;
+
+	/**
+	 * ID первого звездного варианта
+	 */
+	const STARS_ID = 132;
+
+	/**
+	 * Время кеширования
+	 */
+	const CACHE_TIME = 864000;
+
 	/**
 	 * Путь для кеширования
 	 */
 	const CACHE_PATH = 'Local/Catalog/Reviews/';
 
 	/**
-	 * Возвращает все санатории со свойствами, которые нужны для построения панели фильтров
-	 * @param bool|false $refreshCache
-	 * @return array
+	 * Возвращает отзывы
+	 * @param $isService
+	 * @param $cityId
+	 * @param $page
+	 * @param bool $refreshCache
+	 * @return array|mixed
 	 */
-
-	public static function getAll($page, $refreshCache = false)
+	public static function getList($isService, $cityId, $page, $refreshCache = false)
 	{
-        $uri = $_SERVER['REQUEST_URI'];
-        $url = explode("/", $uri);
-        $arFilter = "";
-        $section_id = "";
-
-        if ($url[2] == "pyatigorsk"){
-            $section_id = 164;
-        }
-        if ($url[2] == "essentuki"){
-            $section_id = 165;
-        }
-        if ($url[2] == "kislovodsk"){
-            $section_id = 166;
-        }
-        if ($url[2] == "zheleznovodsk"){
-            $section_id = 167;
-        }
-
-
-	    if ($page == "") {
-	        $page = 1;
-        }
 		$return = array();
+
+		$isService = intval($isService);
+
+		$cityId = intval($cityId);
+
+		$page = intval($page);
+		if ($page < 1)
+			$page = 1;
 
 		$extCache = new ExtCache(
 			array(
 				__FUNCTION__,
+				$isService,
+				$cityId,
+				$page,
 			),
 			static::CACHE_PATH . __FUNCTION__ . '/',
 			static::CACHE_TIME
@@ -61,92 +69,124 @@ class Reviews
 		} else {
 			$extCache->startDataCache();
 
-			$select = array(
-				'ID',
-				'NAME',
-                'PREVIEW_TEXT',
-                'PROPERTY_SAN_NAME',
-                'PROPERTY_CITY',
-                'PROPERTY_MARK',
-                'PROPERTY_DATE',
+			$nav = array(
+				'nPageSize' => self::PAGE_SIZE,
+				'iNumPage' => $page,
 			);
-			$flagsSelect = Flags::getForSelect();
-			$select = array_merge($select, $flagsSelect);
-			$codes = Flags::getCodes();
 
-            if ($section_id != "") {
-                $arFilter = Array("IBLOCK_ID"=>self::IBLOCK_ID, 'SECTION_ID' => $section_id, "ACTIVE"=>"Y");
-            } else {
-                $arFilter = Array("IBLOCK_ID"=>self::IBLOCK_ID, "ACTIVE"=>"Y");
-            }
+			$filter = array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'ACTIVE' => 'Y',
+				'PROPERTY_SERVICE' => $isService,
+			);
+			if ($cityId)
+				$filter['PROPERTY_SANATORIUM_CITY'] = $cityId;
 
 			$iblockElement = new \CIBlockElement();
-            $res_count = $iblockElement->GetList(Array(), $arFilter, Array(), false, Array());
-            $page_count = $res_count/self::EL_COUNT;
-			$rsItems = $iblockElement->GetList(array(), $arFilter, false, array("nPageSize"=>self::EL_COUNT, "iNumPage" => $page), $select);
+			$rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), $filter, false, $nav, array(
+				'ID',
+				'NAME',
+				'PREVIEW_TEXT',
+				'PROPERTY_SANATORIUM_ID',
+				'PROPERTY_CITY',
+				'PROPERTY_STARS',
+				'PROPERTY_DATE',
+			));
 			while ($item = $rsItems->Fetch())
 			{
-
-				$product = array(
+				$return['ITEMS'][] = array(
 					'ID' => $item['ID'],
 					'NAME' => $item['NAME'],
                     'TEXT' => $item['PREVIEW_TEXT'],
-                    'SAN_NAME' => $item['PROPERTY_SAN_NAME_VALUE'],
+                    'SANATORIUM' => $item['PROPERTY_SANATORIUM_ID_VALUE'],
                     'CITY' => $item['PROPERTY_CITY_VALUE'],
-                    'MARK' => $item['PROPERTY_MARK_VALUE'],
+                    'STARS' => $item['PROPERTY_STARS_VALUE'],
                     'DATE' => $item['PROPERTY_DATE_VALUE'],
-                    'PAGE' => ceil($page_count),
 				);
-
-				$return[$item['ID']] = $product;
 			}
+			$return['NAV'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
 
 			$extCache->endDataCache($return);
 		}
 
 		return $return;
 	}
-    public static function getTwo($refreshCache = false)
-    {
-        $return = array();
 
-        $extCache = new ExtCache(
-            array(
-                __FUNCTION__,
-            ),
-            static::CACHE_PATH . __FUNCTION__ . '/',
-            static::CACHE_TIME
-        );
-        if(!$refreshCache && $extCache->initCache()) {
-            $return = $extCache->getVars();
-        } else {
-            $extCache->startDataCache();
+	/**
+	 * Добавление отзыва
+	 * @return bool|int
+	 */
+	public static function add()
+	{
+		$id = 0;
 
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
-            'IBLOCK_ID' => self::IBLOCK_ID,
-            'ACTIVE' => 'Y',
-        ), false, Array("nTopCount" => 2), array(
-            'ID',
-            'NAME',
-            'PREVIEW_TEXT',
-            'PROPERTY_CITY',
-            'PROPERTY_DATE',
-        ));
-        while ($item = $rsItems->Fetch()) {
-            $return[$item['ID']] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'TEXT' => $item['PREVIEW_TEXT'],
-                'CITY' => $item['PROPERTY_CITY_VALUE'],
-                'DATE' => $item['PROPERTY_DATE_VALUE'],
-            );
-        }
-            $extCache->endDataCache($return);
-        }
+		$name = $_POST['name'];
+		$txt = $_POST['txt'];
+		$city = $_POST['city'];
+		$mail = $_POST['mail'];
+		$mark = intval($_POST['mark']);
+		$service = $_POST['service'];
+		$san = $_POST['san'];
 
-        return $return;
-    }
+		if ($name && $txt && $mail)
+		{
+			if ($mark >= 1 && $mark <= 5)
+				$mark += self::STARS_ID - 1;
+			$el = new \CIBlockElement();
 
+			$fields = array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'NAME' => $name,
+				'ACTIVE' => 'N',
+				'PREVIEW_TEXT' => $txt,
+				'PROPERTY_VALUES' => array(
+					'CITY' => $city,
+					'EMAIL' => $mail,
+					'STARS' => $mark,
+					'DATE' => ConvertTimeStamp(),
+					'SERVICE' => $service,
+					'SANATORIUM' => $san,
+				),
+			);
+			$id = $el->Add($fields);
+		}
+
+		return $id;
+	}
+
+	/**
+	 * обработчик изменения элемента - нужно обновить город санатория
+	 * @param $id
+	 */
+	public static function onUpdate($id)
+	{
+		$iblockElement = new \CIBlockElement();
+		$rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
+			'IBLOCK_ID' => self::IBLOCK_ID,
+			'ID' => $id
+		), false, false, array(
+			'ID',
+			'PROPERTY_SANATORIUM_ID',
+			'PROPERTY_SANATORIUM_CITY',
+		));
+		if ($item = $rsItems->Fetch())
+		{
+			$sanId = $item['PROPERTY_SANATORIUM_ID_VALUE'];
+			$cityId = 0;
+			if ($sanId)
+			{
+				$san = Sanatorium::getSimpleById($sanId);
+				$cityId = intval($san['CITY']);
+			}
+
+			if ($cityId != $item['PROPERTY_SANATORIUM_CITY_VALUE'])
+			{
+				$iblockElement->SetPropertyValuesEx($id, self::IBLOCK_ID, array(
+					'SANATORIUM_CITY' => $cityId,
+				));
+			}
+
+		}
+	}
 }
 

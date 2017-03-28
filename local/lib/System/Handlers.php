@@ -2,6 +2,7 @@
 
 namespace Local\System;
 use Local\Catalog\Profiles;
+use Local\Catalog\Reviews;
 use Local\Catalog\Room;
 use Local\Catalog\Sanatorium;
 use Local\Sale\Package;
@@ -122,6 +123,8 @@ class Handlers
 			Sanatorium::correctPrice($arFields['ID']);
 		elseif ($arFields['IBLOCK_ID'] == Room::IBLOCK_ID)
 			Room::onUpdateRoom($arFields['ID']);
+		elseif ($arFields['IBLOCK_ID'] == Reviews::IBLOCK_ID)
+			Reviews::onUpdate($arFields['ID']);
 	}
 
 	/**
