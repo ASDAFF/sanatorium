@@ -365,6 +365,7 @@ var PriceSlider = {
 				min: 0,
 				max: PriceSlider.max,
 				values: [PriceSlider.from, PriceSlider.to],
+				step: 100,
 				slide: PriceSlider.botSlide
 			});
 		}
