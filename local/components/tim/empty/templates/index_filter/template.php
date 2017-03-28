@@ -41,6 +41,6 @@ $priceMax = $data['PRICE']['MAX'];
 			</div>
 			<a class="btn filter_find" href="javascript:void(0)">Найти</a>
 		</div>
-		<div class="el-search-btn" id="el-search-btn">Расширенный поиск<i id="icon-down-top"></i></div>
+		<div class="el-search-btn" id="el-search-btn">Расширенный поиск</div>
 	</div>
 </div><?

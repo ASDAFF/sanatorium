@@ -1,21 +1,21 @@
 // Select SearchFix
 var SearchSelect = {
-	init: function() {
-		 this.slct = $(".slct");
-		 this.slct.on("click", this.slctDrop);
+	init: function () {
+		this.slct = $(".slct");
+		this.slct.on("click", this.slctDrop);
 	},
-	
-	slctDrop: function(e){
+
+	slctDrop: function (e) {
 		e.preventDefault();
 		var dropBlock = $(this).parent().find('.drop');
 
-		if( dropBlock.is(':hidden') ) {
+		if (dropBlock.is(':hidden')) {
 			dropBlock.slideDown();
 			$(this).addClass('active');
-			$('.drop').find('li').click(function(){	
-				var selectResult = $(this).html();		
+			$('.drop').find('li').click(function () {
+				var selectResult = $(this).html();
 				$(this).parent().parent().find('input').val(selectResult);
-				$(this).parent().parent().find('.slct').removeClass('active').html(selectResult);	
+				$(this).parent().parent().find('.slct').removeClass('active').html(selectResult);
 				dropBlock.slideUp();
 			});
 
@@ -243,7 +243,6 @@ $(document).ready(function () {
 	});
 
 
-
 	if ($(window).width() < 500) {
 		$('.actions-item').readmore({
 			maxHeight: 418,
@@ -283,101 +282,101 @@ $(window).load(function () {
 		slideshow: false,
 		sync: "#carousel"
 	});
-$(window).scroll(function() {
-	if($(this).scrollTop() != 0) {
-	$('.search-fix').fadeIn();
-	} else {
-	$('.search-fix').fadeOut();
-	}
-});
+	$(window).scroll(function () {
+		if ($(this).scrollTop() != 0) {
+			$('.search-fix').fadeIn();
+		} else {
+			$('.search-fix').fadeOut();
+		}
+	});
 
 });
 
 // Slider (главная, карточка)
 var SincSlider = {
-	init: function() {
+	init: function () {
 		this.sync1 = $("#sync1");
 		this.sync2 = $("#sync2");
-		
+
 		this.sync1.owlCarousel({
-			singleItem : true,
-			slideSpeed : 1000,
+			singleItem: true,
+			slideSpeed: 1000,
 			navigation: true,
-			pagination:false,
-			afterAction : this.syncPosition,
-			responsiveRefreshRate : 200,
+			pagination: false,
+			afterAction: this.syncPosition,
+			responsiveRefreshRate: 200,
 			navigationText: ["<img src='/local/templates/san/images/left.png'>", "<img src='/local/templates/san/images/right.png'>"],
 			transitionStyle: "fade"
-		  });
+		});
 
-		  this.sync2.owlCarousel({
-			items : 10,
-			itemsDesktop      : [1199,10],
-			itemsDesktopSmall     : [979,10],
-			itemsTablet       : [768,8],
-			itemsMobile       : [479,4],
-			pagination:false,
-			responsiveRefreshRate : 100,
-			afterInit : function(el){
-			  el.find(".owl-item").eq(0).addClass("synced");
+		this.sync2.owlCarousel({
+			items: 10,
+			itemsDesktop: [1199, 10],
+			itemsDesktopSmall: [979, 10],
+			itemsTablet: [768, 8],
+			itemsMobile: [479, 4],
+			pagination: false,
+			responsiveRefreshRate: 100,
+			afterInit: function (el) {
+				el.find(".owl-item").eq(0).addClass("synced");
 			}
-		  });
+		});
 
-		  this.sync2.on("click", ".owl-item", this.toNext);
+		this.sync2.on("click", ".owl-item", this.toNext);
 	},
-	
-	toNext: function(e){
+
+	toNext: function (e) {
 		e.preventDefault();
-        var number = $(this).data("owlItem");
+		var number = $(this).data("owlItem");
 		//console.log(number);
-        $(sync1).trigger("owl.goTo",number);
+		$(sync1).trigger("owl.goTo", number);
 	},
-	
-	center: function(number){
-	var sync2visible = this.sync2.data("owlCarousel").owl.visibleItems;
 
-	var num = number;
-	var found = false;
-	for(var i in sync2visible){
-	  if(num === sync2visible[i]){
-		var found = true;
-	  }
-	}
+	center: function (number) {
+		var sync2visible = this.sync2.data("owlCarousel").owl.visibleItems;
 
-	if(found===false){
-	  if(num>sync2visible[sync2visible.length-1]){
-		this.sync2.trigger("owl.goTo", num - sync2visible.length+2)
-	  }else{
-		if(num - 1 === -1){
-		  num = 0;
+		var num = number;
+		var found = false;
+		for (var i in sync2visible) {
+			if (num === sync2visible[i]) {
+				var found = true;
+			}
 		}
-		this.sync2.trigger("owl.goTo", num);
-	  }
-	} else if(num === sync2visible[sync2visible.length-1]){
-	  this.sync2.trigger("owl.goTo", sync2visible[1])
-	} else if(num === sync2visible[0]){
-	  this.sync2.trigger("owl.goTo", num-1)
-	}
+
+		if (found === false) {
+			if (num > sync2visible[sync2visible.length - 1]) {
+				this.sync2.trigger("owl.goTo", num - sync2visible.length + 2)
+			} else {
+				if (num - 1 === -1) {
+					num = 0;
+				}
+				this.sync2.trigger("owl.goTo", num);
+			}
+		} else if (num === sync2visible[sync2visible.length - 1]) {
+			this.sync2.trigger("owl.goTo", sync2visible[1])
+		} else if (num === sync2visible[0]) {
+			this.sync2.trigger("owl.goTo", num - 1)
+		}
 	},
-	  
+
 	syncPosition: function (el) {
 		var current = this.currentItem;
 		$(sync2).find(".owl-item")
-		  .removeClass("synced")
-		  .eq(current)
-		  .addClass("synced")
-		if($(sync2).data("owlCarousel") !== undefined){
-		  SincSlider.center(current);
+			.removeClass("synced")
+			.eq(current)
+			.addClass("synced")
+		if ($(sync2).data("owlCarousel") !== undefined) {
+			SincSlider.center(current);
 		}
 	}
-	
+
 };
 
 /**
  * Отзывы
  */
 var Review = {
-	init: function() {
+	init: function () {
 		this.form = $('#review-form');
 		if (!this.form.length)
 			return false;
@@ -398,7 +397,7 @@ var Review = {
 	}
 };
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 	Review.init();
 	SincSlider.init();
 	SearchSelect.init();

@@ -39,10 +39,11 @@ class Reviews
 	 * @param $isService
 	 * @param $cityId
 	 * @param $page
+	 * @param $size
 	 * @param bool $refreshCache
 	 * @return array|mixed
 	 */
-	public static function getList($isService, $cityId, $page, $refreshCache = false)
+	public static function getList($isService, $cityId, $page, $size = 0, $refreshCache = false)
 	{
 		$return = array();
 
@@ -54,12 +55,16 @@ class Reviews
 		if ($page < 1)
 			$page = 1;
 
+		if (!$size)
+			$size = self::PAGE_SIZE;
+
 		$extCache = new ExtCache(
 			array(
 				__FUNCTION__,
 				$isService,
 				$cityId,
 				$page,
+				$size,
 			),
 			static::CACHE_PATH . __FUNCTION__ . '/',
 			static::CACHE_TIME
@@ -70,7 +75,7 @@ class Reviews
 			$extCache->startDataCache();
 
 			$nav = array(
-				'nPageSize' => self::PAGE_SIZE,
+				'nPageSize' => $size,
 				'iNumPage' => $page,
 			);
 
