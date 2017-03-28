@@ -7,8 +7,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @global CMain $APPLICATION */
 
 $data = \Local\Catalog\Sanatorium::getDataByFilter(array());
-$priceMin = $data['PRICE']['MIN'];
-$priceMax = $data['PRICE']['MAX'];
+$priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 
 ?>
 <div class="search-fix">
@@ -25,7 +24,7 @@ $priceMax = $data['PRICE']['MAX'];
 						{
 							$city = \Local\Catalog\City::getById($cityId);
 							?>
-							<li name="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></li><?
+							<li value="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></li><?
 						}
 						?>
 					</ul>
@@ -36,9 +35,9 @@ $priceMax = $data['PRICE']['MAX'];
 					Цена в сутки
 				</div>
 				<div class="money-vibor">
-					<span id="slider-range-value01"><?= $priceMin ?></span>
+					<span id="slider-range-value-d-from">0</span>
 					<div id="slider-range-d" class='slider-range'></div>
-					<span id="slider-range-value02"><?= $priceMax ?></span>
+					<span id="slider-range-value-d-to"><?= $priceMax ?></span>
 				</div>
 				<a class="btn filter_find" href="javascript:void(0)">Найти</a>
 			</div>

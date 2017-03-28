@@ -7,8 +7,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @global CMain $APPLICATION */
 
 $data = \Local\Catalog\Sanatorium::getDataByFilter(array());
-$priceMin = $data['PRICE']['MIN'];
-$priceMax = $data['PRICE']['MAX'];
+$priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 
 ?>
 <div class="el-full-bg" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
@@ -20,12 +19,12 @@ $priceMax = $data['PRICE']['MAX'];
 			<div class="eng-icon-city"></div>
 			<div class="city controlgroup">
 				<select id="city-vibor">
-					<option name="0">(любой город)</option><?
+					<option value="0">(любой город)</option><?
 					foreach ($data['CITY'] as $cityId => $cnt)
 					{
 						$city = \Local\Catalog\City::getById($cityId);
 						?>
-						<option name="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></option><?
+						<option value="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></option><?
 					}
 					?>
 				</select>
@@ -35,9 +34,9 @@ $priceMax = $data['PRICE']['MAX'];
 				Цена в сутки
 			</div>
 			<div class="money-vibor">
-				<span id="slider-range-value1"><?= $priceMin ?></span>
+				<span id="slider-range-value-from">0</span>
 				<div id="slider-range"></div>
-				<span id="slider-range-value2"><?= $priceMax ?></span>
+				<span id="slider-range-value-to"><?= $priceMax ?></span>
 			</div>
 			<a class="btn filter_find" href="javascript:void(0)">Найти</a>
 		</div>

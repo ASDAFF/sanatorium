@@ -79,17 +79,7 @@ $(function () {
 		closeClick: false
 
 	});
-	// перенес в шаблон кампонента
-	//   $( "#slider-range" ).slider({
-	// 	range: true,
-	// 	min: 0,
-	// 	max: 20000,
-	// 	values: [ 1500, 15000    ],
-	// 	slide: function( event, ui ) {
-	// 		$("#slider-range-value1").text(ui.values[0]);
-	// 		$("#slider-range-value2").text(ui.values[1]);
-	// 	}
-	// });
+
 	var btn = $('#el-search-btn');
 	list = $('#el-search-select');
 	icon = $('#icon-down-top');
@@ -108,33 +98,6 @@ $(function () {
 	});
 	$(".el-search-dop-input").checkboxradio();
 
-
-	var l = $(".price-group").attr("data-min");
-	var r = $(".price-group").attr("data-max");
-	$("#slider-range").slider({
-		range: true,
-		min: l,
-		max: r,
-		values: [l, r],
-		slide: function (event, ui) {
-			$("#slider-range-value1").text(ui.values[0]);
-			$("#slider-range-value2").text(ui.values[1]);
-			$(".from").val(ui.values[0]);
-			$(".to").val(ui.values[1]);
-		}
-	});
-	$("#slider-range-d").slider({
-		range: true,
-		min: l,
-		max: r,
-		values: [l, r],
-		slide: function (event, ui) {
-			$("#slider-range-value01").text(ui.values[0]);
-			$("#slider-range-value02").text(ui.values[1]);
-			$(".from").val(ui.values[0]);
-			$(".to").val(ui.values[1]);
-		}
-	});
 
 	var btn_d = $('#el-search-btn-d');
 	list_d = $('#el-search-select-d');
@@ -220,7 +183,7 @@ $(document).ready(function () {
 			width: '700',
 			height: '600',
 			autoSize: true,
-			closeClick: false,
+			closeClick: false
 		})
 	});
 
@@ -373,6 +336,56 @@ var SincSlider = {
 };
 
 /**
+ * Ползунки цен и выбор города
+ */
+var PriceSlider = {
+	init: function () {
+		this.topSlider = $("#slider-range");
+		this.isTop = this.topSlider.length > 0;
+		this.botSlider = $("#slider-range-d");
+		this.isBot = this.botSlider.length > 0;
+		this.fromSpan = $("#slider-range-value-d-from, #slider-range-value-from");
+		this.toSpan = $("#slider-range-value-d-to, #slider-range-value-to");
+		this.max = parseInt(this.toSpan.eq(0).text());
+		this.from = 0;
+		this.to = this.max;
+		if (this.isTop) {
+			this.topSlider.slider({
+				range: true,
+				min: 0,
+				max: PriceSlider.max,
+				values: [PriceSlider.from, PriceSlider.to],
+				step: 100,
+				slide: PriceSlider.topSlide
+			});
+		}
+		if (this.isBot) {
+			this.botSlider.slider({
+				range: true,
+				min: 0,
+				max: PriceSlider.max,
+				values: [PriceSlider.from, PriceSlider.to],
+				slide: PriceSlider.botSlide
+			});
+		}
+	},
+	topSlide: function(event, ui) {
+		PriceSlider.slide(ui.values[0], ui.values[1]);
+		PriceSlider.botSlider.slider('values', ui.values);
+	},
+	botSlide: function(event, ui) {
+		PriceSlider.slide(ui.values[0], ui.values[1]);
+		PriceSlider.topSlider.slider('values', ui.values);
+	},
+	slide: function(from, to) {
+		PriceSlider.from = from;
+		PriceSlider.to = to;
+		PriceSlider.fromSpan.text(PriceSlider.from);
+		PriceSlider.toSpan.text(PriceSlider.to);
+	}
+};
+
+/**
  * Отзывы
  */
 var Review = {
@@ -401,4 +414,5 @@ jQuery(document).ready(function () {
 	Review.init();
 	SincSlider.init();
 	SearchSelect.init();
+	PriceSlider.init();
 });
