@@ -243,12 +243,7 @@ $(document).ready(function () {
 	});
 
 
-	$(".popap-slider").owlCarousel({
-		navigation: true,
-		singleItem: true,
-		navigationText: ["<img src='/local/templates/san/images/left.png'>", "<img src='/local/templates/san/images/right.png'>"],
-		transitionStyle: "fade"
-	});
+
 	if ($(window).width() < 500) {
 		$('.actions-item').readmore({
 			maxHeight: 418,
@@ -379,6 +374,7 @@ var SincSlider = {
 }
 
 jQuery(document).ready(function() {
+	
 	SincSlider.init();
 	SearchSelect.init();
 });

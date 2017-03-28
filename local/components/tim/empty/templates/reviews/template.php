@@ -93,20 +93,31 @@ $url = explode("/", $uri);
     </div>
     <div class="engBox-right">
         <div class="current-rate">
-            <div class="mark">
-                <input type="radio" name="mark-cur" value="5"><label title="5">5</label>
-                <input type="radio" name="mark-cur" value="4" checked><label title="4">4</label>
-                <input type="radio" name="mark-cur" value="3"><label title="3">3</label>
-                <input type="radio" name="mark-cur" value="2"><label title="2">2</label>
-                <input type="radio" name="mark-cur" value="1"><label title="1">1</label>
-            </div>
-            <div class="rate-num">Рейтинг 9.4</div>
+			<div class="rating">
+				<div class="star star-1">
+					<span class="on"></span>
+				</div>
+				<div class="star star-2">
+					<span class="on"></span>
+				</div>
+				<div class="star star-3">
+					<span class="on"></span>
+				</div>
+				<div class="star star-4">
+					<span class="on" style="width: 50%"></span>
+				</div>
+				<div class="star star-5">
+					<span class="off"></span>
+				</div>
+			</div>
+
+            <div class="rate-num">Рейтинг 3.5</div>
         </div>
         <div id="right-ban">
-            <a href=""><img src="images/ban1.jpg"></a>
-            <a href=""><img src="images/ban2.jpg"></a>
-            <a href=""><img src="images/ban3.jpg"></a>
-            <a href=""><img src="images/ban4.jpg"></a>
+			<a href=""><img src="/images/ban1.jpg"></a>
+			<a href=""><img src="/images/ban2.jpg"></a>
+			<a href=""><img src="/images/ban3.jpg"></a>
+			<a href=""><img src="/images/ban4.jpg"></a>
         </div>
     </div>
 </div>

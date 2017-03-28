@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic');
 body { margin: 0; padding: 0;
 	font-family: 'Fira Sans', sans-serif; font-size: 14px; line-height: 1.55em;
 	background: #ffffff; color: #000000; }
@@ -91,7 +90,6 @@ nav a#pull { display: none; }
 	}
 #cron_full { background: url("../images/cron-bg.png") center; height: 113px; }
 #cron { padding: 25px 0 10px 0 !important; }
-#cron-crox { }
 #cron-crox span,#cron-crox a { font-weight: 300; font-size: 13px; }
 #cron-title { margin: 5px 0; text-transform: uppercase; }
 #cron-right { float: right; text-align: right; margin-top: 5px;     position: relative;
@@ -102,7 +100,7 @@ nav a#pull { display: none; }
 	#cron { text-align: center; }
 	#cron-right { float: none; text-align: center; margin-bottom: 10px; }
 	}
-#content { }
+
 #content-top {
 	background: url(../images/icon3.png) left center no-repeat;
     padding-left: 25px;
@@ -110,19 +108,39 @@ nav a#pull { display: none; }
     top: -2px;
     color: #787878;
 }
-.content-menu { border: 0px !important; margin: 20px 0; text-align: center; position: relative; padding-bottom: 10px; }
-.content-menu-buttons-box ul.content-menu-buttons {
-	border: 0; padding: 2px !important;
-	background: none !important; width: 85% !important; display: inline-block !important; height: 20px; overflow: hidden !important; vertical-align: middle; }
+.content-menu { 
+	border: 0px; 
+	margin: 20px 0; 
+	position: relative; 
+	padding-bottom: 10px; 
+}
+.content-menu-buttons{
+	border: 0; 
+	padding: 2px;
+	background: none; 
+	width: 85%; 
+	vertical-align: middle; 
+}
 .content-menu-buttons li {
-	float: none !important; margin: 2px !important;
-	border: 0 !important; border-radius: 0;
-	background: none !important;
-	display: inline-block !important; border-right: 1px solid #a0a0a0 !important; margin-bottom: 5px; !important; }
-.content-menu li:last-child { border-right: none; }
-.content-menu li a { outline: none !important; border: 0 !important; display: inline-block !important; padding: 2px 10px !important; color: #a0a0a0 !important; float: none !important; }
-.content-menu li a:hover { color: #000000 !important; }
-.ui-tabs-active, .ui-state-active { color: #000000 !important; font-weight: 800; }
+	margin: 2px 0px 5px;
+	display: inline-block; 
+	background: #d5ecf7;
+    border: 1px solid #2c9ed7;
+    border-radius: 5px;
+}
+.content-menu-buttons li.active,
+.content-menu-buttons li:hover{
+	background: #2c9ed7;
+	border: 1px solid #2c9ed7;
+}
+.content-menu-buttons li.active a,
+.content-menu-buttons li:hover a{color:#ffffff;}
+.content-menu li a { 
+	display: inline-block; 
+	padding: 2px 10px; 
+	color: #2c9ed7; 
+}
+
 #content-menu-pun { cursor: pointer; width: 13%; display: inline-block; color: #ff8a00; text-decoration: underline; vertical-align: middle; }
 .content-menu > div { padding: 0px !important; }
 .content-border { height: 2px; width: 100%; background: #2c9ed7; margin: 20px 0; padding: 0 !important; position: relative; }
@@ -806,14 +824,15 @@ footer .right img { width: 180px !important; }
 	width: 1000px;}
 .el-nomer-popap .left .inf .second {
 	float: right;
-
-	font-weight: 600;
+	font-weight: 500;
 	font-size: 15px;
-	padding-left: 5px; color: #2c9ed7;
+	padding: 0px 5px; 
+	color: #2c9ed7;
 	position: relative;
 	top: 0px;
 	background: rgba(248, 245, 236, 0.99);
-	border-radius: 5px;}
+	border-radius: 5px;
+}
 .el-nomer-popap .right {display: inline-block; width: 310px; vertical-align: top;}
 .el-nomer-popap .right .text {line-height: 25px;}
 .el-nomer-popap .right .text ul {width: 100%;line-height: 17px; }
@@ -1094,8 +1113,8 @@ body .menu_parent_exp:after {
 	padding: 5px 10px;
 	text-transform:uppercase;
 	padding-right: 30px;
-	margin-right:12px;
 	background: url(../images/down.png) no-repeat right center;
+	margin-right:12px;
 }
 .search-dark .el-search-btn.reset{
 	background:#646464;
@@ -1680,7 +1699,7 @@ footer {
 	border-bottom:1px solid #2c9ed7;
 }
 *{box-sizing:border-box;}
-#tabs .content-menu-buttons{
+/*#tabs .content-menu-buttons{
 	height:auto !important;
 }
 body #tabs .content-menu-buttons .ui-state-default{
@@ -1698,6 +1717,7 @@ body #tabs .content-menu-buttons .ui-state-default:hover{
 body #tabs.content-menu-buttons-box{margin:0px;margin-top: 30px;}
 body #tabs .content-menu-buttons .ui-state-default.ui-tabs-active a,
 body #tabs .content-menu-buttons .ui-state-default:hover a{color:#fff !important;}
+*/
 .reviewStars-input .star-10 {left: 0px;}
 .reviewStars-input .star-11 {left: 53px;}
 .reviewStars-input .star-12 {left: 106px;}
@@ -1837,7 +1857,7 @@ ul.bl{display:block;}
     margin:0;
     border:0;
     outline:0;
-    line-height:45px;
+    line-height:42px;
     text-align:center;
     cursor:pointer;
     color:#dcddd8;
@@ -1978,7 +1998,8 @@ nav.p-head{position:relative;}
 	display:table;
 	clear:both;
 }
-.current-rate .mark{margin:0px;float:right;padding-top: 4px;}
+.current-rate .mark,
+.current-rate .rating{margin:0px;float:right;padding-top: 4px;}
 .current-rate+#right-ban {
     margin-top: 13px;
 }
@@ -2319,8 +2340,8 @@ textarea:required+.required:after {right:15px;top:25px;}
 }
 .programs-title .icon{
 	position: absolute;
-    left: -17px;
-    top: -7px;
+    left: -18px;
+    top: -6px;
     width: 54px;
     height: 54px;
 }
@@ -2452,7 +2473,7 @@ div[id^="slider-popap-"].flexslider .slides img{
 	display:block;
 	padding: 10px 0px;
 	padding-left:40px;
-	background: url("../images/word-doc-icon.png") no-repeat left center;
+	background: url("/images/word-doc-icon.png") no-repeat left center;
 	background-size:auto 30px;	
 	margin-bottom: 15px;
     color: #2c9ed7 !important;
@@ -2477,6 +2498,10 @@ div[id^="slider-popap-"].flexslider .slides img{
 	float:right;
 	font-weight:500;
 	color: #34a1d8;
+	background: rgba(248, 245, 236, 0.99);
+    border-radius: 5px;
+    padding: 0px 5px;
+    font-size: 15px;
 }
 .price-start-details {
     font-size: 13px;
@@ -2519,9 +2544,8 @@ div[id^="slider-popap-"].flexslider .slides img{
     max-width: inherit;
     margin: 0 auto;
 }
-#sync2{
-	margin-right:-5px;
-	margin-left:-5px;
+#sync1{
+	padding:0px 5px;
 }
 #sync2 .item{
 	margin: 0px 2px;
@@ -2533,3 +2557,140 @@ div[id^="slider-popap-"].flexslider .slides img{
 #sync2 .synced img{
 	border:3px solid #ff8a00;
 }
+#tabs-content .tab-pane {
+  display: none;
+}
+#tabs-content .tab-pane.active {
+  display: block;
+}
+.content-menu-buttons{
+	text-align:center;
+	margin:0 auto;
+}
+
+.page-card:after{
+	content:'';
+	display:table;
+	clear:both;
+}
+.page-card {padding-top: 20px;}
+.page-card #content-top{
+	position:absolute;
+	top:-25px;
+}
+.page-card #content {margin-top: 2px;}
+.popap-slider .owl-item{text-align:center;}
+
+/*********Инфраструктура__иконки***********/
+.infra-list .in-icon{
+	background-image:url('/images/infra_icons.png');
+	background-repeat: no-repeat;
+	height: 50px;
+}
+.icon-wi-fi{background-position: 0 0;}
+.icon-apteka{background-position: -60px 0;}
+.icon-bar{background-position: -120px 0;}
+.icon-billyard{background-position: -180px 0;}
+.icon-konferens-zal{background-position: -240px 0;}
+.icon-nastol-tennis{background-position: -300px 0;}
+.icon-sauna{background-position: -360px 0;}
+.icon-tennis-kort{background-position: -420px 0;}
+.icon-aviakassa{background-position: 0 -50px ;}
+.icon-bankomat{background-position: -60px -50px ;}
+.icon-bassein{background-position: -120px -50px ;}
+.icon-boulling{background-position: -180px -50px ;}
+.icon-kosmetich-salon{background-position: -240px -50px ;}
+.icon-parikmaher{background-position: -300px -50px ;}
+.icon-solyarij{background-position: -360px -50px ;}
+.icon-trenazhory{background-position: -420px -50px ;}
+.icon-avto{background-position: 0 -100px ;}
+.icon-banya{background-position: -60px -100px ;}
+.icon-biblioteka{background-position: -120px -100px ;}
+.icon-detskaya{background-position: -180px -100px ;}
+.icon-magazin{background-position: -240px -100px ;}
+.icon-buvet{background-position: -300px -100px ;}
+.icon-sport-ploschadka{background-position: -360px -100px ;}
+
+/*********Профили__иконки***********/
+
+.programs-title .icon{
+	background-image:url('/images/profili__icons.png');
+	background-repeat: no-repeat;
+}
+
+.icon-immuno{background-position: 0 0;}
+.icon-gynecological{background-position: -60px 0;}
+.icon-pelt{background-position: -120px 0;}
+.icon-locomotor{background-position: -180px 0;}
+.icon-urogenital{background-position: -240px 0;}
+.icon-nervous{background-position: -300px 0;}
+.icon-skelet{background-position: -2px -60px;}
+.icon-respiratory{background-position: -60px -60px;}
+.icon-peripheral{background-position: -118px -60px;}
+.icon-cardio{background-position: -180px -60px;}
+.icon-vessels{background-position: -240px -60px;}
+.icon-endocrine{background-position: -300px -60px;}
+.icon-gastr{background-position: 0 -120px;}
+.icon-infertility{background-position: -58px -120px;}
+.icon-otolaryngology{background-position: -120px -120px;}
+.icon-fatigue{background-position: -180px -120px;}
+.icon-urology{background-position: -240px -120px;}
+
+/*********Попап__удобства__иконки***********/
+.icon-boon{
+    width: 40px;
+    height: 40px;
+	background-image:url('/images/boon__icons.png');
+	background-repeat: no-repeat;
+	margin-right:5px;
+}
+
+
+.icon-WIFI{background-position: 0 0;}
+.icon-BATH{background-position: -50px 0;}
+.icon-WINDOW_VIEW{background-position: -100px 0;}
+.icon-WARDROBE{background-position: -150px 0;}
+.icon-SHOWER{background-position: -200px 0;}
+.icon-AIR_CONDITION{background-position: -250px 0;}
+.icon-TOWELS{background-position: 0 -50px;}
+.icon-SAFE{background-position: -50px -50px;}
+.icon-SATELLITE{background-position: -100px -50px;}
+.icon-SLIPPERS{background-position: -150px -50px;}
+.icon-TV{background-position: -200px -50px;}
+.icon-PHONE{background-position: -250px -50px;}
+.icon-TOILET{background-position: 0 -100px;}
+.icon-TOILETRIES{background-position: -50px -100px;}
+.icon-ROOM_BREAKFAST{background-position: -100px -100px;}
+.icon-WAKE_UP_SERVICE{background-position: -150px -100px;}
+.icon-FEN{background-position: -200px -100px;}
+.icon-ROBE{background-position: -250px -100px;}
+.icon-REFRIGERATOR{background-position: 0 -150px;}
+.icon-CUPBOARD{background-position: -50px -150px;}
+.icon-ELECTRIC_KETTLE{background-position: -100px -150px;}
+
+.con-list {
+    margin-top: 8px;
+}
+.con-item{
+	height:40px;
+	line-height:40px;
+	font-size:0px;
+}
+.con-item span{
+	display:inline-block;
+	vertical-align:middle;
+	line-height:normal;
+	font-size: 13px;
+}
+/*************Ratig*****************/
+.rating{font-size:0px;}
+.rating .star,
+.rating .star span{
+	display:inline-block;
+	width: 18px;
+    height: 16px;
+	margin-right: 4px;
+	background: url(/images/star.png) no-repeat 0 -16px;
+}
+.rating .star span{width: 17px;}
+.rating .star span.on{background: url(/images/star.png) no-repeat 1px -0.5px;}

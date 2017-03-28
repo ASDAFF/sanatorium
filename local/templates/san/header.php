@@ -8,6 +8,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <html lang="<?= LANGUAGE_ID ?>">
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic" rel="stylesheet">
     <title><? $APPLICATION->ShowTitle(); ?></title><?
 	
     $assets = \Bitrix\Main\Page\Asset::getInstance();
@@ -23,6 +24,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addJs(SITE_DIR . 'js/scripts.js');
     $assets->addJs(SITE_DIR . 'js/catalog.js');
 
+
     $assets->addCss(SITE_DIR . 'js/jquery-ui/jquery-ui.min.css');
     $assets->addCss(SITE_DIR . 'css/flexslider.css');
     $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
@@ -33,6 +35,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
     ?>
+
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>
@@ -74,7 +77,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 					<input type="search" placeholder="Введите название санатория......" name="q"
 					       class="searchbox-input" onkeyup="buttonUp();" required>
 					<input type="submit" class="searchbox-submit" value="Найти">
-					<span class="searchbox-icon"><img src="<?=SITE_TEMPLATE_PATH;?>/images/icon_serch_btn.jpg"></span>
+					<span class="searchbox-icon"><img src="/images/icon_serch_btn.jpg"></span>
 				</form>
 				<div class="searchbox-close"></div>
 			</div>
