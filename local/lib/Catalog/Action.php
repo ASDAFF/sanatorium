@@ -12,7 +12,7 @@ class Action
 	/**
 	 * Количество отзывов на странице
 	 */
-	const PAGE_SIZE = 3;
+	const PAGE_SIZE = 12;
 
 	/**
 	 * ID инфоблока

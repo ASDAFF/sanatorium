@@ -14,13 +14,15 @@ $items = \Local\Catalog\Sanatorium::get(
             Санаторий - ТОП 12
             <span>Кавказские Минеральные Воды</span>
         </div><?
-	    foreach ($items['ITEMS'] as $item) {
+	    foreach ($items['ITEMS'] as $item)
+	    {
+		    $city = \Local\Catalog\City::getById($item['CITY']);
 	        ?>
             <a href="<?=$item['DETAIL_PAGE_URL']?>" class="item">
                 <div class="img"><img src="<?= $item['PREVIEW_PICTURE'] ?>"></div>
                 <div class="text eng-animations">
                     <b>Санаторий <?= $item['NAME'] ?></b>
-                    <span><?= $item['CITY_NAME'] ?></span>
+	                <span>КМВ, <?= $city['NAME'] ?></span>
                     <i>Подробнее</i>
                 </div>
                 <div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>

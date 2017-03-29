@@ -2,13 +2,9 @@
 
 namespace Local\System;
 use Local\Catalog\Action;
-use Local\Catalog\Profiles;
 use Local\Catalog\Reviews;
 use Local\Catalog\Room;
 use Local\Catalog\Sanatorium;
-use Local\Sale\Package;
-use Local\Sale\Postals;
-use Local\Utils\Abandoned;
 
 /**
  * Class Handlers Обработчики событий
@@ -19,7 +15,8 @@ class Handlers
 	/**
 	 * Добавление обработчиков
 	 */
-	public static function addEventHandlers() {
+	public static function addEventHandlers()
+	{
 		static $added = false;
 		if (!$added) {
 			$added = true;
@@ -46,7 +43,8 @@ class Handlers
 	 * Добавление пользовательских свойств
 	 * @return array
 	 */
-	public static function iBlockPropertyBuildList() {
+	public static function iBlockPropertyBuildList()
+	{
 		return UserTypeNYesNo::GetUserTypeDescription();
 	}
 
