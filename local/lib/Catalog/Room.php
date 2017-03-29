@@ -63,7 +63,6 @@ class Room
 		while ($item = $rsItems->Fetch())
 		{
 			$opts = array();
-			$options = self::getOptions();
 			foreach ($options as $k => $v)
 				if ($item['PROPERTY_' . $k. '_VALUE'])
 					$opts[$k] = $v;
@@ -203,9 +202,9 @@ class Room
 								</div>
 							</div>
 							<div style="text-align: center">
-								<input id="popup-bron-btn" type="button"
+								<input id="popup-bron-btn" type="button" data-id="<?= $room['ID'] ?>"
 								       class="btn-okno ui-widget ui-controlgroup-item ui-button ui-corner-right"
-								       href="" value="ЗАБРОНИРОВАТЬ" role="button">
+								       value="ЗАБРОНИРОВАТЬ" role="button">
 							</div>
 							<div class="info-bottom">
 								<div class="right">
@@ -254,7 +253,7 @@ class Room
 												foreach ($room['OPTIONS'] as $k => $v)
 												{
 													?>
-												<li class="con-item"><span class="icon-boon icon-<?= $k ?>"></span><span><?= $v?></span></li><?
+													<li class="con-item"><span class="icon-boon icon-<?= $k ?>"></span><span><?= $v?></span></li><?
 												}
 												?>
 											</ul>

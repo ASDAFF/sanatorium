@@ -1,6 +1,8 @@
 <?
 /** @global CMain $APPLICATION */
 
+define('HIDE_BOTTOM_FILTER', 'Y');
+
 $isAjax = isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'ajax';
 if ($isAjax)
 {

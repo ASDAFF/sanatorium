@@ -13,21 +13,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 //
 ?>
 <div class="el-full-bg2">
-    <div class="el-search-result engBox-body">
+    <div id="products-summary" class="el-search-result engBox-body">
         <div class="title">
             Санатории Кавказских Минеральных Вод с бассейном
         </div>
-        <div class="city">
-            <?
-            if ($filter['CUR_FILTERS'])
-            {
-                foreach ($filter['CUR_FILTERS'] as $item)
-                {
-                    ?><? /*<a href="<?= $item['HREF'] ?>">x</a>*/ ?><?= $item['NAME'] ?>: <?
-                }
-            }
-            ?><?= $component->countTitle ?>
-        </div>
+        <div class="city"><?//= $component->countTitle ?></div>
         <div class="sort">
 	        <b>Сортировать по:</b><?
 
@@ -75,12 +65,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
             санаториев на странице
         </div>
 		<div class="filtr">
-			<div class="filtr-current">
-				<span class="filtr-ttl">Отдых с детьми</span><i class="filtr-close"></i>
-			</div>
-			<div class="filtr-current">
-				<span class="filtr-ttl">Санаторий РЖД</span><i class="filtr-close"></i>
-			</div>
+			<?= $component->countTitle ?>:<?
+			foreach ($filter['CUR_FILTERS'] as $item)
+			{
+				?><div class="filtr-current">
+					<span class="filtr-ttl"><?= $item['NAME'] ?></span><a href="<?= $item['HREF']?>" class="filtr-close"></a>
+				</div><?
+			}
+			?>
 		</div>
     </div>
 
@@ -100,6 +92,10 @@ if (count($products) <= 0)
 
 foreach ($products as $id => $item)
 {
+	$reviewsCount = \Local\Catalog\Reviews::getCountBySanatorium($id);
+	$reviewsCountTitle = '';
+	if ($reviewsCount)
+		$reviewsCountTitle .= $reviewsCount . pluralize($reviewsCount, array(' отзыв', ' отзыва', ' отзывов'));
 	?>
     <div class="el-search-list engBox-body">
     <div class="item">
@@ -207,7 +203,7 @@ foreach ($products as $id => $item)
                     <input id="star-10" type="radio" name="reviewStars">
                     <label title="bad" for="star-10"></label>
                 </div>
-	            <span>10 отзывов</span><?
+	            <span><?= $reviewsCountTitle ?></span><?
 
 	            $cnt = $item['ROOMS_COUNT'];
 	            if ($cnt)
@@ -264,7 +260,7 @@ if ($iEnd > 1) {
 
     <div class="el-full-bg-grey">
     <div class="el-page engBox-body">
-        <ul><?
+        <ul id="pagination"><?
 
             if ($iCur > 1) {
                 if ($iCur == 2)

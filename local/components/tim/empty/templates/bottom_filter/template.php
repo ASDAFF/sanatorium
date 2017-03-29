@@ -2,6 +2,9 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	die();
 
+if (defined('HIDE_BOTTOM_FILTER') && HIDE_BOTTOM_FILTER == 'Y')
+	return false;
+
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -11,24 +14,22 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 
 ?>
 <div class="search-fix">
-	<input type="hidden" id="select-city" />
 	<div class="search-dark">
 		<div class="el-search engBox-body">
 			<div class="line">
 				<div class="eng-icon-city"></div>
 				<div class="select city">
-					<a href="javascript:void(0);" class="slct">Выберите город</a>
-					<ul id="city-vibor" class="drop"><?
+					<a href="javascript:void(0);" class="slct">(любой город)</a>
+					<ul id="city-vibor-bot" class="drop"><?
 
 						foreach ($data['CITY'] as $cityId => $cnt)
 						{
 							$city = \Local\Catalog\City::getById($cityId);
 							?>
-							<li value="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></li><?
+							<li data-code="<?= $city['CODE'] ?>"><?= $city['NAME'] ?></li><?
 						}
 						?>
 					</ul>
-					<input type="hidden" id="select-city"/>
 				</div>
 				<div class="eng-icon-city-grey"></div>
 				<div class="money">
@@ -39,10 +40,9 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 					<div id="slider-range-d" class='slider-range'></div>
 					<span id="slider-range-value-d-to"><?= $priceMax ?></span>
 				</div>
-				<a class="btn filter_find" href="javascript:void(0)">Найти</a>
+				<a class="btn filter-find" href="javascript:void(0)">Найти</a>
 			</div>
-			<div class="el-search-btn reset" style="margin-right: 10px;">Сброс</div>
-			<div class="el-search-btn" id="el-search-btn-d">Расширенный поиск<i id="icon-down-top-d"></i></div>
+			<div class="el-search-btn">Расширенный поиск</div>
 		</div>
 	</div>
 </div><?

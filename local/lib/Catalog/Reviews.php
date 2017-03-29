@@ -118,6 +118,47 @@ class Reviews
 	}
 
 	/**
+	 * Возвращает количество отзывов для санатория
+	 * @param $sanatoriumId
+	 * @param bool $refreshCache
+	 * @return array|\CIBlockResult|int|mixed
+	 */
+	public static function getCountBySanatorium($sanatoriumId, $refreshCache = false)
+	{
+		$return = array();
+
+		$sanatoriumId = intval($sanatoriumId);
+		if (!$sanatoriumId)
+			return $return;
+
+		$extCache = new ExtCache(
+			array(
+				__FUNCTION__,
+				$sanatoriumId,
+			),
+			static::CACHE_PATH . __FUNCTION__ . '/',
+			static::CACHE_TIME
+		);
+		if(!$refreshCache && $extCache->initCache()) {
+			$return = $extCache->getVars();
+		} else {
+			$extCache->startDataCache();
+
+			$iblockElement = new \CIBlockElement();
+			$return = $iblockElement->GetList(array(), array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'ACTIVE' => 'Y',
+				'PROPERTY_SERVICE' => 0,
+				'PROPERTY_SANATORIUM_ID' => $sanatoriumId,
+			), array());
+
+			$extCache->endDataCache($return);
+		}
+
+		return $return;
+	}
+
+	/**
 	 * Добавление отзыва
 	 * @return bool|int
 	 */

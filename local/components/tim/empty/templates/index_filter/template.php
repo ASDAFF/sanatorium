@@ -18,7 +18,7 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 		<div class="line">
 			<div class="eng-icon-city"></div>
 			<div class="city controlgroup">
-				<select id="city-vibor">
+				<select id="city-vibor-top">
 					<option value="0">(любой город)</option><?
 					foreach ($data['CITY'] as $cityId => $cnt)
 					{
@@ -38,8 +38,8 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 				<div id="slider-range"></div>
 				<span id="slider-range-value-to"><?= $priceMax ?></span>
 			</div>
-			<a class="btn filter_find" href="javascript:void(0)">Найти</a>
+			<a class="btn filter-find" href="javascript:void(0)">Найти</a>
 		</div>
-		<div class="el-search-btn" id="el-search-btn">Расширенный поиск</div>
+		<div class="el-search-btn">Расширенный поиск</div>
 	</div>
 </div><?

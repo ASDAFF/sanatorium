@@ -18,7 +18,7 @@ var Filters = {
 		this.catalogPath = this.panel.find('input[name=catalog_path]').val();
 		this.separator = this.panel.find('input[name=separator]').val();
 		this.q = this.panel.find('input[name=q]').val();
-		this.groups = this.panel.find('.filter_top-group');
+		this.groups = this.panel.find('.filter-group');
 		this.cb = this.panel.find('input[type=checkbox]');
 		this.ajaxCont = $('#catalog-list');
 		this.bcCont = $('#cron-crox');
@@ -27,9 +27,11 @@ var Filters = {
 		this.priceInit();
 
 		this.cb.click(this.checkboxClick);
-		this.ajaxCont.on('click', '#current-filters a', this.urlClick);
-		this.ajaxCont.on('click', '.pagination a', this.urlClick);
+		console.log(this.ajaxCont);
+		this.ajaxCont.on('click', '#products-summary a', this.urlClick);
+		this.ajaxCont.on('click', '#pagination a', this.urlClick);
 		this.bcCont.on('click', 'a', this.urlClick);
+		this.groups.find('.title').click(this.toggleGroup);
 
 		$(window).on('popstate', function (e) {
 			var url = e.target.location;
@@ -37,30 +39,58 @@ var Filters = {
 		});
 	},
 	priceInit: function() {
-		this.priceGroup = $('.price-group');
-		this.inputFrom = this.priceGroup.find('.from');
-		this.inputTo = this.priceGroup.find('.to');
-		this.price_from = this.inputFrom.val();
-		this.price_to = this.inputTo.val();
-		this.price_min = this.priceGroup.data('min');
-		this.price_max = this.priceGroup.data('max');
+		this.priceSlider = $('#slider-range-ext');
+		this.inputFrom = $("#ext-from");
+		this.inputTo = $("#ext-to");
+		this.price_min = 0;
+		this.price_max = parseInt(this.priceSlider.data('max'));
+		this.price_from = parseInt(this.inputFrom.text());
+		this.price_to = parseInt(this.inputTo.text());
 
-		if (this.price_min == this.price_max)
-			return;
-
-		this.inputFrom.on('change', Filters.priceChange);
-		this.inputTo.on('change', Filters.priceChange);
+		this.priceSlider.slider({
+			range: true,
+			min: Filters.price_min,
+			max: Filters.price_max,
+			values: [Filters.price_from, Filters.price_to],
+			step: 100,
+			slide: Filters.priceChange,
+			stop: Filters.priceStop
+		});
 	},
-	priceChange: function() {
-		Filters.price_from = Filters.inputFrom.val();
-		Filters.price_to = Filters.inputTo.val();
-		//Filters.updateProducts();
+	priceChange: function (event, ui) {
+		Filters.price_from = ui.values[0];
+		Filters.price_to = ui.values[1];
+		Filters.inputFrom.text(Filters.price_from);
+		Filters.inputTo.text(Filters.price_to);
+	},
+	priceStop: function () {
+		Filters.updateProducts();
 	},
 	priceCorrect: function(data) {
 		Filters.price_from = data.FROM;
 		Filters.price_to = data.TO;
-		Filters.inputFrom.val(data.FROM);
-		Filters.inputTo.val(data.TO);
+		Filters.inputFrom.text(data.FROM);
+		Filters.inputTo.text(data.TO);
+	},
+	toggleGroup: function () {
+		var gr = $(this).parent();
+		var dropmenu = gr.children('.profiles');
+		if (gr.hasClass('closed')) {
+			gr.removeClass('closed');
+			dropmenu.stop().fadeIn('slow', 'linear');
+		}
+		else {
+			gr.addClass('closed')
+			dropmenu.stop().fadeOut('slow', 'linear');
+		}
+		var val = '';
+		Filters.groups.each(function() {
+			var s = $(this).hasClass('closed') ? 1 : 0;
+			val += s + ',';
+		});
+		var d = new Date();
+		d.setTime(d.getTime() + 8640000000);
+		document.cookie = "filter_groups=" + val + "; path=/; expires=" + d.toUTCString();
 	},
 	checkboxClick: function() {
 		var input = $(this);
