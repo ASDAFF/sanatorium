@@ -201,7 +201,7 @@ $tabs = array(
     </div>
     <div class="engBox-right">
         <?
-        $APPLICATION->IncludeComponent('tim:empty', 'main_shares', array());
+        $APPLICATION->IncludeComponent('tim:empty', 'banners');
         ?>
     </div>
 </div>

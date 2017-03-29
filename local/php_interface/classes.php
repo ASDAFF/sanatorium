@@ -21,6 +21,6 @@ CModule::AddAutoloadClasses(
         'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
         'Local\\Catalog\\Infra' => '/local/lib/Catalog/Infra.php',
         'Local\\Common\\Manager' => '/local/lib/Common/Manager.php',
-        'Local\\Common\\Shares' => '/local/lib/Common/Shares.php',
+        'Local\\Common\\Banners' => '/local/lib/Common/Banners.php',
 	)
 );

@@ -4,15 +4,20 @@ namespace Local\Common;
 use Local\System\ExtCache;
 
 /**
- * Class Shares акции карточки
+ * Class Banners Баннеры
  * @package Local\Common
  */
-class Shares
+class Banners
 {
 	/**
 	 * Путь для кеширования
 	 */
-	const CACHE_PATH = 'Local/Common/Shares/';
+	const CACHE_PATH = 'Local/Common/Banners/';
+
+	/**
+	 * ID инофблока
+	 */
+	const IBLOCK_ID = 2;
 
 	/**
 	 * Возвращает акции
@@ -37,19 +42,18 @@ class Shares
 
             $iblockElement = new \CIBlockElement();
             $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
-                'IBLOCK_ID' => 33,
+                'IBLOCK_ID' => self::IBLOCK_ID,
                 'ACTIVE' => 'Y',
-            ), false, Array("nTopCount" => 4), array(
+            ), false, false, array(
                 'ID',
                 'NAME',
-                'IBLOCK_ID',
                 'PREVIEW_PICTURE',
             ));
             while ($item = $rsItems->Fetch()) {
-                $return[$item['ID']] = array(
+                $return[] = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
-                    'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
+                    'PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
                 );
             }
 

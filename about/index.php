@@ -64,13 +64,9 @@ $APPLICATION->SetTitle("Title");
 			
         </div>
     </div>
-    <div class="engBox-right">
-        <div id="right-ban">
-			<a href=""><img src="/images/ban1.jpg"></a>
-			<a href=""><img src="/images/ban2.jpg"></a>
-			<a href=""><img src="/images/ban3.jpg"></a>
-			<a href=""><img src="/images/ban4.jpg"></a>
-        </div>
+	<div class="engBox-right"><?
+		$APPLICATION->IncludeComponent('tim:empty', 'banners');
+		?>
     </div>
 </div>
 <div class="el-full-bg-grey b-20">
