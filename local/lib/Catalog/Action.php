@@ -37,7 +37,7 @@ class Action
 	 * @param bool $refreshCache
 	 * @return array|mixed
 	 */
-	public static function getList($cityId, $page, $size = 0, $refreshCache = true)
+	public static function getList($cityId, $page, $size = 0, $refreshCache = false)
 	{
 		$return = array();
 
@@ -114,7 +114,7 @@ class Action
 	 * @param bool $refreshCache
 	 * @return array|\CIBlockResult|int|mixed
 	 */
-	public static function getBySanatorium($sanatoriumId, $refreshCache = true)
+	public static function getBySanatorium($sanatoriumId, $refreshCache = false)
 	{
 		$return = array();
 

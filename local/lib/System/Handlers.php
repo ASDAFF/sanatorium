@@ -112,6 +112,8 @@ class Handlers
 	public static function elementAdd($arFields) {
 		if ($arFields['IBLOCK_ID'] == Room::IBLOCK_ID)
 			Room::onUpdateRoom($arFields['ID']);
+		elseif ($arFields['IBLOCK_ID'] == Action::IBLOCK_ID)
+			Action::onUpdate($arFields['ID']);
 	}
 
 	/**
