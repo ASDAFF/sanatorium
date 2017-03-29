@@ -226,6 +226,14 @@ var Detail = {
 			});
 		}
 	},
+	showSlider: function(){
+		$(".popap-slider").owlCarousel({
+			navigation: true,
+			singleItem: true,
+			navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
+			transitionStyle: "fade"
+		});
+	},
 	showTab: function(a, li) {
 		var id = a.data('id');
 		var tab = $(id);
@@ -236,6 +244,7 @@ var Detail = {
 			$.get('/ajax/detail_tab.php?tab=' + tab.attr('id') + '&id=' + Detail.productId, function (html) {
 				tab.html(html);
 				tab.removeClass('empty');
+				Detail.showSlider();
 			});
 		}
 	},

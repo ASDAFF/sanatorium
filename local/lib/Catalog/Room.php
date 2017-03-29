@@ -210,16 +210,6 @@ class Room
 					<div class="el-nomer-popap">
 						<div class="left">
 							<div class="slider">
-								<script>
-								$(document).ready(function() {
-									$(".popap-slider").owlCarousel({
-										navigation: true,
-										singleItem: true,
-										navigationText: ["<img src='/local/templates/san/images/left.png'>", "<img src='/local/templates/san/images/right.png'>"],
-										transitionStyle: "fade"
-									});
-								});
-								</script>
 								<div class="popap-slider"><?
 
 									$photos = $room['PHOTO'];

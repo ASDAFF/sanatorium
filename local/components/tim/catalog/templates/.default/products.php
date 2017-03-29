@@ -160,48 +160,12 @@ foreach ($products as $id => $item)
         <div class="inf">
             <div class="star"></div>
             <div class="comment">
-                <div class="reviewStars-input">
-                    <style>
-                        .reviewStars-input .star-10 {
-                            left: 0px;
-                        }
-
-                        .reviewStars-input .star-11 {
-                            left: 53px;
-                        }
-
-                        .reviewStars-input .star-12 {
-                            left: 106px;
-                        }
-
-                        .reviewStars-input .star-13 {
-                            left: 159px;
-                        }
-
-                        .reviewStars-input .star-14 {
-                            left: 212px;
-                        }
-
-                        .reviewStars-input .star-15 {
-                            left: 265px;
-                        }
-                    </style>
-
-
-                    <input id="star-14" type="radio" name="reviewStars">
-                    <label title="gorgeous" for="star-14"></label>
-
-                    <input id="star-13" type="radio" name="reviewStars">
-                    <label title="good" for="star-13"></label>
-
-                    <input id="star-12" type="radio" name="reviewStars">
-                    <label title="regular" for="star-12"></label>
-
-                    <input id="star-11" type="radio" name="reviewStars">
-                    <label title="poor" for="star-11"></label>
-
-                    <input id="star-10" type="radio" name="reviewStars">
-                    <label title="bad" for="star-10"></label>
+                <div class="rating">
+					<div class="star"><span class="on"></span></div>
+					<div class="star"><span class="on"></span></div>
+					<div class="star"><span class="on"></span></div>
+					<div class="star"><span class="of"></span></div>
+					<div class="star"><span class="of"></span></div>
                 </div>
 	            <span><?= $reviewsCountTitle ?></span><?
 

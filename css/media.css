@@ -13,7 +13,7 @@
 	.p-head{padding:0px;}
 	.nav_search{display:none;}
 	.el-lech {overflow: hidden;}
-	#comments .item {margin: 0px;}
+	#comments .item {margin: 0px; margin-bottom: 10px;}
 	#comments{background-size: cover;}
 	.header .head_pun{padding:0px;}
 	.head_pun li a {margin: 0px;}

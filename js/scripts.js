@@ -90,7 +90,7 @@ var SearchExtDisplay = {
 		}
 	}
 }
-var textCrop = {
+/*var textCrop = {
 	init: function () {
 		var size = 320;
 		var newsContent = $('.preview-text-inner');
@@ -101,7 +101,7 @@ var textCrop = {
 		}
 	}
 
-}
+}*/
 
 $(document).ready(function () {
 
@@ -110,8 +110,46 @@ $(document).ready(function () {
 	$(".controlgroup-vertical").controlgroup({
 		"direction": "vertical"
 	});
-	$("#datepicker").datepicker();
-	$("#datepicker2").datepicker();
+
+
+
+var yearNow = new Date().getFullYear();
+var monthNow = new Date().getMonth() + 1;
+var dateNow = new Date().getDate();
+if(monthNow < 10){
+	var monthNow = '0' + monthNow;
+}
+if(dateNow < 10){
+	var dateNow = '0' + dateNow;
+}
+var dateFin = '' + yearNow + '/' + monthNow + '/' + dateNow + '';
+
+$("#datepicker").datepicker({
+	minDate: new Date(dateFin)
+});
+$("#datepicker2").datepicker({
+	minDate: new Date(dateFin)
+});
+	$.datepicker.regional['ru'] = {
+            closeText: 'Закрыть',
+            prevText: '&#x3c;Пред',
+            nextText: 'След&#x3e;',
+            currentText: 'Сегодня',
+            monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            monthNamesShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+            dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            weekHeader: 'Нед',
+            dateFormat: 'dd.mm.yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+       };
+$.datepicker.setDefaults($.datepicker.regional['ru']);
 	$(".el-search-dop-input").checkboxradio();
 
 	$(".various").fancybox({
@@ -183,6 +221,28 @@ $(document).ready(function () {
 		}
 	});
 
+ $('.elComments-list').owlCarousel({
+	loop: true, // Повтор
+	navigation: true, // Кнопки next и prev
+	pagination: false,
+	navigationText: ["<img src='/images/elSlider-left.png'>", "<img src='/images/elSlider-right.png'>"],
+
+	slideSpeed: 300, // Скорость
+	paginationSpeed: 400,
+
+	items: 2, // Cколько обьектов
+	itemsDesktop: false,
+	itemsDesktopSmall: false,
+	itemsTablet: false,
+	itemsMobile: false,
+	responsive: {
+		0: {items: 1},
+		600: {items: 1},
+		700: {items: 1},
+		1200: {items: 2}
+	}
+});
+
 });
 
 
@@ -199,7 +259,7 @@ var SincSlider = {
 			pagination: false,
 			afterAction: this.syncPosition,
 			responsiveRefreshRate: 200,
-			navigationText: ["<img src='/local/templates/san/images/left.png'>", "<img src='/local/templates/san/images/right.png'>"],
+			navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
 			transitionStyle: "fade"
 		});
 
@@ -419,11 +479,11 @@ var Review = {
 	}
 };
 
+
 jQuery(document).ready(function () {
 	Review.init();
 	SincSlider.init();
 	PriceSlider.init();
 	MobileMenu.init();
 	SearchExtDisplay.init();
-	textCrop.init();
 });
