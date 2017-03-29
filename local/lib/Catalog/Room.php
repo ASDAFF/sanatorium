@@ -202,6 +202,11 @@ class Room
 									?>
 								</div>
 							</div>
+							<div style="text-align: center">
+								<input id="popup-bron-btn" type="button"
+								       class="btn-okno ui-widget ui-controlgroup-item ui-button ui-corner-right"
+								       href="" value="ЗАБРОНИРОВАТЬ" role="button">
+							</div>
 							<div class="info-bottom">
 								<div class="right">
 									<div class="text">
@@ -313,11 +318,6 @@ class Room
 								</div>
 
 
-							</div>
-							<div style="text-align: center">
-								<input id="popup-bron-btn" type="button"
-								       class="btn-okno ui-widget ui-controlgroup-item ui-button ui-corner-right"
-								       href="" value="ЗАБРОНИРОВАТЬ" role="button">
 							</div>
 						</div>
 					</div>

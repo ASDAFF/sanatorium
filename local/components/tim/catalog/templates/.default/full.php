@@ -77,6 +77,16 @@ foreach ($filter['GROUPS'] as $group)
     <div class="el-search-select engBox-body" id="el-search-select" style="display: none;">
 
         <div id="filters-panel">
+			<div class="filter-group">
+				<div class="title">Цена</div>
+				<fieldset class="profiles">
+					<div class="price-range">
+						<span class="price-range-value" id="slider-range-value_0">1500</span>
+						<div id="slider-range-ext"></div>
+						<span class="price-range-value" id="slider-range-value_0">15000</span>
+				  </div>
+				</fieldset>
+			</div>
             <input type="hidden" name="q" value="<?= $component->searchQuery ?>">
             <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
             <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
@@ -88,6 +98,7 @@ foreach ($filter['GROUPS'] as $group)
 		            continue;
 
                 ?>
+
                 <div class="filter-group">
 	                <div class="title"><?= $group['NAME'] ?><s></s></div>
 	                <fieldset class="profiles"><?

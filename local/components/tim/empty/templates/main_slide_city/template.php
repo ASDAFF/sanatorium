@@ -5,15 +5,14 @@ $slideCity = \Local\Catalog\SlideCity::getAll(array(), array(), array());
 
 ?>
 
-
 <div class="el-lech engBox-body">
     <div class="title">
         О лечении в городах КМВ
     </div>
-    <div id="slider" class="flexslider">
-        <ul class="slides">
+    <div id="about-slider" class="owl-carousel">
+
             <? foreach ($slideCity as $item) {?>
-            <li><a href="" class="item">
+            <div><a href="" class="item">
                     <div class="img">
                         <img src="<?=$item['PREVIEW_PICTURE']?>">
                     </div>
@@ -25,21 +24,19 @@ $slideCity = \Local\Catalog\SlideCity::getAll(array(), array(), array());
                         </p>
                     </div>
                 </a>
-            </li>
+            </div>
             <?}?>
-        </ul>
+
     </div>
 
-    <div id="carousel" class="flexslider">
-        <ul class="slides el-lech-page">
+     <div id="about-slider-nav" class="owl-carousel slides el-lech-page">
             <? foreach ($slideCity as $item) {?>
-                <li>
+                <div>
                     <div class="line">
                     </div>
                     <?=$item['NAME']?>
-                </li>
+                </div>
             <?}?>
-        </ul>
     </div>
 </div>
 

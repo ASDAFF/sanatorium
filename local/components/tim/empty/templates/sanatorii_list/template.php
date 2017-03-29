@@ -24,6 +24,7 @@ $sanatorium = \Local\Catalog\Sanatorium::getAll(array(), array(), array());
             санаториев на странице
         </div>
     </div>
+
 </div>
 
 

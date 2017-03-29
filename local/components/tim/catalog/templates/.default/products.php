@@ -74,7 +74,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		    ?>
             санаториев на странице
         </div>
+		<div class="filtr">
+			<div class="filtr-current">
+				<span class="filtr-ttl">Отдых с детьми</span><i class="filtr-close"></i>
+			</div>
+			<div class="filtr-current">
+				<span class="filtr-ttl">Санаторий РЖД</span><i class="filtr-close"></i>
+			</div>
+		</div>
     </div>
+
 </div><?
 
 //

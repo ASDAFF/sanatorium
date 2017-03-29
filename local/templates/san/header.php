@@ -16,7 +16,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	 CJSCore::init(array('jquery2'));
 
 	$assets->addJs(SITE_DIR . 'js/jquery-ui/jquery-ui.min.js');
-    $assets->addJs(SITE_DIR . 'js/jquery.flexslider-min.js');
     $assets->addJs(SITE_DIR . 'js/fancybox/jquery.fancybox.js');
 	$assets->addJs(SITE_DIR . 'js/owl/owl.carousel.min.js');
 	$assets->addJs(SITE_DIR . 'js/readmore.min.js');
@@ -26,7 +25,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 
     $assets->addCss(SITE_DIR . 'js/jquery-ui/jquery-ui.min.css');
-    $assets->addCss(SITE_DIR . 'css/flexslider.css');
     $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
 	$assets->addCss(SITE_DIR . 'js/owl/owl.carousel.css');
 
