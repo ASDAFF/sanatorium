@@ -91,10 +91,9 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 		"MENU_CACHE_GET_VARS" => array(
 		),
 		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_TYPE" => "Y",
 		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "N",
+		"USE_EXT" => "Y",
 		"COMPONENT_TEMPLATE" => "topHor"
 	),
 	false

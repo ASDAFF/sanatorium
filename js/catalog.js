@@ -71,6 +71,7 @@ var Filters = {
 		Filters.price_to = data.TO;
 		Filters.inputFrom.text(data.FROM);
 		Filters.inputTo.text(data.TO);
+		Filters.priceSlider.slider('values', [Filters.price_from, Filters.price_to]);
 	},
 	toggleGroup: function () {
 		var gr = $(this).parent();
