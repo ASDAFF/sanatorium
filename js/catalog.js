@@ -199,6 +199,7 @@ var Detail = {
 		var tabs = $('#content-menu-show');
 		if (tabs.length) {
 			this.reserveForm = $('#formx');
+			this.reserveResult = $('#bronx');
 			this.productId = tabs.data('id');
 
 			this.reserveForm.on('submit', this.reserve);
@@ -238,17 +239,14 @@ var Detail = {
 		}
 	},
 	reserve: function() {
-		console.log("AAAAAAAAAAAAAAA");
-		var form_data   = $('#formx').serialize();
+		var form_data = Detail.reserveForm.serialize();
 		$.ajax({
 			type: 'POST',
-			url: '/local/components/tim/catalog/templates/add_bron.php',
+			url: '/ajax/reserve_room.php',
 			data: form_data,
 			success: function(data) {
-				console.log(data);
-				$("#formx")[0].reset();
-				$("#bronx").css("display", "block");
-				$("#bronx").html(data);
+				Detail.reserveForm[0].reset();
+				Detail.reserveResult.html(data).show();
 			}
 		});
 

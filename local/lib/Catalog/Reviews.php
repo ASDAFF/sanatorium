@@ -88,7 +88,10 @@ class Reviews
 				$filter['PROPERTY_SANATORIUM_CITY'] = $cityId;
 
 			$iblockElement = new \CIBlockElement();
-			$rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), $filter, false, $nav, array(
+			$rsItems = $iblockElement->GetList(array(
+				'SORT' => 'ASC',
+				'ID' => 'DESC'
+			), $filter, false, $nav, array(
 				'ID',
 				'NAME',
 				'PREVIEW_TEXT',
@@ -166,13 +169,13 @@ class Reviews
 	{
 		$id = 0;
 
-		$name = $_POST['name'];
-		$txt = $_POST['txt'];
-		$city = $_POST['city'];
-		$mail = $_POST['mail'];
+		$name = htmlspecialchars($_POST['name']);
+		$txt = htmlspecialchars($_POST['txt']);
+		$city = htmlspecialchars($_POST['city']);
+		$mail = htmlspecialchars($_POST['mail']);
 		$mark = intval($_POST['mark']);
-		$service = $_POST['service'];
-		$san = $_POST['san'];
+		$service = htmlspecialchars($_POST['service']);
+		$san = htmlspecialchars($_POST['san']);
 
 		if ($name && $txt && $mail)
 		{

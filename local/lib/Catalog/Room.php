@@ -19,6 +19,11 @@ class Room
 	const IBLOCK_ID = 26;
 
 	/**
+	 * ID инфоблока с заявками
+	 */
+	const RESERVE_IBLOCK_ID = 20;
+
+	/**
 	 * ID свойства с санаторием-родителем
 	 */
 	const SANATORIUM_PROP_ID = 196;
@@ -82,6 +87,37 @@ class Room
 				'MAIN_PLACES' => intval($item['PROPERTY_MAIN_PLACES_VALUE']),
 				'ADD_PLACES' => intval($item['PROPERTY_ADD_PLACES_VALUE']),
 			    'OPTIONS' => $opts,
+			);
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Возвращает номер по ID
+	 * @param $id
+	 * @return array
+	 */
+	public static function getById($id)
+	{
+		$return = array();
+
+		$iblockElement = new \CIBlockElement();
+		$rsItems = $iblockElement->GetList(array(), array(
+			'IBLOCK_ID' => self::IBLOCK_ID,
+			'ACTIVE' => 'Y',
+		    'ID' => $id,
+		), false, false, array(
+			'ID',
+			'NAME',
+			'PROPERTY_SANATORIUM',
+		));
+		if ($item = $rsItems->Fetch())
+		{
+			$return = array(
+				'ID' => $item['ID'],
+				'NAME' => $item['NAME'],
+				'SANATORIUM' => intval($item['PROPERTY_SANATORIUM_VALUE']),
 			);
 		}
 
@@ -360,6 +396,75 @@ class Room
 		}
 
 		return $return;
+	}
+
+	public static function reserve()
+	{
+		$name = htmlspecialchars($_POST['name']);
+		$phone = htmlspecialchars($_POST['phone']);
+		$roomId = intval($_POST['room']);
+		$adults = intval($_POST['adults']);
+		$child = intval($_POST['child']);
+		$date_on = htmlspecialchars($_POST['date_on']);
+		$date_off = htmlspecialchars($_POST['date_off']);
+		$transfer = $_POST['transfer'] == 'on';
+
+		if ($name && $phone)
+		{
+			$props = array(
+				'PHONE' => $phone,
+				'ADULTS' => $adults,
+				'CHILD' => $child,
+				'FROM' => $date_on,
+				'TO' => $date_off,
+				'TRANSFER' => $transfer ? 1 : 0,
+			);
+			$roomName = '';
+			$sanName = '';
+			if ($roomId)
+			{
+				$room = self::getById($roomId);
+				if ($room)
+				{
+					$props['ROOM'] = $roomId;
+					$props['SANATORIUM'] = $room['SANATORIUM'];
+					$san = Sanatorium::getSimpleById($room['SANATORIUM']);
+					$sanName = $san['NAME'] . ' [' . $room['SANATORIUM'] . ']';
+					$roomName = $room['NAME'] . ' [' . $roomId . ']';
+				}
+			}
+
+			$el = new \CIBlockElement();
+			$fields = array(
+				'IBLOCK_ID' => self::RESERVE_IBLOCK_ID,
+				'NAME' => $name,
+				'PROPERTY_VALUES' => $props,
+			);
+			$id = $el->Add($fields);
+			if ($id)
+			{
+				$eventFields = array(
+					'NAME' => $name,
+					'PHONE' => $phone,
+					'SANATORIUM' => $sanName,
+					'ROOM' => $roomName,
+					'ADULTS' => $adults,
+					'CHILD' => $child,
+					'FROM' => $date_on,
+					'TO' => $date_off,
+					'TRANSFER' => $transfer ? 'да' : 'нет',
+				);
+				\CEvent::Send('ASPRO_SEND_FORM_ADMIN_20', 's1', $eventFields);
+			}
+
+
+			if ($id)
+				return "Спасибо. Мы с Вами свяжемся";
+			else
+				return "Ошибка добавления заявки. Свяжитесь с администрацией";
+		}
+
+		return '';
 	}
 
 }

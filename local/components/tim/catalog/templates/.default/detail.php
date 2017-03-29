@@ -153,7 +153,7 @@ $tabs = array(
                     <input type="text" name="phone" placeholder="Введите номер телефона"
                            autocomplete="off" class="icon-phone2" required />
                     <select id="car-type3" name="room" class="input-right icon-key">
-                        <option>Выберите номер</option><?
+                        <option value="0">Выберите номер</option><?
                         foreach ($product['ROOMS'] as $room)
                         {
                             ?>
@@ -196,6 +196,7 @@ $tabs = array(
                     <input type="submit" id="form_btn" class="btn" value="ЗАБРОНИРОВАТЬ">
                 </div>
             </form>
+	        <div id="bronx" class="okno" style="display: none"></div>
         </div>
     </div>
     <div class="engBox-right">
