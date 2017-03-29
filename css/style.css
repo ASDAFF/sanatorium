@@ -683,6 +683,25 @@ footer .right img { width: 180px !important; }
 .el-page span,.el-page a {padding: 0 7px; margin: 0 5px; display: inline-block; border-radius: 4px;font-size: 14px; color: #2b2b2b; }
 .el-page span {background: #20a2e9; color: #fff;}
 .el-page a:hover {text-decoration: underline;}
+
+.el-page li.prev span, .el-page li.prev a,
+.el-page li.next span, .el-page li.next a {
+	width: 11px; height: 18px; padding: 0; vertical-align: middle;
+	background-position: -1px 1px;
+}
+
+.el-page li.prev span {
+	background: url(/css/../images/elPage-left.png);}
+.el-page li.prev a {width: 11px; height: 18px; padding: 0; vertical-align: middle;
+	background: url(/css/../images/elPage-left-red.png);
+	background-position: -1px 1px;}
+.el-page li.next span {width: 11px; height: 18px; padding: 0; vertical-align: middle;
+	background: url(/css/../images/elPage-right.png);
+	background-position: -1px 1px;}
+.el-page li.next a {width: 11px; height: 18px; padding: 0; vertical-align: middle;
+	background: url(/css/../images/elPage-right-red.png);
+	background-position: -1px 1px;}
+
 .el-page .eng-icon-right {display: inline-block; width: 25px; height: 15px; background: url("../images/right-blue.png")9px 2px  no-repeat;}
 
 
@@ -929,7 +948,7 @@ fieldset .tbl  label{
 	padding-left: 25px;
     font-size: 15.5px;
 }
-.el-search-select fieldset{margin-bottom:27px;}
+.el-search-select fieldset{margin-bottom:0px;}
 .el-search-select fieldset.spec-serv-2{
 	border-top:none;
 }
@@ -947,6 +966,7 @@ fieldset .tbl  label{
 	color:#b5b5b5;
 	padding: 4px 2px 2px 25px;
 }
+#right-form .ui-controlgroup {width: 100%;}
 #right-form .title{
 	color: #ff9a00;
 	margin: 10px 0 8px;
@@ -981,9 +1001,8 @@ fieldset .tbl  label{
 	outline:none;
 }
 .checkbox-tr-btn span.ui-checkboxradio-icon.ui-corner-all.ui-icon.ui-icon-background.ui-icon-check.ui-state-checked {
-    background: url("../images/ui-icon-tr.png") no-repeat 50% 50%;
-	box-shadow: none;
-    border: none;
+	background-image: url(/js/jquery-ui/images/ui-icons_777777_256x240.png);
+
 }
 .checkbox-tr-btn span.ui-checkboxradio-icon-space {
     width: 8px;
@@ -2737,6 +2756,9 @@ div[id^="slider-popap-"].flexslider .slides img{
 .rating .star span{width: 17px;}
 .rating .star span.on{background: url(/images/star.png) no-repeat 1px -0.5px;}
 .filter-group .title{cursor:pointer;}
+.filter-group .title s {display: inline-block;  margin-left: 7px;
+	border: 6px solid transparent;
+	border-top: 7px solid #ff9c00; position: relative; top: 5px;}
 .filter-group .profiles{display:none;}
 .service-reviews .feedback-form-right textarea{
 	height:129px;
@@ -2789,3 +2811,5 @@ div[id^="slider-popap-"].flexslider .slides img{
 	float:none;
 	display:inline-block;
 }
+
+.ui-checkboxradio-label .ui-icon-background {box-shadow: inset 0px 0px 4px #878787;}
