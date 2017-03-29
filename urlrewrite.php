@@ -126,6 +126,12 @@ $arUrlRewrite = array(
 		"ID" => "",
 		"PATH" => "/reviews/index.php",
 	),
+	array(
+		"CONDITION" => "#^/action/(.*)/(.*)#",
+		"RULE" => "city=\$1",
+		"ID" => "",
+		"PATH" => "/action/index.php",
+	),
 );
 
 ?>

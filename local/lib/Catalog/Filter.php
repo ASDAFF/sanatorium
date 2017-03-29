@@ -519,12 +519,12 @@ class Filter
 		{
 			return array(
 				'H1' => 'Результаты поиска по запросу «' . $searchQuery . '»',
-				'TITLE' => 'Результаты поиска по запросу «' . $searchQuery . '» - (шаблон)',
+				'TITLE' => 'Результаты поиска по запросу «' . $searchQuery . '»',
 			);
 		}
 
 		$name = '';
-		$type = 'санатории';
+		$city = ' Кавказских Минеральных Вод';
 		$suffix = '';
 		$prefix = '';
 
@@ -548,15 +548,6 @@ class Filter
 					$part .= $code;
 					$itemsCnt++;
 					$lastItem = $item;
-
-					if ($code == 'action')
-						$suffix .= ' по акции';
-
-					if (!$prefix)
-					{
-						if ($code == 'new')
-							$prefix = 'Новые ';
-					}
 				}
 			}
 			if ($part)
@@ -572,8 +563,7 @@ class Filter
 			{
 				if ($itemsCnt == 1)
 				{
-					$name = $lastItem['NAME'];
-					$type = strtolower($lastItem['NAME']);
+					$city = ' ' . $lastItem['NAME'];
 				}
 			}
 
@@ -590,11 +580,12 @@ class Filter
 
 		if ($prefix)
 			$name = strtolower($name);
-		$h1 = $prefix . $name . $suffix;
+
+		$h1 = $prefix . $name . $city. $suffix;
 		$h1l = strtolower($h1);
-		$title = '(шаблон для заголовка) ' . $h1l . ' – (продолжение шаблона для заголовка)';
-		$description = $h1 . ' (шаблон описания) ' . $type;
-		$text = '(шаблон текста) ' . $h1l . ' (продолжение шаблона текста)';
+		$title = $h1;
+		$description = $h1;
+		$text = $h1;
 
 		return array(
 			'H1' => $h1,

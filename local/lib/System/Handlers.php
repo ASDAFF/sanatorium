@@ -1,6 +1,7 @@
 <?
 
 namespace Local\System;
+use Local\Catalog\Action;
 use Local\Catalog\Profiles;
 use Local\Catalog\Reviews;
 use Local\Catalog\Room;
@@ -125,6 +126,8 @@ class Handlers
 			Room::onUpdateRoom($arFields['ID']);
 		elseif ($arFields['IBLOCK_ID'] == Reviews::IBLOCK_ID)
 			Reviews::onUpdate($arFields['ID']);
+		elseif ($arFields['IBLOCK_ID'] == Action::IBLOCK_ID)
+			Action::onUpdate($arFields['ID']);
 	}
 
 	/**

@@ -14,9 +14,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 ?>
 <div class="el-full-bg2">
     <div id="products-summary" class="el-search-result engBox-body">
-        <div class="title">
-            Санатории Кавказских Минеральных Вод с бассейном
-        </div>
+        <div class="title"><?= $component->seo['H1'] ?></div>
         <div class="city"><?//= $component->countTitle ?></div>
         <div class="sort">
 	        <b>Сортировать по:</b><?

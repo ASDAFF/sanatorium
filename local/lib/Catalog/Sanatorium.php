@@ -554,198 +554,6 @@ class Sanatorium
         return $return;
     }
 
-    /*public static function getRoomsByPrice($sanatoriumId)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array('property_PRICES' => 'ASC'), array(
-            'IBLOCK_ID' => self::IB_ROOMS,
-            'PROPERTY_SANATORIUM' => $sanatoriumId,
-            'ACTIVE' => 'Y',
-        ), false, Array("nTopCount" => 1), array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PROPERTY_PRICE',
-            'PROPERTY_PROFILES',
-        ));
-        while ($item = $rsItems->Fetch()) {
-            $return[$item['ID']] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
-                'PROFILES' => $item['PROPERTY_PROFILES_VALUE'],
-                'IBLOCK_ID' => $item['IBLOCK_ID'],
-            );
-        }
-
-        return $return;
-    }
-
-
-    public static function getMinPriceRooms($roomsId)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array('property_PRICE' => 'ASC'), array(
-            'IBLOCK_ID' => self::IB_ROOMS,
-            'ID' => $roomsId,
-            'ACTIVE' => 'Y',
-        ), false, Array("nTopCount" => 1), array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PROPERTY_PRICE',
-        ));
-        while ($item = $rsItems->Fetch()) {
-            $return[] = array(
-                'ID' => $item['ID'],
-                'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
-            );
-        }
-
-        return $return;
-    }
-
-    public static function getInfo($count, $id)
-    {
-        $return = array();
-        $count_el = array();
-
-        if (!empty($count)) {
-            $count_el = array("nTopCount" => $count);
-        }
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
-            'IBLOCK_ID' => 34,
-            'ID' => $id,
-            'ACTIVE' => 'Y',
-        ), false, $count_el, array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PREVIEW_PICTURE',
-        ));
-        while ($item = $rsItems->GetNext()) {
-            $return[] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
-            );
-        }
-
-        return $return;
-    }
-
-    public static function getParam($id)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array(), array(
-            'IBLOCK_ID' => 24,
-            'ID' => $id,
-            'ACTIVE' => 'Y',
-        ), false, array(), array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'DETAIL_TEXT',
-            'PREVIEW_TEXT',
-
-        ));
-        while ($item = $rsItems->GetNext()) {
-            $return[] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'DETAIL_TEXT' => $item['DETAIL_TEXT'],
-                'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
-            );
-        }
-
-        return $return;
-    }
-    public static function getShares($id)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array(), array(
-            'IBLOCK_ID' => 9,
-            'ID' => $id,
-            'ACTIVE' => 'Y',
-        ), false, array(), array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PROPERTY_PERIOD',
-            'PREVIEW_TEXT',
-            'DETAIL_TEXT',
-
-        ));
-        while ($item = $rsItems->GetNext()) {
-            $return[] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'DETAIL_TEXT' => $item['DETAIL_TEXT'],
-                'PROPERTY_PERIOD_VALUE' => $item['PROPERTY_PERIOD_VALUE'],
-                'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
-            );
-        }
-
-        return $return;
-    }
-
-    public static function getRo($id)
-    {
-        $return = array();
-
-        $iblockElement = new \CIBlockElement();
-        $rsItems = $iblockElement->GetList(array(), array(
-            'IBLOCK_ID' => 26,
-            'ID' => $id,
-            'ACTIVE' => 'Y',
-        ), false, array(), array(
-            'ID',
-            'NAME',
-            'IBLOCK_ID',
-            'PREVIEW_PICTURE',
-            'PROPERTY_ROOM_SIZE',
-            'PROPERTY_SINGLE_BED',
-            'PROPERTY_DOUBLE_BED',
-            'PROPERTY_PRICE',
-            'PROPERTY_MORE_PHOTO',
-            'PROPERTY_MAIN_PLACES',
-            'PROPERTY_ADD_PLACES',
-            'PROPERTY_PRICE_FULL',
-            'PROPERTY_CHILD_PLACES_PRICE',
-            'PROPERTY_PLACES_PRICE',
-        ));
-        while ($item = $rsItems->GetNext()) {
-            $return[] = array(
-                'ID' => $item['ID'],
-                'NAME' => $item['NAME'],
-                'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
-                'ROOM_SIZE' => $item['PROPERTY_ROOM_SIZE_VALUE'],
-                'SINGLE_BED' => $item['PROPERTY_SINGLE_BED_VALUE'],
-                'DOUBLE_BED' => $item['PROPERTY_DOUBLE_BED_VALUE'],
-                'PRICE' => $item['PROPERTY_PRICE_VALUE'],
-                'MORE_PHOTO' => $item['PROPERTY_MORE_PHOTO_VALUE'],
-                'EXTRA' => $item['PROPERTY_EXTRA_VALUE'],
-                'MAIN_PLACES' => $item['PROPERTY_MAIN_PLACES_VALUE'],
-                'ADD_PLACES' => $item['PROPERTY_ADD_PLACES_VALUE'],
-                'PRICE_FULL' => $item['PROPERTY_PRICE_FULL_VALUE'],
-                'CHILD_PLACES_PRICE' => $item['PROPERTY_CHILD_PLACES_PRICE_VALUE'],
-                'PROPERTY_PLACES_PRICE' => $item['PROPERTY_PLACES_PRICE_VALUE'],
-            );
-        }
-
-        return $return;
-    }*/
-
     /**
      * Увеличивает счетчики просмотров товара
      * @param $productId
@@ -902,7 +710,33 @@ class Sanatorium
         }
         elseif ($tabCode == 'action')
         {
-
+	        $actions = Action::getBySanatorium($sanatorium['ID']);
+			?>
+	        <div class="tab-actions"><?
+	            foreach ($actions as $item)
+	            {
+		            ?>
+		            <div class="tab-actions-item">
+			            <div class="tab-actions-title"><?= $item['NAME'] ?></div><?
+			            $period = '';
+			            if ($item['ACTIVE_FROM'])
+				            $period .= ' с ' . $item['ACTIVE_FROM'];
+			            if ($item['ACTIVE_TO'])
+				            $period .= ' по ' . $item['ACTIVE_TO'];
+			            if ($period)
+			            {
+				            ?>
+				            <div class="tab-actions-time"><b>Период действия:</b> <span><?= $period ?></span></div><?
+			            }
+		                ?>
+			            <div class="tab-actions-descr">
+				            <b>Описание акции:</b>
+				            <?= $item['TEXT'] ?>
+			            </div>
+		            </div><?
+	            }
+		        ?>
+	        </div><?
         }
         elseif ($tabCode == 'docs')
         {
