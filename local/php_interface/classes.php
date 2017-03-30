@@ -17,8 +17,6 @@ CModule::AddAutoloadClasses(
 		'Local\\Catalog\\Sitemap' => '/local/lib/Catalog/Sitemap.php',
         'Local\\Catalog\\Reviews' => '/local/lib/Catalog/Reviews.php',
         'Local\\Catalog\\Action' => '/local/lib/Catalog/Action.php',
-        'Local\\Catalog\\FilterDark' => '/local/lib/Catalog/FilterDark.php',
-        'Local\\Catalog\\SlideCity' => '/local/lib/Catalog/SlideCity.php',
         'Local\\Catalog\\Infra' => '/local/lib/Catalog/Infra.php',
         'Local\\Common\\Manager' => '/local/lib/Common/Manager.php',
         'Local\\Common\\Banners' => '/local/lib/Common/Banners.php',

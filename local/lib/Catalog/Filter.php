@@ -563,7 +563,8 @@ class Filter
 			{
 				if ($itemsCnt == 1)
 				{
-					$city = ' ' . $lastItem['NAME'];
+					$c = City::getById($lastItem['ID']);
+					$city = ' ' . $c['UF_RODIT'];
 				}
 			}
 

@@ -71,20 +71,35 @@ $tabs = array(
         //
         // Картинки
         //
+	    $file = new \CFile();
+	    $pics = array();
+	    foreach ($product['PICTURES'] as $value)
+	    {
+		    $img = $file->ResizeImageGet(
+			    $value,
+			    array(
+				    'width' => 10000,
+				    'height' => 526
+			    ),
+			    BX_RESIZE_IMAGE_PROPORTIONAL,
+			    true
+		    );
+		    $pics[] = $img;
+	    }
         ?>
         <div id="sync1" class="owl-carousel"><?
-            foreach ($product['PICTURES'] as $value)
+            foreach ($pics as $img)
             {
                 ?>
-                <div class="item"><img src="<?= $value ?>" /></div><?
+                <div class="item"><img src="<?= $img['src'] ?>" /></div><?
             }
             ?>
         </div>
         <div id="sync2" class="owl-carousel"><?
-            foreach ($product['PICTURES'] as $value)
+	        foreach ($pics as $img)
             {
                 ?>
-                <div class="item"><img src="<?= $value ?>" /></div><?
+                <div class="item"><img src="<?= $img['src'] ?>" /></div><?
             }
             ?>
         </div><?
@@ -199,8 +214,7 @@ $tabs = array(
 	        <div id="bronx" class="okno" style="display: none"></div>
         </div>
     </div>
-    <div class="engBox-right">
-        <?
+    <div class="engBox-right"><?
         $APPLICATION->IncludeComponent('tim:empty', 'banners');
         ?>
     </div>

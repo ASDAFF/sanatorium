@@ -112,7 +112,7 @@ class Reviews
                     'DATE' => $item['PROPERTY_DATE_VALUE'],
 				);
 			}
-			$return['NAV'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
+			$return['PAGINATION'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
 
 			$extCache->endDataCache($return);
 		}

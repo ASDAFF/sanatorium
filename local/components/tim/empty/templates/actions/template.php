@@ -42,6 +42,8 @@ $class = $isService ? ' service-reviews' : '';
 $title = $isService ? '' : ' о санатории';
 $actions = \Local\Catalog\Action::getList($cityId, $page);
 
+$file = new \CFile();
+
 ?>
 <div class="engBox-body clearfix">
 	<div class="engBox-center">
@@ -50,11 +52,20 @@ $actions = \Local\Catalog\Action::getList($cityId, $page);
 				foreach ($actions['ITEMS'] as $item)
 				{
 					$sanatorium = \Local\Catalog\Sanatorium::getById($item['SANATORIUM']);
+					$img = $file->ResizeImageGet(
+						$sanatorium['PICTURES'][0],
+						array(
+							'width' => 261,
+							'height' => 1000
+						),
+						BX_RESIZE_IMAGE_PROPORTIONAL,
+						true
+					);
 					?>
 					<div class="actions-item">
 						<div class="actions-img">
 							<a href="<?= $sanatorium['DETAIL_PAGE_URL'] ?>" class="item">
-								<div class="img" style="background:url(<?= $sanatorium['PICTURES'][0] ?>);"></div>
+								<div class="img" style="background:url(<?= $img['src'] ?>);"></div>
 								<div class="text eng-animations">
 									<b>Санаторий <?= $sanatorium['NAME'] ?></b>
 									<span>КМВ, <?= $sanatorium['CITY']['NAME'] ?></span>
@@ -92,6 +103,6 @@ $actions = \Local\Catalog\Action::getList($cityId, $page);
 		$APPLICATION->IncludeComponent('tim:empty', 'banners');
 		?>
 	</div>
-</div><?
+</div>
 
-echo $actions['NAV'];
+<div class="el-full-bg-grey"><?= $actions['PAGINATION'] ?></div>

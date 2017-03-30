@@ -100,7 +100,7 @@ class Action
                     'SANATORIUM' => $item['PROPERTY_SANATORIUM_VALUE'],
 				);
 			}
-			$return['NAV'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
+			$return['PAGINATION'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
 
 			$extCache->endDataCache($return);
 		}

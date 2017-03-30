@@ -88,8 +88,18 @@ if (count($products) <= 0)
     <p class="empty">Не найдено ни одного подходящего санатория. Попробуйте отключить какой-нибудь фильтр</p><?
 }
 
+$file = new \CFile();
 foreach ($products as $id => $item)
 {
+	$img = $file->ResizeImageGet(
+		$item['PREVIEW_PICTURE'],
+		array(
+			'width' => 345,
+			'height' => 1000
+		),
+		BX_RESIZE_IMAGE_PROPORTIONAL,
+		true
+	);
 	$reviewsCount = \Local\Catalog\Reviews::getCountBySanatorium($id);
 	$reviewsCountTitle = '';
 	if ($reviewsCount)
@@ -98,7 +108,7 @@ foreach ($products as $id => $item)
     <div class="el-search-list engBox-body">
     <div class="item">
         <div class="img">
-            <img src="<?= $item['PREVIEW_PICTURE'] ?>">
+            <img src="<?= $img['src'] ?>">
         </div>
         <div class="text">
 	        <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a><?
