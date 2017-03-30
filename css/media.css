@@ -122,7 +122,7 @@ nav .p-submenu a,.page-inner-menu li{background: #fff;}
 @media screen and (max-width: 700px) {
 .info-bottom .right,
 .info-bottom .inf{width:100%;}
-.fancybox-inner,.fancybox-opened {width: 90% !important;margin:0 auto !important;}
+/*.fancybox-inner,.fancybox-opened {width: 90% !important;margin:0 auto !important;}*/
 .el-nomer-popap .right .icon,
 .el-nomer-popap .right .text,
 .infra-list{width:100%;}

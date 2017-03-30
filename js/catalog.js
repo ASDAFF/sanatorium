@@ -224,8 +224,12 @@ var Detail = {
 					Detail.showTab(a, li);
 				}
 			});
+
 		}
+		this.showSlider();
+		this.ProgramsPopup();
 	},
+
 	showSlider: function(){
 		$(".popap-slider").owlCarousel({
 			navigation: true,
@@ -234,6 +238,17 @@ var Detail = {
 			transitionStyle: "fade"
 		});
 	},
+
+	ProgramsPopup: function(){
+		$('.preview-text a').on('click', function(e) {
+			e.preventDefault();
+			$.fancybox({
+				content: $(this).parent().parent().find('.detail-text'),
+				padding: '0'
+			})
+		});
+	},
+
 	showTab: function(a, li) {
 		var id = a.data('id');
 		var tab = $(id);
@@ -245,6 +260,7 @@ var Detail = {
 				tab.html(html);
 				tab.removeClass('empty');
 				Detail.showSlider();
+				Detail.ProgramsPopup();
 			});
 		}
 	},

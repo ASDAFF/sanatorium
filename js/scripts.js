@@ -90,6 +90,8 @@ var SearchExtDisplay = {
 		}
 	}
 }
+
+
 /*var textCrop = {
 	init: function () {
 		var size = 320;
@@ -150,6 +152,7 @@ $("#datepicker2").datepicker({
             yearSuffix: ''
        };
 $.datepicker.setDefaults($.datepicker.regional['ru']);
+
 	$(".el-search-dop-input").checkboxradio();
 
 	$(".various").fancybox({
@@ -164,20 +167,7 @@ $.datepicker.setDefaults($.datepicker.regional['ru']);
 
 	});
 
-	$('.preview-text a').on('click', function (e) {
-		e.preventDefault();
-		$.fancybox({
-			content: $(this).parent().parent().find('.detail-text'),
-			maxWidth: $(window).width() - 200,
-			maxHeight: $(window).height() - 100,
-			fitToView: false,
-			padding: '0',
-			width: '700',
-			height: '600',
-			autoSize: true,
-			closeClick: false
-		})
-	});
+
 
 
 	$(document).on('click', '#popup-bron-btn', function () {
@@ -486,4 +476,5 @@ jQuery(document).ready(function () {
 	PriceSlider.init();
 	MobileMenu.init();
 	SearchExtDisplay.init();
+
 });
