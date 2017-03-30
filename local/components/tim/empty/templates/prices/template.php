@@ -194,7 +194,7 @@ $idBuv = \Local\Catalog\Infra::getIdByCode('buvet');
 ?>
 <div class="prices-rate">
 	<div class="engBox-body">
-		<div class="prices-rate-ttl">Рейтинг цен в санаториях <?= $title ?></div><?
+		<div class="prices-rate-ttl">Цены на лечение в санаториях <?= $title ?></div><?
 
 		/*?>
 		<p>Предлагаем рейтинг цен и услуг санаториев в виде интерактивной таблицы. Вы можете сортировать таблицу по

@@ -174,15 +174,17 @@ class Reviews
 		$city = htmlspecialchars($_POST['city']);
 		$mail = htmlspecialchars($_POST['mail']);
 		$mark = intval($_POST['mark']);
-		$service = htmlspecialchars($_POST['service']);
+		$service = $_POST['service'] ? 1 : 0;
 		$san = htmlspecialchars($_POST['san']);
 
 		if ($name && $txt && $mail)
 		{
+			$stars = 0;
 			if ($mark >= 1 && $mark <= 5)
-				$mark += self::STARS_ID - 1;
+				$stars = $mark + self::STARS_ID - 1;
 			$el = new \CIBlockElement();
 
+			$date = ConvertTimeStamp();
 			$fields = array(
 				'IBLOCK_ID' => self::IBLOCK_ID,
 				'NAME' => $name,
@@ -191,13 +193,26 @@ class Reviews
 				'PROPERTY_VALUES' => array(
 					'CITY' => $city,
 					'EMAIL' => $mail,
-					'STARS' => $mark,
-					'DATE' => ConvertTimeStamp(),
+					'STARS' => $stars,
+					'DATE' => $date,
 					'SERVICE' => $service,
 					'SANATORIUM' => $san,
 				),
 			);
 			$id = $el->Add($fields);
+			if ($id)
+			{
+				$eventFields = array(
+					'NAME' => $name,
+					'CITY' => $city,
+					'EMAIL' => $mail,
+					'STARS' => $mark,
+					'DATE' => $date,
+					'SERVICE' => $service ? 'да' : 'нет',
+					'SANATORIUM' => $san,
+				);
+				\CEvent::Send('NEW_REVIEW', 's1', $eventFields);
+			}
 		}
 
 		return $id;
