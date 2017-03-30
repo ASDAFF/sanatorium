@@ -104,11 +104,12 @@ $file = new \CFile();
 					$cnt = 0;
 					foreach ($infra['ITEMS'] as $infraItem)
 					{
-						if (in_array($infraItem['ID'], $item['INFRA']))
+						$distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
+						if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
 						{
 							$name = $infraItem['NAME'];
-							if ($infraItem['CODE'] == 'buvet' && $item['DISTANCE'])
-								$name = 'Расстояние до бювета: ' . $item['DISTANCE'];
+							if ($distance)
+								$name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
 
 							?>
 							<li><?= $name ?></li><?
@@ -219,13 +220,11 @@ $idBuv = \Local\Catalog\Infra::getIdByCode('buvet');
 			{
 				$wf = in_array($idWF, $item['INFRA']) ? 'да' : 'нет';
 				$bas = in_array($idBas, $item['INFRA']) ? 'да' : 'нет';
-				$buv = '-';
-				if (in_array($idBuv, $item['INFRA']))
-				{
-					$buv = $item['DISTANCE'];
-					if ($buv)
-						$buv .= ' м';
-				}
+				$buv = '';
+				if ($item['DISTANCE'])
+					$buv = $item['DISTANCE'] . 'м';
+				elseif (in_array($idBuv, $item['INFRA']))
+					$buv = 'на территории';
 				$family = $item['FAMILY'] ? 'да' : 'нет';
 				?>
 				<tr>

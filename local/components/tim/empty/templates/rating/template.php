@@ -38,21 +38,144 @@ $page = $_REQUEST['page'];
 	</div>
 </div><?
 
-$title = 'КМВ';
+if ($page <= 0)
+	$page = 1;
+
 $ids = array();
 if ($cityId)
 {
 	$data = \Local\Catalog\Sanatorium::getDataByFilter(array('CITY' => array($cityId => $cityId)));
 	$ids = $data['IDS'];
-	$city = \Local\Catalog\City::getById($cityId);
-	$title = $city['UF_PREDL'];
 }
 
 $items = \Local\Catalog\Sanatorium::get(
-	array('PROPERTY_RATING' => 'desc'),
+	array('PROPERTY_RATING_DESC' => 'asc'),
+	$ids,
+	array('nPageSize' => 12, 'iNumPage' => $page)
+);
+
+$file = new \CFile();
+
+?>
+	<div class="el-full-bg-grey">
+		<div class="engBox-body prices">
+			<div class="el-sanat-list"><?
+
+				$count = 0;
+				foreach ($items['ITEMS'] as $item)
+				{
+					$img = $file->ResizeImageGet(
+						$item['PREVIEW_PICTURE'],
+						array(
+							'width' => 261,
+							'height' => 1000
+						),
+						BX_RESIZE_IMAGE_PROPORTIONAL,
+						true
+					);
+					$city = \Local\Catalog\City::getById($item['CITY']);
+					?>
+					<div class="prices-item">
+					<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
+						<div class="img"><img src="<?= $img['src'] ?>"></div>
+						<div class="text eng-animations">
+							<b><?= $item['NAME'] ?></b>
+							<span>КМВ, <?= $city['NAME'] ?></span>
+							<i>Подробнее</i>
+						</div>
+						<div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>
+
+					</a>
+					<div class="extra-options">
+						<b>Дополнительные параметры:</b>
+						<ul><?
+							$infra = \Local\Catalog\Infra::getAll();
+							$cnt = 0;
+							foreach ($infra['ITEMS'] as $infraItem)
+							{
+								$distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
+								if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
+								{
+									$name = $infraItem['NAME'];
+									if ($distance)
+										$name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
+
+									?>
+									<li><?= $name ?></li><?
+									$cnt++;
+									if ($cnt >= 4)
+										break;
+								}
+							}
+							?>
+						</ul>
+					</div>
+					</div><?
+
+					$count++;
+					if ($count == 4)
+					{
+						$banners = \Local\Common\Banners::getAll();
+						?>
+						<div class="banners"><?
+						foreach ($banners as $banner)
+						{
+							?>
+							<div class="banners-item"><img src="<?= $banner['PICTURE'] ?>"></div><?
+						}
+						?>
+						</div><?
+					}
+				}
+				?>
+			</div>
+		</div>
+	</div>
+
+<div class="el-full-bg-white"><?= $items['PAGINATION'] ?></div><?
+
+/*
+?>
+<div class="prices-feedback">
+	<div class="engBox-body">
+		<form class="feedback-form">
+			<div class="feedback-form-ttl">
+				<b>Вам нужна помощь в выборе санатория?</b>
+				<b>Не знаете, какой профиль лечения Вам необходим?</b>
+				<i>Напиши нам и наши опытные менеджеры помогут Вам!</i>
+
+			</div>
+			<div class="feedback-form-left">
+				<input type="text" class="feedback-form-name" placeholder="Ваше имя">
+				<input type="text" class="feedback-form-city" placeholder="Номер телефона">
+				<input type="text" class="feedback-form-tel" placeholder="E-mail">
+			</div>
+			<div class="feedback-form-right">
+				<textarea placeholder="Ваш комментарий"></textarea>
+			</div>
+			<div class="feedback-form-line">
+				<div class="feedback-form-checkbox"><input type="checkbox" id="tell-t" name="type"><label
+						for="tell-t">Перезвоните мне</label></div>
+				<div class="feedback-form-checkbox"><input type="checkbox" id="mail-t" name="type"><label
+						for="mail-t">Ответьте мне по электронной почте</label></div>
+				<input class="feedback-form-btn" type="submit" value="Задать вопрос">
+			</div>
+		</form>
+	</div>
+</div><?*/
+
+$items = \Local\Catalog\Sanatorium::get(
+	array('PROPERTY_PRICE' => 'asc'),
 	$ids,
 	false
 );
+
+$title = 'КМВ';
+if ($cityId)
+{
+	$city = \Local\Catalog\City::getById($cityId);
+	$title = $city['UF_PREDL'];
+}
 
 $idWF = \Local\Catalog\Infra::getIdByCode('wi-fi');
 $idBas = \Local\Catalog\Infra::getIdByCode('bassein');
@@ -86,13 +209,11 @@ $idBuv = \Local\Catalog\Infra::getIdByCode('buvet');
 				{
 					$wf = in_array($idWF, $item['INFRA']) ? 'да' : 'нет';
 					$bas = in_array($idBas, $item['INFRA']) ? 'да' : 'нет';
-					$buv = '-';
-					if (in_array($idBuv, $item['INFRA']))
-					{
-						$buv = $item['DISTANCE'];
-						if ($buv)
-							$buv .= ' м';
-					}
+					$buv = '';
+					if ($item['DISTANCE'])
+						$buv = $item['DISTANCE'] . 'м';
+					elseif (in_array($idBuv, $item['INFRA']))
+						$buv = 'на территории';
 					$family = $item['FAMILY'] ? 'да' : 'нет';
 					?>
 					<tr>

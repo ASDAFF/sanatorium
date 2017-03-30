@@ -15,7 +15,7 @@ class Filter
 	/**
 	 * Разделитель вариантов в URL
 	 */
-	const SEPARATOR = '-';
+	const SEPARATOR = '/';
 
 	/**
 	 * @var array Полная структура панели фильтров
@@ -249,7 +249,7 @@ class Filter
 
 						if ($item['CHECKED'])
 						{
-							if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES')
+							if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES' || $item['CODE'] == 'INFRA')
 							{
 								$filters[$code]['DATA'][$item['CODE']][$item['ID']] = $item['ID'];
 								$filters[$code]['KEY'] .= '|' . $item['ID'];
@@ -323,13 +323,13 @@ class Filter
 				foreach ($group['ITEMS'] as &$item)
 				{
 					$data = self::$DATA_BY_KEY[$item['KEY']];
-					if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES')
+					if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES' || $item['CODE'] == 'INFRA')
 						$item['CNT'] = intval($data[$item['CODE']][$item['ID']]);
 					else
 						$item['CNT'] = intval($data[$item['CODE']]);
 
 					$data = self::$DATA_BY_KEY[''];
-					if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES')
+					if ($item['CODE'] == 'CITY' || $item['CODE'] == 'PROFILES' || $item['CODE'] == 'INFRA')
 						$item['ALL_CNT'] = intval($data[$item['CODE']][$item['ID']]);
 					else
 						$item['ALL_CNT'] = intval($data[$item['CODE']]);

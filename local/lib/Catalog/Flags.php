@@ -19,7 +19,7 @@ class Flags
 			),
 			'child1' => array(
 				'CODE' => 'CHILD1',
-				'NAME' => 'Дети от 1',
+				'NAME' => 'Дети с рождения',
 			),
 			'child4' => array(
 				'CODE' => 'CHILD4',
@@ -59,15 +59,15 @@ class Flags
 				'CODE' => 'WITHOUT_TREATMENT',
 				'NAME' => 'Без лечения',
 			),
-		),
-		'Особое' => array(
-			'army' => array(
-				'CODE' => 'SPECIAL_ARMY',
-				'NAME' => 'Военный санаторий',
-			),
 			'rzd' => array(
 				'CODE' => 'SPECIAL_RZD',
 				'NAME' => 'Санаторий РЖД',
+			),
+		),
+		/*'Особое' => array(
+			'army' => array(
+				'CODE' => 'SPECIAL_ARMY',
+				'NAME' => 'Военный санаторий',
 			),
 			'fsb' => array(
 				'CODE' => 'SPECIAL_FSB',
@@ -81,7 +81,7 @@ class Flags
 				'CODE' => 'SPECIAL_MO',
 				'NAME' => 'Санаторий Мин.обороны',
 			),
-		),
+		),*/
 	);
 
 	/**

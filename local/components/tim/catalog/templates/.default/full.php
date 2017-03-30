@@ -24,7 +24,7 @@ $products = $component->products['ITEMS'];
             <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
             <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
 
-	        $closed = array(0, 1, 1, 1, 1, 1, 0);
+	        $closed = array(0, 1, 1, 1, 1, 0);
 	        if (isset($_COOKIE['filter_groups']))
 		        $closed = explode(',', $_COOKIE['filter_groups']);
 
@@ -67,12 +67,11 @@ $products = $component->products['ITEMS'];
 
 				                ?>
 				                <b></b><label>
-				                <input class="el-search-dop-input" type="checkbox"
-				                       name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
-				                <?= $item['NAME'] ?> (<i><?= $item['CNT'] ?></i>)
-			                </label>
+					                <input class="el-search-dop-input" type="checkbox"
+					                       name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
+					                <?= $item['NAME'] ?> (<i><?= $item['CNT'] ?></i>)
+				                </label>
 				                <?
-				                ?><?
 			                }
 		                }
 

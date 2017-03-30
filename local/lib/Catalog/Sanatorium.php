@@ -98,113 +98,152 @@ class Sanatorium
      * @param bool|false $refreshCache
      * @return array
      */
-    public static function getDataByFilter($filter, $refreshCache = false)
-    {
-        $return = array(
-            'COUNT' => 0,
-        );
+	public static function getDataByFilter($filter, $refreshCache = false)
+	{
+		$return = array(
+			'COUNT' => 0,
+		);
 
-        $extCache = new ExtCache(
-            array(
-                __FUNCTION__,
-                $filter,
-            ),
-            static::CACHE_PATH . __FUNCTION__ . '/',
-            static::CACHE_TIME
-        );
-        if (!$refreshCache && $extCache->initCache()) {
-            $return = $extCache->getVars();
-        } else {
-            $extCache->startDataCache();
+		$extCache = new ExtCache(array(
+				__FUNCTION__,
+				$filter,
+			), static::CACHE_PATH . __FUNCTION__ . '/', static::CACHE_TIME);
+		if (!$refreshCache && $extCache->initCache())
+		{
+			$return = $extCache->getVars();
+		}
+		else
+		{
+			$extCache->startDataCache();
 
-            $all = self::getAll($refreshCache);
-            foreach ($all as $productId => $product) {
-                $ok = true;
-                foreach ($filter as $key => $value) {
-                    if ($key == 'ID') {
-                        if (!$value[$productId]) {
-                            $ok = false;
-                            break;
-                        }
-                    } elseif ($key == 'PRICE') {
-                        if (isset($value['FROM']) && $product['PRICE'] < $value['FROM'] ||
-                            isset($value['TO']) && $product['PRICE'] > $value['TO']
-                        ) {
-                            $ok = false;
-                            break;
-                        }
-                    } elseif ($key == 'CITY') {
-                        if (!$value[$product['CITY']]) {
-                            $ok = false;
-                            break;
-                        }
-                    } elseif ($key == 'PROFILE') {
-                        $ex = false;
-                        foreach ($product['PROFILES'] as $pr) {
-                            if ($value[$pr]) {
-                                $ex = true;
-                                break;
-                            }
-                        }
-                        if (!$ex) {
-                            $ok = false;
-                            break;
-                        }
-                    } else {
-                        if (!$product[$key]) {
-                            $ok = false;
-                            break;
-                        }
-                    }
+			$all = self::getAll($refreshCache);
+			foreach ($all as $productId => $product)
+			{
+				$ok = true;
+				foreach ($filter as $key => $value)
+				{
+					if ($key == 'ID')
+					{
+						if (!$value[$productId])
+						{
+							$ok = false;
+							break;
+						}
+					}
+					elseif ($key == 'PRICE')
+					{
+						if (isset($value['FROM']) && $product['PRICE'] < $value['FROM'] ||
+							isset($value['TO']) && $product['PRICE'] > $value['TO'])
+						{
+							$ok = false;
+							break;
+						}
+					}
+					elseif ($key == 'CITY')
+					{
+						if (!$value[$product['CITY']])
+						{
+							$ok = false;
+							break;
+						}
+					}
+					elseif ($key == 'PROFILE')
+					{
+						$ex = false;
+						foreach ($product['PROFILES'] as $pr)
+						{
+							if ($value[$pr])
+							{
+								$ex = true;
+								break;
+							}
+						}
+						if (!$ex)
+						{
+							$ok = false;
+							break;
+						}
+					}
+					elseif ($key == 'INFRA')
+					{
+						foreach ($product['INFRA'] as $infra)
+							if (isset($value[$infra]))
+								unset($value[$infra]);
+						if (count($value))
+						{
+							$ok = false;
+							break;
+						}
+					}
+					else
+					{
+						if (!$product[$key])
+						{
+							$ok = false;
+							break;
+						}
+					}
 
-                }
+				}
 
-                if ($ok) {
-                    $return['COUNT']++;
-                    $return['IDS'][] = $product['ID'];
+				if ($ok)
+				{
+					$return['COUNT']++;
+					$return['IDS'][] = $product['ID'];
 
-                    if (!isset($return['PRICE']['MIN']) || $return['PRICE']['MIN'] > $product['PRICE'])
-                        $return['PRICE']['MIN'] = $product['PRICE'];
-                    if (!isset($return['PRICE']['MAX']) || $return['PRICE']['MAX'] < $product['PRICE'])
-                        $return['PRICE']['MAX'] = $product['PRICE'];
+					if (!isset($return['PRICE']['MIN']) || $return['PRICE']['MIN'] > $product['PRICE'])
+						$return['PRICE']['MIN'] = $product['PRICE'];
+					if (!isset($return['PRICE']['MAX']) || $return['PRICE']['MAX'] < $product['PRICE'])
+						$return['PRICE']['MAX'] = $product['PRICE'];
 
-                    if (!isset($return['CITY'][$product['CITY']]))
-                        $return['CITY'][$product['CITY']] = 0;
-                    $return['CITY'][$product['CITY']]++;
+					if (!isset($return['CITY'][$product['CITY']]))
+						$return['CITY'][$product['CITY']] = 0;
+					$return['CITY'][$product['CITY']]++;
 
-                    foreach ($product['PROFILES'] as $pr) {
-                        if (!isset($return['PROFILES'][$pr]))
-                            $return['PROFILES'][$pr] = 0;
-                        $return['PROFILES'][$pr]++;
-                    }
+					foreach ($product['PROFILES'] as $pr)
+					{
+						if (!isset($return['PROFILES'][$pr]))
+							$return['PROFILES'][$pr] = 0;
+						$return['PROFILES'][$pr]++;
+					}
+					foreach ($product['INFRA'] as $infra)
+					{
+						if (!isset($return['INFRA'][$infra]))
+							$return['INFRA'][$infra] = 0;
+						$return['INFRA'][$infra]++;
+					}
 
-                    foreach (Flags::getCodes() as $code) {
-                        if ($product[$code]) {
-                            if (!isset($return[$code]))
-                                $return[$code] = 0;
-                            $return[$code]++;
-                        }
-                    }
-                }
-            }
+					foreach (Flags::getCodes() as $code)
+					{
+						if ($product[$code])
+						{
+							if (!isset($return[$code]))
+								$return[$code] = 0;
+							$return[$code]++;
+						}
+					}
+				}
+			}
 
-            if ($filter['ID']) {
-                $ids = array();
-                foreach ($return['IDS'] as $id)
-                    $ids[$id] = true;
-                $res = array();
-                foreach ($filter['ID'] as $id) {
-                    if ($ids[$id])
-                        $res[] = $id;
-                }
-                $return['IDS'] = $res;
-            }
+			if ($filter['ID'])
+			{
+				$ids = array();
+				foreach ($return['IDS'] as $id)
+					$ids[$id] = true;
+				$res = array();
+				foreach ($filter['ID'] as $id)
+				{
+					if ($ids[$id])
+						$res[] = $id;
+				}
+				$return['IDS'] = $res;
+			}
 
-            $extCache->endDataCache($return);
-        }
+			$extCache->endDataCache($return);
+		}
 
-        return $return;
-    }
+		return $return;
+	}
 
     /**
      * Есть ли хоть один санаторий по фильтру?
@@ -522,7 +561,6 @@ class Sanatorium
                 $desc = $iprop['ELEMENT_META_DESCRIPTION'] ? $iprop['ELEMENT_META_DESCRIPTION'] :
                     'Шаблон для описания ' . $item['NAME'] . '. (шаблон)';
                 $pictures = array();
-	            $pictures[] = $item['PREVIEW_PICTURE'];
 	            foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
                     $pictures[] = $picId;
                 $rooms = Room::getBySanatorium($item['ID']);
@@ -661,6 +699,7 @@ class Sanatorium
         {
 	        $items = array();
 	        $i = 0;
+	        $buvet = false;
 	        foreach ($sanatorium['PRODUCT']['INFRA'] as $infra)
 	        {
 		        $item = Infra::getById($infra);
@@ -668,14 +707,20 @@ class Sanatorium
 		            continue;
 
 		        $name = $item['NAME'];
-		        if ($item['CODE'] == 'buvet' && $sanatorium['DISTANCE'])
-			        $name = 'Расстояние до бювета: ' . $sanatorium['DISTANCE'];
+		        if ($item['CODE'] == 'buvet')
+		        {
+			        $buvet = true;
+			        if ($sanatorium['DISTANCE'])
+				        $name = 'Расстояние до бювета: ' . $sanatorium['DISTANCE'] . 'м';
+		        }
 
 
 		        $k = $i % 3;
 		        $items[$k][$item['CODE']] = $name;
 		        $i++;
 	        }
+	        if (!$buvet && $sanatorium['DISTANCE'])
+		        $items[$i % 3]['buvet'] = 'Расстояние до бювета: ' . $sanatorium['DISTANCE'] . 'м';
 
 	        ?>
 	        <h2>Инфраструктура</h2>
@@ -765,7 +810,8 @@ class Sanatorium
 	        </ul>
 	        <p>До заезда в санаторий, необходимо заранее проконсультироваться с врачом и оформить санаторно-курортную карту, это сэкономит Ваше время и обеспечит возможность начать курс лечения в соответствии со сроком пребывания по путевке.</p>
 	        <p>При отсутствии санаторно-курортной карты при заезде в санаторий, у гостей есть возможность оформить ее за дополнительную плату. Срок оформления санаторно-курортной карты в этом случае может занимать от 1 до 3 рабочих дней. Дни по путевке, в течение которых оформляется санаторно-курортная карта в санатории, не продлеваются и не компенсируются. </p>
-	        <a class="docs-link" href="/upload/voucher.docx" download>Ваучер (обменная путевка)</a><?
+	        <a class="docs-link" href="/upload/voucher.docx" download>Ваучер (обменная путевка)</a>
+	        <a class="docs-link" href="/upload/contract.doc" download>Договор с туристом</a><?
         }
 
     }

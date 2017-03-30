@@ -144,11 +144,12 @@ foreach ($products as $id => $item)
 			        $cnt = 0;
 			        foreach ($infra['ITEMS'] as $infraItem)
 			        {
-				        if (in_array($infraItem['ID'], $item['INFRA']))
+				        $distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
+				        if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
 				        {
 					        $name = $infraItem['NAME'];
-					        if ($infraItem['CODE'] == 'buvet' && $item['DISTANCE'])
-						        $name = 'Расстояние до бювета: ' . $item['DISTANCE'];
+					        if ($distance)
+						        $name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
 
 					        ?>
 					        <li>
@@ -168,12 +169,14 @@ foreach ($products as $id => $item)
         <div class="inf">
             <div class="star"></div>
             <div class="comment">
-                <div class="rating">
-					<div class="star"><span class="on"></span></div>
-					<div class="star"><span class="on"></span></div>
-					<div class="star"><span class="on"></span></div>
-					<div class="star"><span class="of"></span></div>
-					<div class="star"><span class="of"></span></div>
+	            <div class="rating" title="<?= $item['RATING'] ?>"><?
+		            for ($i = 0.5; $i < 5; $i++)
+		            {
+			            $cl = $item['RATING'] >= $i ? 'on' : 'of';
+			            ?>
+			            <div class="star"><span class="<?= $cl ?>"></span></div><?
+		            }
+		            ?>
                 </div>
 	            <span><?= $reviewsCountTitle ?></span><?
 
