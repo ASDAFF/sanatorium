@@ -157,13 +157,21 @@ class Room
 	public static function printRoom($room)
 	{
 		$file = new \CFile();
-		$pic = $file->GetPath($room['PREVIEW_PICTURE']);
+		$img = $file->ResizeImageGet(
+			$room['PREVIEW_PICTURE'],
+			array(
+				'width' => 375,
+				'height' => 1000
+			),
+			BX_RESIZE_IMAGE_PROPORTIONAL,
+			true
+		);
 		?>
 		<div class="el-nomer">
 			<div class="item">
 				<div class="img">
 					<a href="#room<?= $room['ID'] ?>" class="border various">
-						<img src="<?= $pic ?>" />
+						<img src="<?= $img['src'] ?>" />
 					</a>
 				</div>
 				<div class="text">
@@ -218,9 +226,18 @@ class Room
 
 									foreach ($photos as $id)
 									{
+										$img = $file->ResizeImageGet(
+											$id,
+											array(
+												'width' => 10000,
+												'height' => 400
+											),
+											BX_RESIZE_IMAGE_PROPORTIONAL,
+											true
+										);
 										?>
 										<div class="item">
-											<img src="<?= $file->GetPath($id) ?>"/>
+											<img src="<?= $img['src'] ?>"/>
 										</div><?
 									}
 

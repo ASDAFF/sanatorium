@@ -42,15 +42,13 @@ class City
 				'NAME' => 'ASC',
 			), Array(
 				'IBLOCK_ID' => Sanatorium::IBLOCK_ID,
+			), false, array(
+				'ID', 'NAME', 'CODE', 'SORT',
+				'UF_RODIT',
+				'UF_PREDL',
 			));
 			while ($item = $rsItems->Fetch()) {
-
-				$return['ITEMS'][$item['ID']] = array(
-					'ID' => $item['ID'],
-					'NAME' => $item['NAME'],
-					'SORT' => $item['SORT'],
-					'CODE' => $item['CODE'],
-				);
+				$return['ITEMS'][$item['ID']] = $item;
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
 				}

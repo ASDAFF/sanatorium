@@ -30,7 +30,6 @@ if ($iFinish > $iEnd) {
 }
 
 ?>
-<div class="el-full-bg-grey">
 <div class="el-page engBox-body">
 	<ul><?
 
@@ -109,5 +108,4 @@ if ($iFinish > $iEnd) {
 
 		?>
 	</ul>
-</div>
 </div><?

@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$slideCity = \Local\Catalog\SlideCity::getAll(array(), array(), array());
+/*$slideCity = \Local\Catalog\SlideCity::getAll(array(), array(), array());
 
 ?>
 
@@ -38,6 +38,6 @@ $slideCity = \Local\Catalog\SlideCity::getAll(array(), array(), array());
                 </div>
             <?}?>
     </div>
-</div>
-
+</div><?
+*/
 

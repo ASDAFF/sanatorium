@@ -27,7 +27,6 @@ var Filters = {
 		this.priceInit();
 
 		this.cb.click(this.checkboxClick);
-		console.log(this.ajaxCont);
 		this.ajaxCont.on('click', '#products-summary a', this.urlClick);
 		this.ajaxCont.on('click', '#pagination a', this.urlClick);
 		this.bcCont.on('click', 'a', this.urlClick);
@@ -168,6 +167,7 @@ var Filters = {
 						li.addClass('disabled');
 						//li.stop().slideUp();
 					}
+					cb.checkboxradio('refresh');
 					cb.siblings('i').text(cnt);
 				}
 			}

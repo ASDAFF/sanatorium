@@ -1,8 +1,9 @@
 <?
+/** @global CMain $APPLICATION */
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Title");
-?>
+$APPLICATION->SetTitle("Рейтинг санаториев");
 
-Text here....
+$APPLICATION->IncludeComponent('tim:empty', 'rating');
 
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");

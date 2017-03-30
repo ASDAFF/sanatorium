@@ -143,6 +143,6 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
 		$APPLICATION->IncludeComponent('tim:empty', 'banners');
 		?>
 	</div>
-</div><?
+</div>
 
-echo $reviews['NAV'];
+<div class="el-full-bg-grey"><?= $reviews['PAGINATION'] ?></div>

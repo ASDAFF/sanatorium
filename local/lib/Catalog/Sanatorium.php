@@ -358,6 +358,7 @@ class Sanatorium
                 'PREVIEW_PICTURE',
                 'PROPERTY_DISTANCE',
                 'PROPERTY_ROOMS_COUNT',
+                'PROPERTY_RATING',
             ));
             while ($item = $rsItems->GetNext()) {
                 $product = self::getSimpleById($item['ID']);
@@ -374,9 +375,10 @@ class Sanatorium
                 $product['PIC_TITLE'] = $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] ?
                     $iprop['ELEMENT_PREVIEW_PICTURE_FILE_TITLE'] : $item['NAME'];
                 $product['DETAIL_PAGE_URL'] = $detail;
-                $product['PREVIEW_PICTURE'] = \CFile::GetPath($item['PREVIEW_PICTURE']);
+                $product['PREVIEW_PICTURE'] = $item['PREVIEW_PICTURE'];
                 $product['DISTANCE'] = $item['PROPERTY_DISTANCE_VALUE'];
                 $product['ROOMS_COUNT'] = $item['PROPERTY_ROOMS_COUNT_VALUE'];
+                $product['RATING'] = round($item['PROPERTY_RATING_VALUE'] / 2) / 10;
 
                 $return['ITEMS'][$item['ID']] = $product;
             }
@@ -392,6 +394,8 @@ class Sanatorium
 		        }
 		        $return['ITEMS'] = $items;
 	        }
+	        else
+		        $return['PAGINATION'] = $rsItems->GetPageNavStringEx($navComponentObject, '', 'reviews');
 
             $extCache->endDataCache($return);
         }
@@ -518,10 +522,9 @@ class Sanatorium
                 $desc = $iprop['ELEMENT_META_DESCRIPTION'] ? $iprop['ELEMENT_META_DESCRIPTION'] :
                     'Шаблон для описания ' . $item['NAME'] . '. (шаблон)';
                 $pictures = array();
-                $file = new \CFile();
-	            $pictures[] = $file->GetPath($item['PREVIEW_PICTURE']);
+	            $pictures[] = $item['PREVIEW_PICTURE'];
 	            foreach ($item['PROPERTY_PHOTOS_VALUE'] as $picId)
-                    $pictures[] = $file->GetPath($picId);
+                    $pictures[] = $picId;
                 $rooms = Room::getBySanatorium($item['ID']);
 	            $programms = Programms::getByIds($item['PROPERTY_PROGRAMMS_VALUE']);
                 $return = array(

@@ -1,3 +1,3 @@
 <?
-$sSectionName="rating";
+$sSectionName="Рейтинг санаториев";
 ?>
