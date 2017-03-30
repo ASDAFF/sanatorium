@@ -49,7 +49,7 @@ if ($cityId)
 }
 
 $items = \Local\Catalog\Sanatorium::get(
-	array('PROPERTY_RATING_DESC' => 'asc'),
+	array('PROPERTY_RATING' => 'desc'),
 	$ids,
 	array('nPageSize' => 12, 'iNumPage' => $page)
 );
@@ -165,7 +165,7 @@ $file = new \CFile();
 </div><?*/
 
 $items = \Local\Catalog\Sanatorium::get(
-	array('PROPERTY_PRICE' => 'asc'),
+	array('PROPERTY_RATING' => 'desc'),
 	$ids,
 	false
 );
