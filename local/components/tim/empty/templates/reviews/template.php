@@ -56,24 +56,41 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
 				<input type="hidden" name="service" value="<?= $isService ? 1 : 0 ?>">
 				<div class="feedback-form-ttl">Оставить отзыв<?= $title ?></div>
 				<div class="feedback-form-left">
-					<input type="text" class="feedback-form-name" name="name"
-					       placeholder="Ваше имя" required /><span class="required"></span>
-					<input type="text" class="feedback-form-city" name="city" placeholder="Ваш город" />
-					<input type="text" class="feedback-form-tel" name="mail"
-					       placeholder="E-mail" required /><span class="required"></span><?
+					<div class="feedback-form__input">
+						<input type="text" class="feedback-form-name" name="name"
+					       placeholder="Ваше имя" required />
+						<i class="i-feedback-form-name"></i>
+						<span class="required"></span>
+					</div>
+					<div class="feedback-form__input">
+						<input type="text" class="feedback-form-city" name="city" placeholder="Ваш город" />
+						<i class="i-feedback-form-city"></i>
+					</div>
+					<div class="feedback-form__input">
+						<input type="text" class="feedback-form-tel" name="mail"
+					       placeholder="E-mail" required />
+							<i class="i-feedback-form-mail"></i>
+							<span class="required"></span>
+					</div><?
 
 					if (!$isService)
 					{
-						?>
-						<input type="text" class="feedback-form-tel" name="san"
-						       placeholder="Укажите санаторий" required/><span class="required"></span><?
+						?><div class="feedback-form__input">
+							<input type="text" class="feedback-form-san" name="san"
+						       placeholder="Укажите санаторий" required/>
+								<i class="i-feedback-form-san"></i>
+								<span class="required"></span>
+						 </div><?
 					}
 
 					?>
 				</div>
 				<div class="feedback-form-right">
-					<textarea placeholder="Ваш комментарий" name="txt" required></textarea><span
-						class="required"></span>
+					<div class="feedback-form__txt">
+						<textarea placeholder="Ваш комментарий" name="txt" required></textarea>
+						<i class="i-feedback-form-txt"></i>
+						<span class="required"></span>
+					</div>
 				</div>
 				<div class="feedback-form-line">
 					<div class="feedback-form-star">

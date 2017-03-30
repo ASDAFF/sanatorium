@@ -212,25 +212,15 @@ $.datepicker.setDefaults($.datepicker.regional['ru']);
 	});
 
  $('.elComments-list').owlCarousel({
-	loop: true, // Повтор
-	navigation: true, // Кнопки next и prev
+	loop: true, 
+	navigation: true, 
 	pagination: false,
 	navigationText: ["<img src='/images/elSlider-left.png'>", "<img src='/images/elSlider-right.png'>"],
-
-	slideSpeed: 300, // Скорость
-	paginationSpeed: 400,
-
-	items: 2, // Cколько обьектов
-	itemsDesktop: false,
-	itemsDesktopSmall: false,
-	itemsTablet: false,
-	itemsMobile: false,
-	responsive: {
-		0: {items: 1},
-		600: {items: 1},
-		700: {items: 1},
-		1200: {items: 2}
-	}
+	items: 2, 
+	itemsCustom: [
+        [0, 1],
+        [1000, 2]
+      ],
 });
 
 });
