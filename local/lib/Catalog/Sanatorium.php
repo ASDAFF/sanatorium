@@ -576,7 +576,7 @@ class Sanatorium
                     'PREVIEW_TEXT' => $item['~PREVIEW_TEXT'],
                     'DETAIL_TEXT' => $item['~DETAIL_TEXT'],
                     'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
-                    'RATING' => $item['PROPERTY_RATING_VALUE'],
+                    'RATING' => round($item['PROPERTY_RATING_VALUE'] / 2) / 10,
                     'FEEDING_TAB' => $item['~PROPERTY_FEEDING_TAB_VALUE']['TEXT'],
                     'CHILD_TAB' => $item['~PROPERTY_CHILD_TAB_VALUE']['TEXT'],
                     'VIDEO' => $item['~PROPERTY_VIDEO_VALUE'],

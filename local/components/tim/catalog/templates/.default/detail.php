@@ -29,10 +29,10 @@ $tabs = array(
 <div id="cron_full">
     <div id="cron" class="engBox-body">
         <div id="cron-right">
-	        <div class="rating" title="<?= $product['PRODUCT']['RATING'] ?>"><?
+	        <div class="rating" title="<?= $product['RATING'] ?>"><?
 		        for ($i = 0.5; $i < 5; $i++)
 		        {
-			        $cl = $product['PRODUCT']['RATING'] >= $i ? 'on' : 'of';
+			        $cl = $product['RATING'] >= $i ? 'on' : 'of';
 			        ?>
 			        <div class="star"><span class="<?= $cl ?>"></span></div><?
 		        }
