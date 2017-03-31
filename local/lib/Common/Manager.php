@@ -42,19 +42,19 @@ class Manager
             $rsItems = $iblockElement->GetList(array('SORT' => 'ASC'), array(
                 'IBLOCK_ID' => self::IBLOCK_ID,
                 'ACTIVE' => 'Y',
-            ), false, Array("nTopCount" => 4), array(
+            ), false, false, array(
                 'ID',
                 'NAME',
-                'IBLOCK_ID',
+                'CODE',
                 'PREVIEW_PICTURE',
                 'PROPERTY_MANAGER_PHONE',
             ));
             while ($item = $rsItems->Fetch()) {
-                $return[$item['ID']] = array(
+                $return[] = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
-                    'PREVIEW_PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
-                    'MANAGER_PHONE' => $item['PROPERTY_MANAGER_PHONE_VALUE'],
+                    'PICTURE' => $item['PREVIEW_PICTURE'],
+                    'PHONE' => $item['CODE'],
                 );
             }
             $extCache->endDataCache($return);

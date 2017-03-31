@@ -20,5 +20,6 @@ CModule::AddAutoloadClasses(
         'Local\\Catalog\\Infra' => '/local/lib/Catalog/Infra.php',
         'Local\\Common\\Manager' => '/local/lib/Common/Manager.php',
         'Local\\Common\\Banners' => '/local/lib/Common/Banners.php',
+        'Local\\Common\\Feedback' => '/local/lib/Common/Feedback.php',
 	)
 );

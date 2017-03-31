@@ -134,35 +134,10 @@ $file = new \CFile();
 
 <div class="el-full-bg-white"><?= $items['PAGINATION'] ?></div><?
 
-/*
-?>
-<div class="prices-feedback">
-	<div class="engBox-body">
-		<form class="feedback-form">
-			<div class="feedback-form-ttl">
-				<b>Вам нужна помощь в выборе санатория?</b>
-				<b>Не знаете, какой профиль лечения Вам необходим?</b>
-				<i>Напиши нам и наши опытные менеджеры помогут Вам!</i>
-
-			</div>
-			<div class="feedback-form-left">
-				<input type="text" class="feedback-form-name" placeholder="Ваше имя">
-				<input type="text" class="feedback-form-city" placeholder="Номер телефона">
-				<input type="text" class="feedback-form-tel" placeholder="E-mail">
-			</div>
-			<div class="feedback-form-right">
-				<textarea placeholder="Ваш комментарий"></textarea>
-			</div>
-			<div class="feedback-form-line">
-				<div class="feedback-form-checkbox"><input type="checkbox" id="tell-t" name="type"><label
-						for="tell-t">Перезвоните мне</label></div>
-				<div class="feedback-form-checkbox"><input type="checkbox" id="mail-t" name="type"><label
-						for="mail-t">Ответьте мне по электронной почте</label></div>
-				<input class="feedback-form-btn" type="submit" value="Задать вопрос">
-			</div>
-		</form>
-	</div>
-</div><?*/
+//
+// Форма "задать вопрос"
+//
+$APPLICATION->IncludeComponent('tim:empty', 'feedback_form');
 
 $items = \Local\Catalog\Sanatorium::get(
 	array('PROPERTY_RATING' => 'desc'),

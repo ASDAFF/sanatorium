@@ -93,17 +93,17 @@ var SearchExtDisplay = {
 
 
 /*var textCrop = {
-	init: function () {
-		var size = 320;
-		var newsContent = $('.preview-text-inner');
-		var newsText = newsContent.text();
+ init: function () {
+ var size = 320;
+ var newsContent = $('.preview-text-inner');
+ var newsText = newsContent.text();
 
-		if (newsText.length > size) {
-			newsContent.text(newsText.slice(0, size) + ' ...');
-		}
-	}
+ if (newsText.length > size) {
+ newsContent.text(newsText.slice(0, size) + ' ...');
+ }
+ }
 
-}*/
+ }*/
 
 $(document).ready(function () {
 
@@ -114,44 +114,43 @@ $(document).ready(function () {
 	});
 
 
+	var yearNow = new Date().getFullYear();
+	var monthNow = new Date().getMonth() + 1;
+	var dateNow = new Date().getDate();
+	if (monthNow < 10) {
+		var monthNow = '0' + monthNow;
+	}
+	if (dateNow < 10) {
+		var dateNow = '0' + dateNow;
+	}
+	var dateFin = '' + yearNow + '/' + monthNow + '/' + dateNow + '';
 
-var yearNow = new Date().getFullYear();
-var monthNow = new Date().getMonth() + 1;
-var dateNow = new Date().getDate();
-if(monthNow < 10){
-	var monthNow = '0' + monthNow;
-}
-if(dateNow < 10){
-	var dateNow = '0' + dateNow;
-}
-var dateFin = '' + yearNow + '/' + monthNow + '/' + dateNow + '';
-
-$("#datepicker").datepicker({
-	minDate: new Date(dateFin)
-});
-$("#datepicker2").datepicker({
-	minDate: new Date(dateFin)
-});
+	$("#datepicker").datepicker({
+		minDate: new Date(dateFin)
+	});
+	$("#datepicker2").datepicker({
+		minDate: new Date(dateFin)
+	});
 	$.datepicker.regional['ru'] = {
-            closeText: 'Закрыть',
-            prevText: '&#x3c;Пред',
-            nextText: 'След&#x3e;',
-            currentText: 'Сегодня',
-            monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-            monthNamesShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-            dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
-            dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
-            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-            weekHeader: 'Нед',
-            dateFormat: 'dd.mm.yy',
-            firstDay: 1,
-            isRTL: false,
-            showMonthAfterYear: false,
-            yearSuffix: ''
-       };
-$.datepicker.setDefaults($.datepicker.regional['ru']);
+		closeText: 'Закрыть',
+		prevText: '&#x3c;Пред',
+		nextText: 'След&#x3e;',
+		currentText: 'Сегодня',
+		monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+			'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+		monthNamesShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+			'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+		dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+		dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+		dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+		weekHeader: 'Нед',
+		dateFormat: 'dd.mm.yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+	};
+	$.datepicker.setDefaults($.datepicker.regional['ru']);
 
 	$(".el-search-dop-input").checkboxradio();
 
@@ -168,15 +167,14 @@ $.datepicker.setDefaults($.datepicker.regional['ru']);
 	});
 
 
-
-
 	$(document).on('click', '#popup-bron-btn', function () {
 		$.fancybox.close();
 		var scroll_el = $('#right-form');
 		var roomId = $(this).data('id');
 		if ($(scroll_el).length != 0) {
 			$('html, body').animate({scrollTop: $(scroll_el).offset().top}, 500);
-			$('#right-form select[name="room"]').val(roomId).selectmenu('refresh');;
+			$('#right-form select[name="room"]').val(roomId).selectmenu('refresh');
+			;
 			$('#right-form input[name="name"]').focus();
 		}
 		return false;
@@ -211,17 +209,17 @@ $.datepicker.setDefaults($.datepicker.regional['ru']);
 		}
 	});
 
- $('.elComments-list').owlCarousel({
-	loop: true, 
-	navigation: true, 
-	pagination: false,
-	navigationText: ["<img src='/images/elSlider-left.png'>", "<img src='/images/elSlider-right.png'>"],
-	items: 2, 
-	itemsCustom: [
-        [0, 1],
-        [1000, 2]
-      ],
-});
+	$('.elComments-list').owlCarousel({
+		loop: true,
+		navigation: true,
+		pagination: false,
+		navigationText: ["<img src='/images/elSlider-left.png'>", "<img src='/images/elSlider-right.png'>"],
+		items: 2,
+		itemsCustom: [
+			[0, 1],
+			[1000, 2]
+		]
+	});
 
 });
 
@@ -459,8 +457,37 @@ var Review = {
 	}
 };
 
+/**
+ * Форма "задать вопрос"
+ */
+var Feedback = {
+	init: function () {
+		this.form = $('.feedback-form');
+		if (!this.form.length)
+			return false;
+
+		this.btn = this.form.find('.feedback-form-btn');
+		this.tnx = this.form.find('.js-submit-tnx');
+		this.form.submit(this.send);
+	},
+	send: function () {
+		var form_data = Feedback.form.serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/ajax/feedback.php',
+			data: form_data,
+			success: function () {
+				Feedback.btn.hide();
+				Feedback.tnx.show();
+			}
+		});
+		return false;
+	}
+};
+
 
 jQuery(document).ready(function () {
+	Feedback.init();
 	Review.init();
 	SincSlider.init();
 	PriceSlider.init();
