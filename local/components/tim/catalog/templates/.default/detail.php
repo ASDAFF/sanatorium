@@ -25,6 +25,16 @@ $tabs = array(
 	'docs' => 'Документы для заезда',
 );
 
+$tabName = $product['NAME'];
+$tabH1 = '';
+$style = ' style="display:none;"';
+if ($tabCode != 'main')
+{
+	$tabName = $tabs[$tabCode];
+	$tabH1 = ': ' . $tabName;
+	$style = '';
+}
+
 ?>
 <div id="cron_full">
     <div id="cron" class="engBox-body">
@@ -46,9 +56,10 @@ $tabs = array(
             <a href="/">Главная</a> -
             <a href="/sanatorium/">Санатории</a> -
             <a href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><?= $product['CITY']['NAME'] ?></a> -
-            <span><?= $product['NAME'] ?></span>
+            <a class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><?= $product['NAME'] ?></a>
+            <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
-        <div id="cron-title"><h1><?= $product['NAME'] ?></h1></div>
+        <div id="cron-title"><h1>Санаторий <?= $product['NAME'] ?><span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
     </div>
 </div>
 <div class="engBox-body page-card">
@@ -219,6 +230,6 @@ $APPLICATION->AddChainItem($product['NAME']);*/
 
 $APPLICATION->SetTitle($product['NAME']);
 if ($product['TITLE'])
-	$APPLICATION->SetPageProperty('title', $product['TITLE']);
+	$APPLICATION->SetPageProperty('title', 'Санаторий ' . $product['TITLE'] . $tabH1);
 if ($product['DESCRIPTION'])
 	$APPLICATION->SetPageProperty('description', $product['DESCRIPTION']);

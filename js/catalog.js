@@ -202,6 +202,11 @@ var Detail = {
 			this.reserveForm = $('#formx');
 			this.reserveResult = $('#bronx');
 			this.productId = tabs.data('id');
+			this.h1TabSpan = $('.js-tab-name');
+			this.bcDetail = $('.js-bc-detail');
+			this.bcSep = $('.js-bc-sep');
+			this.bcLast = $('.js-bc-last');
+			this.productName = this.bcDetail.text();
 
 			this.reserveForm.on('submit', this.reserve);
 
@@ -254,6 +259,22 @@ var Detail = {
 		var tab = $(id);
 		li.addClass('active').siblings('.active').removeClass('active');
 		tab.addClass('active').siblings('.active').removeClass('active');
+		var tabSpan = '';
+		var tabName = Detail.productName;
+		if (id != '#main') {
+			tabName = a.text();
+			tabSpan = ': ' + tabName;
+			Detail.bcDetail.show();
+			Detail.bcSep.show();
+		}
+		else {
+			Detail.bcDetail.hide();
+			Detail.bcSep.hide();
+		}
+		Detail.h1TabSpan.text(tabSpan);
+		Detail.bcLast.text(tabName);
+
+		document.title = 'Санаторий ' + Detail.productName + tabSpan;
 
 		if (tab.is('.empty')) {
 			$.get('/ajax/detail_tab.php?tab=' + tab.attr('id') + '&id=' + Detail.productId, function (html) {
