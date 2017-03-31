@@ -197,11 +197,11 @@ var Filters = {
 var Detail = {
 	productId: 0,
 	init: function() {
-		var tabs = $('#content-menu-show');
-		if (tabs.length) {
+		this.tabs = $('#content-menu-show');
+		if (this.tabs.length) {
 			this.reserveForm = $('#formx');
 			this.reserveResult = $('#bronx');
-			this.productId = tabs.data('id');
+			this.productId = this.tabs.data('id');
 			this.h1TabSpan = $('.js-tab-name');
 			this.bcDetail = $('.js-bc-detail');
 			this.bcSep = $('.js-bc-sep');
@@ -210,29 +210,46 @@ var Detail = {
 
 			this.reserveForm.on('submit', this.reserve);
 
-			tabs.find('a').click(function () {
-				var li = $(this).parent();
-				if (!li.is('.active')) {
-					var url = $(this).attr('href');
-					history.pushState('', '', url);
-					Detail.showTab($(this), li);
-				}
 
-				return false;
-			});
-			// Событие хождения по истории
-			$(window).on('popstate', function (e) {
-				var href = e.target.location.pathname;
-				var a = $('ul#tabs a[href="' + href + '"]');
-				var li = a.parent();
-				if (!li.is('.active')) {
-					Detail.showTab(a, li);
-				}
-			});
-
+			// Переключение табов при клике
+			this.tabs.find('a').click(this.tabClick);
+			// Переключение табов по событию хождения по истории
+			$(window).on('popstate', this.popstate);
+			// На первую вкладку
+			this.bcDetail.click(this.toMainTab);
 		}
 		this.showSlider();
 		this.ProgramsPopup();
+	},
+
+	popstate: function (e) {
+		var href = e.target.location.pathname;
+		var a = $('ul#tabs a[href="' + href + '"]');
+		var li = a.parent();
+		if (!li.is('.active')) {
+			Detail.showTab(a, li);
+		}
+	},
+
+	goTab: function(a) {
+		var li = a.parent();
+		if (!li.is('.active')) {
+			var url = a.attr('href');
+			history.pushState('', '', url);
+			Detail.showTab(a, li);
+		}
+	},
+
+	tabClick: function () {
+		var a = $(this);
+		Detail.goTab(a);
+		return false;
+	},
+
+	toMainTab: function () {
+		var a = Detail.tabs.find('a:first');
+		Detail.goTab(a);
+		return false;
 	},
 
 	showSlider: function(){
