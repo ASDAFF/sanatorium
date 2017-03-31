@@ -16,52 +16,64 @@ class Flags
 			'children' => array(
 				'CODE' => 'CHILDREN',
 				'NAME' => 'Отдых с детьми',
+			    'PREDL' => 'для отдыха с детьми',
 			),
 			'child1' => array(
 				'CODE' => 'CHILD1',
 				'NAME' => 'Дети с рождения',
+				'PREDL' => 'для отдыха с детьми с рождения',
 			),
 			'child4' => array(
 				'CODE' => 'CHILD4',
 				'NAME' => 'Дети от 4-х лет',
+				'PREDL' => 'для отдыха с детьми от 4-х лет',
 			),
 			'pensioner' => array(
 				'CODE' => 'PENSIONER',
 				'NAME' => 'Для пенсионеров',
+				'PREDL' => 'для пенсионеров',
 			),
 			'old' => array(
 				'CODE' => 'OLD',
 				'NAME' => 'Для пожилых людей',
+				'PREDL' => 'для пожилых людей',
 			),
 			'family' => array(
 				'CODE' => 'FAMILY',
 				'NAME' => 'Для всей семьи',
+				'PREDL' => 'для всей семьи',
 			),
 			'invalid' => array(
 				'CODE' => 'INVALID',
 				'NAME' => 'Для людей с инвалидностью',
+				'PREDL' => 'для людей с инвалидностью',
 			),
 			'childs' => array(
 				'CODE' => 'CHILDREN_SPECIAL',
 				'NAME' => 'Детский санаторий',
+				'BASE' => 'Детские санатории',
 			),
 			'mac' => array(
 				'CODE' => 'MOTHER_AND_CHILD',
 				'NAME' => 'Для мам и детей',
+				'PREDL' => 'для мам и детей',
 			),
 		),
 		'Разное' => array(
 			'allinc' => array(
 				'CODE' => 'ALL_INCLUSIVE',
 				'NAME' => 'Всё включено',
+				'PREDL' => '"всё включено"',
 			),
 			'wot' => array(
 				'CODE' => 'WITHOUT_TREATMENT',
 				'NAME' => 'Без лечения',
+				'PREDL' => 'без лечения',
 			),
 			'rzd' => array(
 				'CODE' => 'SPECIAL_RZD',
 				'NAME' => 'Санаторий РЖД',
+				'BASE' => 'Санатории РЖД',
 			),
 		),
 		/*'Особое' => array(

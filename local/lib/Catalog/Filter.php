@@ -523,7 +523,7 @@ class Filter
 			);
 		}
 
-		$name = '';
+		$name = 'Санатории';
 		$city = ' Кавказских Минеральных Вод';
 		$suffix = '';
 		$prefix = '';
@@ -531,6 +531,8 @@ class Filter
 		$href = self::$CATALOG_PATH;
 		$parts = array();
 
+		$cityCnt = 0;
+		$othersCnt = 0;
 		foreach (self::$GROUPS as $group)
 		{
 			if (!$group['CNT'])
@@ -560,6 +562,11 @@ class Filter
 				continue;
 
 			if ($group['TYPE'] == 'city')
+				$cityCnt++;
+			else
+				$othersCnt++;
+
+			if ($group['TYPE'] == 'city')
 			{
 				if ($itemsCnt == 1)
 				{
@@ -567,23 +574,29 @@ class Filter
 					$city = ' ' . $c['UF_RODIT'];
 				}
 			}
-
-			if ($group['TYPE'] == 'profile')
+			elseif ($group['TYPE'] == 'profile')
 			{
-				$pid = $itemsCnt == 1 ? $lastItem['ID'] : 1;
-				$pr = Profiles::getById($pid);
-				$suffix .= ' ' . $pr['NAME'];
+				if ($itemsCnt == 1)
+					$suffix .= ' ' . $lastItem['PREDL'];
+				else
+					$suffix .= ' с лечением';
+			}
+			else
+			{
+				if ($itemsCnt == 1)
+				{
+					if ($lastItem['BASE'])
+						$name = $lastItem['BASE'];
+					if ($lastItem['PREDL'])
+						$suffix .= ' ' . $lastItem['PREDL'];
+				}
 			}
 		}
-
-		if (!$name)
-			$name = 'Санатории';
 
 		if ($prefix)
 			$name = strtolower($name);
 
 		$h1 = $prefix . $name . $city. $suffix;
-		$h1l = strtolower($h1);
 		$title = $h1;
 		$description = $h1;
 		$text = $h1;
@@ -595,6 +608,7 @@ class Filter
 			'TEXT' => $text,
 		    'URL' => $href,
 		    'PARTS' => $parts,
+		    'NOINDEX' => $cityCnt > 1 || $othersCnt > 1,
 		);
 	}
 

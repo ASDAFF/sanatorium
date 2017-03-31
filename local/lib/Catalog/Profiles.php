@@ -46,6 +46,7 @@ class Profiles
 			), false, false, array(
 				'ID', 'NAME', 'CODE',
 			    'PROPERTY_SUBITEMS',
+			    'PROPERTY_PREDL',
 			));
 			while ($item = $rsItems->Fetch())
 			{
@@ -54,6 +55,7 @@ class Profiles
 					'NAME' => $item['NAME'],
 					'CODE' => $item['CODE'],
 				    'SUBITEMS' => $item['PROPERTY_SUBITEMS_VALUE'],
+				    'PREDL' => $item['PROPERTY_PREDL_VALUE'],
 				);
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
@@ -100,6 +102,7 @@ class Profiles
 				'ID' => $item['ID'],
 				'CODE' => 'PROFILES',
 				'NAME' => $item['NAME'],
+				'PREDL' => $item['PREDL'],
 			);
 
 		return $return;

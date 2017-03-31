@@ -45,7 +45,8 @@ class Infra
 				'ACTIVE' => 'Y',
 			), false, false, array(
 				'ID', 'NAME', 'CODE',
-			    'PROPERTY_FILTER'
+			    'PROPERTY_FILTER',
+			    'PROPERTY_PREDL',
 			));
 			while ($item = $rsItems->Fetch())
 			{
@@ -54,6 +55,7 @@ class Infra
 					'NAME' => $item['NAME'],
 					'CODE' => $item['CODE'],
 					'FILTER' => $item['PROPERTY_FILTER_VALUE'],
+					'PREDL' => $item['PROPERTY_PREDL_VALUE'],
 				);
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
@@ -101,6 +103,7 @@ class Infra
 					'ID' => $item['ID'],
 					'CODE' => 'INFRA',
 					'NAME' => $item['NAME'],
+					'PREDL' => $item['PREDL'],
 				);
 
 		return $return;
