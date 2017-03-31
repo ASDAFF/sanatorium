@@ -9,11 +9,9 @@ $file = new \CFile();
     <div id="people">
         <div class="title">Остались вопросы? Задайте их менеджеру!</div><?
 
-	    foreach ($manager as $i => $item)
+	    $cnt = 0;
+	    foreach ($manager as $item)
 	    {
-		    if ($i >= 4)
-			    break;
-
 		    $img = $file->ResizeImageGet(
 			    $item['PICTURE'],
 			    array(
@@ -29,11 +27,31 @@ $file = new \CFile();
 	            <div class="img"><img src="<?= $img['src'] ?>"></div>
 	            <div class="name"><?= $item['NAME'] ?></div>
 	            <div class="phone icon-phone"><?= $item['PHONE'] ?></div>
-	            <div class="btn"><a href="">Заказать звонок</a></div>
+	            <div class="btn" data-manager="<?= $item['ID'] ?>"><a href="#popup">Заказать звонок</a></div>
 	        </div><?
+
+		    $cnt++;
+		    if ($cnt >= 4)
+			    break;
 	    }
 	    ?>
     </div>
+</div>
+
+<div class="feedback-popup" id="popup">
+	<div class="feedback-popup-content">
+		Введите свои данные
+		<span>Мы свяжемся с Вами в ближайшее время!</span>
+	</div>
+	<form class="popup" id="callback-form">
+		<div class="feedback-form-left">
+			<input type="hidden" name="manager" value="0" />
+			<input type="text" name="name" class="feedback-form-name" placeholder="Ваше имя" required>
+			<input type="text" name="phone" class="feedback-form-city" placeholder="Номер телефона" required>
+			<input type="submit" class="popup-btn" value="Отправить">
+			<div class="js-submit-tnx" style="display:none;">Спасибо, мы свяжемся с Вами в ближайшее время</div>
+		</div>
+	</form>
 </div>
 
 

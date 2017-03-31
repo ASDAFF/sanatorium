@@ -485,8 +485,42 @@ var Feedback = {
 	}
 };
 
+/**
+ * Форма обратного звонка
+ */
+var Callback = {
+	init: function () {
+		this.form = $('#callback-form');
+		if (!this.form.length)
+			return false;
+
+		$('#people .btn').click(this.popup);
+		this.manager = this.form.find('input[name=manager]');
+		this.btn = this.form.find('.popup-btn');
+		this.tnx = this.form.find('.js-submit-tnx');
+		this.form.submit(this.send);
+	},
+	popup: function() {
+		Callback.manager.val($(this).data('manager'));
+	},
+	send: function () {
+		var form_data = Callback.form.serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/ajax/callback.php',
+			data: form_data,
+			success: function () {
+				Callback.btn.hide();
+				Callback.tnx.show();
+			}
+		});
+		return false;
+	}
+};
+
 
 jQuery(document).ready(function () {
+	Callback.init();
 	Feedback.init();
 	Review.init();
 	SincSlider.init();

@@ -50,7 +50,7 @@ class Manager
                 'PROPERTY_MANAGER_PHONE',
             ));
             while ($item = $rsItems->Fetch()) {
-                $return[] = array(
+                $return[$item['ID']] = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
                     'PICTURE' => $item['PREVIEW_PICTURE'],
@@ -62,6 +62,17 @@ class Manager
 
         return $return;
     }
+
+	/**
+	 * Возвращает менеджера по Id
+	 * @param $id
+	 * @return mixed
+	 */
+	public static function getById($id)
+	{
+		$all = self::getAll();
+		return $all[$id];
+	}
 
 }
 
