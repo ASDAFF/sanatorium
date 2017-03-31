@@ -29,22 +29,15 @@ $tabs = array(
 <div id="cron_full">
     <div id="cron" class="engBox-body">
         <div id="cron-right">
-            <div id="reviewStars-input">
-                <input id="star-4" type="radio" name="reviewStars1"/>
-                <label title="gorgeous" for="star-4"></label>
-
-                <input id="star-3" type="radio" name="reviewStars1"/>
-                <label title="good" for="star-3"></label>
-
-                <input id="star-2" type="radio" name="reviewStars1"/>
-                <label title="regular" for="star-2"></label>
-
-                <input id="star-1" type="radio" name="reviewStars1"/>
-                <label title="poor" for="star-1"></label>
-
-                <input id="star-0" type="radio" name="reviewStars1"/>
-                <label title="bad" for="star-0"></label>
-            </div>
+	        <div class="rating" title="<?= $product['PRODUCT']['RATING'] ?>"><?
+		        for ($i = 0.5; $i < 5; $i++)
+		        {
+			        $cl = $product['PRODUCT']['RATING'] >= $i ? 'on' : 'of';
+			        ?>
+			        <div class="star"><span class="<?= $cl ?>"></span></div><?
+		        }
+		        ?>
+	        </div>
             <div>
                 Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб<br><span>за номер в сутки</span>
             </div>
