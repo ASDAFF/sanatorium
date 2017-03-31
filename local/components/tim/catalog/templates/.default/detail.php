@@ -101,14 +101,6 @@ $tabs = array(
 		// Заголовки табов
 		//
 		?>
-        <style>
-	        #tabs-content .tab-pane {
-		        display: none;
-	        }
-	        #tabs-content .tab-pane.active {
-		        display: block;
-	        }
-        </style>
         <div id="tabs" class="content-menu content-menu-buttons-box">
             <ul id="content-menu-show" class="content-menu-buttons" data-id="<?= $product['ID'] ?>"><?
 
