@@ -223,7 +223,9 @@ $tabs = array(
     <iframe src="<?=$product['PRODUCT']['LINK_MAPS']?>" width="100%" height="400" frameborder="0"></iframe>
 </div>
 <?
-$APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
+$APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
+	'ID' => $product['ID'],
+));
 
 /*
 $APPLICATION->AddChainItem('Санатории', '/sanatorium/');

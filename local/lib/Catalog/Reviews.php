@@ -121,12 +121,63 @@ class Reviews
 	}
 
 	/**
-	 * Возвращает количество отзывов для санатория
-	 * @param $sanatoriumId
+	 * Возвращает количество отзывов для каждого санатория
 	 * @param bool $refreshCache
 	 * @return array|\CIBlockResult|int|mixed
 	 */
-	public static function getCountBySanatorium($sanatoriumId, $refreshCache = false)
+	public static function getCounts($refreshCache = false)
+	{
+		$return = array();
+
+		$extCache = new ExtCache(
+			array(
+				__FUNCTION__,
+			),
+			static::CACHE_PATH . __FUNCTION__ . '/',
+			static::CACHE_TIME
+		);
+		if(!$refreshCache && $extCache->initCache()) {
+			$return = $extCache->getVars();
+		} else {
+			$extCache->startDataCache();
+
+			$iblockElement = new \CIBlockElement();
+			$rsItems = $iblockElement->GetList(array(), array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'ACTIVE' => 'Y',
+				'PROPERTY_SERVICE' => 0,
+			), array('PROPERTY_SANATORIUM_ID'));
+			while ($item = $rsItems->Fetch())
+			{
+				$id = intval($item['PROPERTY_SANATORIUM_ID_VALUE']);
+				if ($id)
+					$return[$id] = intval($item['CNT']);
+			}
+
+			$extCache->endDataCache($return);
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Возвращает количество отзывов для санатория
+	 * @param $sanatoriumId
+	 * @return array|\CIBlockResult|int|mixed
+	 */
+	public static function getCountBySanatorium($sanatoriumId)
+	{
+		$counts = self::getCounts();
+		return $counts[$sanatoriumId];
+	}
+
+	/**
+	 * Возвращает отзывы о санатории
+	 * @param $sanatoriumId
+	 * @param bool $refreshCache
+	 * @return array|mixed
+	 */
+	public static function getBySanatorium($sanatoriumId, $refreshCache = false)
 	{
 		$return = array();
 
@@ -148,12 +199,32 @@ class Reviews
 			$extCache->startDataCache();
 
 			$iblockElement = new \CIBlockElement();
-			$return = $iblockElement->GetList(array(), array(
+			$rsItems = $iblockElement->GetList(array(), array(
 				'IBLOCK_ID' => self::IBLOCK_ID,
 				'ACTIVE' => 'Y',
 				'PROPERTY_SERVICE' => 0,
 				'PROPERTY_SANATORIUM_ID' => $sanatoriumId,
-			), array());
+			), false, false, array(
+				'ID',
+				'NAME',
+				'PREVIEW_TEXT',
+				'PROPERTY_SANATORIUM_ID',
+				'PROPERTY_CITY',
+				'PROPERTY_STARS',
+				'PROPERTY_DATE',
+			));
+			while ($item = $rsItems->Fetch())
+			{
+				$return['ITEMS'][] = array(
+					'ID' => $item['ID'],
+					'NAME' => $item['NAME'],
+					'TEXT' => $item['PREVIEW_TEXT'],
+					'SANATORIUM' => $item['PROPERTY_SANATORIUM_ID_VALUE'],
+					'CITY' => $item['PROPERTY_CITY_VALUE'],
+					'STARS' => $item['PROPERTY_STARS_VALUE'],
+					'DATE' => $item['PROPERTY_DATE_VALUE'],
+				);
+			}
 
 			$extCache->endDataCache($return);
 		}

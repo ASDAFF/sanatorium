@@ -1,9 +1,20 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$reviews = \Local\Catalog\Reviews::getList(0, 0, 1, 2);
-?>
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
 
+$sanatoriumId = $arParams['ID'];
+if ($sanatoriumId)
+	$reviews = \Local\Catalog\Reviews::getBySanatorium($sanatoriumId);
+else
+	$reviews = \Local\Catalog\Reviews::getList(0, 0, 1, 10);
+
+if (!$reviews['ITEMS'])
+	return;
+
+?>
 <div id="comments">
     <div class="engBox-body">
         <div class="title">
@@ -31,9 +42,4 @@ $reviews = \Local\Catalog\Reviews::getList(0, 0, 1, 2);
 
         </div><br><br>
     </div>
-</div>
-
-
-<script>
-
-</script>
+</div><?

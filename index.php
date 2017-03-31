@@ -6,8 +6,8 @@ $APPLICATION->SetTitle("Главная");
 
 $APPLICATION->IncludeComponent('tim:empty', 'index_filter');
 
-$APPLICATION->IncludeComponent('tim:empty', 'main_san', array());
-$APPLICATION->IncludeComponent('tim:empty', 'main_slide_city', array());
-$APPLICATION->IncludeComponent('tim:empty', 'main_comments', array());
+$APPLICATION->IncludeComponent('tim:empty', 'main_san');
+$APPLICATION->IncludeComponent('tim:empty', 'main_slide_city');
+$APPLICATION->IncludeComponent('tim:empty', 'reviews.list');
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
