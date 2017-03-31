@@ -9,7 +9,7 @@ use Local\System\ExtCache;
  */
 class Manager
 {
-    const IBLOCK_ID = 32;
+    const IBLOCK_ID = 30;
     const CACHE_TIME = 86400;
     /**
      * Путь для кеширования

@@ -51,7 +51,7 @@
 		width: 100%;
 		position: relative;
 		height: 40px;
-		padding: 11px;
+		padding: 11px 25px;
 		color: #ffffff;
 		font-weight: 600;
 		}
@@ -62,7 +62,7 @@
 		height: 20px;
 		display: inline-block;
 		position: absolute;
-		right: 15px;
+		right: 25px;
 		top: 10px;
 		}
 	#cron_full { padding: 0 20px 20px; background-size: cover !important; height: auto !important; }
@@ -112,7 +112,7 @@ nav .p-submenu a,.page-inner-menu li{background: #fff;}
 .elComments-list .owl-buttons div {
     width: 55px;
 }
-nav a#pull{padding:11px 25px;}
+/*nav a#pull{padding:11px 25px;}*/
 .elComments-list{padding:0px 60px;}
 .elComments-list .owl-prev {left: 0px;}
 .elComments-list .owl-next {right: 0px;}
@@ -167,6 +167,10 @@ nav a#pull{padding:11px 25px;}
 }
 }
 @media screen and (max-width: 900px) {
+#sanatorium .item{
+	max-width:380px;
+	margin:25px auto 0px;
+}
 #sanatorium .el-search-list .item>div {
     width: 100%;
     display: block;
@@ -221,7 +225,7 @@ nav a#pull{padding:11px 25px;}
 #slider-range-ext{width:calc(100% - 188px);}
 .info-bottom .right,
 .info-bottom .inf{width:100%;}
-/*.fancybox-inner,.fancybox-opened {width: 90% !important;margin:0 auto !important;}*/
+
 .el-nomer-popap .right .icon,
 .el-nomer-popap .right .text,
 .infra-list{width:100%;}
@@ -311,7 +315,7 @@ footer .left{
     width: 50%;
 }
 
-.engBox-body.clearfix{padding:0px 15px;}
+.engBox-body.clearfix{padding:0px 25px;}
 .feedback-form-left {
     width: 220px;
 }
@@ -418,15 +422,15 @@ nav a#pull{padding:10px;}
 	float:left;
     padding-left: 0px;
     margin-left: 0px;
-    width: 130px;
+    width: 140px;
 }
 .header-line_wbg {
     height: auto;
     line-height: normal;
     padding: 15px 10px;
 }
-.header-phone-link {
-    font-size: 21px;
+a.header-phone-link {
+    font-size: 19px;
     line-height: 10px;
 }
 .header-phone{
@@ -485,4 +489,22 @@ nav a#pull{padding:10px;}
 .el-lech .item >.inf{padding:20px 0px;}
 
 #phone{padding:15px 0px 0px;}
+.header-phone p{font-size:12px;}
+nav a#pull:after{right:10px;}
+.engBox-body.clearfix {padding: 0px 10px;}
+.head_pun li a {margin: 2px 0px 5px;}
+.engBox-body {padding: 0px 10px;}
+.header-line_wbg{padding: 15px 10px;}
+.el-search-result .title {
+    font-size: 21px;
+    line-height: 26px;
+}
+.engBox-body .pagination{padding: 20px 0px;}
+.page-card #content-top {
+	line-height: 22px;
+    margin-bottom: 15px;
+	position: static;
+}
+#content-top{background-position-y: top;}
+.engBox-right.card-form{margin-bottom: 15px;}
 }
