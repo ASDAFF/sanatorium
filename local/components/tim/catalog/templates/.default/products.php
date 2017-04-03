@@ -111,7 +111,7 @@ foreach ($products as $id => $item)
             <img src="<?= $img['src'] ?>">
         </div>
         <div class="text">
-	        <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a><?
+			<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div><?
 
 	        //
 	        // Профили лечения

@@ -175,7 +175,7 @@ class Room
 					</a>
 				</div>
 				<div class="text">
-					<a href="#room<?= $room['ID'] ?>" class="title various"><?= $room['NAME'] ?></a><br>
+					<div class="el-nomer-head"><a href="#room<?= $room['ID'] ?>" class="title various"><?= $room['NAME'] ?></a></div>
 					<b>Площадь:</b> <?= $room['SIZE'] ?> м2 <br><br><?
 
 					if ($room['DOUBLE_BED'] || $room['SINGLE_BED'])

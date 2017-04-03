@@ -87,6 +87,13 @@ $file = new \CFile();
 
 					</a>
 					<div class="extra-options">
+					<div class="rating" title="3.5">			            
+						<div class="star"><span class="on"></span></div>          
+						<div class="star"><span class="on"></span></div>           
+						<div class="star"><span class="on"></span></div>          
+						<div class="star"><span style="width:50%;" class="on"></span></div>         
+						<div class="star"><span class="of"></span></div>                
+					</div>
 						<b>Дополнительные параметры:</b>
 						<ul><?
 							$infra = \Local\Catalog\Infra::getAll();

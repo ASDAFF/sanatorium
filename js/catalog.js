@@ -266,7 +266,12 @@ var Detail = {
 			e.preventDefault();
 			$.fancybox({
 				content: $(this).parent().parent().find('.detail-text'),
-				padding: '0'
+				padding: '0',
+				helpers: {
+					overlay: {
+					  locked: true 
+					}
+				}
 			})
 		});
 	},

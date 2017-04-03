@@ -155,15 +155,12 @@ $(document).ready(function () {
 	$(".el-search-dop-input").checkboxradio();
 
 	$(".various").fancybox({
-		maxWidth: 800,
-		maxHeight: 600,
 		padding: '0',
-		fitToView: false,
-		width: '700',
-		height: '600',
-		autoSize: false,
-		closeClick: false
-
+		helpers: {
+			overlay: {
+			  locked: true 
+			}
+		}
 	});
 
 
