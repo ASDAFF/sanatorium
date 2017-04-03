@@ -51,7 +51,7 @@ if ($cityId)
 $items = \Local\Catalog\Sanatorium::get(
 	array('PROPERTY_RATING' => 'desc'),
 	$ids,
-	array('nPageSize' => 12, 'iNumPage' => $page)
+	array('nPageSize' => 8, 'iNumPage' => $page)
 );
 
 $file = new \CFile();
@@ -76,47 +76,57 @@ $file = new \CFile();
 					$city = \Local\Catalog\City::getById($item['CITY']);
 					?>
 					<div class="prices-item">
-					<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
-						<div class="img"><img src="<?= $img['src'] ?>"></div>
-						<div class="text eng-animations">
-							<b><?= $item['NAME'] ?></b>
-							<span>КМВ, <?= $city['NAME'] ?></span>
-							<i>Подробнее</i>
-						</div>
-						<div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>
+						<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
+							<div class="img"><img src="<?= $img['src'] ?>"></div>
+							<div class="text eng-animations">
+								<b><?= $item['NAME'] ?></b>
+								<span>КМВ, <?= $city['NAME'] ?></span>
+								<i>Подробнее</i>
+							</div>
+							<div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>
 
-					</a>
-					<div class="extra-options">
-					<div class="rating" title="3.5">			            
-						<div class="star"><span class="on"></span></div>          
-						<div class="star"><span class="on"></span></div>           
-						<div class="star"><span class="on"></span></div>          
-						<div class="star"><span style="width:50%;" class="on"></span></div>         
-						<div class="star"><span class="of"></span></div>                
-					</div>
-						<b>Дополнительные параметры:</b>
-						<ul><?
-							$infra = \Local\Catalog\Infra::getAll();
-							$cnt = 0;
-							foreach ($infra['ITEMS'] as $infraItem)
-							{
-								$distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
-								if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
+						</a>
+						<div class="extra-options">
+							<div class="rating" title="<?= $item['RATING'] ?>"><?
+								for ($i = 0; $i < 5; $i++)
 								{
-									$name = $infraItem['NAME'];
-									if ($distance)
-										$name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
-
+									$cl = 'of';
+									$style = '';
+									if ($item['RATING'] > $i)
+									{
+										$cl = 'on';
+										$x = ($item['RATING'] - $i) * 100;
+										if ($x < 100)
+											$style = ' style="width:' . $x . '%"';
+									}
 									?>
-									<li><?= $name ?></li><?
-									$cnt++;
-									if ($cnt >= 4)
-										break;
+									<div class="star"><span class="<?= $cl ?>"<?= $style ?>></span></div><?
 								}
-							}
-							?>
-						</ul>
-					</div>
+								?>
+							</div>
+							<b>Дополнительные параметры:</b>
+							<ul><?
+								$infra = \Local\Catalog\Infra::getAll();
+								$cnt = 0;
+								foreach ($infra['ITEMS'] as $infraItem)
+								{
+									$distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
+									if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
+									{
+										$name = $infraItem['NAME'];
+										if ($distance)
+											$name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
+
+										?>
+										<li><?= $name ?></li><?
+										$cnt++;
+										if ($cnt >= 4)
+											break;
+									}
+								}
+								?>
+							</ul>
+						</div>
 					</div><?
 
 					$count++;

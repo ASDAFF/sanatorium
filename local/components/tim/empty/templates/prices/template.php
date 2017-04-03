@@ -48,7 +48,7 @@ if ($cityId)
 $items = \Local\Catalog\Sanatorium::get(
 	array('PROPERTY_PRICE' => 'asc'),
 	$ids,
-	array('nPageSize' => 12, 'iNumPage' => $page)
+	array('nPageSize' => 8, 'iNumPage' => $page)
 );
 
 $file = new \CFile();

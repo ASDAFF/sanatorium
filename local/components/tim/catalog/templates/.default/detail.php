@@ -40,11 +40,19 @@ if ($tabCode != 'main')
     <div id="cron" class="engBox-body">
         <div id="cron-right">
 	        <div class="rating" title="<?= $product['RATING'] ?>"><?
-		        for ($i = 0.5; $i < 5; $i++)
+		        for ($i = 0; $i < 5; $i++)
 		        {
-			        $cl = $product['RATING'] >= $i ? 'on' : 'of';
+			        $cl = 'of';
+			        $st = '';
+			        if ($product['RATING'] > $i)
+			        {
+				        $cl = 'on';
+				        $x = ($product['RATING'] - $i) * 100;
+				        if ($x < 100)
+					        $st = ' style="width:' . $x . '%"';
+			        }
 			        ?>
-			        <div class="star"><span class="<?= $cl ?>"></span></div><?
+			        <div class="star"><span class="<?= $cl ?>"<?= $st ?>></span></div><?
 		        }
 		        ?>
 	        </div>

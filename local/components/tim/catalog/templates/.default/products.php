@@ -170,11 +170,19 @@ foreach ($products as $id => $item)
             <div class="star"></div>
             <div class="comment">
 	            <div class="rating" title="<?= $item['RATING'] ?>"><?
-		            for ($i = 0.5; $i < 5; $i++)
+		            for ($i = 0; $i < 5; $i++)
 		            {
-			            $cl = $item['RATING'] >= $i ? 'on' : 'of';
+			            $cl = 'of';
+			            $style = '';
+			            if ($item['RATING'] > $i)
+			            {
+				            $cl = 'on';
+				            $x = ($item['RATING'] - $i) * 100;
+				            if ($x < 100)
+					            $style = ' style="width:' . $x . '%"';
+			            }
 			            ?>
-			            <div class="star"><span class="<?= $cl ?>"></span></div><?
+			            <div class="star"><span class="<?= $cl ?>"<?= $style ?>></span></div><?
 		            }
 		            ?>
                 </div>
