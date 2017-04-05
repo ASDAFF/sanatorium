@@ -1,53 +1,53 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"О сервисе",
-		"/about/",
-		Array(),
-		Array(),
-		""
+		"Санатории", 
+		"/sanatorium/", 
+		Array(), 
+		Array(), 
+		"" 
 	),
 	Array(
-		"Санатории",
-		"/sanatorium/",
-		Array(),
-		Array(),
-		""
+		"Акции", 
+		"/action/", 
+		Array(), 
+		Array(), 
+		"" 
 	),
 	Array(
-		"Акции",
-		"/action/",
-		Array(),
-		Array(),
-		""
+		"Отзывы", 
+		"/reviews/", 
+		Array(), 
+		Array(), 
+		"" 
 	),
 	Array(
-		"Отзывы",
-		"/reviews/",
-		Array(),
-		Array(),
-		""
+		"Рейтинг санаториев", 
+		"/rating/", 
+		Array(), 
+		Array(), 
+		"" 
 	),
 	Array(
-		"Рейтинг санаториев",
-		"/rating/",
-		Array(),
-		Array(),
-		""
+		"Цены", 
+		"/price/", 
+		Array(), 
+		Array("CHILD"=>"N"), 
+		"" 
 	),
 	Array(
-		"Цены",
-		"/price/",
-		Array(),
-		Array("CHILD"=>"N"),
-		""
+		"Контакты", 
+		"/contacts/", 
+		Array(), 
+		Array(), 
+		"" 
 	),
 	Array(
-		"Контакты",
-		"/contacts/",
-		Array(),
-		Array(),
-		""
+		"О сервисе", 
+		"/about/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>

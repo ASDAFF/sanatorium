@@ -16,6 +16,7 @@ h1, .h1 { display: block; padding-bottom: 5px; color: #1d1d1d; font-size: 25px; 
 h2, .h2 { display: block; margin: 0; padding: 10px 0; font-size: 20px; line-height: 1.2em; color: #1d1d1d; font-weight: 100 }
 h3, .h3 { display: block; margin: 0; padding: 0; font-size: 17px; line-height: 1.2em; color: #1d1d1d; font-weight: bold }
 h4, .h4 { display: block; margin: 0; padding: 0; font-size: 12px; line-height: 1.2em; color: #1d1d1d; font-weight: bold }
+h1 span , .h1 span {padding-bottom: 5px; color: #1d1d1d; font-size: 25px; line-height: 1.2em; font-weight: 300; margin-top: 0 }
 .clear { clear: both; }
 .engBox-center, .engBox-center-right, .engBox-right { position: relative; float: left; }
 .engBox-body { width: 1110px; margin: auto; clear: both; }
@@ -32,14 +33,20 @@ h4, .h4 { display: block; margin: 0; padding: 0; font-size: 12px; line-height: 1
 .p-head li a:hover { background: #ff9c00; }
 .p-head li a { }
 .head_pun_full { background: #f0f0f0; }
+
 .head_pun li { display: inline-block; }
 .head_pun li a { color: #505050; font-weight: 400;
     font-size: 16px;padding: 11px 11px 11px 35px; display: inline-block; }
 .head_pun a:hover { color: #2a93b9 !important; text-decoration: underline; }
 .head_pun li a.icon1 { background-repeat: no-repeat; background-position: left 7px; background-image: url(../images/icon1.png); }
 .head_pun li a.icon2 { background: url(../images/icon2.png) left 8px no-repeat; }
-#haad_pun-bnt { padding: 11px; text-decoration: underline; color: #ff9c00 !important; font-weight: 400 !important; }
+#haad_pun-bnt { padding: 11px; text-decoration: underline; color: #ff9c00 ; font-weight: 400 !important; }
 nav a#pull { display: none; }
+
+.head_pun_full:hover {    background: #f1f1e4;}
+.head_pun_full:hover a {
+	color: #2a93b9 !important;
+	text-decoration: underline;}
 
 #cron_full { background: url("../images/cron-bg.png") center; height: 113px; }
 #cron { padding: 25px 0px 10px 0px; }
@@ -790,7 +797,7 @@ background-repeat:no-repeat;
 .el-nomer .item {border: 1px solid #ccc; border-radius: 4px;}
 .el-nomer .item:hover {border-color: #ff8a00;}
 .el-nomer .item>div {display: table-cell; vertical-align: top;}
-.el-nomer .item .img {padding: 15px 10px; width: 23%;  overflow: hidden; max-width: 180px;  }
+.el-nomer .item .img {padding: 15px 10px;padding-right:0px; width: 23%;  overflow: hidden; max-width: 180px;  }
 .el-nomer .item .img img {width: 100%; max-width: 250px; max-height: 140px; height: 100%; width: auto; }
 .el-nomer .item .img .border {border: 2px solid #ffffff; overflow: hidden; padding: 1px; position: relative; cursor: pointer; display: block;}
 .el-nomer .item .img .border:hover {border: 2px solid #ff8a00;}
@@ -2917,3 +2924,15 @@ div[id^="slider-popap-"].flexslider .slides img{
 	background-image: url(/images/star3.png);
 }
 .okno{max-width: 700px;margin-right:-20px;}
+#cron-right .rating .star span.on{
+	float:left;
+}
+#cron-right .rating:after{
+	content:'';
+	display:table;
+	clear:both;
+}
+.tb tr{display:table;width: 100%;padding:10px 0px;border-bottom: 1px solid #eaeaea;}
+.tb td{display:table-cell;padding-right:10px;}
+
+.js-submit-tnx {font-size: 17px; color: #0093ff; font-weight: 300;}

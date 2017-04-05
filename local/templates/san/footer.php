@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             <div class="left">
                 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
             </div>
-            <div class="center">© 2016 «Санатории Кавказа»</div>
+            <div class="center">Сервис бронирования путевок в санатории</div>
             <div class="right">
                 <a href=""><img src="/images/webmaster.png"></a>
             </div>
@@ -29,5 +29,19 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 $APPLICATION->IncludeComponent('tim:empty', 'bottom_filter', array());
 
 ?>
+<script type="text/javascript">
+    var ZCallbackWidgetLinkId  = 'fda66b7ab4c3b906e73b3967115fbaaa';
+    var ZCallbackWidgetDomain  = 'my.zadarma.com';
+    (function(){
+        var lt = document.createElement('script');
+        lt.type ='text/javascript';
+        lt.charset = 'utf-8';
+        lt.async = true;
+        lt.src = 'https://' + ZCallbackWidgetDomain + '/callbackWidget/js/main.min.js?unq='+Math.floor(Math.random(0,1000)*1000);
+        var sc = document.getElementsByTagName('script')[0];
+        if (sc) sc.parentNode.insertBefore(lt, sc);
+        else document.documentElement.firstChild.appendChild(lt);
+    })();
+</script>
 </body>
 </html>

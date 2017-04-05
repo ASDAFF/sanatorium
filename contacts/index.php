@@ -18,14 +18,14 @@ $APPLICATION->SetTitle("Контакты");?>
 		<div class="page-contacts">
 			<div class="page-contacts-box">
 				<div class="block-inline-sm">
-					<div class="company-name">Какое-нибудь название организации</div><br>
+					<div class="company-name">ООО туристическая компания "Ладья"</div><br>
 					<div class="sm-title"><span class="place-icon"></span>Адрес</div>
 					г. Пятигорск<br>
 					ул. Дзержинского, 122<br><br>
 				</div>
 				<div class="block-inline-sm">
 					<div class="sm-title"><span class="phone-icon"></span>Телефон</div>
-					8(8793)45-65-22
+					8(8793)39-17-17, 8 800 775 2604
 				</div>
 			</div>
 			<div class="page-contacts-map">

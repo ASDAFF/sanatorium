@@ -162,7 +162,7 @@ $(document).ready(function () {
 			}
 		}
 	});
-
+$(".fancy_images a").fancybox();
 
 	$(document).on('click', '#popup-bron-btn', function () {
 		$.fancybox.close();

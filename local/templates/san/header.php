@@ -33,6 +33,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
     ?>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -93,14 +94,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 	<div class="head_pun_full">
 		<ul class="engBox-body clearfix bl head_pun">
-			<li><a class="icon1" href="#">Официальные цены санаториев</a></li>
-			<li><a class="icon2" href="#">Бесплатный трансфер</a></li>
+			<li><a class="icon1" href="/about/vigody/">Официальные цены санаториев</a></li>
+			<li><a class="icon2" href="/about/vigody/">Бесплатный трансфер</a></li>
 			<li class="sale">
 				<p class="sale-text">
 					<b>Нашли дешевле?</b>
 					<span>Мы предложим вам СКИДКУ!</span>
 				</p>
-				<a class="sale-link" href="#" id="haad_pun-bnt">подробнее</a>
+				<a class="sale-link" href="/about/vigody/" id="haad_pun-bnt">подробнее</a>
 			</li>
 		</ul>
 	</div>
