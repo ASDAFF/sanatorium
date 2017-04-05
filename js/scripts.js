@@ -438,6 +438,8 @@ var Review = {
 		if (!this.form.length)
 			return false;
 
+		this.tnxDiv = this.form.find('.js-feedback-tnx');
+
 		this.form.submit(this.send);
 	},
 	send: function () {
@@ -447,7 +449,7 @@ var Review = {
 			url: '/ajax/add_review.php',
 			data: form_data,
 			success: function () {
-				//Review.form[0].reset();
+				Review.tnxDiv.show();
 			}
 		});
 		return false;
