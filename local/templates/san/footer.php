@@ -28,6 +28,9 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 
 $APPLICATION->IncludeComponent('tim:empty', 'bottom_filter', array());
 
+// Всю шнягу типа счетчиков, трекеров - сюда:
+$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_body_bot.php');
+
 ?>
 <div id="engBtnTop"></div>
 </body>

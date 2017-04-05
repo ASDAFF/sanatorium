@@ -547,6 +547,7 @@ class Sanatorium
                 'PROPERTY_FEEDING_TAB',
                 'PROPERTY_CHILD_TAB',
                 'PROPERTY_VIDEO',
+                'PROPERTY_YMAP',
             );
             $rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
             if ($item = $rsItems->GetNext())
@@ -576,6 +577,7 @@ class Sanatorium
                     'PREVIEW_TEXT' => $item['~PREVIEW_TEXT'],
                     'DETAIL_TEXT' => $item['~DETAIL_TEXT'],
                     'ADDRESS' => $item['PROPERTY_ADDRESS_VALUE'],
+                    'YMAP' => $item['PROPERTY_YMAP_VALUE'],
                     'RATING' => round($item['PROPERTY_RATING_VALUE'] / 2) / 10,
                     'FEEDING_TAB' => $item['~PROPERTY_FEEDING_TAB_VALUE']['TEXT'],
                     'CHILD_TAB' => $item['~PROPERTY_CHILD_TAB_VALUE']['TEXT'],

@@ -32,24 +32,19 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addCss(SITE_DIR . 'css/media.css');
 	
 	$APPLICATION->ShowHead();
-    ?>
-<!-- Yandex Map -->
-<script src="//api-maps.yandex.ru/2.0/?load=package.standard,package.geoObjects&lang=ru-RU" type="text/javascript"></script>
-<!-- End Yandex Map -->
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KJCWLMQ');</script>
-<!-- End Google Tag Manager -->
+
+	// Всю шнягу типа счетчиков, трекеров - сюда:
+	$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_head_bot.php');
+?>
 </head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJCWLMQ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<? $APPLICATION->ShowPanel(); ?>
+<body><?
+
+// Всю шнягу типа счетчиков, трекеров - сюда:
+$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_body_top.php');
+
+$APPLICATION->ShowPanel();
+
+?>
 <header class="header">
 	<div class="header-line_wbg engBox-body">
 		<div class="header-logo"><?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?></div>
@@ -61,25 +56,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 	</div>
 	<div class="head_full">
-		<nav class="engBox-body main-menu p-head">
+		<nav class='engBox-body main-menu p-head'>
 			<?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"topHor", 
-	array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "bottom",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "2",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "Y",
-		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "topHor"
-	),
-	false
-);
+				'bitrix:menu', 
+				'topHor', 
+				array(
+					'ALLOW_MULTI_SELECT' => 'N',
+					'CHILD_MENU_TYPE' => 'bottom',
+					'DELAY' => 'N',
+					'MAX_LEVEL' => '2',
+					'MENU_CACHE_GET_VARS' => array(
+					),
+					'MENU_CACHE_TIME' => '3600',
+					'MENU_CACHE_TYPE' => 'Y',
+					'ROOT_MENU_TYPE' => 'top',
+					'USE_EXT' => 'Y',
+					'COMPONENT_TEMPLATE' => 'topHor'
+				),
+				false
+			);
 
 			?>
 			<div class="nav_search">

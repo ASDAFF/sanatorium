@@ -217,6 +217,9 @@ var Detail = {
 			$(window).on('popstate', this.popstate);
 			// На первую вкладку
 			this.bcDetail.click(this.toMainTab);
+
+			if (typeof ymaps != 'undefined')
+				ymaps.ready(this.mapInit);
 		}
 		this.showSlider();
 		this.ProgramsPopup();
@@ -320,6 +323,23 @@ var Detail = {
 		});
 
 		return false;
+	},
+	mapInit: function () {
+		if (yMapPoint.length < 2)
+			return false;
+
+		this.map = new ymaps.Map("map", {
+			center: yMapPoint,
+			zoom: 17
+		});
+		this.pm = new ymaps.Placemark(yMapPoint, {
+			iconContent: '1',
+			balloonContent: 'Балун',
+			hintContent: 'Стандартный значок метки'
+		}, {
+			preset: 'twirl#violetIcon'
+		});
+		this.map.geoObjects.add(this.pm);
 	}
 };
 

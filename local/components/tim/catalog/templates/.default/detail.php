@@ -224,35 +224,7 @@ if ($tabCode != 'main')
     </div>
 </div>
 
-
-<script type="text/javascript">
-    ymaps.ready(init);
-
-    function init () {
-        var myMap = new ymaps.Map("map", {
-                center: [43.902580351584, 42.723535988083],
-                zoom: 17
-            }),
-
-            // Создаем метку с помощью вспомогательного класса.
-            myPlacemark1 = new ymaps.Placemark([43.902580351584, 42.723535988083], {
-                // Свойства.
-                // Содержимое иконки, балуна и хинта.
-                iconContent: '1',
-                balloonContent: 'Балун',
-                hintContent: 'Стандартный значок метки'
-            }, {
-                // Опции.
-                // Стандартная фиолетовая иконка.
-                preset: 'twirl#violetIcon'
-            });
-        // Добавляем все метки на карту.
-        myMap.geoObjects
-            .add(myPlacemark1);
-    }
-
-</script>
-
+<script type="text/javascript">var yMapPoint = [<?= $product['YMAP'] ?>]</script>
 <div id="map" style="width:100%; height:300px"></div>
 
 <?
