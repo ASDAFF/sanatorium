@@ -58,7 +58,7 @@ nav a#pull { display: none; }
 #cron-right .cron-price span { color: #2c9ed7; font-size: 13px; font-weight: 400; }
 
 
-#content-top {
+#content-top {cursor: pointer; display: block;
 	background: url(../images/icon3.png) left center no-repeat;
     padding-left: 25px;
     position: relative;
@@ -2936,3 +2936,17 @@ div[id^="slider-popap-"].flexslider .slides img{
 .tb td{display:table-cell;padding-right:10px;}
 
 .js-submit-tnx {font-size: 17px; color: #0093ff; font-weight: 300;}
+.js-feedback-tnx {position: relative; padding: 0 12px; display: inline-block;
+	color: #1f9fde; font-size: 15px; float: right;}
+@media only screen and (max-width: 600px){
+	.js-feedback-tnx {text-align: center; display: block; float: none;}
+}
+
+#engBtnTop {width: 45px; height: 45px; bottom:60px; right:22px;
+	position:fixed; cursor:pointer; display:none;
+	font-size:15px; color:#fff; text-align:center;
+	background:#ff8a00;
+	background: url("../images/engUp.png");
+	background-size: cover;}
+
+#zcwMiniButton {right: 10px!important; bottom: 110px!important;}

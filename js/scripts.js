@@ -2,10 +2,12 @@ var MobileMenu = {
 	init: function () {
 		this.pull = $('#pull');
 		this.menu = $('nav ul');
+        this.menulist = $('nav a');
 		this.menu_p = $(".menu_parent");
 		this.menuHeight = this.menu.height();
 		this.pull.on('click', this.menuClick);
 		this.menu_p.on('click', this.menu_parentClick);
+        this.menulist.on('click', this.menulistClick);
 		$(".p-head li:has(ul)").addClass("menu_parent");
 		$(window).resize(function () {
 			var menu = $('nav ul');
@@ -21,9 +23,19 @@ var MobileMenu = {
 		menu.slideToggle();
 	},
 	menu_parentClick: function (e) {
-		$(this).find(">ul").toggleClass("menu_expanded");
+        $(this).find(">ul").toggleClass("menu_expanded");
 		$(this).toggleClass("menu_parent_exp");
-	}
+	},
+    menulistClick: function (e) {
+        var w = $(window).width();
+        if (w < 1100) {
+            if ($(this).parent().hasClass("menu_parent")) {
+				$(this).parent().find("ul").toggleClass("menu_expanded");
+                return false;
+            }
+        }
+    }
+
 }
 
 
@@ -66,6 +78,19 @@ $(document).ready(function () {
 			$('.searchbox-icon').css('display', 'block');
 		}
 	}
+
+    // Якоря
+
+    $('a[href^="#"]#content-top').on('click', function(event) {
+        event.preventDefault(); // отменяем стандартное действие
+
+        var sc = $(this).attr("href"), // sc - в переменную заносим информацию о том, к какому блоку надо перейти
+            dn = $(sc).offset().top; // dn - определяем положение блока на странице
+
+        $('html , body').animate({scrollTop: dn}, 1000); // 1000 скорость перехода в миллисекундах
+    });
+
+
 
 });
 
@@ -162,7 +187,21 @@ $(document).ready(function () {
 			}
 		}
 	});
-$(".fancy_images a").fancybox();
+
+    var engBtnTop = $('#engBtnTop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() != 0) {
+            engBtnTop.fadeIn();
+        } else {
+            engBtnTop.fadeOut();
+        }
+    });
+
+    engBtnTop.click(function () {
+        $('body,html').animate({scrollTop: 0}, 800);
+    });
+
+	$(".fancy_images a").fancybox();
 
 	$(document).on('click', '#popup-bron-btn', function () {
 		$.fancybox.close();

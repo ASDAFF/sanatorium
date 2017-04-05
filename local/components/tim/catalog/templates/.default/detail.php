@@ -78,7 +78,7 @@ if ($tabCode != 'main')
         // Адрес
         //
         ?>
-        <div id="content-top"><?= $product['ADDRESS'] ?></div><?
+        <a href="#map" id="content-top"><?= $product['ADDRESS'] ?></a><?
 
         //
         // Картинки
@@ -223,9 +223,38 @@ if ($tabCode != 'main')
         ?>
     </div>
 </div>
-<div id="map" class="clear">
-    <iframe src="<?=$product['PRODUCT']['LINK_MAPS']?>" width="100%" height="400" frameborder="0"></iframe>
-</div>
+
+
+<script type="text/javascript">
+    ymaps.ready(init);
+
+    function init () {
+        var myMap = new ymaps.Map("map", {
+                center: [43.902580351584, 42.723535988083],
+                zoom: 17
+            }),
+
+            // Создаем метку с помощью вспомогательного класса.
+            myPlacemark1 = new ymaps.Placemark([43.902580351584, 42.723535988083], {
+                // Свойства.
+                // Содержимое иконки, балуна и хинта.
+                iconContent: '1',
+                balloonContent: 'Балун',
+                hintContent: 'Стандартный значок метки'
+            }, {
+                // Опции.
+                // Стандартная фиолетовая иконка.
+                preset: 'twirl#violetIcon'
+            });
+        // Добавляем все метки на карту.
+        myMap.geoObjects
+            .add(myPlacemark1);
+    }
+
+</script>
+
+<div id="map" style="width:100%; height:300px"></div>
+
 <?
 $APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
 	'ID' => $product['ID'],
