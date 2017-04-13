@@ -6,7 +6,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 ?>
 <div id="phone">
     <div class="engBox-body">
-        <div class="phone"><i class="icon-phome-mega"></i>8 800 800 00 00</div>
+        <div class="phone"><i class="icon-phome-mega"></i>8 800 775 2604</div>
         <div class="text">Исходящие вызовы по России бесплатны.<br>
             Проконсультируем вас по любому вопросу, поможем подобрать подходящие путевки для вас и вашей семьи
         </div>

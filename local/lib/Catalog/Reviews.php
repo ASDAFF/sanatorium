@@ -234,21 +234,31 @@ class Reviews
 
 	/**
 	 * Добавление отзыва
-	 * @return bool|int
+	 * @return string (json encoded)
 	 */
 	public static function add()
 	{
 		$id = 0;
 
-		$name = htmlspecialchars($_POST['name']);
-		$txt = htmlspecialchars($_POST['txt']);
-		$city = htmlspecialchars($_POST['city']);
-		$mail = htmlspecialchars($_POST['mail']);
+		$name = trim(htmlspecialchars($_POST['name']));
+		$txt  = trim(htmlspecialchars($_POST['txt']));
+		$city = trim(htmlspecialchars($_POST['city']));
+		$mail = trim(htmlspecialchars($_POST['mail']));
 		$mark = intval($_POST['mark']);
 		$service = $_POST['service'] ? 1 : 0;
-		$san = htmlspecialchars($_POST['san']);
+		$san = trim(htmlspecialchars($_POST['san']));
 
-		if ($name && $txt && $mail)
+		$errors = array();
+
+		//check fields
+        if(empty($name))
+            $errors[] = 'Введите имя';
+        if(empty($txt))
+            $errors[] = 'Введите текст отзыва';
+        if(empty($mail))
+            $errors[] = 'Введите E-mail';
+
+		if (empty($errors))
 		{
 			$stars = 0;
 			if ($mark >= 1 && $mark <= 5)
@@ -284,9 +294,26 @@ class Reviews
 				);
 				\CEvent::Send('NEW_REVIEW', 's1', $eventFields);
 			}
+            else
+                $errors[] = 'Ошибка добавления заявки. Свяжитесь с администрацией';
 		}
 
-		return $id;
+        $gtm = new \WM\GTMFormSubmit();
+
+        if(empty($errors))
+        {
+            return $gtm->getJson(array(
+                'gtmObject' => $gtm->setEvent()->setElementId('review-form')->setElements(array($name, $mail, $txt))->getResult(),
+                'id' => $id,
+                'success' => true,
+            ));
+        }
+
+        return $gtm->getJson(array(
+            'errors' => $errors,
+            'id' => $id,
+            'success' => false,
+        ));
 	}
 
 	/**

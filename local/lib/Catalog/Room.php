@@ -405,18 +405,31 @@ class Room
 		return $return;
 	}
 
+    /**
+     * @return string (json encoded)
+     */
 	public static function reserve()
 	{
-		$name = htmlspecialchars($_POST['name']);
-		$phone = htmlspecialchars($_POST['phone']);
+	    $id = 0;
+
+		$name = trim(htmlspecialchars($_POST['name']));
+		$phone = trim(htmlspecialchars($_POST['phone']));
 		$roomId = intval($_POST['room']);
 		$adults = intval($_POST['adults']);
 		$child = intval($_POST['child']);
-		$date_on = htmlspecialchars($_POST['date_on']);
-		$date_off = htmlspecialchars($_POST['date_off']);
+		$date_on = trim(htmlspecialchars($_POST['date_on']));
+		$date_off = trim(htmlspecialchars($_POST['date_off']));
 		$transfer = $_POST['transfer'] == 'on';
 
-		if ($name && $phone)
+        $errors = array();
+
+        //check fields
+        if(empty($name))
+            $errors[] = 'Введите имя';
+        if(empty($phone))
+            $errors[] = 'Введите номер телефона';
+
+		if (empty($errors))
 		{
 			$props = array(
 				'PHONE' => $phone,
@@ -463,15 +476,27 @@ class Room
 				);
 				\CEvent::Send('ASPRO_SEND_FORM_ADMIN_20', 's1', $eventFields);
 			}
-
-
-			if ($id)
-				return "Спасибо. Мы с Вами свяжемся";
-			else
-				return "Ошибка добавления заявки. Свяжитесь с администрацией";
+            else
+                $errors[] = 'Ошибка добавления заявки. Свяжитесь с администрацией';
 		}
 
-		return '';
+        $gtm = new \WM\GTMFormSubmit();
+
+        if(empty($errors))
+        {
+            return $gtm->getJson(array(
+                'gtmObject' => $gtm->setEvent()->setElementId('formx')->setElements(array($name, $phone))->getResult(),
+                'id' => $id,
+                'message' => 'Спасибо. Мы с Вами свяжемся',
+                'success' => true,
+            ));
+        }
+
+        return $gtm->getJson(array(
+            'errors' => $errors,
+            'id' => $id,
+            'success' => false,
+        ));
 	}
 
 }

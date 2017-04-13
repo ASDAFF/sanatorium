@@ -203,12 +203,12 @@ $idBuv = \Local\Catalog\Infra::getIdByCode('buvet');
 				$family = $item['FAMILY'] ? 'да' : 'нет';
 				?>
 				<tr>
-					<td><a href="<?= $item['DETAIL_PAGE_URL'] ?>"><?= $item['NAME'] ?></a></td>
-					<td><?= $item['PRICE'] ?></td>
-					<td><?= $wf ?></td>
-					<td><?= $bas ?></td>
-					<td><?= $buv ?></td>
-					<td><?= $family ?></td>
+					<td data-label="Санаторий"><a href="<?= $item['DETAIL_PAGE_URL'] ?>"><?= $item['NAME'] ?></a></td>
+					<td data-label="Цена"><?= $item['PRICE'] ?></td>
+					<td data-label="Интернет Wi-Fi"><?= $wf ?></td>
+					<td data-label="Бассейн"><?= $bas ?></td>
+					<td data-label="Расстояние до бювета"><?= $buv ?></td>
+					<td data-label="Семейный отдых"><?= $family ?></td>
 				</tr><?
 			}
 			?>

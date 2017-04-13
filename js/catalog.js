@@ -316,9 +316,17 @@ var Detail = {
 			type: 'POST',
 			url: '/ajax/reserve_room.php',
 			data: form_data,
+			dataType: 'json',
 			success: function(data) {
-				Detail.reserveForm[0].reset();
-				Detail.reserveResult.html(data).show();
+                if(data.success)
+                {
+                    dataLayer = window.dataLayer || [];
+                    dataLayer.push(data.gtmObject);
+                    Detail.reserveForm[0].reset();
+                    Detail.reserveResult.html(data.message).show();
+                }
+                else
+                    $.fancybox('<div class="errors feedback-popup-content">' + data.errors.join('<br>') + '</div>');
 			}
 		});
 

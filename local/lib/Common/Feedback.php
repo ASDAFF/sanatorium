@@ -21,20 +21,30 @@ class Feedback
 
 	/**
 	 * Добавление вопроса
-	 * @return bool|int
+     * @return string (json encoded)
 	 */
 	public static function add()
 	{
 		$id = 0;
 
-		$name = htmlspecialchars($_POST['name']);
-		$text = htmlspecialchars($_POST['text']);
-		$phone = htmlspecialchars($_POST['phone']);
-		$email = htmlspecialchars($_POST['email']);
+		$name = trim(htmlspecialchars($_POST['name']));
+		$text = trim(htmlspecialchars($_POST['text']));
+		$phone = trim(htmlspecialchars($_POST['phone']));
+		$email = trim(htmlspecialchars($_POST['email']));
 		$call = $_POST['call'] ? 1 : 0;
 		$mail = $_POST['mail'] ? 1 : 0;
 
-		if ($name && $text)
+        $errors = array();
+
+        //check fields
+        if(empty($name))
+            $errors[] = 'Введите имя';
+        if(empty($phone))
+            $errors[] = 'Введите номер телефона';
+        if(empty($text))
+            $errors[] = 'Введите текст сообщения';
+
+		if (empty($errors))
 		{
 			$el = new \CIBlockElement();
 
@@ -62,24 +72,49 @@ class Feedback
 				);
 				\CEvent::Send('FEEDBACK_FORM', 's1', $eventFields);
 			}
+            else
+                $errors[] = 'Ошибка добавления заявки. Свяжитесь с администрацией';
 		}
 
-		return $id;
+        $gtm = new \WM\GTMFormSubmit();
+
+        if(empty($errors))
+        {
+            return $gtm->getJson(array(
+                'gtmObject' => $gtm->setEvent()->setElementClasses('.feedback-form')->setElements(array($name, $email, $phone, $text))->getResult(),
+                'id' => $id,
+                'success' => true,
+            ));
+        }
+
+        return $gtm->getJson(array(
+            'errors' => $errors,
+            'id' => $id,
+            'success' => false,
+        ));
 	}
 
 	/**
 	 * Добавление заявки на обратный звонок
-	 * @return bool|int
+     * @return string (json encoded)
 	 */
 	public static function addCallBack()
 	{
 		$id = 0;
 
-		$name = htmlspecialchars($_POST['name']);
-		$phone = htmlspecialchars($_POST['phone']);
-		$managerId = htmlspecialchars($_POST['manager']);
+		$name = trim(htmlspecialchars($_POST['name']));
+		$phone = trim(htmlspecialchars($_POST['phone']));
+		$managerId = trim(htmlspecialchars($_POST['manager']));
 
-		if ($name && $phone)
+        $errors = array();
+
+        //check fields
+        if(empty($name))
+            $errors[] = 'Введите имя';
+        if(empty($phone))
+            $errors[] = 'Введите номер телефона';
+
+        if (empty($errors))
 		{
 			$managerName = '';
 			if ($managerId)
@@ -109,9 +144,25 @@ class Feedback
 				);
 				\CEvent::Send('CALLBACK_FORM', 's1', $eventFields);
 			}
+            else
+                $errors[] = 'Ошибка добавления заявки. Свяжитесь с администрацией';
 		}
+        $gtm = new \WM\GTMFormSubmit();
 
-		return $id;
+        if(empty($errors))
+        {
+            return $gtm->getJson(array(
+                'gtmObject' => $gtm->setEvent()->setElementId('callback-form')->setElements(array($name, $phone))->getResult(),
+                'id' => $id,
+                'success' => true,
+            ));
+        }
+
+        return $gtm->getJson(array(
+            'errors' => $errors,
+            'id' => $id,
+            'success' => false,
+        ));
 	}
 
 }

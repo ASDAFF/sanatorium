@@ -16,6 +16,20 @@ var MobileMenu = {
 				menu.removeAttr('style');
 			}
 		});
+
+		if ($(window).width() < 750) {
+			$(window).scroll(function(){
+			var head = $('.header-line_wbg');
+			var head_h = head.height();
+				if($(this).scrollTop() > head_h){
+					$('.main-menu').addClass('fixed');
+				}
+				else if ($(this).scrollTop()<140){
+					 $('.main-menu').removeClass('fixed');
+				}
+			});
+		}
+
 	},
 	menuClick: function (e) {
 		e.preventDefault();
@@ -38,61 +52,49 @@ var MobileMenu = {
 
 }
 
-
-$(document).ready(function () {
-	var submitIcon = $('.searchbox-icon');
-	var inputBox = $('.searchbox-input');
-	var searchBox = $('.searchbox');
-	var isOpen = false;
-	submitIcon.click(function () {
-		if (isOpen == false) {
-			searchBox.addClass('searchbox-open');
-			inputBox.focus();
-			isOpen = true;
-		} else {
-			searchBox.removeClass('searchbox-open');
-			inputBox.focusout();
-			inputBox.val('');
-			isOpen = false;
-		}
-	});
-	submitIcon.mouseup(function () {
-		return false;
-	});
-	searchBox.mouseup(function () {
-		return false;
-	});
-	$(document).mouseup(function () {
-		if (isOpen == true) {
-			$('.searchbox-icon').css('display', 'block');
-			submitIcon.click();
-		}
-	});
-	function buttonUp() {
-		var inputVal = $('.searchbox-input').val();
-		inputVal = $.trim(inputVal).length;
-		if (inputVal !== 0) {
-			$('.searchbox-icon').css('display', 'none');
-		} else {
-			$('.searchbox-input').val('');
-			$('.searchbox-icon').css('display', 'block');
+var SearchTop = {
+	init: function () {
+		var submitIcon = $('.searchbox-icon');
+		var inputBox = $('.searchbox-input');
+		var searchBox = $('.searchbox');
+		var isOpen = false;
+		submitIcon.click(function () {
+			if (isOpen == false) {
+				searchBox.addClass('searchbox-open');
+				inputBox.focus();
+				isOpen = true;
+			} else {
+				searchBox.removeClass('searchbox-open');
+				inputBox.focusout();
+				inputBox.val('');
+				isOpen = false;
+			}
+		});
+		submitIcon.mouseup(function () {
+			return false;
+		});
+		searchBox.mouseup(function () {
+			return false;
+		});
+		$(document).mouseup(function () {
+			if (isOpen == true) {
+				$('.searchbox-icon').css('display', 'block');
+				submitIcon.click();
+			}
+		});
+		function buttonUp() {
+			var inputVal = $('.searchbox-input').val();
+			inputVal = $.trim(inputVal).length;
+			if (inputVal !== 0) {
+				$('.searchbox-icon').css('display', 'none');
+			} else {
+				$('.searchbox-input').val('');
+				$('.searchbox-icon').css('display', 'block');
+			}
 		}
 	}
+}
 
-    // Якоря
-
-    $('a[href^="#"]#content-top').on('click', function(event) {
-        event.preventDefault(); // отменяем стандартное действие
-
-        var sc = $(this).attr("href"), // sc - в переменную заносим информацию о том, к какому блоку надо перейти
-            dn = $(sc).offset().top; // dn - определяем положение блока на странице
-
-        $('html , body').animate({scrollTop: dn}, 1000); // 1000 скорость перехода в миллисекундах
-    });
-
-
-
-});
 
 var SearchExtDisplay = {
 
@@ -117,20 +119,17 @@ var SearchExtDisplay = {
 }
 
 
-/*var textCrop = {
- init: function () {
- var size = 320;
- var newsContent = $('.preview-text-inner');
- var newsText = newsContent.text();
-
- if (newsText.length > size) {
- newsContent.text(newsText.slice(0, size) + ' ...');
- }
- }
-
- }*/
-
 $(document).ready(function () {
+// Якоря
+
+    $('a[href^="#"]#content-top').on('click', function(event) {
+        event.preventDefault(); // отменяем стандартное действие
+
+        var sc = $(this).attr("href"), // sc - в переменную заносим информацию о том, к какому блоку надо перейти
+            dn = $(sc).offset().top; // dn - определяем положение блока на странице
+
+        $('html , body').animate({scrollTop: dn}, 1000); // 1000 скорость перехода в миллисекундах
+    });
 
 
 	$(".controlgroup").controlgroup()
@@ -230,6 +229,8 @@ $(document).ready(function () {
 			lessLink: '<a href="#"><span>Скрыть</span></a>'
 		});
 	}
+
+
 	$("#people .btn>a").fancybox({padding: 0});
 	$('.seo-content .seo-content-inner').readmore({
 		maxHeight: 140,
@@ -477,6 +478,7 @@ var Review = {
 		if (!this.form.length)
 			return false;
 
+        this.btn = this.form.find('.feedback-form-btn');
 		this.tnxDiv = this.form.find('.js-feedback-tnx');
 
 		this.form.submit(this.send);
@@ -487,8 +489,17 @@ var Review = {
 			type: 'POST',
 			url: '/ajax/add_review.php',
 			data: form_data,
-			success: function () {
-				Review.tnxDiv.show();
+			dataType: 'json',
+			success: function (ans) {
+				if(ans.success)
+				{
+					dataLayer = window.dataLayer || [];
+					dataLayer.push(ans.gtmObject);
+                    Review.btn.hide();
+                    Review.tnxDiv.show();
+                }
+				else
+					$.fancybox('<div class="errors feedback-popup-content">' + ans.errors.join('<br>') + '</div>');
 			}
 		});
 		return false;
@@ -514,9 +525,17 @@ var Feedback = {
 			type: 'POST',
 			url: '/ajax/feedback.php',
 			data: form_data,
-			success: function () {
-				Feedback.btn.hide();
-				Feedback.tnx.show();
+			dataType: 'json',
+			success: function (ans) {
+                if(ans.success)
+                {
+                    dataLayer = window.dataLayer || [];
+                    dataLayer.push(ans.gtmObject);
+                    Feedback.btn.hide();
+                    Feedback.tnx.show();
+                }
+                else
+                    $.fancybox('<div class="errors feedback-popup-content">' + ans.errors.join('<br>') + '</div>');
 			}
 		});
 		return false;
@@ -547,10 +566,18 @@ var Callback = {
 			type: 'POST',
 			url: '/ajax/callback.php',
 			data: form_data,
-			success: function () {
-				Callback.btn.hide();
-				Callback.tnx.show();
-			}
+            dataType: 'json',
+            success: function (ans) {
+                if(ans.success)
+                {
+                    dataLayer = window.dataLayer || [];
+                    dataLayer.push(ans.gtmObject);
+                    Callback.btn.hide();
+                    Callback.tnx.show();
+                }
+                else
+                    $.fancybox('<div class="errors feedback-popup-content">' + ans.errors.join('<br>') + '</div>');
+            }
 		});
 		return false;
 	}
@@ -558,6 +585,7 @@ var Callback = {
 
 
 jQuery(document).ready(function () {
+	SearchTop.init();
 	Callback.init();
 	Feedback.init();
 	Review.init();

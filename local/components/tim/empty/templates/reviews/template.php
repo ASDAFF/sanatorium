@@ -52,7 +52,7 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
 <div class="engBox-body clearfix">
 	<div class="engBox-center">
 		<div id="content">
-			<form class="feedback-form<?= $class ?>" id="review-form">
+			<form class="review-form<?= $class ?>" id="review-form">
 				<input type="hidden" name="service" value="<?= $isService ? 1 : 0 ?>">
 				<div class="feedback-form-ttl">Оставить отзыв<?= $title ?></div>
 				<div class="feedback-form-left">

@@ -1483,9 +1483,18 @@ footer {
 	padding-top:22px;
 }
 .prices .el-sanat-list{
+	width:100%;
 	font-size:0px;
-	display: flex;
-    flex-wrap: wrap;
+	display: -webkit-box; 
+  	display: -ms-flexbox; 
+ 	 display: -webkit-flex;
+  	 display: flex;      
+	-ms-flex-wrap: wrap;  
+    -webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
 	justify-content: space-between;
 }
 .prices .el-sanat-list .item {
@@ -1516,7 +1525,10 @@ footer {
 .prices-item:nth-child(1){margin-right:11px;}*/
 .banners{
 	width: 100%;
-	display: flex;
+	display: -webkit-box; 
+  	display: -ms-flexbox; 
+ 	 display: -webkit-flex;
+  	display: flex;         
     flex-wrap: wrap;
 	justify-content: space-between;
 	font-size:0px;
@@ -2950,3 +2962,15 @@ div[id^="slider-popap-"].flexslider .slides img{
 	background-size: cover;}
 
 #zcwMiniButton {right: 10px!important; bottom: 110px!important;}
+
+.elTable { border-color: #c0c0c0; border: 0; }
+.elTable tr { border-color: #c0c0c0;}
+.elTable tr td { border-color: #c0c0c0;  border: 1px solid #c0c0c0; padding: 7px;}
+
+
+/*review-form fix*/
+.review-form {
+	font-size: 0px;
+	box-sizing: border-box;
+	margin-bottom: 30px;
+}

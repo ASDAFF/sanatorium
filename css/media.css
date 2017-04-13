@@ -310,6 +310,15 @@ footer div { display: block !important; margin: 20px 10px; text-align: center; w
 	.posts > .item { width: 100%; }
 }
 @media screen and (max-width: 700px) {
+.main-menu.fixed{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index:10;
+	max-height:100vh;
+	overflow-y: scroll;
+}
+
 .prices-item, .banners-item {
     width: calc(50% - 10px);
     margin: 0px 5px 10px;
@@ -413,6 +422,8 @@ footer .left{
     float: left;
     color: #2c9ed7;
     text-align: left;
+	font-size: 13px;
+    font-weight: 500;
 }
 .prices-rate-tbl tbody tr{width: 100%;display:inline-block;margin:5px opx;border-radius: 6px;}
 .prices-rate-tbl tbody tr{border:1px solid #2c9ed7;margin:5px 0px;}

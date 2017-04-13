@@ -1,4 +1,4 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-\Local\Catalog\Reviews::add();
+echo \Local\Catalog\Reviews::add();

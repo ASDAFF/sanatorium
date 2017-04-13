@@ -167,6 +167,7 @@ $APPLICATION->SetTitle("Title");
 </tr>
 </tbody>
 </table>
+                <img src="/upload/svi.jpg">
 			</div>
 			
 			
