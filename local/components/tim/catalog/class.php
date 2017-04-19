@@ -111,6 +111,8 @@ class TimCatalog extends \CBitrixComponent
 			// Счетчик просмотренных
 			Sanatorium::viewedCounters($this->product['ID']);
 			$this->tabCode = $urlDirs[4];
+			if (substr($this->tabCode, 0, 1) == '?')
+				$this->tabCode = '';
 		}
 		else
 		{
