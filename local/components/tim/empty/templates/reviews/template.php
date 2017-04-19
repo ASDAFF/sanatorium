@@ -88,7 +88,6 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
 				<div class="feedback-form-right">
 					<div class="feedback-form__txt">
 						<textarea placeholder="Ваш комментарий" name="txt" required></textarea>
-						<i class="i-feedback-form-txt"></i>
 						<span class="required"></span>
 					</div>
 				</div>

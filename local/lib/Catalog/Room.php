@@ -157,6 +157,14 @@ class Room
 	public static function printRoom($room)
 	{
 		$file = new \CFile();
+        $arWaterMark = array(
+            array(
+                'name' => 'watermark',
+                'position' => 'center',
+                'size' => 'real',
+                'file' => $_SERVER['DOCUMENT_ROOT'] . '/images/watermarks/little.png',
+            ),
+        );
 		$img = $file->ResizeImageGet(
 			$room['PREVIEW_PICTURE'],
 			array(
@@ -164,7 +172,8 @@ class Room
 				'height' => 1000
 			),
 			BX_RESIZE_IMAGE_PROPORTIONAL,
-			true
+			true,
+            $arWaterMark
 		);
 		?>
 		<div class="el-nomer">
@@ -224,6 +233,15 @@ class Room
 									if ($room['PREVIEW_PICTURE'])
 										array_unshift($photos, $room['PREVIEW_PICTURE']);
 
+                                    $arWaterMark = array(
+                                        array(
+                                            'name' => 'watermark',
+                                            'position' => 'center',
+                                            'size' => 'real',
+                                            'file' => $_SERVER['DOCUMENT_ROOT'] . '/images/watermarks/middle.png',
+                                        ),
+                                    );
+
 									foreach ($photos as $id)
 									{
 										$img = $file->ResizeImageGet(
@@ -233,7 +251,8 @@ class Room
 												'height' => 400
 											),
 											BX_RESIZE_IMAGE_PROPORTIONAL,
-											true
+											true,
+                                            $arWaterMark
 										);
 										?>
 										<div class="item">
@@ -429,6 +448,8 @@ class Room
         if(empty($phone))
             $errors[] = 'Введите номер телефона';
 
+        $sanName = $roomName = '';
+
 		if (empty($errors))
 		{
 			$props = array(
@@ -484,6 +505,32 @@ class Room
 
         if(empty($errors))
         {
+            //u-an intergration
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/request/create.json',
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS =>
+                    'source=' . urlencode('Добавление вопроса') .
+                    '&r_dat_begin=' . urlencode($date_on) .
+                    '&r_dat_end=' . urlencode($date_off) .
+                    '&u_name=' . urlencode($name) .
+                    '&u_phone=' . urlencode($phone) .
+                    '&note=' . sprintf(
+                        "Санаторий: %s\nНомер: %s\nКол-во взрослых: %s\nКол-во детей: %s\nБесплатный трансфер: %s",
+                        $sanName,
+                        $roomName,
+                        $adults,
+                        $child,
+                        ($transfer ? 'да' : 'нет')
+                    )
+            ));
+            curl_exec($curl);
+            curl_close($curl);
+
             return $gtm->getJson(array(
                 'gtmObject' => $gtm->setEvent()->setElementId('formx')->setElements(array($name, $phone))->getResult(),
                 'id' => $id,

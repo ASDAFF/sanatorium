@@ -10,6 +10,46 @@ $items = \Local\Catalog\Sanatorium::get(
 $file = new \CFile();
 
 ?>
+<?if($_GET['test'] == 'test'):?>
+<div class="elIndexVideo">
+    <a class="engBox-body">
+        <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/truq6-RvM88?ecver=2" width="640px" height="340" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-images.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">Почему у нас цена на путевку может быть дешевле, чем у санатори</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+        <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/truq6-RvM88?ecver=2" width="640px" height="340" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-images.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">Почему у нас цена на путевку может быть дешевле, чем у санатори</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+        <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/truq6-RvM88?ecver=2" width="640px" height="340" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-images.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">Почему у нас цена на путевку может быть дешевле, чем у санатори</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<?endif;?>
+
 <div class="el-full-bg-ser">
     <div class="el-sanat-list engBox-body">
         <div class="title">

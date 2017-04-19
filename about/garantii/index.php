@@ -123,18 +123,6 @@ $APPLICATION->SetTitle("Title");
 		?>
     </div>
 </div>
-<div class="el-full-bg-grey b-20">
-    <div class="el-page engBox-body">
-        <ul>
-            <li><span>1</span></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            ...
-            <li><a href="">10</a></li>
-        </ul>
-        <a href="">Следующая страница<div class="eng-icon-right"></div></a>
-    </div>
-</div>
+
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

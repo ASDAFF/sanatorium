@@ -20,7 +20,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             </div>
             <div class="center">Сервис бронирования путевок в санатории</div>
             <div class="right">
-                <a href=""><img src="/images/webmaster.png"></a>
+                <!--<a href=""><img src="/images/webmaster.png"></a>-->
             </div>
         </div>
     </div>

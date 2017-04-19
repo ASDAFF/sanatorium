@@ -80,6 +80,25 @@ class Feedback
 
         if(empty($errors))
         {
+            //u-an intergration
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/request/create.json',
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS =>
+                    'source=' . urlencode('Добавление вопроса') .
+                    '&u_name=' . urlencode($name) .
+                    '&u_email=' . urlencode($email) .
+                    '&u_phone=' . urlencode($phone) .
+                    '&u_note=' . urlencode($text) .
+                    '&note=' . urlencode(($call ? 'Просьба перезвонить' . PHP_EOL : '') . ($mail ? 'Просьба ответить по E-mail' . PHP_EOL : ''))
+            ));
+            curl_exec($curl);
+            curl_close($curl);
+
             return $gtm->getJson(array(
                 'gtmObject' => $gtm->setEvent()->setElementClasses('.feedback-form')->setElements(array($name, $email, $phone, $text))->getResult(),
                 'id' => $id,
@@ -151,6 +170,22 @@ class Feedback
 
         if(empty($errors))
         {
+            //u-an intergration
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/request/create.json',
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS =>
+                    'source=' . urlencode('Заказ звонка') .
+                    '&u_name=' . urlencode($name) .
+                    '&u_phone=' . urlencode($phone)
+            ));
+            curl_exec($curl);
+            curl_close($curl);
+
             return $gtm->getJson(array(
                 'gtmObject' => $gtm->setEvent()->setElementId('callback-form')->setElements(array($name, $phone))->getResult(),
                 'id' => $id,

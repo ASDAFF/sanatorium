@@ -49,11 +49,12 @@ class Banners
                 'NAME',
                 'PREVIEW_PICTURE',
             ));
+            $file = new \CFile();
             while ($item = $rsItems->Fetch()) {
                 $return[] = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
-                    'PICTURE' => \CFile::GetPath($item['PREVIEW_PICTURE']),
+                    'PICTURE' => $file->GetPath($item['PREVIEW_PICTURE']),
                 );
             }
 

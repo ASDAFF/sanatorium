@@ -28,6 +28,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
 	$assets->addCss(SITE_DIR . 'js/owl/owl.carousel.css');
 
+	$assets->addCss(SITE_DIR . 'css/zcallback_widget.css');
 	$assets->addCss(SITE_DIR . 'css/style.css');
     $assets->addCss(SITE_DIR . 'css/media.css');
 	
@@ -50,7 +51,7 @@ $APPLICATION->ShowPanel();
 		<div class="header-logo"><?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?></div>
 		<div class="header-time-work"><?$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));?></div>
 		<div class="header-adress"><?$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?></div>
-		<div class="header-account"><a href="#">Личный кабинет</a></div>
+		<div class="header-account"><a href="https://26.u-on.ru/" target="_blank">Личный кабинет</a></div>
 		<div class="header-phone">
 			<?$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php",array(),array("MODE"=>"html"));?>
 		</div>

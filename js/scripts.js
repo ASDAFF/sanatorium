@@ -258,6 +258,31 @@ $(document).ready(function () {
 		]
 	});
 
+    $(".elAboutBox_fancy").fancybox({
+        padding: '0',
+        helpers: {
+            overlay: {
+                locked: true
+            }
+        }
+    });
+
+
+    var owl = $('#elAboutBox3-slider');
+    owl.owlCarousel({
+        loops:true,
+        autoplay: true,
+        center: true,
+        loop:true,
+
+        navigation: true,
+        pagination: false,
+        navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
+
+        items: 5,
+        animateOut: 'fadeOut',
+    });
+
 });
 
 

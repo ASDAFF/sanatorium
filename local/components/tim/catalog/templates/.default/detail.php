@@ -85,6 +85,14 @@ if ($tabCode != 'main')
         //
 	    $file = new \CFile();
 	    $pics = array();
+        $arWaterMark = array(
+            array(
+                'name' => 'watermark',
+                'position' => 'center',
+                'size' => 'real',
+                'file' => $_SERVER['DOCUMENT_ROOT'] . '/images/watermarks/big.png',
+            ),
+        );
 	    foreach ($product['PICTURES'] as $value)
 	    {
 		    $img = $file->ResizeImageGet(
@@ -94,7 +102,8 @@ if ($tabCode != 'main')
 				    'height' => 526
 			    ),
 			    BX_RESIZE_IMAGE_PROPORTIONAL,
-			    true
+			    true,
+                $arWaterMark
 		    );
 		    $pics[] = $img;
 	    }
