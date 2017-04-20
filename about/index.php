@@ -1,24 +1,38 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Title");
+$APPLICATION->SetTitle("О сервисе");
 ?>
 <div id="cron_full" class="head_block">
     <div id="cron" class="engBox-body">
 
-        <ul class="nav-sections set-mini">
-            <li class="active"><a href="/about/">О сервисе</a></li>
+<?$APPLICATION->IncludeComponent(
+				'bitrix:menu', 
+				'topAbout', 
+				array(
+					"ROOT_MENU_TYPE" => "top",
+					'ALLOW_MULTI_SELECT' => 'N',
+					'CHILD_MENU_TYPE' => 'bottom',
+					'DELAY' => 'N',
+					'MAX_LEVEL' => '1',
+					'MENU_CACHE_GET_VARS' => array(
+					),
+					'MENU_CACHE_TIME' => '3600',
+					'MENU_CACHE_TYPE' => 'Y',
+					'ROOT_MENU_TYPE' => 'bottom',
+					'USE_EXT' => 'Y',
+					'COMPONENT_TEMPLATE' => 'topAbout'
+				),
+				false
+			);?>
 
-            <li><a href="/about/vigody/">Выгоды покупки</a></li>
-            <li><a href="/about/oplata/">Реквизиты компании</a></li>
-            <li><a href="/about/garantii/">Финансовые гарантии</a></li>
-            <li><a href="/about/documenty/">Документы</a></li>
-            <li><a href="/about/reviews/">Отзывы о сервисе</a></li>
-        </ul>
-        <div id="cron-crox">
-            <span>Главная</span> -
-            <span>Пятигорск</span> -
-            <a href="">О сервисе</a>
-        </div>
+		<?
+$APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
+        "START_FROM" => "0", 
+        "PATH" => "", 
+        "SITE_ID" => "s1" 
+    )
+);
+?>
         <div id="cron-title"><h1>О сервисе</h1></div>
     </div>
 </div>
@@ -92,19 +106,6 @@ $APPLICATION->SetTitle("Title");
                 <p>Компания является победителем в конкурсе "Туристическое Ставрополье 2012" в номинации "Лучший туроператор по внутреннему туризму в Ставропольском крае".</p>
                 <p>В 2010 году ООО ТК "Ладья" стала лауреатом некоммерческой государственной премии "Компания года - 2010" в Северо-Кавказском Федеральном округе.</p>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

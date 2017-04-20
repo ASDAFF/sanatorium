@@ -1,3 +1,3 @@
 <?
-$sSectionName="garantii";
+$sSectionName="Финансовые гарантии";
 ?>

@@ -1,3 +1,3 @@
-<?
-$sSectionName="documenty";
+﻿<?
+$sSectionName="Документы";
 ?>

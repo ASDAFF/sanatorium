@@ -9,11 +9,14 @@ $APPLICATION->SetTitle("Title");
 			
 		</div>
        
-        <div id="cron-crox">
-            <span>Главная</span> -
-            <span>Пятигорск</span> -
-            <a href="">О сервисе</a>
-        </div>
+        <?
+$APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
+        "START_FROM" => "0", 
+        "PATH" => "", 
+        "SITE_ID" => "s1" 
+    )
+);
+?>
         <div id="cron-title"><h1>Документы</h1></div>
     </div>
 </div>
@@ -26,17 +29,23 @@ $APPLICATION->SetTitle("Title");
 		<div class="page-inner">
 		
 			<nav class="page-inner-menu">
-				<ul>
-					<li class="parent"><a href="/about/">О сервисе</a>
-						<ul class="p-submenu">
-							<li><a href="/about/vigody/">Выгоды покупки</a></li>
-							<li><a href="/about/oplata/">Способы оплаты</a></li>
-							<li class="active"><a href="/about/garantii/">Финансовые гарантии</a></li>
-							<li><a href="/about/reviews/">Отзывы о сервисе</a></li>
-							<li><a href="/about/documenty/">Документы</a></li>
-						</ul>
-					</li>
-				</ul>
+				<?$APPLICATION->IncludeComponent(
+				'bitrix:menu', 
+				'leftAbout', 
+				array(
+					'ALLOW_MULTI_SELECT' => 'N',
+					'CHILD_MENU_TYPE' => 'left',
+					'DELAY' => 'N',
+					'MAX_LEVEL' => '1',
+					'MENU_CACHE_GET_VARS' => array(
+					),
+					'MENU_CACHE_TIME' => '3600',
+					'MENU_CACHE_TYPE' => 'Y',
+					'ROOT_MENU_TYPE' => 'bottom',
+					'USE_EXT' => 'Y',
+				),
+				false
+			);?>
 			</nav>
 			
 			<div class="page-inner-content">

@@ -1,3 +1,3 @@
 <?
-$sSectionName="oplata";
+$sSectionName="Как оплатить";
 ?>

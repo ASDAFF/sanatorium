@@ -285,6 +285,18 @@ $(document).ready(function () {
 
 });
 
+// Фиксируем меню
+var headHeight = 150; // высота шапки
+
+$(window).on('scroll resize load', function() {
+    if ($(this).scrollTop() > headHeight){
+        $('.head_full').addClass('set-fixed');
+        $('.head_pun_full').addClass('set-fixed');
+    }else{
+        $('.head_full').removeClass('set-fixed', 600);
+        $('.head_pun_full').removeClass('set-fixed', 600);
+    }
+});
 
 // Slider (главная, карточка)
 var SincSlider = {

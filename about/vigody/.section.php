@@ -1,3 +1,3 @@
 <?
-$sSectionName="vigody";
+$sSectionName="Выгоды покупки";
 ?>

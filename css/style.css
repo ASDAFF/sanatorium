@@ -48,6 +48,9 @@ nav a#pull { display: none; }
 	color: #2a93b9 !important;
 	text-decoration: underline;}
 
+.head_full.set-fixed {position: fixed;z-index: 5; top: 0;}
+.head_pun_full.set-fixed {position: fixed; z-index: 1; top: 40px; width: 100%;}
+
 #cron_full { background: url("../images/cron-bg.png") center; height: 113px; }
 #cron { padding: 25px 0px 10px 0px; }
 #cron-crox  span,#cron-crox a { font-weight: 300; font-size: 13px; }
