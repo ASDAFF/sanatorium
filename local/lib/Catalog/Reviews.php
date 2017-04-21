@@ -90,7 +90,7 @@ class Reviews
 			$iblockElement = new \CIBlockElement();
 			$rsItems = $iblockElement->GetList(array(
 				'SORT' => 'ASC',
-				'ID' => 'DESC'
+				'PROPERTY_DATE' => 'DESC'
 			), $filter, false, $nav, array(
 				'ID',
 				'NAME',
@@ -199,7 +199,10 @@ class Reviews
 			$extCache->startDataCache();
 
 			$iblockElement = new \CIBlockElement();
-			$rsItems = $iblockElement->GetList(array(), array(
+			$rsItems = $iblockElement->GetList(array(
+				'SORT' => 'ASC',
+				'PROPERTY_DATE' => 'DESC'
+			), array(
 				'IBLOCK_ID' => self::IBLOCK_ID,
 				'ACTIVE' => 'Y',
 				'PROPERTY_SERVICE' => 0,
