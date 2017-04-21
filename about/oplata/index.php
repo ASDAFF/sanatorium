@@ -49,6 +49,15 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
 			</nav>
 			
 			<div class="page-inner-content">
+<h2>Как оплатить?</h2>
+<p>Оплата путевки может быть осуществлена после заключения договора любым удобным для Вас способом:</p>
+                <ul>
+                    <li>перечислением денежных средств на карту СберБанк</li>
+                    <li>перечислением денежных средств на расчетный счет, указанный в договоре</li>
+                </ul>
+                <p><b>Внимание! Вы можете оплатить 50% стоимости путевки, а оставшуюся сумму внести в день заезда в санаторий*!</b></p>
+                <p>* - данная услуга предоставляется не на все санатории, подробности уточняйте у наших менеджеров.</p>
+<br>
 			<h2>Реквизиты компании</h2>
 			
 			<p>
@@ -74,7 +83,7 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
 </tr>
 <tr>
 <td style="width: 50%;">Телефон по фактическому адресу</td>
-<td style="width: 50%;">(8793) 39-17-17</td>
+<td style="width: 50%;">(8793) 39-17-17, 8 800 775 2604</td>
 </tr>
 <tr>
 <td style="width: 50%;">Факс</td>
@@ -82,7 +91,7 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
 </tr>
 <tr>
 <td style="width: 50%;">e-mail компании</td>
-<td style="width: 50%;"><a href="mailto:info@putevochka.com">info@putevochka.com</a></td>
+<td style="width: 50%;"><a href="mailto:info@putevochka.com">sale@putevochka.com</a></td>
 </tr>
 <tr>
 <td style="width: 50%;">ОГРН</td>

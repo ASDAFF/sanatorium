@@ -587,7 +587,7 @@ nav a#pull{padding:10px;}
 }
 .feedback-form-checkbox label{margin-right:0px;}
 .prices-feedback .feedback-form-btn{margin-top:10px;}
-.head_block{margin-bottom:-34px;z-index:-1;}
+.head_block{margin-bottom:-34px;z-index:0;}
 
 .feedback-form-left,
 .feedback-form-star,

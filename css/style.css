@@ -2965,14 +2965,14 @@ div[id^="slider-popap-"].flexslider .slides img{
 	.js-feedback-tnx {text-align: center; display: block; float: none;}
 }
 
-#engBtnTop {width: 45px; height: 45px; bottom:60px; right:22px;
+#engBtnTop {width: 45px; height: 45px; bottom:20px; left:22px;
 	position:fixed; cursor:pointer; display:none;
 	font-size:15px; color:#fff; text-align:center;
 	background:#ff8a00;
 	background: url("../images/engUp.png");
 	background-size: cover;}
 
-#zcwMiniButton {right: 10px!important; bottom: 110px!important;}
+#zcwMiniButton {right: 10px!important; bottom: 20px!important;}
 
 .elTable { border-color: #c0c0c0; border: 0; }
 .elTable tr { border-color: #c0c0c0;}
@@ -3233,3 +3233,32 @@ div[id^="slider-popap-"].flexslider .slides img{
 	.elAboutBox6 .it-left {width: 100%;}
 	.elAboutBox6 .it-right {width: 100%; padding: 0;}
 }
+
+
+.detail-text p{
+	margin-bottom: 15px;
+	text-indent: 25px;
+	font-size: 15px;
+}
+.detail-text ul{padding-left:20px;}
+.detail-text li{
+	display:block;
+	margin-bottom: 5px;
+	font-size:15px;
+}
+.detail-text li:before{
+	display:inline-block;
+	content: '\2022';
+	color: #ff9c00;
+	margin-right: 13px;
+	font-size: 26px;
+	line-height: 16px;
+	vertical-align: middle;
+}
+
+.detail-text h2 { margin-bottom: 10px;
+	font-size: 15px; font-weight: 500;
+	padding: 10px;
+	border-left: 2px solid #ff8a00;
+	background: linear-gradient(to right, #ffe8cc, #ffffff); }
+
