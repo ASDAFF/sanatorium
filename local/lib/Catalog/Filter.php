@@ -562,9 +562,9 @@ class Filter
 				continue;
 
 			if ($group['TYPE'] == 'city')
-				$cityCnt++;
+				$cityCnt += $itemsCnt;
 			else
-				$othersCnt++;
+				$othersCnt += $itemsCnt;
 
 			if ($group['TYPE'] == 'city')
 			{
