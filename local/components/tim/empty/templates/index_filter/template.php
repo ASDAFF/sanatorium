@@ -12,7 +12,7 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 ?>
 <div class="el-full-bg" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 	<div class="el-search engBox-body">
-		<div class="title title-bg">Путевочка - сервис подбора и бронирования<br> санаториев КМВ</div>
+		<h1 class="title title-bg">Путевочка - сервис подбора и бронирования<br> санаториев КМВ</h1>
 		<div class="title-sm ">Выберите путевку по официальной цене санатория</div>
 
 		<div class="line">

@@ -283,6 +283,9 @@ $(document).ready(function () {
         animateOut: 'fadeOut',
     });
 
+    //Закарываем ссылки он индекса
+    $('.header-account a').click(function(){window.open($(this).data("link"));return false;});
+
 });
 
 // Фиксируем меню

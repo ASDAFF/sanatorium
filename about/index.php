@@ -46,21 +46,21 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
             </div>
             <div class="it-left">
                 <div class="it-logo"><img src="/images/elAboutBox1-logo2.png"></div>
-                <div class="it-text">В Пятигорск была создана в 2005 году<br>
-                    И стала одной из ведущих фирм по организации прииема
+                <div class="it-text">В Пятигорске была создана в 2005 году<br>
+                    И стала одной из ведущих фирм по организации приема
                 </div>
                 <div class="it-utp">
                     <div class="it-utp-item">
                         <div class="it-utp-img">
                             <img src="/images/elAboutBox1-utp-1.png">
                         </div>
-                        <div class="it-utp-title">Транспортного</div>
+                        <div class="it-utp-title">транспортного</div>
                     </div>
                     <div class="it-utp-item">
                         <div class="it-utp-img">
                             <img src="/images/elAboutBox1-utp-2.png">
                         </div>
-                        <div class="it-utp-title">Экскурсионного</div>
+                        <div class="it-utp-title">экскурсионного</div>
                     </div>
                 </div>
                 <div class="it-text">обслуживания в регионе Кавказских Минеральных Вод</div>
