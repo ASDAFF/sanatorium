@@ -14,6 +14,22 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 ?>
 <div class="el-full-bg2">
     <div id="products-summary" class="el-search-result engBox-body">
+	    <div id="cron-crox">
+		    <a href="/">Главная</a><?
+		    $last = count($component->filter['BC']) - 1;
+		    foreach ($component->filter['BC'] as $i => $bc)
+		    {
+			    if ($i == $last)
+			    {
+				    ?> - <span><?= $bc['NAME'] ?></span><?
+			    }
+			    else
+			    {
+				    ?> - <a href="<?= $bc['HREF'] ?>"><?= $bc['NAME'] ?></a><?
+			    }
+		    }
+		    ?>
+	    </div>
         <div class="title"><?= $component->seo['H1'] ?></div>
         <div class="city"><?//= $component->countTitle ?></div>
         <div class="sort">
