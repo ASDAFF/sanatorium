@@ -1,4 +1,7 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("description", "Сервис онлайн бронирования санаториев на КМВ — «Путевочка». Заказать оздоровительные путевки в санатории Пятигорска, Ессентуков, Кисловодска, Железноводска можно по телефону 8 800 775 2604.");
+$APPLICATION->SetPageProperty("keywords", "бронироание санаториев, заказ оздоровительных путевок");
+$APPLICATION->SetPageProperty("title", "Путевочка — сервис бронирования санаториев, заказ путевок в санатории КМВ");
 
 /** @global CMain $APPLICATION */
 

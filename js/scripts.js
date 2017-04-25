@@ -250,7 +250,7 @@ $(document).ready(function () {
 		loop: true,
 		navigation: true,
 		pagination: false,
-		navigationText: ["<img src='/images/elSlider-left.png'>", "<img src='/images/elSlider-right.png'>"],
+		navigationText: ["", ""],
 		items: 2,
 		itemsCustom: [
 			[0, 1],
@@ -277,7 +277,7 @@ $(document).ready(function () {
 
         navigation: true,
         pagination: false,
-        navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
+        navigationText: ["", ""],
 
         items: 5,
         animateOut: 'fadeOut',
@@ -314,7 +314,7 @@ var SincSlider = {
 			pagination: false,
 			afterAction: this.syncPosition,
 			responsiveRefreshRate: 200,
-			navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
+			navigationText: ["", ""],
 			transitionStyle: "fade"
 		});
 

@@ -83,7 +83,7 @@ $APPLICATION->ShowPanel();
 					<input type="search" placeholder="Введите название санатория......" name="q"
 					       class="searchbox-input" onkeyup="buttonUp();" required>
 					<input type="submit" class="searchbox-submit" value="Найти">
-					<span class="searchbox-icon"><img src="/images/icon_serch_btn.jpg"></span>
+					<span class="searchbox-icon"></span>
 				</form>
 				<div class="searchbox-close"></div>
 			</div>

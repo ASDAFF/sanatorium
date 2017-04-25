@@ -54,7 +54,10 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
                         <div class="it-utp-img">
                             <img src="/images/elAboutBox1-utp-1.png">
                         </div>
-                        <div class="it-utp-title">транспортного</div>
+                        <div class="it-utp-title">транспортного </div>
+                    </div>
+                    <div class="it-utp-item">
+                        <div class="it-utp-title">и</div>
                     </div>
                     <div class="it-utp-item">
                         <div class="it-utp-img">
