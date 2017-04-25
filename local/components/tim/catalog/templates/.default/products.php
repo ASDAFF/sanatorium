@@ -30,7 +30,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		    }
 		    ?>
 	    </div>
-        <div class="title"><?= $component->seo['H1'] ?></div>
+	    <h1 class="title"><?= $component->seo['H1'] ?></h1>
         <div class="city"><?//= $component->countTitle ?></div>
         <div class="sort">
 	        <b>Сортировать по:</b><?

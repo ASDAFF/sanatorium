@@ -259,7 +259,7 @@ var Detail = {
 		$(".popap-slider").owlCarousel({
 			navigation: true,
 			singleItem: true,
-			navigationText: ["<img src='/images/owl-left.png'>", "<img src='/images/owl-right.png'>"],
+			navigationText: ["", ""],
 			transitionStyle: "fade"
 		});
 	},
