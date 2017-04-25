@@ -12,17 +12,83 @@ $tabCode = $component->tabCode;
 if (!$tabCode)
 	$tabCode = 'main';
 
+$phone = '8 800 775 2604';
+$siteName = 'Путевочка';
 $tabs = array(
-	'main' => 'О санатории',
-	'rooms' => 'Номера и цены',
-	'profiles' => 'Профили лечения',
-	'programms' => 'Программы лечения',
-	'infra' => 'Инфраструктура',
-	'feed' => 'Питание',
-	'child' => 'Детям',
-	'video' => 'Видео',
-	'action' => 'Акции',
-	'docs' => 'Документы для заезда',
+	'main' => array(
+		'NAME' => 'О санатории',
+	    'TITLE' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] . ' — официальный сайт Путевочка',
+	    'DESCR' => 'Бронирование санатория «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+		    ' на официальном сайте сервиса «' . $siteName . '». Заказ оздоровительных путевок в санаторий «' .
+		    $product['TITLE'] . '» по телефону ' . $phone . '.',
+	    'KW' => 'Санаторий ' . $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'],
+	),
+	'rooms' => array(
+		'NAME' => 'Номера и цены',
+	    'TITLE' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] . ': номера и цены на 2017 год',
+	    'DESCR' => 'Цены на 2017 год в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+		    '. Бронируйте номера в санаторий «' . $product['TITLE'] . '» на сайте или по телефону ' . $phone . '.',
+	    'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' цены на 2017 год',
+	),
+	'profiles' => array(
+		'NAME' => 'Профили лечения',
+	    'TITLE' => 'Профили лечения в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+	    'DESCR' => 'Получить консультацию специалиста по профилям лечения в санатории «' . $product['TITLE'] . '» г.' .
+		    $product['CITY']['UF_PREDL'] . ' Вы можете на сайте или по телефону ' . $phone . '.',
+	    'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' профили лечения',
+	),
+	'programms' => array(
+		'NAME' => 'Программы лечения',
+		'TITLE' => 'Программы лечения в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Получить консультацию специалиста по программам лечения в санатории «' . $product['TITLE'] . '» г.' .
+			$product['CITY']['UF_PREDL'] . ' Вы можете на сайте или по телефону ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' программы лечения',
+	),
+	'infra' => array(
+		'NAME' => 'Инфраструктура',
+		'TITLE' => 'Инфраструктура санатория «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : инфраструктура. Получить информацию по инфраструктуре санатория «' . $product['TITLE'] .
+			'» Вы можете на сайте или по телефону ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' инфраструктура',
+	),
+	'feed' => array(
+		'NAME' => 'Питание',
+		'TITLE' => 'Питание в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : питание. Получить информацию по питанию в санатории «' . $product['TITLE'] .
+			'» Вы можете на сайте или по телефону ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' питание',
+	),
+	'child' => array(
+		'NAME' => 'Детям',
+		'TITLE' => 'Размещение детей в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Получить информацию по лечению или размещению детей в санатории «' . $product['TITLE'] .
+			'» Вы можете на сайте или по телефону ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' размещение детей',
+	),
+	'video' => array(
+		'NAME' => 'Видео',
+		'TITLE' => 'Видео о санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : видео. Информация о санатории «' . $product['TITLE'] . '» на официальном сайте сервиса «' . $siteName . '».',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' видео',
+	),
+	'action' => array(
+		'NAME' => 'Акции',
+		'TITLE' => 'Акции в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : акции. Получить информацию об акциях в санатории «' . $product['TITLE'] .
+			'» Вы можете на сайте или по телефону ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' акции',
+	),
+	'docs' => array(
+		'NAME' => 'Документы для заезда',
+		'TITLE' => 'Документы для заезда в санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Какие документы требуются для заезда в санаторий «' . $product['TITLE'] . '» в ' .
+			$product['CITY']['UF_PREDL'] . '. Узнать как получить документы Вы можете на сайте или по телефону  ' . $phone . '.',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' документы для заезда',
+	),
 );
 
 $tabName = $product['NAME'];
@@ -30,10 +96,12 @@ $tabH1 = '';
 $style = ' style="display:none;"';
 if ($tabCode != 'main')
 {
-	$tabName = $tabs[$tabCode];
+	$tabName = $tabs[$tabCode]['NAME'];
 	$tabH1 = ': ' . $tabName;
 	$style = '';
 }
+
+$currentTab = $tabs[$tabCode];
 
 ?>
 <div id="cron_full">
@@ -67,7 +135,7 @@ if ($tabCode != 'main')
             <a class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><?= $product['NAME'] ?></a>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
-        <div id="cron-title"><h1>Санаторий <?= $product['NAME'] ?><span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
+        <div id="cron-title"><h1>Санаторий «<?= $product['NAME'] ?>»<span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
     </div>
 </div>
 <div class="engBox-body page-card">
@@ -132,8 +200,9 @@ if ($tabCode != 'main')
         <div id="tabs" class="content-menu content-menu-buttons-box">
             <ul id="content-menu-show" class="content-menu-buttons" data-id="<?= $product['ID'] ?>"><?
 
-				foreach ($tabs as $code => $name)
+				foreach ($tabs as $code => $tab)
 				{
+					$name = $tab['NAME'];
 					$class = '';
 					if ($code == $tabCode)
 						$class = ' class="active"';
@@ -141,7 +210,7 @@ if ($tabCode != 'main')
 					if ($code != 'main')
 						$href .= $code . '/';
 					?>
-					<li<?= $class?>><a id="tab-<?= $code ?>" data-id="#<?= $code ?>" href="<?= $href ?>"><?= $name ?></a></li><?
+					<li<?= $class?> data-title="<?= $tab['TITLE'] ?>"><a id="tab-<?= $code ?>" data-id="#<?= $code ?>" href="<?= $href ?>"><?= $name ?></a></li><?
 				}
 				?>
 			</ul>
@@ -153,7 +222,7 @@ if ($tabCode != 'main')
 			?>
 			<div id="tabs-content"><?
 
-				foreach ($tabs as $code => $name)
+				foreach ($tabs as $code => $tab)
 				{
 					$class = $code == $tabCode ? ' active' : ' empty';
 					?>
@@ -241,13 +310,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
 	'ID' => $product['ID'],
 ));
 
-/*
-$APPLICATION->AddChainItem('Санатории', '/sanatorium/');
-$APPLICATION->AddChainItem($product['CITY']['NAME'], '/sanatorium/' . $product['CITY']['CODE'] . '/');
-$APPLICATION->AddChainItem($product['NAME']);*/
-
 $APPLICATION->SetTitle($product['NAME']);
-if ($product['TITLE'])
-	$APPLICATION->SetPageProperty('title', 'Санаторий ' . $product['TITLE'] . $tabH1);
-if ($product['DESCRIPTION'])
-	$APPLICATION->SetPageProperty('description', $product['DESCRIPTION']);
+$APPLICATION->SetPageProperty('title', $currentTab['TITLE']);
+$APPLICATION->SetPageProperty('description', $currentTab['DESCR']);
+$APPLICATION->SetPageProperty('keywords', $currentTab['KW']);

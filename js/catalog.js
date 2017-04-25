@@ -299,7 +299,7 @@ var Detail = {
 		Detail.h1TabSpan.text(tabSpan);
 		Detail.bcLast.text(tabName);
 
-		document.title = 'Санаторий ' + Detail.productName + tabSpan;
+		document.title = li.data('title');
 
 		if (tab.is('.empty')) {
 			$.get('/ajax/detail_tab.php?tab=' + tab.attr('id') + '&id=' + Detail.productId, function (html) {

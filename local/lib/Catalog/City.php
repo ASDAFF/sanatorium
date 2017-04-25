@@ -44,10 +44,14 @@ class City
 				'IBLOCK_ID' => Sanatorium::IBLOCK_ID,
 			), false, array(
 				'ID', 'NAME', 'CODE', 'SORT',
+				'PICTURE', 'DESCRIPTION',
 				'UF_RODIT',
 				'UF_PREDL',
 			));
-			while ($item = $rsItems->Fetch()) {
+			while ($item = $rsItems->Fetch())
+			{
+				if ($item['PICTURE'])
+					$item['PICTURE'] = \CFile::GetPath($item['PICTURE']);
 				$return['ITEMS'][$item['ID']] = $item;
 				if ($item['CODE']) {
 					$return['BY_CODE'][$item['CODE']] = $item['ID'];
