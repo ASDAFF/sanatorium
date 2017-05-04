@@ -27,7 +27,6 @@ $products = $component->products['ITEMS'];
 	        $cookie_name = $component->searchQuery ? 'filter_groups_search' : 'filter_groups';
 
 	        $closed = array(0, 1, 1, 1, 1, 0);
-	        debugmessage($_COOKIE[$cookie_name]);
 	        if (isset($_COOKIE[$cookie_name]))
 		        $closed = explode(',', $_COOKIE[$cookie_name]);
 
