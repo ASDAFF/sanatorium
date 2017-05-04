@@ -524,9 +524,10 @@ class Filter
 		}
 
 		$name = 'Санатории';
-		$city = ' Кавказских Минеральных Вод';
+		$city = ' КМВ';
 		$suffix = '';
 		$prefix = '';
+		$end = ' | Заказ путевок и бронирование санаториев КМВ — официальный сайт Путевочка';
 
 		$href = self::$CATALOG_PATH;
 		$parts = array();
@@ -579,7 +580,8 @@ class Filter
 				if ($itemsCnt == 1)
 					$suffix .= ' ' . $lastItem['PREDL'];
 				else
-					$suffix .= ' с лечением';
+					$suffix .= 'Лечение';
+				$end = ' : цены в санатории на 2017 год';
 			}
 			else
 			{
@@ -589,6 +591,7 @@ class Filter
 						$name = $lastItem['BASE'];
 					if ($lastItem['PREDL'])
 						$suffix .= ' ' . $lastItem['PREDL'];
+					$end = ' : цены на 2017 год, бронирование, фото, отзывы';
 				}
 			}
 		}
@@ -597,7 +600,7 @@ class Filter
 			$name = strtolower($name);
 
 		$h1 = $prefix . $name . $city. $suffix;
-		$title = $h1;
+		$title = $h1 . $end;
 		$description = $h1;
 		$text = $h1;
 

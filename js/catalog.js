@@ -90,7 +90,8 @@ var Filters = {
 		});
 		var d = new Date();
 		d.setTime(d.getTime() + 8640000000);
-		document.cookie = "filter_groups=" + val + "; path=/; expires=" + d.toUTCString();
+		var name = (Filters.q) ? "filter_groups=" : "filter_groups_search=";
+		document.cookie = name + val + "; path=/; expires=" + d.toUTCString();
 	},
 	checkboxClick: function() {
 		var input = $(this);
