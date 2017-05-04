@@ -24,9 +24,10 @@ $products = $component->products['ITEMS'];
             <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
             <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
 
-	        $cookie_name = $component->searchQuery ? 'filter_groups' : 'filter_groups_search';
+	        $cookie_name = $component->searchQuery ? 'filter_groups_search' : 'filter_groups';
 
 	        $closed = array(0, 1, 1, 1, 1, 0);
+	        debugmessage($_COOKIE[$cookie_name]);
 	        if (isset($_COOKIE[$cookie_name]))
 		        $closed = explode(',', $_COOKIE[$cookie_name]);
 
