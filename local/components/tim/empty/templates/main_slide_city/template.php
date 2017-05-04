@@ -2,7 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	die();
 
-/*$city = \Local\Catalog\City::getAll(true);
+$city = \Local\Catalog\City::getAll(true);
 
 ?>
 <div class="el-lech engBox-body">
@@ -41,6 +41,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		}
 		?>
 	</div>
-</div><?*/
+</div><?
 
 
