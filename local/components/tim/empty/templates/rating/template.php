@@ -23,6 +23,8 @@ $page = $_REQUEST['page'];
 						$active = ' class="active"';
 						$cityId = $city['ID'];
 						$APPLICATION->AddChainItem($city['NAME'], '/action/' . $city['CODE'] . '/');
+						$APPLICATION->SetTitle('Рейтинги в ' . $city['UF_PREDL']);
+						$APPLICATION->SetPageProperty('title', 'Рейтинг санаториев в ' . $city['UF_PREDL']);
 					}
 					?>
 					<li<?= $active ?>><a href="/rating/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a></li><?

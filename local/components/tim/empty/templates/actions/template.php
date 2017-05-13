@@ -23,6 +23,8 @@ $page = $_REQUEST['page'];
 						$active = ' class="active"';
 						$cityId = $city['ID'];
 						$APPLICATION->AddChainItem($city['NAME'], '/action/' . $city['CODE'] . '/');
+						$APPLICATION->SetTitle('Акции в ' . $city['UF_PREDL']);
+						$APPLICATION->SetPageProperty('title', 'Акции в ' . $city['UF_PREDL']);
 					}
 					?>
 					<li<?= $active ?>><a href="/action/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a></li><?
