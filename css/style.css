@@ -597,6 +597,8 @@ footer {
 	clear:both;
 	background:#333
 }
+footer a {color: #fff; text-decoration: underline;}
+footer a:hover {color: #2c9ed7; text-decoration: underline;}
 
 footer > div > div {
 	display:table;
@@ -655,13 +657,12 @@ footer .right img {
 }
 
 #right-form input {
-	margin:10px 0;
+	margin:0 0 10px 0;
 	width:100%;
 	padding:4px 2px 2px 35px;
 	border:1px solid #dcdcdc;
 	border-radius:3px
 }
-
 #right-form input:focus {
 	outline:none;
 	border:1px solid #2c9ed7
@@ -1577,7 +1578,10 @@ footer .right img {
 	color:#505050;
 	padding:20px
 }
-
+.el-lech .item >.inf p {
+	text-align: justify;
+	font-size: 12px;
+}
 .el-lech .item >.inf b {
 	font-size:30px;
 	font-weight:400;
@@ -1603,6 +1607,9 @@ footer .right img {
 	top:-16px;
 	left:0
 }
+
+.el-lech .owl-prev:before {left: -50px!important;}
+.el-lech .owl-next:before {right: -50px!important;}
 
 .el-lech-page {
 	text-align:center;
@@ -1653,6 +1660,19 @@ footer .right img {
 	text-transform:uppercase
 }
 
+
+@media only screen and (max-width: 1140px) {
+	.el-lech-page {display: none!important;}
+	.el-lech .owl-prev {left: 60px!important; z-index: 10;}
+	.el-lech .owl-next {right: 60px!important; z-index: 10;}
+	.owl-buttons div { top: 25%!important; }
+}
+@media only screen and (max-width: 600px) {
+	.owl-buttons div { top: 15%!important; }
+}
+@media only screen and (max-width: 500px) {
+	.owl-buttons div { top: 12%!important; }
+}
 .el-nomer {
 	padding:20px 0;
 	text-align:left
@@ -2023,7 +2043,6 @@ footer .right img {
 }
 
 #right-form input.icon-phone2 {
-	margin-bottom:18px
 }
 
 .ui-controlgroup > .ui-controlgroup-item.checkbox-tr-btn {
@@ -2916,7 +2935,7 @@ footer {
 	color:#fff
 }
 
-.prices-rate-tbl thead td:first-child {
+.prices-rate-tbl thead tr:first-child td {
 	background-color:#2c9ed7;
 	color:#fff
 }
@@ -2925,7 +2944,7 @@ footer {
 	color:#fff;
 	font-size:16px;
 	padding:0;
-	background:#2c9ed7 url(../images/down-white.png) no-repeat right center;
+	/*background:#2c9ed7 url(../images/down-white.png) no-repeat right center;*/
 	background-position-x:calc(100% - 10px)
 }
 
@@ -4269,72 +4288,72 @@ div[id^="slider-popap-"].flexslider .slides img {
 	background-image:url(/images/profili__icons.png);
 	background-repeat:no-repeat
 }
-
-.icon-immuno {
+/**/
+.icon-allergologiya-immunologiya {
 	background-position:0 0
 }
-
-.icon-gynecological {
+/**/
+.icon-ginekologiya {
 	background-position:-60px 0
 }
 
-.icon-pelt {
+.icon-dermatologiya {
 	background-position:-120px 0
 }
-
-.icon-locomotor {
+/* --------- */
+.icon-kostno-myshechnaya-sistema {
 	background-position:-180px 0
 }
-
-.icon-urogenital {
+/**/
+.icon-mochepolovaya-sistema {
 	background-position:-240px 0
 }
-
-.icon-nervous {
+/**/
+.icon-nevrologiya {
 	background-position:-300px 0
 }
 
-.icon-skelet {
+.icon-oporno-dvigatelnyj-apparat {
 	background-position:-2px -60px
 }
 
-.icon-respiratory {
+.icon-pulmonologiya {
 	background-position:-60px -60px
 }
 
-.icon-peripheral {
+.icon-oftalmologiya {
 	background-position:-118px -60px
 }
 
-.icon-cardio {
+.icon-kardiologiya {
 	background-position:-180px -60px
 }
 
-.icon-vessels {
+.icon-flebologiya {
 	background-position:-240px -60px
 }
 
-.icon-endocrine {
+.icon-endokrinologiya {
 	background-position:-300px -60px
 }
-
-.icon-gastr {
+/**/
+.icon-gastroenterologiya {
 	background-position:0 -120px
 }
 
-.icon-infertility {
+.icon-besplodie {
 	background-position:-58px -120px
 }
 
-.icon-otolaryngology {
+.icon-lor {
 	background-position:-120px -120px
 }
 
-.icon-fatigue {
+.icon-hronicheskaya-ustalost {
 	background-position:-180px -120px
 }
-
-.icon-urology {
+/**/
+.icon-urologiya {
 	background-position:-240px -120px
 }
 
@@ -4450,7 +4469,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 .rating {
 	font-size:0!important
 }
-
+#cron-right .rating-title {position: absolute; right: 32px; top: -18px; font-size: 13px;}
 #cron-right .rating {
 	line-height:normal
 }
@@ -4889,7 +4908,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 	background-image:url(../images/elIndexVideo-bg.jpg);
 	background-repeat:no-repeat;
 	background-size:1920px auto;
-	background-position:top center;
+	background-position:center center;
 	text-align:center
 }
 
@@ -4901,7 +4920,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 	overflow:hidden;
 	display:inline-block
 }
-
+.it-video-popap iframe {width: 640px; height: 340px;}
 .elIndexVideo .it-video-body {
 	position:absolute;
 	top:0;
@@ -4909,7 +4928,8 @@ div[id^="slider-popap-"].flexslider .slides img {
 	width:100%;
 	height:100%;
 	overflow:hidden;
-	background-size:cover
+	background-size:cover;
+	background-position: center;
 }
 
 .elIndexVideo .it-video-body-stab {
@@ -4964,6 +4984,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 		margin-bottom:10px;
 		margin-top:10px
 	}
+	.it-video-popap iframe {width: 100%;}
 }
 
 .elAboutBox1 {
@@ -5929,3 +5950,52 @@ body .menu_parent:after {
 
 .page-card .owl-theme .owl-controls .owl-buttons div{
 	width: 150px; height: 100%; position:absolute; top: 0; margin-top: 0!important;}
+
+.engInputLog {color: red;
+	padding: 0px 6px;
+	font-size: 12px;
+	position: relative;}
+
+.elSanRecreation {}
+.elSanRecreation .it-title {padding:33px 20px 15px; text-align:center;
+	font-size:30px; font-weight:600; color:#333}
+.elSanRecreation .it-title:after {content:''; display:block; margin:10px auto 0; width:80px; height:4px;
+	background:#ff8a00;}
+.elSanRecreation-list {text-align:center; margin-top: 10px;}
+.elSanRecreation-list .it-item {overflow:hidden; position:relative; display:inline-block;
+	border:2px solid #fff; border-radius:4px;
+	width:265px; height:178px; margin:2px;
+	text-align:left;}
+.elSanRecreation-list .it-item .it-img {}
+.elSanRecreation-list .it-item .it-text {position:absolute; top:0; right: -10px; padding:95px 0 5px 60px;
+	width:100%; height:100%;
+	background:url("../images/elSanRecreation-bg.png") no-repeat top; color:#fff;}
+.elSanRecreation-list .it-item .it-text b {display:block; width:70%;
+	font-size:17px; font-weight:500; color: #2c2c2c; text-transform: uppercase; }
+.elSanRecreation-list .it-item .it-text span {display:block; width:100%;
+	background:url("../images/elSanRecreation-map.png") no-repeat left; padding-left: 18px;
+	font-size:12px}
+.elSanRecreation-list .it-item .it-text i {display:inline-block; margin:20px 0; padding:2px 10px;
+	color:#fff; font-weight:400; font-style:normal;
+	border:2px solid #fff; border-radius:4px}
+.elSanRecreation-list .it-item .it-money {position:absolute; top:20px; right:0; padding:5px 20px;
+	font-size: 15px; color:#2b2b2b;
+	background: rgba(255,255,255,0.9); box-shadow:0 0 6px rgba(0,0,0,.2);
+	border-radius:4px 0 0 4px;}
+.elSanRecreation-list .it-item .it-money:after {content:''; display:block;
+	position:absolute; top:0; left:7px; width:2px; height:32px; margin:10px auto 0;
+	background:#ff8a00;}
+.elSanRecreation-list .it-item .it-money span {display:block;
+	font-size:11px; line-height: 18px; color:#999}
+
+.elSanRecreation-list .it-item:hover .it-text {padding: 75px 0 5px 60px; }
+.elSanRecreation-list .it-item:hover .it-text b {color: #fff!important;}
+.elSanRecreation-list .it-item:hover .it-text i {margin: 5px 0;}
+
+.elIndexVideoSlider  {position: relative;}
+@media only screen and (max-width: 1200px) {
+	.elIndexVideoSlider .owl-buttons {top: -120px; position: relative; width: 100%;}}
+@media only screen and (max-width: 1000px) {
+	.elIndexVideoSlider .owl-buttons {top: -90px;} }
+@media only screen and (max-width: 400px) {
+	.elIndexVideoSlider .owl-buttons {top: -130px;} }

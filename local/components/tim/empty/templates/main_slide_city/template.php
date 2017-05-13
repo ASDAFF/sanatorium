@@ -20,7 +20,7 @@ $city = \Local\Catalog\City::getAll(true);
 					</div>
 					<div class="inf">
 						<b><?= $item['NAME'] ?></b>
-						<span>КМВ, <?= $item['NAME'] ?></span>
+<!--						<span>КМВ, --><?//= $item['NAME'] ?><!--</span>-->
 						<p>
 							<?= $item['DESCRIPTION'] ?>
 						</p>

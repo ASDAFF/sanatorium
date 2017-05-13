@@ -267,7 +267,7 @@
 
 	#cron_full {
 		padding:0 20px 20px;
-		background-size:cover;
+		background-size: auto 125%;
 		height:auto
 	}
 
@@ -963,6 +963,10 @@
 		float:none;
 		text-align:center;
 		margin-bottom:10px
+	}
+	#cron-right .rating-title {
+		position: relative; right: auto; top: auto;
+		text-align: center;
 	}
 }
 

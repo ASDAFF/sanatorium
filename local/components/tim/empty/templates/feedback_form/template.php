@@ -13,8 +13,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 
 			</div>
 			<div class="feedback-form-left">
-				<input type="text" class="feedback-form-name" name="name" placeholder="Ваше имя" required>
-				<input type="text" class="feedback-form-city" name="phone" placeholder="Номер телефона">
+				<input type="text" class="feedback-form-name" name="name" placeholder="Ваше имя *" required>
+				<input type="text" class="feedback-form-city" name="phone" placeholder="Номер телефона *">
 				<input type="text" class="feedback-form-tel" name="email" placeholder="E-mail">
 			</div>
 			<div class="feedback-form-right">

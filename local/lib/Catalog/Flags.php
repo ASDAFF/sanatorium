@@ -13,47 +13,47 @@ class Flags
 
 	private static $all = array(
 		'Для кого' => array(
-			'children' => array(
+			's-detmi' => array(
 				'CODE' => 'CHILDREN',
 				'NAME' => 'Отдых с детьми',
 			    'PREDL' => 'для отдыха с детьми',
 			),
-			'child1' => array(
+			'ot-1' => array(
 				'CODE' => 'CHILD1',
 				'NAME' => 'Дети с рождения',
 				'PREDL' => 'для отдыха с детьми с рождения',
 			),
-			'child4' => array(
+			'ot-4' => array(
 				'CODE' => 'CHILD4',
 				'NAME' => 'Дети от 4-х лет',
 				'PREDL' => 'для отдыха с детьми от 4-х лет',
 			),
-			'pensioner' => array(
+			'pensionery' => array(
 				'CODE' => 'PENSIONER',
 				'NAME' => 'Для пенсионеров',
 				'PREDL' => 'для пенсионеров',
 			),
-			'old' => array(
+			'pozhilye' => array(
 				'CODE' => 'OLD',
 				'NAME' => 'Для пожилых людей',
 				'PREDL' => 'для пожилых людей',
 			),
-			'family' => array(
+			'vsya-semya' => array(
 				'CODE' => 'FAMILY',
 				'NAME' => 'Для всей семьи',
 				'PREDL' => 'для всей семьи',
 			),
-			'invalid' => array(
+			'invalidnost' => array(
 				'CODE' => 'INVALID',
 				'NAME' => 'Для людей с инвалидностью',
 				'PREDL' => 'для людей с инвалидностью',
 			),
-			'childs' => array(
+			'detskie' => array(
 				'CODE' => 'CHILDREN_SPECIAL',
 				'NAME' => 'Детский санаторий',
 				'BASE' => 'Детские санатории',
 			),
-			'mac' => array(
+			'mama-i-ditya' => array(
 				'CODE' => 'MOTHER_AND_CHILD',
 				'NAME' => 'Для мам и детей',
 				'PREDL' => 'для мам и детей',

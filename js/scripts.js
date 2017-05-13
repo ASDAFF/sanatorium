@@ -257,6 +257,20 @@ $(document).ready(function () {
 			[1000, 2]
 		]
 	});
+    $('.elIndexVideoSlider').owlCarousel({
+        loop: true,
+        navigation: true,
+        pagination: false,
+        navigationText: ["", ""],
+        items: 3,
+        itemsCustom: [
+            [0, 1],
+            [750, 2],
+            [1000, 3]
+        ]
+    });
+
+
 
     $(".elAboutBox_fancy").fancybox({
         padding: '0',
@@ -623,6 +637,59 @@ var Callback = {
 	}
 };
 
+var engInputValid = {
+    init: function () {
+        this.engForm = $('form[eng-form="bron"]');
+        this.engFormBtn =  this.engForm.find($('[type="submit"]'));
+
+    	this.inputName = this.engForm.find($('input[name="name"]'));
+		this.inputNameLog = this.engForm.find($('[eng-input="name"]'));
+        this.inputNameValue = false;
+
+        this.inputPhone = this.engForm.find($('input[name="phone"]'));
+        this.inputPhoneLog = this.engForm.find($('[eng-input="phone"]'));
+        this.inputPhoneValue = false;
+
+        this.inputName.keyup(this.itValidName);
+        this.inputPhone.keyup(this.itValidPhone);
+
+        this.engFormBtn.on('click', this.itClick);
+    },
+    log: function () {},
+    itValidName: function () {
+		if(engInputValid.inputName.val().length < 1){
+            engInputValid.inputNameLog.text('Введите Имя');
+            engInputValid.inputNameValue = false;
+		}else{
+            engInputValid.inputNameLog.text('');
+            engInputValid.inputNameValue = true;
+		};
+    },
+    itValidPhone: function () {
+        console.log('проверка телефона');
+        if(engInputValid.inputPhone.val().length < 1){
+            engInputValid.inputPhoneLog.text('Введите номер телефона');
+            engInputValid.inputPhoneValue = false;
+        }else{
+            engInputValid.inputPhoneLog.text('');
+            engInputValid.inputPhoneValue = true;
+        };
+    },
+    itClick: function () {
+        engInputValid.itValidName();
+        engInputValid.itValidPhone();
+
+        console.log('Клик');
+
+        console.log(engInputValid.inputNameValue);
+        console.log(engInputValid.inputPhoneValue);
+
+		if(engInputValid.inputNameValue == false){
+			return false;
+		}
+	}
+};
+
 
 jQuery(document).ready(function () {
 	SearchTop.init();
@@ -634,4 +701,5 @@ jQuery(document).ready(function () {
 	MobileMenu.init();
 	SearchExtDisplay.init();
 
+	engInputValid.init();
 });

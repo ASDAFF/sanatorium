@@ -495,7 +495,8 @@ class Room
 					'TO' => $date_off,
 					'TRANSFER' => $transfer ? 'да' : 'нет',
 				);
-				\CEvent::Send('ASPRO_SEND_FORM_ADMIN_20', 's1', $eventFields);
+				//\CEvent::Send('ASPRO_SEND_FORM_ADMIN_20', 's1', $eventFields);
+				\CEvent::Send('BOOK_ROOM', 's1', $eventFields);
 			}
             else
                 $errors[] = 'Ошибка добавления заявки. Свяжитесь с администрацией';
@@ -509,16 +510,17 @@ class Room
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/request/create.json',
+                CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/lead/create.json',
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS =>
-                    'source=' . urlencode('Добавление вопроса') .
-                    '&r_dat_begin=' . urlencode($date_on) .
-                    '&r_dat_end=' . urlencode($date_off) .
+                    'source=' . urlencode('Бронирование номера') .
+                    '&date_from=' . urlencode($date_on) .
+                    '&date_to=' . urlencode($date_off) .
                     '&u_name=' . urlencode($name) .
                     '&u_phone=' . urlencode($phone) .
+                    '&u_email=' . urlencode('test@email.ru') .
                     '&note=' . sprintf(
                         "Санаторий: %s\nНомер: %s\nКол-во взрослых: %s\nКол-во детей: %s\nБесплатный трансфер: %s",
                         $sanName,

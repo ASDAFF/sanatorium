@@ -1,7 +1,7 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Санатории", 
+		"Санатории КМВ", 
 		"/sanatorium/", 
 		Array(), 
 		Array(), 
@@ -33,13 +33,6 @@ $aMenuLinks = Array(
 		"/price/", 
 		Array(), 
 		Array("CHILD"=>"N"), 
-		"" 
-	),
-	Array(
-		"Контакты", 
-		"/contacts/", 
-		Array(), 
-		Array(), 
 		"" 
 	),
 	Array(

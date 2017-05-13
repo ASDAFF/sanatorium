@@ -4,6 +4,58 @@
 $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 
 ?>
+<?if($APPLICATION->GetCurDir() != '/'):?>
+<div class="elIndexVideo">
+    <div class="engBox-body">
+        <div class="elIndexVideoSlider">
+            <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+                <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
+                    <iframe src="https://www.youtube.com/embed/QS8tYQbUrNk" frameborder="0"  allowfullscreen=""></iframe>
+                </div>
+                <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/QS8tYQbUrNk/sddefault.jpg">
+                    <div class="it-video-body-stab">
+                        <div class="it-text">О сервисе бронирования</div>
+                        <div class="it-play elIndexVideo_play"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#elAboutBox2-video" class="it-video elAboutBox_fancy">
+                <div class="it-video-popap" id="elAboutBox2-video" style="display: none;">
+                    <iframe src="https://www.youtube.com/embed/8tQOxiI08mI" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+                <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/8tQOxiI08mI/sddefault.jpg');">
+                    <div class="it-video-body-stab">
+                        <div class="it-text">Ваши выгоды покупки</div>
+                        <div class="it-play elIndexVideo_play"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#elAboutBox3-video" class="it-video elAboutBox_fancy">
+                <div class="it-video-popap" id="elAboutBox3-video" style="display: none;">
+                    <iframe src="https://www.youtube.com/embed/e6NP0C7wEDc" frameborder="0"></iframe>
+                </div>
+                <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/e6NP0C7wEDc/sddefault.jpg');">
+                    <div class="it-video-body-stab">
+                        <div class="it-text">Отзыв о сервисе</div>
+                        <div class="it-play elIndexVideo_play"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#elAboutBox4-video" class="it-video elAboutBox_fancy">
+                <div class="it-video-popap" id="elAboutBox4-video" style="display: none;">
+                    <iframe src="https://www.youtube.com/embed/lN4UeTJ4Xpg" frameborder="0"></iframe>
+                </div>
+                <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/lN4UeTJ4Xpg/sddefault.jpg');">
+                    <div class="it-video-body-stab">
+                        <div class="it-text">Отзыв о сервисе</div>
+                        <div class="it-play elIndexVideo_play"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<?endif;?>
 <div id="phone">
     <div class="engBox-body">
         <div class="phone"><i class="icon-phome-mega"></i>8 800 775 2604</div>
@@ -20,6 +72,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             </div>
             <div class="center">Сервис бронирования путевок в санатории</div>
             <div class="right">
+                <a href="/contacts/">Контакты</a>
                 <!--<a href=""><img src="/images/webmaster.png"></a>-->
             </div>
         </div>

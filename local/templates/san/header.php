@@ -92,7 +92,7 @@ $APPLICATION->ShowPanel();
 	</div>
 	<div class="head_pun_full">
 		<ul class="engBox-body clearfix bl head_pun">
-			<li><a class="icon1" href="/about/vigody/">Официальные цены санаториев</a></li>
+			<li><a class="icon1" href="/about/vigody/">Путевки по цене санатория</a></li>
 			<li><a class="icon2" href="/about/vigody/">Бесплатный трансфер</a></li>
 			<li class="sale">
 				<p class="sale-text">

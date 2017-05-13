@@ -107,6 +107,7 @@ $currentTab = $tabs[$tabCode];
 <div id="cron_full">
     <div id="cron" class="engBox-body">
         <div id="cron-right">
+            <div class="rating-title">Рейтинг</div>
 	        <div class="rating" title="<?= $product['RATING'] ?>"><?
 		        for ($i = 0; $i < 5; $i++)
 		        {
@@ -242,13 +243,15 @@ $currentTab = $tabs[$tabCode];
     </div>
     <div class="engBox-right card-form">
         <div id="right-form">
-            <form method="POST" id="formx" action="javascript:void(null);">
+            <form method="POST" id="formx" eng-form="bron" action="javascript:void(null);">
                 <div class="controlgroup mobile" style="color: #505050;">
-                    <div class="title">Забронируйте номер<br><span>Прямо сейчас!</span></div>
-                    <input type="text" name="name" placeholder="Введите имя"
+                    <div class="title">Оставьте заявку<br><span>и получите скидку!</span></div>
+                    <input type="text" name="name" placeholder="Введите имя *"
                            autocomplete="off" class="icon-user" required />
-                    <input type="text" name="phone" placeholder="Введите номер телефона"
+                    <div class="engInputLog" eng-input="name"></div>
+                    <input type="text" name="phone" placeholder="Введите номер телефона *"
                            autocomplete="off" class="icon-phone2" required />
+                    <div class="engInputLog" eng-input="phone"></div>
                     <select id="car-type3" name="room" class="input-right icon-key">
                         <option value="0">Выберите номер</option><?
                         foreach ($product['ROOMS'] as $room)
@@ -290,7 +293,7 @@ $currentTab = $tabs[$tabCode];
                     <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
                     <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                     <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
-                    <input type="submit" id="form_btn" class="btn" value="ЗАБРОНИРОВАТЬ">
+                    <input type="submit" id="form_btn" class="btn" value="Забронировать без предоплаты">
                 </div>
             </form>
 	        <div id="bronx" class="okno" style="display: none"></div>
@@ -301,6 +304,12 @@ $currentTab = $tabs[$tabCode];
         ?>
     </div>
 </div>
+<?
+//
+// Форма "задать вопрос"
+//
+$APPLICATION->IncludeComponent('tim:empty', 'feedback_form');
+?>
 
 <script type="text/javascript">var yMapPoint = [<?= $product['YMAP'] ?>]</script>
 <div id="map" style="width:100%; height:300px"></div>

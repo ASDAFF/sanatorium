@@ -185,6 +185,7 @@ foreach ($products as $id => $item)
         <div class="inf">
             <div class="star"></div>
             <div class="comment">
+                <div class="rating-title">Рейтинг</div>
 	            <div class="rating" title="<?= $item['RATING'] ?>"><?
 		            for ($i = 0; $i < 5; $i++)
 		            {
