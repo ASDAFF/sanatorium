@@ -40,7 +40,7 @@ $page = $_REQUEST['page'];
 		$APPLICATION->IncludeComponent('bitrix:breadcrumb', '');
 
 		?>
-		<div id="cron-title"><h1><? $APPLICATION->ShowTitle(); ?></h1></div>
+		<div id="cron-title"><h1><? $APPLICATION->ShowTitle(false); ?></h1></div>
 	</div>
 </div><?
 
