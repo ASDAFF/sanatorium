@@ -73,10 +73,11 @@ $file = new \CFile();
 			true
 		);
 		$city = \Local\Catalog\City::getById($item['CITY']);
+		$alt = $alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
 		?>
 		<div class="prices-item">
 			<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
-				<div class="img"><img src="<?= $img['src'] ?>"></div>
+				<div class="img"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" ></div>
 				<div class="text eng-animations">
 					<b><?= $item['NAME'] ?></b>
 					<span>КМВ, <?= $city['NAME'] ?></span>

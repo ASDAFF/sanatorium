@@ -2,8 +2,8 @@
 /** @global CMain $APPLICATION */
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("title", "Цены T");
-$APPLICATION->SetTitle("Цены H1");
+$APPLICATION->SetPageProperty("title", "Цены");
+$APPLICATION->SetTitle("Цены");
 
 $APPLICATION->IncludeComponent('tim:empty', 'prices');
 

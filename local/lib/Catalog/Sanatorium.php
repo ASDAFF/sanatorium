@@ -651,7 +651,7 @@ class Sanatorium
         elseif ($tabCode == 'rooms')
         {
 			foreach ($sanatorium['ROOMS'] as $room)
-				Room::printRoom($room);
+				Room::printRoom($room, $sanatorium['NAME']);
         }
         elseif ($tabCode == 'profiles')
         {

@@ -151,10 +151,11 @@ class Room
 	}
 
 	/**
-	 * Выводин номер в карточке санатория
+	 * Выводит номер в карточке санатория
 	 * @param $room
+	 * @param $sanatoriumName
 	 */
-	public static function printRoom($room)
+	public static function printRoom($room, $sanatoriumName)
 	{
 		$file = new \CFile();
         $arWaterMark = array(
@@ -175,12 +176,13 @@ class Room
 			true,
             $arWaterMark
 		);
+		$alt = $room['NAME'] . ' ' . $sanatoriumName;
 		?>
 		<div class="el-nomer">
 			<div class="item">
 				<div class="img">
 					<a href="#room<?= $room['ID'] ?>" class="border various">
-						<img src="<?= $img['src'] ?>" />
+						<img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" />
 					</a>
 				</div>
 				<div class="text">
@@ -256,7 +258,7 @@ class Room
 										);
 										?>
 										<div class="item">
-											<img src="<?= $img['src'] ?>"/>
+											<img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" />
 										</div><?
 									}
 

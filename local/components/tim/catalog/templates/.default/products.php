@@ -116,15 +116,18 @@ foreach ($products as $id => $item)
 		BX_RESIZE_IMAGE_PROPORTIONAL,
 		true
 	);
+	$city = \Local\Catalog\City::getById($item['CITY']);
+	$alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
 	$reviewsCount = \Local\Catalog\Reviews::getCountBySanatorium($id);
 	$reviewsCountTitle = '';
 	if ($reviewsCount)
 		$reviewsCountTitle .= $reviewsCount . pluralize($reviewsCount, array(' отзыв', ' отзыва', ' отзывов'));
+
 	?>
     <div class="el-search-list engBox-body">
     <div class="item">
         <div class="img">
-            <img src="<?= $img['src'] ?>">
+            <img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>">
         </div>
         <div class="text">
 			<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div><?

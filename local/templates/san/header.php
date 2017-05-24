@@ -97,9 +97,11 @@ $APPLICATION->ShowPanel();
 			<li class="sale">
 				<p class="sale-text">
 					<b>Нашли дешевле?</b>
-					<span>Мы предложим вам СКИДКУ!</span>
+					<span>Предложим скидку!</span>
 				</p>
-				<a class="sale-link" href="/about/vigody/" id="haad_pun-bnt">подробнее</a>
+				<a class="sale-link" href="/about/vigody/" id="haad_pun-bnt">
+                    Оплата путевки в день заезда!
+                </a>
 			</li>
 		</ul>
 	</div>

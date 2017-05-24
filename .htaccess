@@ -10,6 +10,13 @@ ErrorDocument 404 /404.php
 <IfModule mod_rewrite.c>
   Options +FollowSymLinks
   RewriteEngine On
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ http://putevochka.com/ [R=301,L] 
+
+RewriteCond %{HTTP_HOST} !^putevochka\.com$ [NC]
+RewriteRule ^(.*)$ http://putevochka.com/$1 [L,R=301]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteCond %{REQUEST_FILENAME} !-d

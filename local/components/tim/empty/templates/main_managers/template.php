@@ -21,10 +21,11 @@ $file = new \CFile();
 			    BX_RESIZE_IMAGE_PROPORTIONAL,
 			    true
 		    );
+			$alt = 'менеджер сервиса «Путевочка» ' . $item['NAME'];
 
 		    ?>
 	        <div class="item">
-	            <div class="img"><img src="<?= $img['src'] ?>"></div>
+	            <div class="img"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" /></div>
 	            <div class="name"><?= $item['NAME'] ?></div>
 	            <div class="phone icon-phone"><?= $item['PHONE'] ?></div>
 	            <div class="btn" data-manager="<?= $item['ID'] ?>"><a href="#popup">Заказать звонок</a></div>

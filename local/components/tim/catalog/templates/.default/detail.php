@@ -152,6 +152,7 @@ $currentTab = $tabs[$tabCode];
         //
         // Картинки
         //
+		$alt = 'Санаторий ' . $product['NAME'] . ' ' . $product['CITY']['NAME'];
 	    $file = new \CFile();
 	    $pics = array();
         $arWaterMark = array(
@@ -181,7 +182,7 @@ $currentTab = $tabs[$tabCode];
             foreach ($pics as $img)
             {
                 ?>
-                <div class="item"><img src="<?= $img['src'] ?>" /></div><?
+                <div class="item"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" /></div><?
             }
             ?>
         </div>
@@ -189,7 +190,7 @@ $currentTab = $tabs[$tabCode];
 	        foreach ($pics as $img)
             {
                 ?>
-                <div class="item"><img src="<?= $img['src'] ?>" /></div><?
+                <div class="item"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" /></div><?
             }
             ?>
         </div><?

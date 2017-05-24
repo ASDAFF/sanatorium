@@ -17,7 +17,7 @@ $file = new \CFile();
             <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
                 <iframe src="https://www.youtube.com/embed/QS8tYQbUrNk" frameborder="0"  allowfullscreen=""></iframe>
             </div>
-            <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/QS8tYQbUrNk/sddefault.jpg');">
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-1.jpg');">
                 <div class="it-video-body-stab">
                     <div class="it-text">О сервисе бронирования</div>
                     <div class="it-play elIndexVideo_play"></div>
@@ -28,7 +28,7 @@ $file = new \CFile();
             <div class="it-video-popap" id="elAboutBox2-video" style="display: none;">
                 <iframe src="https://www.youtube.com/embed/8tQOxiI08mI" frameborder="0" allowfullscreen=""></iframe>
             </div>
-            <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/8tQOxiI08mI/sddefault.jpg');">
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-2.jpg');">
                 <div class="it-video-body-stab">
                     <div class="it-text">Ваши выгоды покупки</div>
                     <div class="it-play elIndexVideo_play"></div>
@@ -39,7 +39,7 @@ $file = new \CFile();
             <div class="it-video-popap" id="elAboutBox3-video" style="display: none;">
                 <iframe src="https://www.youtube.com/embed/e6NP0C7wEDc" frameborder="0"></iframe>
             </div>
-            <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/e6NP0C7wEDc/sddefault.jpg');">
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-3.jpg');">
                 <div class="it-video-body-stab">
                     <div class="it-text">Отзыв о сервисе</div>
                     <div class="it-play elIndexVideo_play"></div>
@@ -58,6 +58,7 @@ $file = new \CFile();
 	    foreach ($items['ITEMS'] as $item)
 	    {
 		    $city = \Local\Catalog\City::getById($item['CITY']);
+			$alt = $alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
 		    $img = $file->ResizeImageGet(
 			    $item['PREVIEW_PICTURE'],
 			    array(
@@ -69,7 +70,7 @@ $file = new \CFile();
 		    );
 	        ?>
             <a href="<?=$item['DETAIL_PAGE_URL']?>" class="item">
-                <div class="img"><img src="<?= $img['src'] ?>"></div>
+                <div class="img"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" ></div>
                 <div class="text eng-animations">
                     <b>Санаторий <?= $item['NAME'] ?></b>
 	                <span>КМВ, <?= $city['NAME'] ?></span>

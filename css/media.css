@@ -834,6 +834,22 @@
 	#carousel {
 		display:none
 	}
+
+	.nav-sections li {
+		line-height:14px;
+		float:none;
+		padding:0 10px
+	}
+
+	.nav-sections {
+		position:static;
+		margin-right:0;
+		bottom:10px;
+		left:60%;
+		text-align:center;
+		margin-top:-10px;
+		margin-bottom:10px
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -905,21 +921,7 @@
 		margin-top:20px
 	}
 
-	.nav-sections li {
-		line-height:14px;
-		float:none;
-		padding:0 10px
-	}
 
-	.nav-sections {
-		position:static;
-		margin-right:0;
-		bottom:10px;
-		left:60%;
-		text-align:center;
-		margin-top:-10px;
-		margin-bottom:10px
-	}
 }
 
 @media screen and (max-width: 510px) {
