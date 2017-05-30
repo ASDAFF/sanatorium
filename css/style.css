@@ -3511,7 +3511,8 @@ textarea:required+.required:after {
 .actions-img {
 	display:inline-block;
 	vertical-align:top;
-	width:261px
+	width:261px;
+    position:relative;
 }
 
 .actions-content {

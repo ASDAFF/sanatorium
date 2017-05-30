@@ -74,6 +74,7 @@ $file = new \CFile();
 									<i>Забронировать</i>
 								</div>
 							</a>
+                            <div class="action-mark"></div>
 						</div>
 						<div class="actions-content">
 							<div class="actions-title"><?= $item['NAME'] ?></div><?
@@ -95,6 +96,7 @@ $file = new \CFile();
 								<?= $item['TEXT'] ?>
 							</div>
 						</div>
+
 					</div><?
 				}
 				?>
