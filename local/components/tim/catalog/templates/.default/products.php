@@ -123,6 +123,8 @@ foreach ($products as $id => $item)
 	if ($reviewsCount)
 		$reviewsCountTitle .= $reviewsCount . pluralize($reviewsCount, array(' отзыв', ' отзыва', ' отзывов'));
 
+	$actions = \Local\Catalog\Action::getBySanatorium($item['ID']);
+
 	?>
     <div class="el-search-list engBox-body">
     <div class="item">
@@ -224,7 +226,15 @@ foreach ($products as $id => $item)
             </div>
             <span>за номер в сутки</span>
             <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a>
-        </div>
+        </div><?
+
+		if ($actions)
+		{
+			?>
+            <div class="action-mark"></div><?
+		}
+
+		?>
     </div>
     </div><?
 }

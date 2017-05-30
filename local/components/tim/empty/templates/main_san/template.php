@@ -68,6 +68,8 @@ $file = new \CFile();
 			    BX_RESIZE_IMAGE_PROPORTIONAL,
 			    true
 		    );
+			$actions = \Local\Catalog\Action::getBySanatorium($item['ID']);
+
 	        ?>
             <a href="<?=$item['DETAIL_PAGE_URL']?>" class="item">
                 <div class="img"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" ></div>
@@ -76,7 +78,15 @@ $file = new \CFile();
 	                <span>КМВ, <?= $city['NAME'] ?></span>
                     <i>Подробнее</i>
                 </div>
-                <div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>
+                <div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div><?
+
+                if ($actions)
+                {
+                    ?>
+                    <div class="action-mark"></div><?
+                }
+
+			?>
             </a><?
 	    }
 	    ?>

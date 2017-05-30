@@ -948,6 +948,15 @@ footer .right img {
 	border-radius:5px
 }
 
+.action-mark {
+	background:url(../images/action.png) no-repeat;
+	width: 82px;
+	height: 82px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 #slider-range,#slider-range-ext {
 	display:inline-block;
 	width:385px;
@@ -1188,7 +1197,8 @@ footer .right img {
 
 .el-search-list .item {
 	border:1px solid #ccc;
-	border-radius:4px
+	border-radius:4px;
+	position: relative;
 }
 
 .el-search-list .item:hover {
@@ -1202,7 +1212,7 @@ footer .right img {
 
 .el-search-list .item .img {
 	padding:20px 10px;
-	width:33%
+	width:33%;
 }
 
 .el-search-list .item .text {
@@ -2752,7 +2762,8 @@ footer {
 	background:#fff;
 	border-bottom-right-radius:10px;
 	border-bottom-left-radius:10px;
-	padding-bottom:10px
+	padding-bottom:10px;
+	position: relative;
 }
 
 .banners {

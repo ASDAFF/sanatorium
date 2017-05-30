@@ -77,6 +77,8 @@ $file = new \CFile();
 					);
 					$city = \Local\Catalog\City::getById($item['CITY']);
 					$alt = $alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
+					$actions = \Local\Catalog\Action::getBySanatorium($item['ID']);
+
 					?>
 					<div class="prices-item">
 						<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
@@ -129,7 +131,15 @@ $file = new \CFile();
 								}
 								?>
 							</ul>
-						</div>
+						</div><?
+
+                        if ($actions)
+                        {
+                            ?>
+                            <div class="action-mark"></div><?
+                        }
+
+					?>
 					</div><?
 
 					$count++;
