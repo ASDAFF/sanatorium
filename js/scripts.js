@@ -690,6 +690,50 @@ var engInputValid = {
 	}
 };
 
+var FullCatalog = {
+	delay: 1000,
+	cn: 'FULL_CATALOG_POPUP_SHOWED',
+	init: function () {
+		this.popup = $('#elPopup-form');
+		if (!this.popup.length)
+			return false;
+
+		setTimeout(this.showPopup, this.delay);
+	},
+	showPopup: function() {
+		FullCatalog.popup.show();
+	},
+	setCookie: function () {
+		/*var d = new Date();
+		d.setTime(d.getTime() + 8640000000);
+		document.cookie = FullCatalog.cn + "1; path=/; expires=" + d.toUTCString();*/
+	},
+	send: function () {
+		FullCatalog.setCookie();
+		/*var name = (Filters.q) ? "filter_groups_search=" : "filter_groups=";
+		document.cookie = name + val + "; path=/; expires=" + d.toUTCString();
+		var form_data = Callback.form.serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/ajax/callback.php',
+			data: form_data,
+			dataType: 'json',
+			success: function (ans) {
+				if(ans.success)
+				{
+					dataLayer = window.dataLayer || [];
+					dataLayer.push(ans.gtmObject);
+					Callback.btn.hide();
+					Callback.tnx.show();
+				}
+				else
+					$.fancybox('<div class="errors feedback-popup-content">' + ans.errors.join('<br>') + '</div>');
+			}
+		});*/
+		return false;
+	}
+};
+
 
 jQuery(document).ready(function () {
 	SearchTop.init();
@@ -702,4 +746,5 @@ jQuery(document).ready(function () {
 	SearchExtDisplay.init();
 
 	engInputValid.init();
+	FullCatalog.init();
 });

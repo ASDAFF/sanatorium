@@ -117,22 +117,6 @@ $APPLICATION->ShowPanel();
 			</li>
 		</ul>
 	</div>
-</header>
-<?if($_GET['test'] == 'test'):?>
-    <a href="#elPopup-form" class="elAboutBox_fancy">Кнопка</a>
-    <div class="elPopup-form" id="elPopup-form">
-        <div class="it-title">
-            Получите каталог санаториев
-            <i>с самой полной информацией</i>
-        </div>
-        <div class="it-text">
-            Введите e-mail  для получения
-            <b>PDF файла на почту!</b>
-        </div>
-        <div class="it-input">
-            <input type="text" placeholder="Email">
-            <button>Получить</button>
-        </div>
-        <div class="it-img"></div>
-    </div>
-<?endif;?>
+</header><?
+
+$APPLICATION->IncludeComponent('tim:empty','catalog_popup');
