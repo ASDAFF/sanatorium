@@ -50,8 +50,20 @@ $APPLICATION->ShowPanel();
 	<div class="header-line_wbg engBox-body">
 		<div class="header-logo"><?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?></div>
 		<div class="header-time-work"><?$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));?></div>
-		<div class="header-adress"><?$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?></div>
-		<div class="header-account"><a href="#" data-link="https://26.u-on.ru/">Личный кабинет</a></div>
+        <div class="header-soc">
+            <a href="tel:89197401215">
+                <img src="/images/engIcon-whatsapp.png">
+            </a>
+            <a href="tel:89197401215">
+                <img src="/images/engIcon-viber.png">
+            </a>
+            <a href="tg://resolve?domain=+79197401215"">
+            <img src="/images/engIcon-telegram.png">
+            </a>
+        </div>
+<!--            <div class="header-adress">--><?//$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?><!--</div>-->
+<!--            <div class="header-account"><a href="#" data-link="https://26.u-on.ru/">Личный кабинет</a></div>-->
+
 		<div class="header-phone">
 			<?$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php",array(),array("MODE"=>"html"));?>
 		</div>
@@ -106,3 +118,21 @@ $APPLICATION->ShowPanel();
 		</ul>
 	</div>
 </header>
+<?if($_GET['test'] == 'test'):?>
+    <a href="#elPopup-form" class="elAboutBox_fancy">Кнопка</a>
+    <div class="elPopup-form" id="elPopup-form">
+        <div class="it-title">
+            Получите каталог санаториев
+            <i>с самой полной информацией</i>
+        </div>
+        <div class="it-text">
+            Введите e-mail  для получения
+            <b>PDF файла на почту!</b>
+        </div>
+        <div class="it-input">
+            <input type="text" placeholder="Email">
+            <button>Получить</button>
+        </div>
+        <div class="it-img"></div>
+    </div>
+<?endif;?>

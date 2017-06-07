@@ -42,4 +42,41 @@ $priceMax = ceil($data['PRICE']['MAX'] / 100) * 100;
 		</div>
 		<div class="el-search-btn">Расширенный поиск</div>
 	</div>
+	<div class="elIndexVideo">
+    <div class="engBox-body">
+        <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/QS8tYQbUrNk" frameborder="0"  allowfullscreen=""></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-1.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">О сервисе бронирования</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+        <a href="#elAboutBox2-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox2-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/8tQOxiI08mI" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-2.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">Ваши выгоды покупки</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+        <a href="#elAboutBox3-video" class="it-video elAboutBox_fancy">
+            <div class="it-video-popap" id="elAboutBox3-video" style="display: none;">
+                <iframe src="https://www.youtube.com/embed/e6NP0C7wEDc" frameborder="0"></iframe>
+            </div>
+            <div class="it-video-body" style="background-image: url('../images/elIndexVideo-3.jpg');">
+                <div class="it-video-body-stab">
+                    <div class="it-text">Отзыв о сервисе</div>
+                    <div class="it-play elIndexVideo_play"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
 </div><?

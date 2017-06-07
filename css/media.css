@@ -501,7 +501,6 @@
 	}
 
 	#right-form .btn {
-		max-width:150px;
 		margin:15px auto;
 		display:block
 	}
@@ -850,6 +849,11 @@
 		margin-top:-10px;
 		margin-bottom:10px
 	}
+	.header-line_wbg {
+		height:auto;
+		line-height:normal;
+		padding:15px 10px
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -869,6 +873,20 @@
 		padding:0;
 		margin-top:15px
 	}
+	a.header-phone-link {
+		font-size:19px;
+		line-height:10px
+	}
+
+	.header-phone {
+		background:none;
+
+		margin-left:0;
+		float:right;
+		line-height:17px
+	}
+
+
 }
 
 @media screen and (max-width: 500px) {
@@ -1095,24 +1113,9 @@
 		width:140px
 	}
 
-	.header-line_wbg {
-		height:auto;
-		line-height:normal;
-		padding:15px 10px
-	}
 
-	a.header-phone-link {
-		font-size:19px;
-		line-height:10px
-	}
 
-	.header-phone {
-		background:none;
-		padding-left:0;
-		margin-left:0;
-		float:right;
-		line-height:17px
-	}
+
 
 	.header .head_pun li a,.header .head_pun li a.icon2 {
 		padding:5px 11px 0 25px
@@ -1241,8 +1244,8 @@
 	}
 
 	.header .head_pun li a,.header .head_pun li a.icon2 {
-		padding:0 11px 0 23px;
-		line-height:17px
+		padding:0 11px 0 30px;
+		line-height:23px
 	}
 
 	.head_pun_full {

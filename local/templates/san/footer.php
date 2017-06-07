@@ -58,7 +58,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 <?endif;?>
 <div id="phone">
     <div class="engBox-body">
-        <div class="phone"><i class="icon-phome-mega"></i>8 800 775 2604</div>
+        <div class="phone"><i class="icon-phome-mega"></i><a>8 800 775 2604</a></div>
         <div class="text">Исходящие вызовы по России бесплатны.<br>
             Проконсультируем вас по любому вопросу, поможем подобрать подходящие путевки для вас и вашей семьи
         </div>
@@ -74,6 +74,9 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             <div class="right">
                 <a href="/contacts/">Контакты</a>
                 <!--<a href=""><img src="/images/webmaster.png"></a>-->
+            </div>
+            <div class="right">
+                <span class="it-city">г. Пятигорск, пр. Кирова, 90</span>
             </div>
         </div>
     </div>

@@ -246,7 +246,7 @@ $currentTab = $tabs[$tabCode];
         <div id="right-form">
             <form method="POST" id="formx" eng-form="bron" action="javascript:void(null);">
                 <div class="controlgroup mobile" style="color: #505050;">
-                    <div class="title">Оставьте заявку<br><span>и получите скидку!</span></div>
+                    <div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
                     <input type="text" name="name" placeholder="Введите имя *"
                            autocomplete="off" class="icon-user" required />
                     <div class="engInputLog" eng-input="name"></div>
@@ -294,7 +294,7 @@ $currentTab = $tabs[$tabCode];
                     <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
                     <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                     <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
-                    <input type="submit" id="form_btn" class="btn" value="Забронировать без предоплаты">
+                    <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
                 </div>
             </form>
 	        <div id="bronx" class="okno" style="display: none"></div>

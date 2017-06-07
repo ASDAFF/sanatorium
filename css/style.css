@@ -204,13 +204,13 @@ nav a#pull {
 
 .head_full.set-fixed {
 	position:fixed;
-	z-index:5;
-	top:0
+	z-index:5; width: 100%;
+	top:0;
 }
 
 .head_pun_full.set-fixed {
 	position:fixed;
-	z-index:1;
+	z-index:4;
 	top:40px;
 	width:100%
 }
@@ -582,10 +582,10 @@ nav a#pull {
 	border-top:15px solid #fff
 }
 
-#phone div > .phone {
-	font-size:30px
+#phone a {vertical-align: middle; display: inline-block;
+	font-size:30px;
+	color: #fff;
 }
-
 #phone div > .text {
 	font-size:15px;
 	font-weight:300
@@ -606,7 +606,7 @@ footer > div > div {
 }
 
 footer .left {
-	width:21%;
+	width:15%;
 	display:table-cell;
 	vertical-align:top
 }
@@ -616,7 +616,7 @@ footer .left img {
 }
 
 footer .center {
-	width:55%;
+	width:35%;
 	display:table-cell;
 	vertical-align:middle;
 	text-align:center;
@@ -625,13 +625,16 @@ footer .center {
 }
 
 footer .right {
-	width:20%;
+	width:15%;
 	display:table-cell;
 	vertical-align:middle
 }
 
 footer .right img {
 	width:180px!important
+}
+footer .it-city {
+	color: #fff;
 }
 
 #right-form {
@@ -848,7 +851,8 @@ footer .right img {
 }
 
 .el-full-bg {
-	background:url(../images/bg-new.jpg) center
+	background:url(../images/bg-new.jpg) center;
+	background-size: cover;
 }
 
 .el-full-bg2 {
@@ -1876,6 +1880,11 @@ footer .right img {
 	left:3px;
 	top:8px
 }
+@media only screen and (max-width: 720px) {
+	.el-nomer-popap .left .inf .tit {font-size: 13px;}
+	.price-start .num {font-size: 13px; }
+	.el-nomer-popap .left .inf li .first {font-size: 12px;}
+}
 
 .el-nomer-popap .left .inf li .first {
 	list-style:none;
@@ -2440,7 +2449,7 @@ footer {
 	width:100%;
 	height:35px;
 	line-height:35px;
-	padding-left:40px;
+	padding-left:10px;
 	margin-bottom:12px;
 	border-radius:6px;
 	border:1px solid #dcdcdc
@@ -2849,7 +2858,7 @@ footer {
 	cursor:pointer;
 	position:relative;
 	padding-left:25px;
-	margin-right:15px
+	margin-right:15px; display: inline-block; vertical-align: top;
 }
 
 .feedback-form-checkbox label:before {
@@ -2859,7 +2868,7 @@ footer {
 	height:16px;
 	margin-right:10px;
 	position:absolute;
-	left:0;
+	top: 8px; left:0;
 	bottom:1px;
 	background-color:#ff8a00;
 	border-radius:3px;
@@ -3085,6 +3094,7 @@ footer {
 .reviewStars-input .star-15 {
 	left:265px
 }
+header {display: table; width: 100%;}
 
 .header-line_wbg {
 	height:70px;
@@ -3134,6 +3144,24 @@ a.header-phone-link {
 	line-height:15px;
 	color:#505050
 }
+.header-soc {display:inline-block; line-height:normal; vertical-align:middle; width: 38%;
+	text-align: right;
+	padding: 10px 30px;}
+.header-soc a {}
+.header-soc a img {width: 40px;}
+
+.header-soc .it-icon-3 {width: 36px;
+	vertical-align: top;}
+
+@media only screen and (max-width: 1100px){
+	.header-soc {width: auto; padding: 0 0 10px 0;}
+
+}
+@media only screen and (max-width: 550px){
+	.header-phone {padding-left: 45px;}
+}
+
+
 
 .sale {
 	float:right
@@ -4888,6 +4916,9 @@ div[id^="slider-popap-"].flexslider .slides img {
 	text-align:center;
 	background-size:cover
 }
+@media only screen and (max-width: 600px) {
+	#engBtnTop {display: none!important;}
+}
 
 #zcwMiniButton {
 	right:10px!important;
@@ -4917,7 +4948,6 @@ div[id^="slider-popap-"].flexslider .slides img {
 
 .elIndexVideo {
 	overflow:hidden;
-	background-image:url(../images/elIndexVideo-bg.jpg);
 	background-repeat:no-repeat;
 	background-size:1920px auto;
 	background-position:center center;
@@ -4926,8 +4956,8 @@ div[id^="slider-popap-"].flexslider .slides img {
 
 .elIndexVideo .it-video {
 	margin:40px 15px;
-	width:266px;
-	height:150px;
+	width: 335px;
+	height: 200px;
 	position:relative;
 	overflow:hidden;
 	display:inline-block
@@ -4942,6 +4972,8 @@ div[id^="slider-popap-"].flexslider .slides img {
 	overflow:hidden;
 	background-size:cover;
 	background-position: center;
+	border: 2px solid #fff;
+    border-radius: 8px;
 }
 
 .elIndexVideo .it-video-body-stab {
@@ -4964,28 +4996,36 @@ div[id^="slider-popap-"].flexslider .slides img {
 
 .elIndexVideo .it-text {
 	position:absolute;
-	width:100%;
+	width:56%;
 	bottom:0;
 	padding:12px;
 	left:0;
 	background:rgba(255,255,255,0.7);
-	color:#333;
-	font-weight:600;
-	font-size:12px;
-	text-align:center
+	color:#ff8a00;
+	font-weight:500;
+	font-size: 19px;
+	line-height: 22px;
+	text-align:center;
+	padding: 10px 25px;
+	background: rgba(255,255,255,0.9);
+	border-radius: 0 4px 0 0;
+	box-shadow: 0 0 6px rgba(0,0,0,.2);
+	min-height: 65px;
 }
 
-.elIndexVideo .it-play {
-	position:absolute;
-	top:18%;
-	left:33%;
-	width:80px;
-	height:80px;
+.elIndexVideo .it-play {position:absolute; top:36%; left:50%; margin-left: -20px;
+	width:40px; height:40px;
 	background-image:url(../images/elIndexVideo-play.png);
 	background-size:contain;
 	background-repeat:no-repeat;
 	cursor:pointer
 }
+.elIndexVideo .it-play:before {content: ''; position: absolute;
+	top: 17px; left: 48px; width: 30px; height: 77px;
+	background-image: url(/css/../images/elIndexVideo-line.png);}
+.elIndexVideo .it-play:after {content: ''; position: absolute;
+	top: 54px; left: 52px; width: 136px; height: 69px;
+	background-image: url(/css/../images/elIndexVideo-text.png);}
 
 .elIndexVideo video {
 	overflow:hidden
@@ -4994,8 +5034,10 @@ div[id^="slider-popap-"].flexslider .slides img {
 @media only screen and (max-width: 1000px) {
 	.elIndexVideo .it-video {
 		margin-bottom:10px;
-		margin-top:10px
+		margin-top:10px;
+		width: 267px;
 	}
+	.elIndexVideo .it-text {font-size: 13px;}
 	.it-video-popap iframe {width: 100%;}
 }
 
@@ -6112,3 +6154,48 @@ body .menu_parent:after {
 		height: 195px;
 	}
 }
+
+.elPopup-form {text-align: center; padding: 30px; display: none;
+	background: url("../images/elPopup-form.jpg");
+	background-size: cover;
+	min-height: 540px;
+	border: 2px solid#ccd5d7; border-radius: 4px;}
+.elPopup-form .it-title {padding-bottom: 20px;
+	font-size: 18px; color: #ff8a00; text-transform: uppercase;}
+.elPopup-form .it-title i {display: block;
+	font-size: 21px; font-weight: 800;}
+.elPopup-form .it-text {font-size: 15px; font-weight: 800;}
+.elPopup-form .it-text b {display: block; margin-bottom: 20px;
+	font-size: 18px; font-weight: 800; color: #2c9ed7;}
+.elPopup-form .it-input {}
+.elPopup-form .it-input input {background: #fff;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	width: 300px; margin-right: -5px; margin-left: 30px; padding: 0 30px;
+	font-size: 14px;
+	height: 40px; line-height: 40px; border: 1px solid #dcdcdc;
+	background: url("../images/elPopup-form-icon-email.jpg");
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+.elPopup-form .it-input button {padding: 0 20px;
+	background: #ff9c00; color: #fff;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	font-size: 15px; text-transform: uppercase;
+	cursor: pointer;
+
+	height: 40px; line-height: 40px;
+	border: none;}
+.engText {padding: 20px 0;}
+.engText .it-title {display: block;1
+	font-size: 20px; font-weight: 400;
+	margin-bottom: 10px;
+	color: #ff8a00; line-height: 26px}
+.engText p {margin-bottom: 10px;}
+
+.errors.feedback-popup-content {text-align: center; padding: 23px 20px;
+	font-size: 16px; color: #ff9a00;
+	background: url(/css/../images/elPopup-form.jpg);
+	background-size: cover;
+	border: 4px solid #faa623;}
