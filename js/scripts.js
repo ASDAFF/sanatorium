@@ -701,7 +701,10 @@ var FullCatalog = {
 		setTimeout(this.showPopup, this.delay);
 	},
 	showPopup: function() {
-		FullCatalog.popup.show();
+        $.fancybox.open(FullCatalog.popup); //Выводим
+		//FullCatalog.popup.show();
+
+		//$.fancybox.close(); // Закрываем
 	},
 	setCookie: function () {
 		/*var d = new Date();
