@@ -91,7 +91,7 @@ class Feedback
                 CURLOPT_POSTFIELDS =>
                     'source=' . urlencode('Добавление вопроса') .
                     '&u_name=' . urlencode($name) .
-                    '&u_email=' . urlencode(empty($email) ? 'test@email.ru' : $email) .
+                    (empty($email) ? '' : '&u_email=' . urlencode($email)) .
                     '&u_phone=' . urlencode($phone) .
                     '&u_note=' . urlencode($text) .
                     '&note=' . urlencode(($call ? 'Просьба перезвонить' . PHP_EOL : '') . ($mail ? 'Просьба ответить по E-mail' . PHP_EOL : ''))
@@ -182,7 +182,7 @@ class Feedback
                     'source=' . urlencode('Заказ звонка') .
                     '&u_name=' . urlencode($name) .
                     '&u_phone=' . urlencode($phone) .
-                    '&u_email=' . urlencode('test@email.ru')
+                    //'&u_email=' . urlencode('test@email.ru')
             ));
             curl_exec($curl);
             curl_close($curl);

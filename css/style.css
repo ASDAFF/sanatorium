@@ -6199,3 +6199,13 @@ body .menu_parent:after {
 	background: url(/css/../images/elPopup-form.jpg);
 	background-size: cover;
 	border: 4px solid #faa623;}
+
+
+.elPriceDocumentBtn {position: relative; padding-left: 30px;
+    font-weight: 400; color: #ff9c00;
+   }
+.elPriceDocumentBtn:before {content: ''; position: absolute; left: 0; top: -2px;
+ 	width: 23px; height: 23px;
+    background-image: url(/css/../images/engSpriter.png);
+	background-position: -375px -43px;}
+.elPriceDocumentBtn a { text-decoration: underline;}

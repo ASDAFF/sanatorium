@@ -68,7 +68,7 @@ $APPLICATION->SetTitle("Title");
         <div class="it-title">Выберите санаторий для отдыха и лечения</div>
         <div class="elSanRecreation-list">
         <a href="/sanatorium/essentuki/" class="it-item">
-            <div class="it-img"><img src="http://san.support-kmv.ru/upload/iblock/462/462b14535dff2b517eb5435a0f5179d3.jpg"></div>
+            <div class="it-img"><img src="/images/elSanRecreation-ese.jpg"></div>
             <div class="it-text eng-animations">
                 <b>Санатории Ессентуков</b>
                 <span>КМВ, Ессентуки</span>
@@ -77,7 +77,7 @@ $APPLICATION->SetTitle("Title");
             <div class="it-money"><b>от 1310 р.</b><span>СУТКИ</span></div>
         </a>
         <a href="/sanatorium/zheleznovodsk/" class="it-item">
-            <div class="it-img"><img src="http://san.support-kmv.ru/upload/iblock/a50/a50f715df16ac4138a4addc308bf0859.jpg"></div>
+            <div class="it-img"><img src="/images/elSanRecreation-jel.jpg"></div>
             <div class="it-text eng-animations">
                 <b>Санатории Железноводска</b>
                 <span>КМВ, Железноводск</span>
@@ -86,7 +86,7 @@ $APPLICATION->SetTitle("Title");
             <div class="it-money"><b>от 1410 р.</b><span>СУТКИ</span></div>
         </a>
         <a href="/sanatorium/kislovodsk/" class="it-item">
-            <div class="it-img"><img src="http://san.support-kmv.ru/upload/iblock/179/179ff5ffb60110e2da7ce3847133ad76.jpg"></div>
+            <div class="it-img"><img src="/images/elSanRecreation-kis.jpg"></div>
             <div class="it-text eng-animations">
                 <b>Санатории Кисловодска</b>
                 <span>КМВ, Кисловодск</span>
@@ -95,7 +95,7 @@ $APPLICATION->SetTitle("Title");
             <div class="it-money"><b>от 1490 р.</b><span>СУТКИ</span></div>
         </a>
         <a href="/sanatorium/pyatigorsk/" class="it-item">
-            <div class="it-img"><img src="http://san.support-kmv.ru/upload/iblock/098/09876fa50f2a373eff117c4c7e16f0ca.jpg"></div>
+            <div class="it-img"><img src="/images/elSanRecreation-pyat.jpg"></div>
             <div class="it-text eng-animations">
                 <b>Санатории Пятигорска</b>
                 <span>КМВ, Пятигорск</span>

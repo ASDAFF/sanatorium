@@ -247,12 +247,38 @@ $currentTab = $tabs[$tabCode];
             <form method="POST" id="formx" eng-form="bron" action="javascript:void(null);">
                 <div class="controlgroup mobile" style="color: #505050;">
                     <div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
-                    <input type="text" name="name" placeholder="Введите имя *"
-                           autocomplete="off" class="icon-user" required />
-                    <div class="engInputLog" eng-input="name"></div>
-                    <input type="text" name="phone" placeholder="Введите номер телефона *"
-                           autocomplete="off" class="icon-phone2" required />
-                    <div class="engInputLog" eng-input="phone"></div>
+
+                    <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
+                    <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
+
+                    <div style="margin-top: 5px; ">
+                        <div style="float: right;">
+                            <select id="car-type" name="adults" class="input-right">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div style=" padding: 4px 8px;">Взрослых</div>
+                    </div>
+                    <br>
+                    <div style="margin-bottom: 15px;">
+                        <div style="float: right">
+                            <select id="car-type2" name="child" class="input-right">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div style="padding: 4px 8px;">Детей</div>
+                    </div>
+
                     <select id="car-type3" name="room" class="input-right icon-key">
                         <option value="0">Выберите номер</option><?
                         foreach ($product['ROOMS'] as $room)
@@ -263,35 +289,21 @@ $currentTab = $tabs[$tabCode];
                         ?>
                     </select>
                     <br><br>
-                    <div style="margin-top: 30px; ">
-                        <div style="float: right;">
-                            <select id="car-type" name="adults" class="input-right">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-								<option>4</option>
-								<option>5</option>
-                            </select>
-                        </div>
-                        <div style=" padding: 4px 8px;">Взрослых</div>
-                    </div>
-                    <br>
-                    <div>
-                        <div style="float: right">
-                            <select id="car-type2" name="child" class="input-right">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-								<option>5</option>
-                            </select>
-                        </div>
-                        <div style="padding: 4px 8px;">Детей</div>
-                    </div>
-                    <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
-                    <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
+
+                    <div class="engInputLog" eng-input="name"></div>
+                    <input type="text" name="name" placeholder="Введите имя *"
+                           autocomplete="off" class="icon-user" required />
+
+                    <div class="engInputLog" eng-input="phone"></div>
+                    <input type="text" name="phone" placeholder="Введите номер телефона *"
+                           autocomplete="off" class="icon-phone2" required />
+
+
+
+
+
+
+
                     <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                     <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
                     <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">

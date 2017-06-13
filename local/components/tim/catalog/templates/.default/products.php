@@ -81,6 +81,7 @@ $noFilters = count($component->filter['SEO']['PARTS']) == 0;
             санаториев на странице
         </div>
 		<div class="filtr">
+            <a href="/sanatorium/"><span class="filtr-ttl"><b style="color:#000;">Удалить параметры фильтра:</b></a>
 			<?= $component->countTitle ?>:<?
 			foreach ($filter['CUR_FILTERS'] as $item)
 			{

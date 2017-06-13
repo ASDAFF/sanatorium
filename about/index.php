@@ -381,14 +381,6 @@ $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
                 </table>
             </div>
             <div class="it-right">
-                <table>
-                    <tr><th colspan="2">Руководство</th></tr>
-                    <tr>
-                        <td style="width: 50%;">Директор</td>
-                        <td style="width: 50%;">Тимошенко Владислав Николаевич</td>
-                    </tr>
-                    </tbody>
-                </table>
                 <img src="/images/elAboutBox6-images.jpg">
             </div>
         </div>

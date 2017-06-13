@@ -6,7 +6,13 @@ use Local\System\ExtCache;
  * Class Room Номера санаториев
  * @package Local\Catalog
  */
-class Room
+?>
+<?if(isset($_GET['test'])):?>
+	<div>
+		<div class="elPriceDocumentBtn">Посмотреть цены с учетом сезонности и программы лечения можно <a href="" target="black">здесь</a></div>
+	</div>
+<?endif?>
+<?class Room
 {
 	/**
 	 * Путь для кеширования
@@ -522,7 +528,7 @@ class Room
                     '&date_to=' . urlencode($date_off) .
                     '&u_name=' . urlencode($name) .
                     '&u_phone=' . urlencode($phone) .
-                    '&u_email=' . urlencode('test@email.ru') .
+                    //'&u_email=' . urlencode('test@email.ru') .
                     '&note=' . sprintf(
                         "Санаторий: %s\nНомер: %s\nКол-во взрослых: %s\nКол-во детей: %s\nБесплатный трансфер: %s",
                         $sanName,
