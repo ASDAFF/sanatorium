@@ -83,8 +83,9 @@ class Sanatorium
 
     /**
      * Возвращает санаторий по ID
-     * @param $id
-     */
+	 * @param $id
+	 * @return mixed
+	 */
     public static function getSimpleById($id)
     {
         $all = self::getAll();
@@ -548,6 +549,7 @@ class Sanatorium
                 'PROPERTY_CHILD_TAB',
                 'PROPERTY_VIDEO',
                 'PROPERTY_YMAP',
+                'PROPERTY_PRICE_PDF',
             );
             $rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
             if ($item = $rsItems->GetNext())
@@ -582,6 +584,7 @@ class Sanatorium
                     'FEEDING_TAB' => $item['~PROPERTY_FEEDING_TAB_VALUE']['TEXT'],
                     'CHILD_TAB' => $item['~PROPERTY_CHILD_TAB_VALUE']['TEXT'],
                     'VIDEO' => $item['~PROPERTY_VIDEO_VALUE'],
+                    'PRICE_PDF' => $item['PROPERTY_PRICE_PDF_VALUE'],
                     'CITY' => $city,
                     'PICTURES' => $pictures,
                     'PRODUCT' => $product,
@@ -650,6 +653,16 @@ class Sanatorium
         }
         elseif ($tabCode == 'rooms')
         {
+			if ($sanatorium['PRICE_PDF'])
+			{
+			    $path = \CFile::GetPath($sanatorium['PRICE_PDF']);
+				?>
+                <div>
+                    <div class="elPriceDocumentBtn">Посмотреть цены с учетом сезонности и программы лечения можно <a
+                                href="<?= $path ?>" target="_blank">здесь</a></div>
+                </div><?
+			}
+
 			foreach ($sanatorium['ROOMS'] as $room)
 				Room::printRoom($room, $sanatorium['NAME']);
         }

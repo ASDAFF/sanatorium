@@ -6,13 +6,7 @@ use Local\System\ExtCache;
  * Class Room Номера санаториев
  * @package Local\Catalog
  */
-?>
-<?if(isset($_GET['test'])):?>
-	<div>
-		<div class="elPriceDocumentBtn">Посмотреть цены с учетом сезонности и программы лечения можно <a href="" target="black">здесь</a></div>
-	</div>
-<?endif?>
-<?class Room
+class Room
 {
 	/**
 	 * Путь для кеширования

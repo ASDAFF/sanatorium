@@ -181,7 +181,7 @@ class Feedback
                 CURLOPT_POSTFIELDS =>
                     'source=' . urlencode('Заказ звонка') .
                     '&u_name=' . urlencode($name) .
-                    '&u_phone=' . urlencode($phone) .
+                    '&u_phone=' . urlencode($phone)
                     //'&u_email=' . urlencode('test@email.ru')
             ));
             curl_exec($curl);
