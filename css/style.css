@@ -3037,7 +3037,7 @@ footer {
 .nav-sections {
 	font-size:0;
 	position:absolute;
-	bottom:20px;
+	top:25px;
 	right:10px
 }
 

@@ -23,8 +23,11 @@ if (isset($_COOKIE[$catalog_cookie_name]))
         <b>PDF файла на почту!</b>
     </div>
     <div class="it-input">
-        <input type="text" placeholder="Email">
-        <button>Получить</button>
+        <form method="post" action="<?=SITE_DIR?>ajax/catalog_full.php" class="ajax_catalog_pdf">
+            <input type="text" name="catalog_full_email" required placeholder="Email">
+            <div class="error"></div>
+            <button type="submit">Получить</button>
+        </form>
     </div>
     <div class="it-img"></div>
 </div>

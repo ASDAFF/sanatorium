@@ -692,24 +692,124 @@ var engInputValid = {
 
 var FullCatalog = {
 	delay: 1000,
+	debug: false,
+	debugName: 'FULL_CATALOG_POPUP',
+	timerDelay: 60 * 2, //two minutes
+	showed: false,
+	counterName: 'FULL_CATALOG_POPUP_TIME_LEFT',
 	cn: 'FULL_CATALOG_POPUP_SHOWED',
+	interval: null,
 	init: function () {
 		this.popup = $('#elPopup-form');
 		if (!this.popup.length)
-			return false;
+		{
+            this.debug && console.log(FullCatalog.debugName + ' => is not exists');
+            return false;
+        }
 
-		setTimeout(this.showPopup, this.delay);
+        if(this.debug)
+        	this.timerDelay = 10;
+
+		//setTimeout(this.showPopup, this.delay);
+        this.interval = setInterval(this.showPopup, this.delay);
 	},
 	showPopup: function() {
-        $.fancybox.open(FullCatalog.popup); //Выводим
+
+        FullCatalog.showed = FullCatalog.getCookie(FullCatalog.cn) === true;
+
+        //popup already showed
+		if(FullCatalog.showed)
+		{
+            FullCatalog.debug && console.log(FullCatalog.debugName + ' => already showed');
+            return false;
+        }
+
+		//get elapsed time or null if first run
+		var timeLeft = FullCatalog.getCookie(FullCatalog.counterName)
+
+		//timer already started
+		if(timeLeft)
+		{
+			//time isn't end, wait next step
+			if(--timeLeft)
+			{
+				//set elapsed time to cookie
+                FullCatalog.setCookie(FullCatalog.counterName, timeLeft);
+                FullCatalog.debug && console.log(FullCatalog.debugName + ' => Time --: ' + timeLeft);
+            }
+			else
+			{
+                FullCatalog.debug && console.log(FullCatalog.debugName + ' => Time end');
+                //remove timer, show popup, set cookie showed
+				clearInterval(FullCatalog.interval);
+                $.fancybox.open(FullCatalog.popup); //Выводим
+                FullCatalog.setCookie(FullCatalog.cn, true);
+                FullCatalog.setCookie(FullCatalog.counterName, '', -1);
+
+                $('.ajax_catalog_pdf').on('submit', function(e){
+                	e.preventDefault();
+                	var _form = $(this),
+						btn = _form.find('button, input[type="submit"]').get(0);
+                	BX.showWait(btn)
+                	$.post(_form.attr('action'), _form.serialize(), function(ans) {
+                		if(ans.errors)
+						{
+							for(var inp in ans.errors)
+							{
+                                _form.find('[name="' + inp + '"]').css({'border': '1px solid red'})
+									.parent().find('.error').html(ans.errors[inp]);
+							}
+						}
+						else
+						{
+							_form.find('input, textarea, select').css({'border': '1px solid #dcdcdc'});
+							_form.find('.error').empty();
+						}
+						$.fancybox.close();
+                        $.fancybox.open('<div class="success">Сообщение успешно отправлено</div>');
+                        BX.closeWait(btn)
+					}, 'json')
+				})
+			}
+		}
+		else
+		{
+            FullCatalog.debug && console.log(FullCatalog.debugName + ' => Time start');
+            //set elapsed time
+            FullCatalog.setCookie(FullCatalog.counterName, FullCatalog.timerDelay)
+		}
+
 		//FullCatalog.popup.show();
 
 		//$.fancybox.close(); // Закрываем
 	},
-	setCookie: function () {
+	setCookie: function (name, value, expires) {
+		if(!expires)
+		{
+            var d = new Date();
+            d.setTime(d.getTime() + 8640000000);
+            expires = d.toUTCString();
+        }
+        document.cookie = name + '=' + value + '; path=/; expires=' + expires;
 		/*var d = new Date();
 		d.setTime(d.getTime() + 8640000000);
 		document.cookie = FullCatalog.cn + "1; path=/; expires=" + d.toUTCString();*/
+	},
+	getCookie: function (name) {
+        var arr = document.cookie.split(';');
+        name += '=';
+        for (var i = 0; i < arr.length; ++i) {
+            var c = arr[i];
+            while (c.charAt(0) == ' ')
+				c = c.substring(1, c.length);
+            if (c.indexOf(name) == 0)
+            	return c.substring(name.length, c.length);
+        }
+        return null;
+    },
+    popupClosed: function() {
+		//@TODO..
+
 	},
 	send: function () {
 		FullCatalog.setCookie();
