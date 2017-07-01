@@ -21,13 +21,14 @@ var Filters = {
 		this.groups = this.panel.find('.filter-group');
 		this.cb = this.panel.find('input[type=checkbox]');
 		this.ajaxCont = $('#catalog-list');
+		this.ajaxHeadCont = $('#catalog-head');
 		this.bcCont = $('#cron-crox');
 		this.h1Cont = $('#cron-title h1');
 
 		this.priceInit();
 
 		this.cb.click(this.checkboxClick);
-		this.ajaxCont.on('click', '#products-summary a', this.urlClick);
+		this.ajaxHeadCont.on('click', '#products-summary a', this.urlClick);
 		this.ajaxCont.on('click', '#pagination a', this.urlClick);
 		this.bcCont.on('click', 'a', this.urlClick);
 		this.groups.find('.title').click(this.toggleGroup);
@@ -142,8 +143,7 @@ var Filters = {
 			'mode': 'ajax'
 		}, function (resp) {
 			Filters.ajaxCont.html(resp.HTML);
-			Filters.bcCont.html(resp.BC);
-			Filters.h1Cont.html(resp.H1);
+			Filters.ajaxHeadCont.html(resp.HEAD);
 			for (var i in resp.FILTERS) {
 				if (i == 'PRICE') {
 					Filters.priceCorrect(resp.FILTERS[i]);

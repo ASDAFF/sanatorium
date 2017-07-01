@@ -20,10 +20,10 @@ include('products.php');
 $result['HTML'] = ob_get_contents();
 ob_end_clean();
 
-// Хлебные крошки
+// Заголовок
 ob_start();
-include('bc.php');
-$result['BC'] = ob_get_contents();
+include('head.php');
+$result['HEAD'] = ob_get_contents();
 ob_end_clean();
 
 // Поисковый запрос
@@ -39,13 +39,15 @@ foreach ($filter['GROUPS'] as $group)
 {
 	if ($group['TYPE'] == 'price')
 	{
-		$from = $group['FROM'] ? $group['FROM'] : $group['MIN'];
-		$to = $group['TO'] ? $group['TO'] : $group['MAX'];
+		$min = 0;
+		$max = $group['MAX'];
+		$from = $group['FROM'] ? $group['FROM'] : $min;
+		$to = $group['TO'] ? $group['TO'] : $max;
 		$result['FILTERS']['PRICE'] = array(
 			'FROM' => $from,
 			'TO' => $to,
-			'MIN' => $group['MIN'],
-			'MAX' => $group['MAX'],
+			'MIN' => $min,
+			'MAX' => $max,
 		);
 	}
 	else

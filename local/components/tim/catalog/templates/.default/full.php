@@ -12,10 +12,13 @@ $filter = $component->filter;
 $products = $component->products['ITEMS'];
 
 ?>
-    <div class="el-full-bg" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-        <div class="el-search engBox-body" style="height: 60px;">
-            <div class="title title-bg" style="padding: 7px 20px 0;">Выберите санаторий по своему вкусу</div>
-        </div>
+    <div id="catalog-head"><?
+
+		//=========================================================
+		include('head.php');
+		//=========================================================
+
+		?>
     </div>
 
     <div class="el-search-select engBox-body" id="el-search-select">

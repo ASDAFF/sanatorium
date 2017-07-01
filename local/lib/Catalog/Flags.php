@@ -65,6 +65,16 @@ class Flags
 				'NAME' => 'Всё включено',
 				'PREDL' => '"всё включено"',
 			),
+			'radon' => array(
+				'CODE' => 'RADON',
+				'NAME' => 'С радоном',
+				'PREDL' => 'с радоном',
+			),
+			'swedish' => array(
+				'CODE' => 'SWEDISH',
+				'NAME' => 'Шведский стол',
+				'PREDL' => 'с шведским столом',
+			),
 			'wot' => array(
 				'CODE' => 'WITHOUT_TREATMENT',
 				'NAME' => 'Без лечения',
