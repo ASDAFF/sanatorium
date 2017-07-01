@@ -5,8 +5,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @global CMain $APPLICATION */
 /** @var array $arParams */
 
-if ($_GET['test'] != 'test')
-    return;
+//if ($_GET['test'] != 'test')
+//    return;
 
 $catalog_cookie_name = 'FULL_CATALOG_POPUP_SHOWED';
 if (isset($_COOKIE[$catalog_cookie_name]))

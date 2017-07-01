@@ -13,7 +13,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
     $assets = \Bitrix\Main\Page\Asset::getInstance();
 
-	 CJSCore::init(array('jquery2'));
+	 CJSCore::init(array('fx', 'jquery2'));
 
 	$assets->addJs(SITE_DIR . 'js/jquery-ui/jquery-ui.min.js');
     $assets->addJs(SITE_DIR . 'js/fancybox/jquery.fancybox.js');

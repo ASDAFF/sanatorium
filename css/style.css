@@ -3204,8 +3204,9 @@ ul.bl {
 }
 
 .title-sm {
-	color:#fff;
-	font-size:24px;
+	color: rgb(254, 138, 0);
+    font-size: 24px;
+    text-shadow: 0 0 14px #fff;
 	display:block;
 	padding-bottom:10px;
 	padding-bottom:18px;

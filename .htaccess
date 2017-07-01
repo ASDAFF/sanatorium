@@ -17,12 +17,18 @@ RewriteRule ^index\.php$ http://putevochka.com/ [R=301,L]
 RewriteCond %{HTTP_HOST} !^putevochka\.com$ [NC]
 RewriteRule ^(.*)$ http://putevochka.com/$1 [L,R=301]
 
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule ^bitrix/catalog_export/export\.[xy]ml$ /bitrix/catalog_export/export.php [L,QSA]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
   RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
   RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
 </IfModule>
 
 <IfModule mod_dir.c>
