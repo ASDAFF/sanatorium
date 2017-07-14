@@ -22,7 +22,10 @@ $citiesData = [
 		?>
 		<div id="cron-title"><h1><? $APPLICATION->ShowTitle(false); ?></h1></div>
 	</div>
-</div>
+</div><?
+
+/*
+?>
 <div class="elMaps">
     <div class="engBox-body">
         <div class="it-title">Санатории Кавказских Минеральных Вод</div>
@@ -35,7 +38,9 @@ $citiesData = [
             </p>
         </div>
     </div>
-</div>
+</div><?
+*/
+?>
 <div class="elMapsMenu"><?
 
 	$active = $_REQUEST['city'] ? '' : ' class="active"';
