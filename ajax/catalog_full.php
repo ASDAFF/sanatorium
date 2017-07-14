@@ -32,8 +32,16 @@ $fileId = CFile::SaveFile(
 
 $fileId = 6572;
 
+\Bitrix\Main\Loader::includeModule('iblock');
+$el = new CIBlockElement();
+$added = (bool) $el->add(array(
+    'IBLOCK_ID' => 31,
+    'ACTIVE' => 'N',
+    'NAME' => $email
+));
+
 echo json_encode(
-    \CEvent::Send('SAN_CATALOG', 's1', array('SEND_TO' => $_POST['catalog_full_email']), 'N', '', array($fileId))
+    $added && \CEvent::Send('SAN_CATALOG', 's1', array('SEND_TO' => $_POST['catalog_full_email']), 'N', '', array($fileId))
     ? 'Сообщение успешно отправлено'
     : 'Произошла ошибка при отправке сообщения'
 );

@@ -850,4 +850,128 @@ jQuery(document).ready(function () {
 
 	engInputValid.init();
 	FullCatalog.init();
+	
+    _tabs.init(); /* Табы
+	 ._tabs-nav : Стиль меню >li>a id ='val'
+	 ._tabs : Табы переключения div id ='val'
+	 */
 });
+
+
+var _tabs = {
+    init: function () {
+        this.tabs = $('._tabs');
+        this.tabsNav = $('._tabs-nav');
+        this.tabsContent = $('._tabs-content');
+
+        this.tabsNav_ar = this.tabsNav.find('a');
+        this.tabsContent_ar = this.tabsContent.find('._tab');
+
+        _tabs.load();
+
+        this.tabsNav_ar.each(function(index, element){
+            $(element).on('click', _tabs.click);
+        });
+    },
+    load: function () {
+        _tabs.tabs.each(function(index, element){
+            $(element).attr('_tabs-data-id',index);
+
+            $(element).find('._tab').removeClass('active');
+
+            if($(element).find('a.active').length !== Number(1)){
+                $(element).find('a').removeClass('active');
+                $(element).find('a').filter(':first').addClass('active');
+            }
+
+            var id = $(element).find('a.active').attr('href');
+            $(element).find('._tab'+id).addClass('active');
+        });
+    },
+    click: function (e){
+        e.preventDefault();
+        var id = $(this).attr("href"),
+            tab = _tabs.tabsContent.find(id),
+            tabs = tab.parents('._tabs[_tabs-data-id]');
+
+        _tabs.update(tabs);
+
+        $(this).addClass('active');
+        tab.addClass('active');
+
+    },
+    update: function (_this) {
+        _this.find('._tabs-nav a').removeClass('active');
+        _this.find('._tabs-content ._tab').removeClass('active');
+    }
+};
+// Карты
+function YaMap(){
+
+    var arPoints = {
+        p1: {
+            coords: [55.7649, 37.63836],
+            img: '/upload/resize_cache/iblock/dc5/261_1000_1/dc5b5209274c28fd5127592ae3190bb3.jpg',
+            name: 'Санаторий солнечный',
+            map: 'КМВ, Кисловодск',
+            price: '300 р.'
+        },
+        p2: {
+            coords: [55.7680, 37.64080],
+            img: '/upload/resize_cache/iblock/dc5/261_1000_1/dc5b5209274c28fd5127592ae3190bb3.jpg',
+            name: 'Санаторий солнечный',
+            map: 'КМВ, Кисловодск',
+            price: '5000 р.'
+        }
+    };
+
+    // Создаем карту
+    var YandexMaps = new ymaps.Map("map", {
+        center: [55.7652, 37.63836],
+        zoom: 15,
+        controls: []
+    });
+    YandexMaps.behaviors.disable('scrollZoom');
+    YandexMaps.controls.add("zoomControl", {
+        position: {top: 15, left: 15}
+    });
+
+    var myPlacemark = {};
+    //Перебераем масив и добавляем параметры
+    for (var i in arPoints) {
+        var html = ('' +
+        '<div class="info-map">' +
+        '<div class="img"><img src="'+arPoints[i].img+'"></div>' +
+        '<div class="name">'+arPoints[i].name+'</div>' +
+        '<div class="map">'+arPoints[i].map+'</div>' +
+        '<div class="footer">' +
+        '<div class="left">' +
+        '<div class="price">сутки <br><b>от '+arPoints[i].price+'</b></div>' +
+        '</div>' +
+        '<div class="right">' +
+        '<a href="" class="btn">Подробнее</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>');
+
+        myPlacemark[i] = new ymaps.Placemark([arPoints[i].coords[0], arPoints[i].coords[1]],
+            {balloonContent: html},
+            {
+                iconLayout: 'default#image',
+                iconImageHref: '/images/YandexMap-point.png',
+                iconImageSize: [27, 39],
+                iconImageOffset: [-20, -47],
+                balloonLayout: "default#imageWithContent",
+                balloonContentSize: [289, 151],
+                balloonImageHref: '/images/YandexMap-point.png',
+                balloonImageSize: [27, 39],
+                balloonImageOffset: [-20, -47],
+                balloonShadow: false
+            });
+
+        YandexMaps.geoObjects.add(myPlacemark[i]);
+        console.log(myPlacemark[i]);
+        console.log(i);
+    }
+
+}

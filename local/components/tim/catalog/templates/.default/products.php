@@ -162,7 +162,7 @@ foreach ($products as $id => $item)
             <div class="money">
                 от <b><?= $item['PRICE'] ?></b> руб
             </div>
-            <span>за номер в сутки</span>
+            <span>за человека в сутки</span>
             <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a>
         </div><?
 

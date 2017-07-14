@@ -21,78 +21,94 @@ $products = $component->products['ITEMS'];
 		?>
     </div>
 
-    <div class="el-search-select engBox-body" id="el-search-select">
-        <div id="filters-panel">
-            <input type="hidden" name="q" value="<?= $component->searchQuery ?>">
-            <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
-            <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
+    <section class="elCatalog -filter el-search-select engBox-body" id="el-search-select">
+            <div class="container" id="filters-panel">
 
-	        $cookie_name = $component->searchQuery ? 'filter_groups_search' : 'filter_groups';
+                <input type="hidden" name="q" value="<?= $component->searchQuery ?>">
+                <input type="hidden" name="catalog_path" value="<?= $filter['CATALOG_PATH'] ?>">
+                <input type="hidden" name="separator" value="<?= $filter['SEPARATOR'] ?>"><?
 
-	        $closed = array(0, 1, 1, 1, 1, 0);
-	        if (isset($_COOKIE[$cookie_name]))
-		        $closed = explode(',', $_COOKIE[$cookie_name]);
+                $cookie_name = $component->searchQuery ? 'filter_groups_search' : 'filter_groups';
 
-            $i = 0;
-            foreach ($filter['GROUPS'] as $group)
-            {
-	            $style = $closed[$i] ? '' : ' style="display:block;"';
-	            $class = $closed[$i] ? ' closed' : '';
+                $closed = array(0, 1, 1, 1, 1, 0);
+                if (isset($_COOKIE[$cookie_name]))
+                    $closed = explode(',', $_COOKIE[$cookie_name]);
                 ?>
-                <div class="filter-group<?= $class ?>">
-	                <div class="title"><?= $group['NAME'] ?><s></s></div>
-	                <fieldset class="profiles"<?= $style ?>><?
 
-		                if ($group['TYPE'] == 'price')
-		                {
-			                $priceMax = ceil($group['MAX'] / 100) * 100;
-			                $from = $group['FROM'] ? $group['FROM'] : 0;
-			                $to = $group['TO'] ? $group['TO'] : $priceMax;
-							?>
-			                <div class="price-range">
-				                <span class="price-range-value" id="ext-from"><?= $from ?></span>
-				                <div id="slider-range-ext" data-max="<?= $priceMax ?>"></div>
-				                <span class="price-range-value" id="ext-to"><?= $to ?></span>
-			                </div><?
-		                }
-		                else
-		                {
-			                foreach ($group['ITEMS'] as $code => $item)
-			                {
-				                $style = $item['ALL_CNT'] ? '' : ' style="display:none;"';
-				                $class = '';
-				                if (!$item['CNT'] && $item['CHECKED'])
-					                $class = ' class="checked disabled"';
-				                elseif ($item['CHECKED'])
-					                $class = ' class="checked"';
-				                elseif (!$item['CNT'])
-					                $class = ' class="disabled"';
-				                $checked = $item['CHECKED'] ? ' checked' : '';
-				                $disabled = $item['CNT'] ? '' : ' disabled';
+                <div class="_tabs">
+                    <ul class="_tabs-nav">
+                        <?
+                        $i = 0;
+                        foreach ($filter['GROUPS'] as $group) {
+                        ?>
+                        <li><a href="#elCatalog-filter-<?=$i?>"><span><?= $group['NAME'] ?></span></a></li>
+                        <?
+                            $i++; }
+                        ?>
+                    </ul>
+                    <div class="_tabs-content css-padding">
+                        <?
+                        $i = 0;
+                        foreach ($filter['GROUPS'] as $group)
+                        {
+                            $style = $closed[$i] ? '' : ' style="display:block;"';
+                            $class = $closed[$i] ? ' closed' : '';
+                        ?>
+                        <div class="_tab _animated -bounceIn fadeInDown" id="elCatalog-filter-<?=$i?>">
+                            <div class="filter-group<?= $class ?>">
+                                <fieldset class="profiles">
+                                    <?
+                                    if ($group['TYPE'] == 'price')
+                                    {
+                                        $priceMax = ceil($group['MAX'] / 100) * 100;
+                                        $from = $group['FROM'] ? $group['FROM'] : 0;
+                                        $to = $group['TO'] ? $group['TO'] : $priceMax;
+                                        ?>
+                                        <div class="price-range">
+                                        <span class="price-range-value" id="ext-from"><?= $from ?></span>
+                                        <div id="slider-range-ext" data-max="<?= $priceMax ?>"></div>
+                                        <span class="price-range-value" id="ext-to"><?= $to ?></span>
+                                        </div><?
+                                    }
+                                    else
+                                    {
+                                        foreach ($group['ITEMS'] as $code => $item)
+                                        {
+                                            $style = $item['ALL_CNT'] ? '' : ' style="display:none;"';
+                                            $class = '';
+                                            if (!$item['CNT'] && $item['CHECKED'])
+                                                $class = ' class="checked disabled"';
+                                            elseif ($item['CHECKED'])
+                                                $class = ' class="checked"';
+                                            elseif (!$item['CNT'])
+                                                $class = ' class="disabled"';
+                                            $checked = $item['CHECKED'] ? ' checked' : '';
+                                            $disabled = $item['CNT'] ? '' : ' disabled';
 
-				                ?>
-				                <b></b><label>
-					                <input class="el-search-dop-input" type="checkbox"
-					                       name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
-					                <?= $item['NAME'] ?> (<i><?= $item['CNT'] ?></i>)
-				                </label>
-				                <?
-			                }
-		                }
+                                            ?>
+                                            <b></b><label>
+                                            <input class="el-search-dop-input" type="checkbox"
+                                                   name="<?= $code ?>"<?= $checked ?><?= $disabled ?> />
+                                            <?= $item['NAME'] ?> (<i><?= $item['CNT'] ?></i>)
+                                        </label>
+                                            <?
+                                        }
+                                    }
 
-	                    ?>
-	                </fieldset>
-	            </div><?
+                                    ?>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <?
+                            $i++;
+                        }
+                        ?>
+                    </div>
+                </div>
+        </section>
 
-                $i++;
-            }
-            ?>
-        </div><?
-
-        ?>
 
 
-    </div>
     <div id="catalog-list"><?
 
         //=========================================================

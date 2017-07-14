@@ -22,6 +22,11 @@ RewriteRule ^(.*)$ http://putevochka.com/$1 [L,R=301]
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule ^bitrix/catalog_export/export\.[xy]ml$ /bitrix/catalog_export/export.php [L,QSA]
 
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule ^bitrix/catalog_export/export_card\.[xy]ml$ /bitrix/catalog_export/export_card.php [L,QSA]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteCond %{REQUEST_FILENAME} !-d

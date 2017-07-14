@@ -14,7 +14,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
                 </div>
                 <div class="it-video-body" style="background-image: url('/images/elIndexVideo-1.jpg">
                     <div class="it-video-body-stab">
-                        <div class="it-text">О сервисе бронирования</div>
+                        <div class="it-text"><span>О сервисе бронирования</span></div>
                         <div class="it-play elIndexVideo_play"></div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
                 </div>
                 <div class="it-video-body" style="background-image: url('/images/elIndexVideo-2.jpg');">
                     <div class="it-video-body-stab">
-                        <div class="it-text">Ваши выгоды покупки</div>
+                        <div class="it-text"><span>Ваши выгоды покупки</span></div>
                         <div class="it-play elIndexVideo_play"></div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
                 </div>
                 <div class="it-video-body" style="background-image: url('/images/elIndexVideo-3.jpg');">
                     <div class="it-video-body-stab">
-                        <div class="it-text">Отзыв о сервисе</div>
+                        <div class="it-text"><span>Отзыв о сервисе</span></div>
                         <div class="it-play elIndexVideo_play"></div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
                 </div>
                 <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/lN4UeTJ4Xpg/sddefault.jpg');">
                     <div class="it-video-body-stab">
-                        <div class="it-text">Отзыв о сервисе</div>
+                        <div class="it-text"><span>Отзыв о сервисе</span></div>
                         <div class="it-play elIndexVideo_play"></div>
                     </div>
                 </div>
