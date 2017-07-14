@@ -6392,6 +6392,7 @@ body .menu_parent:after {
 	background: #f0f0f0;
 	z-index: -1;}
 
+.elMapsMenu .left a {color: #fff;}
 .elMapsMenu .right a {display: inline-block; margin: 0 35px; color: #2c9ed7;}
 .elMapsMenu .right a:hover {color: #00A8EF;}
 

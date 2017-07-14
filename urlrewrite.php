@@ -133,6 +133,12 @@ $arUrlRewrite = array(
 		"PATH" => "/action/index.php",
 	),
 	array(
+		"CONDITION" => "#^/maps/(.*)/(.*)#",
+		"RULE" => "city=\$1",
+		"ID" => "",
+		"PATH" => "/maps/index.php",
+	),
+	array(
 		"CONDITION" => "#^/price/(.*)/(.*)#",
 		"RULE" => "city=\$1",
 		"ID" => "",

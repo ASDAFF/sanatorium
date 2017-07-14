@@ -399,6 +399,7 @@ class Sanatorium
                 'PROPERTY_DISTANCE',
                 'PROPERTY_ROOMS_COUNT',
                 'PROPERTY_RATING',
+                'PROPERTY_YMAP',
             ));
             while ($item = $rsItems->GetNext()) {
                 $product = self::getSimpleById($item['ID']);
@@ -418,6 +419,7 @@ class Sanatorium
                 $product['PREVIEW_PICTURE'] = $item['PREVIEW_PICTURE'];
                 $product['DISTANCE'] = $item['PROPERTY_DISTANCE_VALUE'];
                 $product['ROOMS_COUNT'] = $item['PROPERTY_ROOMS_COUNT_VALUE'];
+                $product['YMAP'] = $item['PROPERTY_YMAP_VALUE'];
                 $product['RATING'] = round($item['PROPERTY_RATING_VALUE'] / 2) / 10;
 
                 $return['ITEMS'][$item['ID']] = $product;

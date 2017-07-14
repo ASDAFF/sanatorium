@@ -850,7 +850,8 @@ jQuery(document).ready(function () {
 
 	engInputValid.init();
 	FullCatalog.init();
-	
+	YaMap.init();
+
     _tabs.init(); /* Табы
 	 ._tabs-nav : Стиль меню >li>a id ='val'
 	 ._tabs : Табы переключения div id ='val'
@@ -906,72 +907,119 @@ var _tabs = {
     }
 };
 // Карты
-function YaMap(){
 
-    var arPoints = {
-        p1: {
-            coords: [55.7649, 37.63836],
-            img: '/upload/resize_cache/iblock/dc5/261_1000_1/dc5b5209274c28fd5127592ae3190bb3.jpg',
-            name: 'Санаторий солнечный',
-            map: 'КМВ, Кисловодск',
-            price: '300 р.'
-        },
-        p2: {
-            coords: [55.7680, 37.64080],
-            img: '/upload/resize_cache/iblock/dc5/261_1000_1/dc5b5209274c28fd5127592ae3190bb3.jpg',
-            name: 'Санаторий солнечный',
-            map: 'КМВ, Кисловодск',
-            price: '5000 р.'
-        }
-    };
+var YaMap = {
+	init: function() {
+		this.mapCont = $('#map');
+		if (!this.mapCont.length)
+			return;
 
-    // Создаем карту
-    var YandexMaps = new ymaps.Map("map", {
-        center: [55.7652, 37.63836],
-        zoom: 15,
-        controls: []
-    });
-    YandexMaps.behaviors.disable('scrollZoom');
-    YandexMaps.controls.add("zoomControl", {
-        position: {top: 15, left: 15}
-    });
+		this.titleCont = $('#cron-title h1');
+		this.bcCont = $('#cron-crox');
 
-    var myPlacemark = {};
-    //Перебераем масив и добавляем параметры
-    for (var i in arPoints) {
-        var html = ('' +
-        '<div class="info-map">' +
-        '<div class="img"><img src="'+arPoints[i].img+'"></div>' +
-        '<div class="name">'+arPoints[i].name+'</div>' +
-        '<div class="map">'+arPoints[i].map+'</div>' +
-        '<div class="footer">' +
-        '<div class="left">' +
-        '<div class="price">сутки <br><b>от '+arPoints[i].price+'</b></div>' +
-        '</div>' +
-        '<div class="right">' +
-        '<a href="" class="btn">Подробнее</a>' +
-        '</div>' +
-        '</div>' +
-        '</div>');
+		ymaps.ready(this.ready);
+		$('.elMapsMenu a').click(this.aClick);
+		this.bcCont.on('click', 'a', this.bcClick);
 
-        myPlacemark[i] = new ymaps.Placemark([arPoints[i].coords[0], arPoints[i].coords[1]],
-            {balloonContent: html},
-            {
-                iconLayout: 'default#image',
-                iconImageHref: '/images/YandexMap-point.png',
-                iconImageSize: [27, 39],
-                iconImageOffset: [-20, -47],
-                balloonLayout: "default#imageWithContent",
-                balloonContentSize: [289, 151],
-                balloonImageHref: '/images/YandexMap-point.png',
-                balloonImageSize: [27, 39],
-                balloonImageOffset: [-20, -47],
-                balloonShadow: false
-            });
+		$(window).on('popstate', function (e) {
+			var url = e.target.location;
+			YaMap.changeCity(url, false);
+		});
+	},
+    ready: function() {
+		//console.log(mapPM);
+		YaMap.map = new ymaps.Map('map', {
+			center: [55.7652, 37.63836],
+			zoom: 15,
+			controls: []
+		});
+		YaMap.map.behaviors.disable('scrollZoom');
+		YaMap.map.controls.add("zoomControl", {
+			position: {top: 15, left: 15}
+		});
+		YaMap.map.events.add('click', function() {
+			YaMap.map.balloon.close();
+		});
 
-        YandexMaps.geoObjects.add(myPlacemark[i]);
-        console.log(myPlacemark[i]);
-        console.log(i);
-    }
+		YaMap.showPoints();
+	},
+	aClick: function() {
+		if ($(this).hasClass('active'))
+			return false;
 
-}
+		var url = $(this).attr('href');
+		$('.elMapsMenu a.active').removeClass('active');
+		$(this).addClass('active');
+		YaMap.changeCity(url, true);
+		return false;
+	},
+	bcClick: function() {
+		var url = $(this).attr('href');
+		if (url != '/') {
+			YaMap.changeCity(url, true);
+			return false;
+		}
+	},
+	changeCity: function(url, setHistory) {
+		var parts = url.split('/');
+		var city = citiesData[0];
+		if (parts[2]) {
+			city = citiesData[parts[2]];
+			cityCode = parts[2]
+		}
+		else
+			cityCode = '';
+		document.title = city.TITLE;
+		YaMap.titleCont.html(city.TITLE);
+		YaMap.bcCont.html(city.BC);
+		if (setHistory)
+			history.pushState('', city.TITLE, url);
+
+		YaMap.showPoints();
+	},
+	showPoints: function () {
+		YaMap.map.geoObjects.removeAll();
+		for (var city in mapPM) {
+			if (city === cityCode || cityCode === '') {
+				var ar = mapPM[city];
+				for (var i in ar) {
+					var item = ar[i];
+					var html = ('' +
+					'<div class="info-map">' +
+					'<div class="img"><img src="' + item.img + '"></div>' +
+					'<div class="name">' + item.name + '</div>' +
+					'<div class="map">' + item.map + '</div>' +
+					'<div class="footer">' +
+					'<div class="left">' +
+					'<div class="price">сутки <br><b>от ' + item.price + '</b></div>' +
+					'</div>' +
+					'<div class="right">' +
+					'<a href="' + item.url + '" class="btn">Подробнее</a>' +
+					'</div>' +
+					'</div>' +
+					'</div>');
+
+					var pm = new ymaps.Placemark(
+						[item.x, item.y],
+						{balloonContent: html},
+						{
+							iconLayout: 'default#image',
+							iconImageHref: '/images/YandexMap-point.png',
+							iconImageSize: [27, 39],
+							iconImageOffset: [-20, -47],
+							balloonLayout: "default#imageWithContent",
+							balloonContentSize: [289, 151],
+							balloonImageHref: '/images/YandexMap-point.png',
+							balloonImageSize: [27, 39],
+							balloonImageOffset: [-20, -47],
+							balloonShadow: false
+						}
+					);
+
+					YaMap.map.geoObjects.add(pm);
+				}
+			}
+		}
+		YaMap.map.setBounds(YaMap.map.geoObjects.getBounds());
+	}
+};
