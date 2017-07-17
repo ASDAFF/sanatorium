@@ -313,6 +313,8 @@ class TimCatalog extends \CBitrixComponent
 				$this->seo['DESCRIPTION'] = $this->filter['SEO']['DESCRIPTION'];
 			if (!$this->seo['TEXT'])
 				$this->seo['TEXT'] = $this->filter['SEO']['TEXT'];
+			if (!$this->seo['TEXT1'])
+				$this->seo['TEXT1'] = $this->filter['SEO']['TEXT1'];
 			if (!$this->seo['NOINDEX'])
 				$this->seo['NOINDEX'] = $this->filter['SEO']['NOINDEX'];
 		}

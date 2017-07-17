@@ -602,13 +602,12 @@ class Filter
 		$h1 = $prefix . $name . $city. $suffix;
 		$title = $h1 . $end;
 		$description = $h1;
-		$text = $h1;
 
 		return array(
 			'H1' => $h1,
 			'TITLE' => $title,
 			'DESCRIPTION' => $description,
-			'TEXT' => $text,
+			'TEXT' => '',
 		    'URL' => $href,
 		    'PARTS' => $parts,
 		    'NOINDEX' => $cityCnt > 1 || $othersCnt > 1,

@@ -55,6 +55,7 @@ class Seo
 			    'PROPERTY_DESCRIPTION',
 			    'PROPERTY_H1',
 			    'PROPERTY_TEXT',
+			    'PROPERTY_TEXT1',
 			));
 			if ($item = $rsItems->Fetch())
 			{
@@ -64,6 +65,7 @@ class Seo
 					'DESCRIPTION' => $item['PROPERTY_DESCRIPTION_VALUE'],
 					'H1' => $item['PROPERTY_H1_VALUE'],
 					'TEXT' => $item['PROPERTY_TEXT_VALUE']['TEXT'],
+					'TEXT1' => $item['PROPERTY_TEXT1_VALUE']['TEXT'],
 				);
 			}
 
