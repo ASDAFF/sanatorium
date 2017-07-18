@@ -44,6 +44,7 @@ class Room
 		$select = array(
 			'ID', 'NAME', 'IBLOCK_ID', 'PREVIEW_PICTURE',
 			'PROPERTY_MORE_PHOTO',
+			'PROPERTY_PRICES',
 			'PROPERTY_PRICE',
 			'PROPERTY_PRICE_FULL',
 			'PROPERTY_PRICE_ADD',
@@ -76,6 +77,7 @@ class Room
 				'NAME' => $item['NAME'],
 				'PREVIEW_PICTURE' => $item['PREVIEW_PICTURE'],
 				'PHOTO' => $item['PROPERTY_MORE_PHOTO_VALUE'],
+				'PRICES' => json_decode($item['PROPERTY_PRICES_VALUE']['TEXT'], true),
 				'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
 				'PRICE_ADD' => intval($item['PROPERTY_PRICE_ADD_VALUE']),
 				'PRICE_CHILD' => intval($item['PROPERTY_PRICE_CHILD_VALUE']),

@@ -15,7 +15,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 <div class="el-full-bg2">
     <div id="products-summary" class="el-search-result engBox-body">
         <div id="cron-crox">
-            <a href="/">Главная</a><?
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a href="/" itemprop="url"><span itemprop="title">Главная</span></a></span><?
 			$last = count($component->filter['BC']) - 1;
 			foreach ($component->filter['BC'] as $i => $bc)
 			{
@@ -25,7 +25,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 				}
 				else
 				{
-					?> - <a href="<?= $bc['HREF'] ?>"><?= $bc['NAME'] ?></a><?
+					?> - <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"
+                               itemref="breadcrumb-<?= ($i+2) ?>" id="breadcrumb-<?= ($i+1) ?>"><a itemprop="url" href="<?= $bc['HREF'] ?>"><span itemprop="title"><?= $bc['NAME'] ?></span></a></span><?
 				}
 			}
 			?>

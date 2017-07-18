@@ -641,6 +641,8 @@ class Sanatorium
                     foreach ($group as $item)
                         if ($product[$item['CODE']])
                             $arFields['BODY'] .= ' ' . $item['NAME'];
+
+
             }
         }
 

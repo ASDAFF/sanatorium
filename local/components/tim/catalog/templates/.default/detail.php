@@ -12,6 +12,8 @@ $tabCode = $component->tabCode;
 if (!$tabCode)
 	$tabCode = 'main';
 
+$arYMap = explode(',', $product['YMAP']);
+
 $phone = '8 800 775 2604';
 $siteName = 'Путевочка';
 $tabs = array(
@@ -130,24 +132,29 @@ $currentTab = $tabs[$tabCode];
             </div>
         </div>
         <div id="cron-crox">
-            <a href="/">Главная</a> -
-            <a href="/sanatorium/">Санатории</a> -
-            <a href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><?= $product['CITY']['NAME'] ?></a> -
-            <a class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><?= $product['NAME'] ?></a>
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a itemprop="url" href="/"><span itemprop="title">Главная</span></a></span> -
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" id="breadcrumb-1"><a itemprop="url" href="/sanatorium/"><span itemprop="title">Санатории</span></a></span> -
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-3" id="breadcrumb-2"><a itemprop="url" href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><span itemprop="title"><?= $product['CITY']['NAME'] ?></span></a></span> -
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-4" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
         <div id="cron-title"><h1>Санаторий «<?= $product['NAME'] ?>»<span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
     </div>
 </div>
-<div class="engBox-body page-card">
+<div class="engBox-body page-card" itemscope itemtype="http://schema.org/Hotel">
     <div class="engBox-center">
-    <div id="content"><?
+    <div id="content">
+        <span itemprop="name" style="display:none;"><?= $product['NAME'] ?></span>
+        <span itemprop="priceRange" style="display:none;"><?= $product['PRODUCT']['PRICE'] ?></span>
+        <span itemprop="starRating" style="display:none;"><?= $product['RATING'] ?></span>
+        <span itemprop="latitude" style="display:none;"><?= $arYMap[0] ?></span>
+        <span itemprop="longitude" style="display:none;"><?= $arYMap[1] ?></span><?
 
         //
         // Адрес
         //
         ?>
-        <a href="#map" id="content-top"><?= $product['ADDRESS'] ?></a><?
+        <a href="#map" id="content-top" itemprop="address"><?= $product['ADDRESS'] ?></a><?
 
         //
         // Картинки
@@ -178,7 +185,7 @@ $currentTab = $tabs[$tabCode];
 		    $pics[] = $img;
 	    }
         ?>
-        <div id="sync1" class="owl-carousel"><?
+        <div id="sync1" class="owl-carousel" itemprop="photos"><?
             foreach ($pics as $img)
             {
                 ?>
@@ -336,3 +343,10 @@ $APPLICATION->SetTitle($product['NAME']);
 $APPLICATION->SetPageProperty('title', $currentTab['TITLE']);
 $APPLICATION->SetPageProperty('description', $currentTab['DESCR']);
 $APPLICATION->SetPageProperty('keywords', $currentTab['KW']);
+
+$APPLICATION->SetPageProperty('og_title', $currentTab['TITLE']);
+$APPLICATION->SetPageProperty('og_description', $currentTab['DESCR']);
+$APPLICATION->SetPageProperty('og_url', 'https://putevochka.com' . $APPLICATION->GetCurDir());
+if ($pics[0]['src'])
+    $APPLICATION->SetPageProperty('og_image', 'https://putevochka.com' . $pics[0]['src']);
+$APPLICATION->SetPageProperty('og_type', 'website');

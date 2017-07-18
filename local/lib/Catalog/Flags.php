@@ -85,6 +85,11 @@ class Flags
 				'NAME' => 'Санаторий РЖД',
 				'BASE' => 'Санатории РЖД',
 			),
+			'lowprice' => array(
+				'CODE' => 'LOW_PRICE',
+				'NAME' => 'Дешёвые',
+				'BASE' => 'Дешёвые санатории',
+			),
 		),
 		/*'Особое' => array(
 			'army' => array(

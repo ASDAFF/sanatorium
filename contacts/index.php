@@ -2,30 +2,27 @@
 $APPLICATION->SetTitle("Контакты");?>
 
 	<div id="cron_full" class="head_block">
-		<div id="cron" class="engBox-body">
+		<div id="cron" class="engBox-body"><?
 
-			<div id="cron-crox">
-				<span>Главная</span> -
-				<span>Пятигорск</span> -
-				<a href="">Контакты</a>
-			</div>
+			$APPLICATION->IncludeComponent('bitrix:breadcrumb', '');
+
+            ?>
 			<div id="cron-title"><h1>Контакты</h1></div>
 		</div>
 	</div>
 
 
 	<div class="engBox-body clearfix">
-		<div class="page-contacts">
+		<div class="page-contacts" itemscope itemtype="http://schema.org/Organization">
 			<div class="page-contacts-box">
 				<div class="block-inline-sm">
-					<div class="company-name">ООО туристическая компания "Ладья"</div><br>
+					<div class="company-name" itemprop="name">ООО туристическая компания "Ладья"</div><br>
 					<div class="sm-title"><span class="place-icon"></span>Адрес</div>
-					г. Пятигорск<br>
-					проспект Кирова, 90<br><br>
+                    <span itemprop="address">г. Пятигорск<br>проспект Кирова, 90</span><br><br>
 				</div>
 				<div class="block-inline-sm">
 					<div class="sm-title"><span class="phone-icon"></span>Телефон</div>
-					8(8793)39-17-17, 8 800 775 2604
+                    <span itemprop="telephone">8(8793)39-17-17</span>, <span itemprop="telephone">8 800 775 2604</span>
 				</div>
 			</div>
 			<div class="page-contacts-map">

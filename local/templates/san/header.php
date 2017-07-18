@@ -5,11 +5,12 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 /** @var CMain $APPLICATION */
 
 ?><!doctype html>
-<html lang="<?= LANGUAGE_ID ?>">
+<html lang="<?= LANGUAGE_ID ?>" prefix="og: http://ogp.me/ns#">
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic" rel="stylesheet">
-    <title><? $APPLICATION->ShowTitle(); ?></title><?
+    <title><? $APPLICATION->ShowTitle(); ?></title>
+    <?
 	
     $assets = \Bitrix\Main\Page\Asset::getInstance();
 
@@ -33,6 +34,23 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addCss(SITE_DIR . 'css/media.css');
 	
 	$APPLICATION->ShowHead();
+
+	$APPLICATION->AddBufferContent('showOG');
+
+	function showOG() {
+	    global $APPLICATION;
+
+	    $keys = ['title', 'type', 'description', 'url', 'image'];
+	    foreach ($keys as $key)
+		{
+			$content = $APPLICATION->GetPageProperty('og_' . $key);
+			if ($content)
+			{
+				?>
+                <meta property="og:<?= $key ?>" content="<?= $content ?>" /><?
+			}
+		}
+    }
 
 	// Всю шнягу типа счетчиков, трекеров - сюда:
 	$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_head_bot.php');

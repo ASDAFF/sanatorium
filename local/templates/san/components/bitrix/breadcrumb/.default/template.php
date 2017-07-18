@@ -15,8 +15,10 @@ if ($l > 1)
 		{
 			if ($i < $l)
 			{
+			    $child = $i ? ' itemprop="child"' : '';
 				?>
-				<a href="<?= $item['LINK'] ?>"><?= $item['TITLE'] ?></a> <span class="divider">/</span><?
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"<?= $child ?>
+                      itemref="breadcrumb-<?= ($i+1) ?>" id="breadcrumb-<?= ($i) ?>"><a itemprop="url" href="<?= $item['LINK'] ?>"><span itemprop="title"><?= $item['TITLE'] ?></span></a></span> <span class="divider">/</span><?
 			}
 			else
 			{

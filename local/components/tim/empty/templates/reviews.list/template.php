@@ -20,7 +20,7 @@ if (!$reviews['ITEMS'])
         <div class="title">
             Отзывы
         </div>
-        <div class="elComments-list"><?
+        <div class="elComments-list" itemprop="reviews"><?
 
 	    foreach ($reviews['ITEMS'] as $item)
 	    {
