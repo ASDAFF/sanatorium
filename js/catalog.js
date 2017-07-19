@@ -337,18 +337,18 @@ var Detail = {
 		if (yMapPoint.length < 2)
 			return false;
 
-		this.map = new ymaps.Map("map", {
+		Detail.map = new ymaps.Map("dmap", {
 			center: yMapPoint,
 			zoom: 17
 		});
-		this.pm = new ymaps.Placemark(yMapPoint, {
-			iconContent: '1',
-			balloonContent: 'Балун',
-			hintContent: 'Стандартный значок метки'
+		Detail.pm = new ymaps.Placemark(yMapPoint, {
+			iconContent: '',
+			balloonContent: Detail.productName,
+			hintContent: Detail.productName
 		}, {
 			preset: 'twirl#violetIcon'
 		});
-		this.map.geoObjects.add(this.pm);
+		Detail.map.geoObjects.add(Detail.pm);
 	}
 };
 

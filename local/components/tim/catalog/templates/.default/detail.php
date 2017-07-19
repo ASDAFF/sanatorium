@@ -336,7 +336,7 @@ $APPLICATION->IncludeComponent('tim:empty', 'feedback_form');
 ?>
 
 <script type="text/javascript">var yMapPoint = [<?= $product['YMAP'] ?>]</script>
-<div id="map" style="width:100%; height:300px"></div>
+<div id="dmap" style="width:100%; height:300px"></div>
 
 <?
 $APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
