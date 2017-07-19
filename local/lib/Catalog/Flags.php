@@ -75,10 +75,15 @@ class Flags
 				'NAME' => 'Шведский стол',
 				'PREDL' => 'с шведским столом',
 			),
-			'wot' => array(
+			/*'wot' => array(
 				'CODE' => 'WITHOUT_TREATMENT',
 				'NAME' => 'Без лечения',
 				'PREDL' => 'без лечения',
+			),*/
+			'treatment' => array(
+				'CODE' => 'TREATMENT',
+				'NAME' => 'С лечением',
+				'PREDL' => 'с лечением',
 			),
 			'rzd' => array(
 				'CODE' => 'SPECIAL_RZD',
