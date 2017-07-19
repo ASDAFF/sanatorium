@@ -135,7 +135,7 @@ $currentTab = $tabs[$tabCode];
             <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a itemprop="url" href="/"><span itemprop="title">Главная</span></a></span> -
             <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" id="breadcrumb-1"><a itemprop="url" href="/sanatorium/"><span itemprop="title">Санатории</span></a></span> -
             <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-3" id="breadcrumb-2"><a itemprop="url" href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><span itemprop="title"><?= $product['CITY']['NAME'] ?></span></a></span> -
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-4" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
         <div id="cron-title"><h1>Санаторий «<?= $product['NAME'] ?>»<span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
@@ -151,7 +151,7 @@ $currentTab = $tabs[$tabCode];
         <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
             <meta itemprop="latitude" content="<?= $arYMap[0] ?>" />
             <meta itemprop="longitude" content="<?= $arYMap[1] ?>" />
-        </div>
+        </div><?
 
         //
         // Адрес

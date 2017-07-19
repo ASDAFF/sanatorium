@@ -25,8 +25,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 				}
 				else
 				{
+				    $ref = ($i < $last - 1) ? ' itemref="breadcrumb-' . ($i+2) . '"' : '';
 					?> - <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"
-                               itemref="breadcrumb-<?= ($i+2) ?>" id="breadcrumb-<?= ($i+1) ?>"><a itemprop="url" href="<?= $bc['HREF'] ?>"><span itemprop="title"><?= $bc['NAME'] ?></span></a></span><?
+                               id="breadcrumb-<?= ($i+1) ?>"><a itemprop="url" href="<?= $bc['HREF'] ?>"><span itemprop="title"><?= $bc['NAME'] ?></span></a></span><?
 				}
 			}
 			?>
