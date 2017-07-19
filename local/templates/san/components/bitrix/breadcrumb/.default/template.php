@@ -15,10 +15,11 @@ if ($l > 1)
 		{
 			if ($i < $l)
 			{
-			    $child = $i ? ' itemprop="child"' : '';
+			    $child = ($i) ? ' itemprop="child"' : '';
+			    $ref = ($i < $l - 1) ? ' itemref="breadcrumb-' . ($i+1) . '"' : '';
 				?>
-                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"<?= $child ?>
-                      itemref="breadcrumb-<?= ($i+1) ?>" id="breadcrumb-<?= ($i) ?>"><a itemprop="url" href="<?= $item['LINK'] ?>"><span itemprop="title"><?= $item['TITLE'] ?></span></a></span> <span class="divider">/</span><?
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"<?= $child ?><?= $ref ?>
+                      id="breadcrumb-<?= ($i) ?>"><a itemprop="url" href="<?= $item['LINK'] ?>"><span itemprop="title"><?= $item['TITLE'] ?></span></a></span> <span class="divider">/</span><?
 			}
 			else
 			{

@@ -147,8 +147,11 @@ $currentTab = $tabs[$tabCode];
         <span itemprop="name" style="display:none;"><?= $product['NAME'] ?></span>
         <span itemprop="priceRange" style="display:none;"><?= $product['PRODUCT']['PRICE'] ?></span>
         <span itemprop="starRating" style="display:none;"><?= $product['RATING'] ?></span>
-        <span itemprop="latitude" style="display:none;"><?= $arYMap[0] ?></span>
-        <span itemprop="longitude" style="display:none;"><?= $arYMap[1] ?></span><?
+        <span itemprop="telephone" style="display:none;">88007752604</span>
+        <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+            <meta itemprop="latitude" content="<?= $arYMap[0] ?>" />
+            <meta itemprop="longitude" content="<?= $arYMap[1] ?>" />
+        </div>
 
         //
         // Адрес
@@ -185,6 +188,7 @@ $currentTab = $tabs[$tabCode];
 		    $pics[] = $img;
 	    }
         ?>
+        <span itemprop="image" style="display:none;">https://putevochka.com<?= $pics[0]['src'] ?></span>
         <div id="sync1" class="owl-carousel" itemprop="photos"><?
             foreach ($pics as $img)
             {

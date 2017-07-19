@@ -91,4 +91,40 @@ $APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_body_bot.php');
 ?>
 <div id="engBtnTop"></div>
 </body>
-</html>
+</html><?
+
+
+$value = $APPLICATION->GetPageProperty('og_title');
+if (!$value)
+{
+	$value = $APPLICATION->GetPageProperty('title');
+	$APPLICATION->SetPageProperty('og_title', $value);
+}
+
+$value = $APPLICATION->GetPageProperty('og_description');
+if (!$value)
+{
+	$value = $APPLICATION->GetPageProperty('description');
+	$APPLICATION->SetPageProperty('og_description', $value);
+}
+
+$value = $APPLICATION->GetPageProperty('og_url');
+if (!$value)
+{
+	$value = 'https://putevochka.com' . $APPLICATION->GetCurPage();
+	$APPLICATION->SetPageProperty('og_url', $value);
+}
+
+$value = $APPLICATION->GetPageProperty('og_image');
+if (!$value)
+{
+	$value = 'https://putevochka.com/images/logo_new.png';
+	$APPLICATION->SetPageProperty('og_image', $value);
+}
+
+$value = $APPLICATION->GetPageProperty('og_type');
+if (!$value)
+{
+	$value = 'website';
+	$APPLICATION->SetPageProperty('og_type', $value);
+}
