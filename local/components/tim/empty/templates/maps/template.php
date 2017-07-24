@@ -24,6 +24,11 @@ $citiesData = [
 	</div>
 </div><?
 
+?>
+<div class="engBox-body">
+    <div class="engText"><!--seo_text1--></div>
+</div><?
+
 /*
 ?>
 <div class="elMaps">
