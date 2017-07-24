@@ -46,6 +46,11 @@ $page = $_REQUEST['page'];
 	</div>
 </div><?
 
+?>
+<div class="engBox-body">
+    <div class="engText"><!--seo_text1--></div>
+</div><?
+
 $class = $isService ? ' service-reviews' : '';
 $title = $isService ? '' : ' о санатории';
 $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);

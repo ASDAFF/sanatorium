@@ -37,6 +37,11 @@ $page = $_REQUEST['page'];
 	</div>
 </div><?
 
+?>
+<div class="engBox-body">
+    <div class="engText"><!--seo_text1--></div>
+</div><?
+
 if ($page <= 0)
 	$page = 1;
 
