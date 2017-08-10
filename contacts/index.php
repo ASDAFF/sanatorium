@@ -1,5 +1,9 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Контакты");?>
+
+/** @global CMain $APPLICATION */
+
+$APPLICATION->SetTitle("Контакты");
+$APPLICATION->SetPageProperty('title', 'Контакты');?>
 
 	<div id="cron_full" class="head_block">
 		<div id="cron" class="engBox-body"><?

@@ -20,7 +20,7 @@ if (!$reviews['ITEMS'])
         <div class="title">
             Отзывы
         </div>
-        <div class="elComments-list" itemprop="reviews"><?
+        <div class="elComments-list" itemprop="reviews" itemscope itemtype="http://schema.org/Review"><?
 
 	    foreach ($reviews['ITEMS'] as $item)
 	    {
@@ -29,10 +29,10 @@ if (!$reviews['ITEMS'])
 			    $date = \CIBlockFormatProperties::DateFormat('j F Y года', MakeTimeStamp($item['DATE']));
 		    ?>
             <div class="item mobile icon-comment-full">
-            <div class="date icon-comment"><?= $date ?></div>
-            <div class="title"><?= $item['NAME'] ?></div>
+            <div class="date icon-comment" itemprop="datePublished" content="2006-05-04"><?= $date ?></div>
+            <div class="title" itemprop="author"><?= $item['NAME'] ?></div>
             <div class="city"><?= $item['CITY'] ?></div>
-            <div class="text"><?= $item['TEXT'] ?></div>
+            <div class="text" itemprop="reviewBody"><?= $item['TEXT'] ?></div>
             <div class="btn"><a onclick="
                 $(this).parents('.item').find('.text').addClass('full');$(this).parent().remove();">Читать далее</a></div>
             </div><?
