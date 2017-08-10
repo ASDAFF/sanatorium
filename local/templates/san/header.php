@@ -36,22 +36,23 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
 
-$APPLICATION->AddBufferContent('showOG');
+	$APPLICATION->AddBufferContent('showOG');
 
-function showOG() {
+	function showOG() {
 	    global $APPLICATION;
+
+	    $return = '';
 
 	    $keys = ['title', 'type', 'description', 'url', 'image'];
 	    foreach ($keys as $key)
 		{
 			$content = $APPLICATION->GetPageProperty('og_' . $key);
 			if ($content)
-			{
-				?>
-                <meta property="og:<?= $key ?>" content="<?= $content ?>" /><?
-			}
+			    $return .= '<meta property="og:' . $key . '" content="' . $content . '" />';
 		}
-}
+
+		return $return;
+    }
 
 	// Всю шнягу типа счетчиков, трекеров - сюда:
 	$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_head_bot.php');
