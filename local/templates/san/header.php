@@ -4,7 +4,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 /** @var CMain $APPLICATION */
 
-?><!doctype html>
+?><!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>" prefix="og: http://ogp.me/ns#">
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +18,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 	$assets->addJs(SITE_DIR . 'js/jquery-ui/jquery-ui.min.js');
     $assets->addJs(SITE_DIR . 'js/fancybox/jquery.fancybox.js');
+    $assets->addJs(SITE_DIR . 'js/mask/jquery.maskedinput.min.js');
 	$assets->addJs(SITE_DIR . 'js/owl/owl.carousel.min.js');
 	$assets->addJs(SITE_DIR . 'js/readmore.min.js');
 
@@ -35,9 +36,9 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	
 	$APPLICATION->ShowHead();
 
-	$APPLICATION->AddBufferContent('showOG');
+$APPLICATION->AddBufferContent('showOG');
 
-	function showOG() {
+function showOG() {
 	    global $APPLICATION;
 
 	    $keys = ['title', 'type', 'description', 'url', 'image'];
@@ -50,7 +51,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <meta property="og:<?= $key ?>" content="<?= $content ?>" /><?
 			}
 		}
-    }
+}
 
 	// Всю шнягу типа счетчиков, трекеров - сюда:
 	$APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_head_bot.php');
@@ -66,17 +67,28 @@ $APPLICATION->ShowPanel();
 ?>
 <header class="header">
 	<div class="header-line_wbg engBox-body">
-		<div class="header-logo"><?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?></div>
+		<div class="header-logo">
+			<?if($APPLICATION->GetCurDir() == '/'):?>
+					 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
+			<?else:?>
+				<a href="<?=SITE_DIR?>">
+			  		 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
+				</a>
+			<?endif;?>
+
+
+
+</div>
 		<div class="header-time-work"><?$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));?></div>
         <div class="header-soc">
-            <a href="tel:89197401215">
-                <img src="/images/engIcon-whatsapp.png">
+            <a href="tel:+96201689865">
+                <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">
             </a>
-            <a href="tel:89197401215">
-                <img src="/images/engIcon-viber.png">
+            <a href="tel:+9620168986">
+                <img src="/images/engIcon-viber.png" alt="Viber">
             </a>
-            <a href="tg://resolve?domain=+79197401215"">
-            <img src="/images/engIcon-telegram.png">
+            <a href="tg://resolve?domain=+9620168986">
+            <img src="/images/engIcon-telegram.png" alt="Telegram">
             </a>
         </div>
 <!--            <div class="header-adress">--><?//$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?><!--</div>-->

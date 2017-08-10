@@ -16,14 +16,13 @@ $city = \Local\Catalog\City::getAll(true);
 			<div>
 				<a href="/sanatorium/<?= $item['CODE'] ?>/" class="item">
 					<div class="img">
-						<img src="<?= $item['PICTURE'] ?>" />
+						<img src="<?= $item['PICTURE'] ?>" alt="<?=$item['NAME']?>"/>
 					</div>
 					<div class="inf">
 						<b><?= $item['NAME'] ?></b>
 <!--						<span>КМВ, --><?//= $item['NAME'] ?><!--</span>-->
-						<p>
 							<?= $item['DESCRIPTION'] ?>
-						</p>
+
 					</div>
 				</a>
 			</div><?
