@@ -197,6 +197,7 @@ var Filters = {
  */
 var Detail = {
 	productId: 0,
+	map: false,
 	init: function() {
 		this.tabs = $('#content-menu-show');
 		if (this.tabs.length) {
@@ -228,7 +229,7 @@ var Detail = {
 
 	popstate: function (e) {
 		var href = e.target.location.pathname;
-		var a = $('ul#tabs a[href="' + href + '"]');
+		var a = $('#tabs a[href="' + href + '"]:first');
 		var li = a.parent();
 		if (!li.is('.active')) {
 			Detail.showTab(a, li);
@@ -239,7 +240,8 @@ var Detail = {
 		var li = a.parent();
 		if (!li.is('.active')) {
 			var url = a.attr('href');
-			history.pushState('', '', url);
+			if (url !== location.pathname)
+				history.pushState('', '', url);
 			Detail.showTab(a, li);
 		}
 	},
@@ -308,6 +310,7 @@ var Detail = {
 				tab.removeClass('empty');
 				Detail.showSlider();
 				Detail.ProgramsPopup();
+				Detail.mapInit();
 			});
 		}
 	},
@@ -334,8 +337,11 @@ var Detail = {
 		return false;
 	},
 	mapInit: function () {
-		if (yMapPoint.length < 2)
+		if (typeof(yMapPoint) === 'undefined' || yMapPoint.length < 2)
 			return false;
+
+		if (Detail.map !== false)
+			return true;
 
 		Detail.map = new ymaps.Map("dmap", {
 			center: yMapPoint,

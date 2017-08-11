@@ -24,6 +24,7 @@ $tabs = array(
 		    ' на официальном сайте сервиса «' . $siteName . '». Заказ оздоровительных путевок в санаторий «' .
 		    $product['TITLE'] . '» по телефону ' . $phone . '.',
 	    'KW' => 'Санаторий ' . $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'],
+        'BASE_URL' => true,
 	),
 	'rooms' => array(
 		'NAME' => 'Номера и цены',
@@ -32,19 +33,20 @@ $tabs = array(
 		    '. Бронируйте номера в санаторий «' . $product['TITLE'] . '» на сайте или по телефону ' . $phone . '.',
 	    'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' цены на 2017 год',
 	),
-	'profiles' => array(
+	/*'profiles' => array(
 		'NAME' => 'Профили лечения',
 	    'TITLE' => 'Профили лечения в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
 	    'DESCR' => 'Получить консультацию специалиста по профилям лечения в санатории «' . $product['TITLE'] . '» г.' .
 		    $product['CITY']['UF_PREDL'] . ' Вы можете на сайте или по телефону ' . $phone . '.',
 	    'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' профили лечения',
-	),
+	),*/
 	'programms' => array(
 		'NAME' => 'Программы лечения',
 		'TITLE' => 'Программы лечения в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
 		'DESCR' => 'Получить консультацию специалиста по программам лечения в санатории «' . $product['TITLE'] . '» г.' .
 			$product['CITY']['UF_PREDL'] . ' Вы можете на сайте или по телефону ' . $phone . '.',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' программы лечения',
+		'BASE_URL' => true,
 	),
 	'infra' => array(
 		'NAME' => 'Инфраструктура',
@@ -53,21 +55,23 @@ $tabs = array(
 			' : инфраструктура. Получить информацию по инфраструктуре санатория «' . $product['TITLE'] .
 			'» Вы можете на сайте или по телефону ' . $phone . '.',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' инфраструктура',
+		'BASE_URL' => true,
 	),
-	'feed' => array(
+	/*'feed' => array(
 		'NAME' => 'Питание',
 		'TITLE' => 'Питание в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
 		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
 			' : питание. Получить информацию по питанию в санатории «' . $product['TITLE'] .
 			'» Вы можете на сайте или по телефону ' . $phone . '.',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' питание',
-	),
+	),*/
 	'child' => array(
 		'NAME' => 'Детям',
 		'TITLE' => 'Размещение детей в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
 		'DESCR' => 'Получить информацию по лечению или размещению детей в санатории «' . $product['TITLE'] .
 			'» Вы можете на сайте или по телефону ' . $phone . '.',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' размещение детей',
+		'BASE_URL' => true,
 	),
 	'video' => array(
 		'NAME' => 'Видео',
@@ -90,6 +94,21 @@ $tabs = array(
 		'DESCR' => 'Какие документы требуются для заезда в санаторий «' . $product['TITLE'] . '» в ' .
 			$product['CITY']['UF_PREDL'] . '. Узнать как получить документы Вы можете на сайте или по телефону  ' . $phone . '.',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' документы для заезда',
+		'BASE_URL' => true,
+	),
+	'reviews' => array(
+		'NAME' => 'Отзывы',
+		'TITLE' => 'Отзывы о санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : отзывы. Информация о санатории «' . $product['TITLE'] . '» на официальном сайте сервиса «' . $siteName . '».',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' отзывы',
+	),
+	'map' => array(
+		'NAME' => 'Карта',
+		'TITLE' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] . ' на карте',
+		'DESCR' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			' : карта. Информация о санатории «' . $product['TITLE'] . '» на официальном сайте сервиса «' . $siteName . '».',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' карта',
 	),
 );
 
@@ -220,7 +239,7 @@ $currentTab = $tabs[$tabCode];
 					if ($code == $tabCode)
 						$class = ' class="active"';
 					$href = $product['DETAIL_PAGE_URL'];
-					if ($code != 'main')
+					if (!$tab['BASE_URL'])
 						$href .= $code . '/';
 					?>
 					<li<?= $class?> data-title="<?= $tab['TITLE'] ?>"><a id="tab-<?= $code ?>" data-id="#<?= $code ?>" href="<?= $href ?>"><?= $name ?></a></li><?
@@ -309,12 +328,6 @@ $currentTab = $tabs[$tabCode];
                     <input type="text" name="phone" placeholder="Введите номер телефона *"
                            autocomplete="off" class="icon-phone2" required />
 
-
-
-
-
-
-
                     <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                     <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
                     <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
@@ -327,21 +340,12 @@ $currentTab = $tabs[$tabCode];
         $APPLICATION->IncludeComponent('tim:empty', 'banners');
         ?>
     </div>
-</div>
-<?
+</div><?
+
 //
 // Форма "задать вопрос"
 //
 $APPLICATION->IncludeComponent('tim:empty', 'feedback_form');
-?>
-
-<script type="text/javascript">var yMapPoint = [<?= $product['YMAP'] ?>]</script>
-<div id="dmap" style="width:100%; height:300px"></div>
-
-<?
-$APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
-	'ID' => $product['ID'],
-));
 
 $APPLICATION->SetTitle($product['NAME']);
 $APPLICATION->SetPageProperty('title', $currentTab['TITLE']);

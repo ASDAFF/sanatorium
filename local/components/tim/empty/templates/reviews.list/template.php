@@ -20,20 +20,26 @@ if (!$reviews['ITEMS'])
         <div class="title">
             Отзывы
         </div>
-        <div class="elComments-list" itemprop="reviews" itemscope itemtype="http://schema.org/Review"><?
+        <div class="elComments-list" itemprop="review" itemscope itemtype="http://schema.org/Review"><?
 
 	    foreach ($reviews['ITEMS'] as $item)
 	    {
-		    $date = '';
-		    if ($item['DATE'])
-			    $date = \CIBlockFormatProperties::DateFormat('j F Y года', MakeTimeStamp($item['DATE']));
 		    ?>
-            <div class="item mobile icon-comment-full">
-            <div class="date icon-comment" itemprop="datePublished" content="2006-05-04"><?= $date ?></div>
-            <div class="title" itemprop="author"><?= $item['NAME'] ?></div>
-            <div class="city"><?= $item['CITY'] ?></div>
-            <div class="text" itemprop="reviewBody"><?= $item['TEXT'] ?></div>
-            <div class="btn"><a onclick="
+            <div class="item mobile icon-comment-full"><?
+
+                if ($item['DATE'])
+                {
+                    $ts = MakeTimeStamp($item['DATE']);
+                    $date = \CIBlockFormatProperties::DateFormat('j F Y года', $ts);
+                    $dateF = ' itemprop="datePublished" content="' . \CIBlockFormatProperties::DateFormat('Y-m-d', $ts) . '"';
+					?>
+                    <div class="date icon-comment"<?= $dateF ?>><?= $date ?></div><?
+                }
+                ?>
+                <div class="title" itemprop="author"><?= $item['NAME'] ?></div>
+                <div class="city"><?= $item['CITY'] ?></div>
+                <div class="text" itemprop="reviewBody"><?= $item['TEXT'] ?></div>
+                <div class="btn"><a onclick="
                 $(this).parents('.item').find('.text').addClass('full');$(this).parent().remove();">Читать далее</a></div>
             </div><?
 	    }

@@ -115,7 +115,7 @@ foreach ($items['ITEMS'] as $item)
 
 ?>
 
-<div id="map"></div>
+<div id="map_cont"></div>
 <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
 <script>var mapPM = <?= json_encode($pm, JSON_UNESCAPED_UNICODE) ?>;</script>
 <script>var citiesData = <?= json_encode($citiesData, JSON_UNESCAPED_UNICODE) ?>;</script>

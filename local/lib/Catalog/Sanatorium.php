@@ -654,6 +654,31 @@ class Sanatorium
         if ($tabCode == 'main')
         {
 	        echo $sanatorium['DETAIL_TEXT'];
+
+			?>
+            <div class="programs"><?
+			foreach ($sanatorium['PRODUCT']['PROFILES'] as $pr)
+			{
+				$profile = Profiles::getById($pr);
+				?>
+                <div class="programs-item">
+                <div class="programs-title"><span class="icon icon-<?= $profile['CODE']
+					?>"></span><span><?= $profile['NAME'] ?></span></div>
+                <ul class="programs-list"><?
+
+					foreach ($profile['SUBITEMS'] as $item)
+					{
+						?>
+                        <li><?= $item ?></li><?
+					}
+					?>
+                </ul>
+                </div><?
+			}
+			?>
+            </div><?
+
+			echo $sanatorium['FEEDING_TAB'];
         }
         elseif ($tabCode == 'rooms')
         {
@@ -672,28 +697,7 @@ class Sanatorium
         }
         elseif ($tabCode == 'profiles')
         {
-	        ?>
-	        <div class="programs"><?
-	        foreach ($sanatorium['PRODUCT']['PROFILES'] as $pr)
-	        {
-		        $profile = Profiles::getById($pr);
-		        ?>
-		        <div class="programs-item">
-			        <div class="programs-title"><span class="icon icon-<?= $profile['CODE']
-				        ?>"></span><span><?= $profile['NAME'] ?></span></div>
-		            <ul class="programs-list"><?
 
-			            foreach ($profile['SUBITEMS'] as $item)
-			            {
-				            ?>
-				            <li><?= $item ?></li><?
-			            }
-				        ?>
-			        </ul>
-		        </div><?
-	        }
-	        ?>
-	        </div><?
         }
         elseif ($tabCode == 'programms')
         {
@@ -763,7 +767,7 @@ class Sanatorium
         }
         elseif ($tabCode == 'feed')
         {
-	        echo $sanatorium['FEEDING_TAB'];
+
         }
         elseif ($tabCode == 'child')
         {
@@ -834,6 +838,19 @@ class Sanatorium
 	        <a class="docs-link" href="/upload/voucher.docx" download>Ваучер (обменная путевка)</a>
 	        <a class="docs-link" href="/upload/contract.doc" download>Договор с туристом</a><?
         }
+        elseif ($tabCode == 'reviews')
+		{
+		    global $APPLICATION;
+			$APPLICATION->IncludeComponent('tim:empty', 'reviews.list', array(
+				'ID' => $sanatorium['ID'],
+			));
+		}
+        elseif ($tabCode == 'map')
+		{
+			?>
+            <script type="text/javascript">var yMapPoint = [<?= $sanatorium['YMAP'] ?>];</script>
+            <div id="dmap" style="width:100%; height:500px"></div><?
+		}
 
     }
 

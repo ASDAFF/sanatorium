@@ -910,7 +910,7 @@ var _tabs = {
 
 var YaMap = {
 	init: function() {
-		this.mapCont = $('#map');
+		this.mapCont = $('#map_cont');
 		if (!this.mapCont.length)
 			return;
 
