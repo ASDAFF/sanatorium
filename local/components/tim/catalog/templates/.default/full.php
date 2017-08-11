@@ -36,6 +36,11 @@ $products = $component->products['ITEMS'];
                 ?>
 
                 <div class="_tabs">
+                    <div class="icon-left">
+                        <svg class="_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                            <path d="M 14.585938 3.5859375 L 5.171875 13 L 14.585938 22.414062 L 17.414062 19.585938 L 10.828125 13 L 17.414062 6.4140625 L 14.585938 3.5859375 z"></path>
+                        </svg>
+                    </div>
                     <ul class="_tabs-nav">
                         <?
                         $i = 0;
@@ -46,6 +51,11 @@ $products = $component->products['ITEMS'];
                             $i++; }
                         ?>
                     </ul>
+                    <div class="icon-right">
+                        <svg class="_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                            <path d="M 11.414062 3.5859375 L 8.5859375 6.4140625 L 15.171875 13 L 8.5859375 19.585938 L 11.414062 22.414062 L 20.828125 13 L 11.414062 3.5859375 z"></path>
+                        </svg>
+                    </div>
                     <div class="_tabs-content css-padding">
                         <?
                         $i = 0;

@@ -120,7 +120,7 @@ var SearchExtDisplay = {
 
 
 $(document).ready(function () {
-// Якоря
+	// Якоря
 
     $('a[href^="#"]#content-top').on('click', function(event) {
         event.preventDefault(); // отменяем стандартное действие
@@ -667,8 +667,8 @@ var engInputValid = {
     },
     itValidPhone: function () {
         console.log('проверка телефона');
-        if(engInputValid.inputPhone.val().length < 1){
-            engInputValid.inputPhoneLog.text('Введите номер телефона');
+        if(engInputValid.inputPhone.val().length < 11){
+            engInputValid.inputPhoneLog.text('Введите номер телефона (минимум 11 цифр)');
             engInputValid.inputPhoneValue = false;
         }else{
             engInputValid.inputPhoneLog.text('');

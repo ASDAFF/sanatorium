@@ -147,7 +147,7 @@ $currentTab = $tabs[$tabCode];
 		        ?>
 	        </div>
             <div>
-                Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб<br><span>за номер в сутки</span>
+                Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб<br><span>за человека в сутки</span>
             </div>
         </div>
         <div id="cron-crox">

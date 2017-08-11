@@ -1822,7 +1822,6 @@ footer .it-city {
 	}
 
 	.el-nomer .item .img {
-		height:100%;
 		width:auto!important;
 		max-width:none
 	}
@@ -3228,7 +3227,7 @@ ul.bl {
 }
 
 .searchbox-input {
-	top:0;
+	top:5px;
 	right:0;
 	border:0;
 	outline:0;
@@ -3397,7 +3396,7 @@ nav.p-head {
 
 .searchbox-submit {
 	position:absolute;
-	top:6px;
+	top:5px;
 	height:33px;
 	line-height:33px;
 	background:#ff9c00;
@@ -5039,7 +5038,6 @@ div[id^="slider-popap-"].flexslider .slides img {
 		font-size: 13px;}
 	.it-video-popap iframe {width: 100%;}
 }
-
 .elAboutBox1 {
 	padding:40px 0;
 	color:#323232;
@@ -6308,15 +6306,8 @@ body .menu_parent:after {
 
 	animation-duration: .75s; animation-fill-mode: both;  animation-name: fadeInLeft;}
 @keyframes fadeInLeft {
-	from {
-		opacity: 0;
-		transform: translate3d(-20%, 0, 0);
-	}
-
-	to {
-		opacity: 1;
-		transform: none;
-	}
+	from {opacity: 0;transform: translate3d(-20%, 0, 0);}
+	to {opacity: 1;transform: none;}
 }
 .info-map:before {content: "";
 	position: absolute; left: -88px; top: 140px;
@@ -6350,9 +6341,27 @@ body .menu_parent:after {
 	background: #fff; color: #000;
 }
 
+@media (max-width: 720px){
+	.info-map {max-width: 70%;
+		left: 54px; top: -106px;}
+	.info-map .name {font-size: 13px;}
+	.info-map .map {font-size: 12px;}
+	.info-map .price,
+	.info-map .price b {font-size: 13px;}
+	.info-map .footer .btn {font-size: 12px;}
+
+	.info-map:before {top: 136px; left: -48px;
+		border: 6px solid transparent;
+		border-right: 42px solid #2c9ed7;}
+	.info-map:after {    left: -60px;
+		border: 20px solid transparent;
+		border-right: 40px solid rgba(44, 158, 215, 0.58);
+	}
+}
+
 
 @media (max-width: 330px){
-	.info-map {top: auto; left: auto;}
+	.info-map {top: auto; left: auto; max-width: 100%;}
 
 	.info-map:before ,
 	.info-map:after {display: none;  }
@@ -6408,4 +6417,24 @@ body .menu_parent:after {
 		margin: 0;}
 	.elMapsMenu .right a {margin: 10px 20px;}
 	.elMapsMenu .right:before {display: none;}
+}
+._tabs {position: relative;}
+._tabs ._tabs-nav {margin: 0 10px;}
+._tabs svg {width: 18px;
+	height: auto;
+	max-height: 100%;
+	margin-top: -2px;
+	fill: currentColor;
+	vertical-align: middle;
+	position: relative;}
+._tabs .icon-left,
+._tabs .icon-right {position: absolute; top: 11px;
+	color: #ccc; display: none;}
+
+._tabs .icon-left {left: -5px;}
+._tabs .icon-right {right: -5px;}
+
+@media (max-width: 1000px) {
+	._tabs .icon-left,
+	._tabs .icon-right {display: inline-block;}
 }
