@@ -20,7 +20,7 @@ if (!$reviews['ITEMS'])
         <div class="title">
             Отзывы
         </div>
-        <div class="elComments-list" itemprop="review" itemscope itemtype="http://schema.org/Review"><?
+        <div class="elComments-list" itemscope itemtype="http://schema.org/Review"><?
 
 	    foreach ($reviews['ITEMS'] as $item)
 	    {

@@ -274,7 +274,7 @@ $currentTab = $tabs[$tabCode];
     </div>
     <div class="engBox-right card-form">
         <div id="right-form">
-            <form method="POST" id="formx" eng-form="bron" action="javascript:void(null);">
+            <form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
                 <div class="controlgroup mobile" style="color: #505050;">
                     <div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
 
@@ -320,11 +320,11 @@ $currentTab = $tabs[$tabCode];
                     </select>
                     <br><br>
 
-                    <div class="engInputLog" eng-input="name"></div>
+                    <div class="engInputLog" data-input="name"></div>
                     <input type="text" name="name" placeholder="Введите имя *"
                            autocomplete="off" class="icon-user" required />
 
-                    <div class="engInputLog" eng-input="phone"></div>
+                    <div class="engInputLog" data-input="phone"></div>
                     <input type="text" name="phone" placeholder="Введите номер телефона *"
                            autocomplete="off" class="icon-phone2" required />
 

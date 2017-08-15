@@ -639,15 +639,15 @@ var Callback = {
 
 var engInputValid = {
     init: function () {
-        this.engForm = $('form[eng-form="bron"]');
+        this.engForm = $('form[data-form="bron"]');
         this.engFormBtn =  this.engForm.find($('[type="submit"]'));
 
     	this.inputName = this.engForm.find($('input[name="name"]'));
-		this.inputNameLog = this.engForm.find($('[eng-input="name"]'));
+		this.inputNameLog = this.engForm.find($('[data-input="name"]'));
         this.inputNameValue = false;
 
         this.inputPhone = this.engForm.find($('input[name="phone"]'));
-        this.inputPhoneLog = this.engForm.find($('[eng-input="phone"]'));
+        this.inputPhoneLog = this.engForm.find($('[data-input="phone"]'));
         this.inputPhoneValue = false;
 
         this.inputName.keyup(this.itValidName);

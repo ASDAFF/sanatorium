@@ -8,50 +8,58 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 <div class="elIndexVideo">
     <div class="engBox-body">
         <div class="elIndexVideoSlider">
-            <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+            <div>
+                <a href="#elAboutBox1-video" class="it-video elAboutBox_fancy">
+                    <div class="it-video-body" style="background-image: url('/images/elIndexVideo-1.jpg">
+                        <div class="it-video-body-stab">
+                            <div class="it-text"><span>О сервисе бронирования</span></div>
+                            <div class="it-play elIndexVideo_play"></div>
+                        </div>
+                    </div>
+                </a>
                 <div class="it-video-popap" id="elAboutBox1-video" style="display: none;">
-                    <iframe src="https://www.youtube.com/embed/QS8tYQbUrNk" frameborder="0"  allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/QS8tYQbUrNk"  allowfullscreen=""></iframe>
                 </div>
-                <div class="it-video-body" style="background-image: url('/images/elIndexVideo-1.jpg">
-                    <div class="it-video-body-stab">
-                        <div class="it-text"><span>О сервисе бронирования</span></div>
-                        <div class="it-play elIndexVideo_play"></div>
+            </div>
+            <div>
+                <a href="#elAboutBox2-video" class="it-video elAboutBox_fancy">
+                    <div class="it-video-body" style="background-image: url('/images/elIndexVideo-2.jpg');">
+                        <div class="it-video-body-stab">
+                            <div class="it-text"><span>Ваши выгоды покупки</span></div>
+                            <div class="it-play elIndexVideo_play"></div>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="#elAboutBox2-video" class="it-video elAboutBox_fancy">
+                </a>
                 <div class="it-video-popap" id="elAboutBox2-video" style="display: none;">
-                    <iframe src="https://www.youtube.com/embed/8tQOxiI08mI" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/8tQOxiI08mI" allowfullscreen=""></iframe>
                 </div>
-                <div class="it-video-body" style="background-image: url('/images/elIndexVideo-2.jpg');">
-                    <div class="it-video-body-stab">
-                        <div class="it-text"><span>Ваши выгоды покупки</span></div>
-                        <div class="it-play elIndexVideo_play"></div>
+            </div>
+            <div>
+                <a href="#elAboutBox3-video" class="it-video elAboutBox_fancy">
+                    <div class="it-video-body" style="background-image: url('/images/elIndexVideo-3.jpg');">
+                        <div class="it-video-body-stab">
+                            <div class="it-text"><span>Отзыв о сервисе</span></div>
+                            <div class="it-play elIndexVideo_play"></div>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="#elAboutBox3-video" class="it-video elAboutBox_fancy">
+                </a>
                 <div class="it-video-popap" id="elAboutBox3-video" style="display: none;">
-                    <iframe src="https://www.youtube.com/embed/e6NP0C7wEDc" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/e6NP0C7wEDc"></iframe>
                 </div>
-                <div class="it-video-body" style="background-image: url('/images/elIndexVideo-3.jpg');">
-                    <div class="it-video-body-stab">
-                        <div class="it-text"><span>Отзыв о сервисе</span></div>
-                        <div class="it-play elIndexVideo_play"></div>
+            </div>
+            <div>
+                <a href="#elAboutBox4-video" class="it-video elAboutBox_fancy">
+                    <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/lN4UeTJ4Xpg/sddefault.jpg');">
+                        <div class="it-video-body-stab">
+                            <div class="it-text"><span>Отзыв о сервисе</span></div>
+                            <div class="it-play elIndexVideo_play"></div>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="#elAboutBox4-video" class="it-video elAboutBox_fancy">
+                </a>
                 <div class="it-video-popap" id="elAboutBox4-video" style="display: none;">
-                    <iframe src="https://www.youtube.com/embed/lN4UeTJ4Xpg" frameborder="0"></iframe>
+                    <iframe src="https://www.youtube.com/embed/lN4UeTJ4Xpg"></iframe>
                 </div>
-                <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi/lN4UeTJ4Xpg/sddefault.jpg');">
-                    <div class="it-video-body-stab">
-                        <div class="it-text"><span>Отзыв о сервисе</span></div>
-                        <div class="it-play elIndexVideo_play"></div>
-                    </div>
-                </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>

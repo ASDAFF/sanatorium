@@ -9,7 +9,7 @@ $banners = \Local\Common\Banners::getAll();
 	foreach ($banners as $item)
 	{
 		?>
-		<img src="<?= $item['PICTURE'] ?>"><?
+		<img src="<?= $item['PICTURE'] ?>" alt=""><?
 	}
 	?>
 </div><?

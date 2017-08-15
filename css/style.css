@@ -6438,3 +6438,23 @@ body .menu_parent:after {
 	._tabs .icon-left,
 	._tabs .icon-right {display: inline-block;}
 }
+
+
+/* Комменты в табах */
+
+.tab-pane .engBox-body {width: auto; padding: 0!important;}
+.tab-pane #comments {background: none;}
+.tab-pane #comments .owl-controls .owl-buttons div {width: 100px;}
+.tab-pane #comments .owl-buttons .owl-prev:before {left: 60px; right: auto;}
+.tab-pane #comments .owl-buttons .owl-next:before {left: 30px; right: auto;}
+.tab-pane #comments .owl-buttons .owl-prev:before,
+.tab-pane #comments .owl-buttons .owl-next:before {top: calc(50% - 35px);}
+
+@media only screen and (max-width: 1140px){
+	.tab-pane .owl-buttons div {top:0!important;}
+
+}
+@media only screen and (max-width: 1000px){
+	.tab-pane #comments .owl-prev {left: -33px!important;}
+	.tab-pane #comments .owl-next {right: -33px!important;}
+}
