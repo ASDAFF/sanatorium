@@ -6292,7 +6292,7 @@ body .menu_parent:after {
  *Карты
 */
 
-#map {
+#map_cont {
 	width: 100%;
 	height: 500px;
 }

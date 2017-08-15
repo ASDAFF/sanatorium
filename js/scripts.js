@@ -928,7 +928,7 @@ var YaMap = {
 	},
     ready: function() {
 		//console.log(mapPM);
-		YaMap.map = new ymaps.Map('map', {
+		YaMap.map = new ymaps.Map('map_cont', {
 			center: [55.7652, 37.63836],
 			zoom: 15,
 			controls: []
