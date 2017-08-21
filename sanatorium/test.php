@@ -2,6 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("test");
 ?>
+
 <script>
     $(function () {
         $.datepicker.regional['ru'] = {
@@ -27,94 +28,113 @@ $APPLICATION->SetTitle("test");
     });
 </script>
 <style>
-    .new-form{
+    .new-form {
         margin-top: 22px;
     }
-    .form-title{
+
+    .form-title {
         padding-left: 22px;
         padding-right: 22px;
         height: 66px;
     }
-    .form-title{
+
+    .form-title {
         text-transform: uppercase;
         color: white;
         background-color: #ff8a00;
 
     }
-    .form-title span{
+
+    .form-title span {
         font-family: Candara, serif;
         font-weight: bold;
     }
-    .form-title-first{
+
+    .form-title-first {
         font-size: 24px;
     }
-    .form-title-second{
+
+    .form-title-second {
         font-size: 13px;
         white-space: nowrap;
     }
-    .form-body{
+
+    .form-body {
         background-color: #2c9ed7;
         color: white;
         padding-right: 30px;
         padding-left: 30px;
     }
-    .form-body input{
+
+    .form-body input {
         vertical-align: middle;
     }
-    .form-body-right{
+
+    .form-body-right {
         float: right;
     }
-    .form-body input[type="checkbox"]{
+
+    .form-body input[type="checkbox"] {
         -webkit-appearance: checkbox;
     }
-    .who-you-are .form-body-right span{
+
+    .who-you-are .form-body-right span {
         color: black;
     }
-    .calendar{
+
+    .calendar {
         display: inline-block;
         width: 100%;
     }
+
     .calendar .left-block,
-    .calendar .right-block{
+    .calendar .right-block {
         width: 40%;
     }
-    .calendar .middle-block{
+
+    .calendar .middle-block {
         width: 20%;
     }
 
-    .calendar div{
+    .calendar div {
         text-align: center;
         float: left;
         display: block;
     }
-    .data-form-input{
+
+    .data-form-input {
         border: none;
         background-color: #f3f3f3;
         color: gray;
         border-radius: 5px;
         text-align: center;
         width: 85px;
-        box-shadow: 0px 3px 3px 0px rgba( 0, 0, 0 ,0.3);
+        box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
-    .middle-block{
+
+    .middle-block {
         padding-top: 20px;
     }
-    .calendar{
+
+    .calendar {
         font-size: 10px;
     }
+
     .list-input.calc-form select {
         width: 120px;
         border-radius: 5px;
-        box-shadow: 0px 3px 3px 0px rgba( 0, 0, 0 ,0.3);
+        box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
-    .list-input.calc-form select{
+
+    .list-input.calc-form select {
         line-height: 1.5;
         text-indent: 10px;
-        border:transparent;
+        border: transparent;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
     }
+
     .input-check {
         padding-left: 13px;
         display: inline-block;
@@ -124,6 +144,7 @@ $APPLICATION->SetTitle("test");
         position: relative;
         cursor: pointer;
     }
+
     .input-check input {
         width: 19px;
         height: 19px;
@@ -134,6 +155,7 @@ $APPLICATION->SetTitle("test");
         z-index: 10;
         opacity: 0;
     }
+
     .input-check label:before {
         display: block;
         position: absolute;
@@ -145,52 +167,68 @@ $APPLICATION->SetTitle("test");
         z-index: 5;
         content: '';
     }
-    .list-input.calc-form select{
+
+    .list-input.calc-form select {
         background: url(/images/calc/arrow_up_deact.png) no-repeat right #ffffff
     }
-    .list-input.calc-form select:focus{background: url(/images/calc/arrow_up.png) no-repeat right #ffffff}
+
+    .list-input.calc-form select:focus {
+        background: url(/images/calc/arrow_up.png) no-repeat right #ffffff
+    }
+
     .input-check input:checked + label:before {
         background: url(/images/calc/check_box.png) no-repeat;
     }
-    .list-input.calc-form .form-body-right{
+
+    .list-input.calc-form .form-body-right {
         font-size: 10px;
     }
-    .float-block{
+
+    .float-block {
         margin-top: 10px;
         padding: 10px 10px 25px;
         border: 2px solid #fe8a01;
     }
-    .float-body{
+
+    .float-body {
         padding-left: 15px;
         padding-right: 15px;
     }
-    .calculator{
+
+    .calculator {
         background-color: #2c9ed7;
     }
-    .people-delete{
+
+    .people-delete {
         float: right;
         color: black;
     }
-    .people-delete img{
+
+    .people-delete img {
         padding-left: 10px;
         vertical-align: middle;
     }
-    .number-type{
+
+    .number-type {
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    .number-type img{
+
+    .number-type img {
         vertical-align: middle;
     }
-    .selector{
+
+    .selector {
         text-align: center;
         width: 57px;
         border-radius: 6px;
     }
-    .float-body{
+
+    .float-body {
         padding-bottom: 15px;
     }
-    .form-submit button{
+
+    .form-submit button {
         border: solid;
         width: 100%;
         background: url(/images/calc/2arrow.png) #5fb3dd no-repeat;
@@ -200,34 +238,50 @@ $APPLICATION->SetTitle("test");
         border-width: 2px;
         background-position-y: 11px;
     }
-    .form-footer{
+
+    .form-footer {
         padding-right: 30px;
         padding-left: 30px;
     }
-    .form-submit-text{
+
+    .form-submit-text {
         color: white;
         padding-left: 35px;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-right: 5px;
     }
-    .form-submit-text{
+
+    .form-submit-text {
         line-height: 15px;
     }
-    .form-footer-body .selector{
+
+    .form-footer-body .selector {
         margin-bottom: 10px;
         width: 100%;
     }
-    .form-footer{
+
+    .form-footer {
         padding-bottom: 25px;
     }
-    .form-body.float-body{
+
+    .form-body.float-body {
         display: none;
     }
-    .form-footer-title{
+
+    .form-footer-title {
         padding-left: 20%;
         padding-right: 20%;
         color: white;
+    }
+    .first-number-type{
+        padding-bottom: 0;
+    }
+    .new-float-block{
+        padding-bottom: 3px;
+    }
+    .list-input-new{
+        margin-top: 4px;
     }
 </style>
 <div class="engBox-right card-form new-form">
@@ -250,61 +304,51 @@ $APPLICATION->SetTitle("test");
                     <input type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker2">
                 </div>
             </div>
-            <div class="number-type">
-                <span>Тип номера </span>
-                <div class="list-input calc-form form-body-right">
-                    <select class="form-body-right">
-                        <option>Пункт 1</option>
-                        <option>Пункт 2</option>
-                    </select>
-                </div>
-            </div>
-            <div class="who-you-are">
-                <span>Кто Вы</span>
-                <div class="form-body-right">
-                    <span>взрослый</span>
-                    <div class="input-check">
-                        <input type="checkbox" id="people1"/>
-                        <label for="people1"></label>
+        </div>
+            <div class="form-body float-body" style="display: block;">
+                <div class="float-block new-float-block">
+                    <div class="who-you-are">
+                        <span>Кто Вы </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Взрослый</option>
+                                <option>Ребенок</option>
+                            </select>
+                        </div>
+                        <div class="number-type"><span>Тип номера </span>
+                            <div class="list-input calc-form form-body-right">
+                                <select class="form-body-right">
+                                    <option>Пункт 1</option>
+                                    <option>Пункт 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="number-type">
+                            <span>Размещение </span>
+                            <div class="list-input calc-form form-body-right">
+                                <select class="form-body-right">
+                                    <option>На основном месте</option>
+                                    <option>Пункт 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="number-type first-number-type">
+                            <span>Программа </span>
+                            <div class="list-input calc-form form-body-right">
+                                <select class="form-body-right">
+                                    <option>Программа 3</option>
+                                    <option>Пункт 2</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <span>ребенок</span>
-                    <div class="input-check">
-                        <input type="checkbox" id="people2"/>
-                        <label for="people2"></label>
-                    </div>
                 </div>
             </div>
-            <div class="number-type">
-                <span>Размещение </span>
-                <div class="list-input calc-form form-body-right">
-                    <select class="form-body-right">
-                        <option>На основном месте</option>
-                        <option>Пункт 2</option>
-                    </select>
-                </div>
-            </div>
-            <div class="number-type">
-                <span>Программа </span>
-                <div class="list-input calc-form form-body-right">
-                    <select class="form-body-right">
-                        <option>Программа 3</option>
-                        <option>Пункт 2</option>
-                    </select>
-                </div>
-            </div>
-            <div class="number-type">
-                <span>Тип номера </span>
-                <div class="list-input calc-form form-body-right">
-                    <select class="form-body-right">
-                        <option>Пункт 1</option>
-                        <option>Пункт 2</option>
-                    </select>
-                </div>
-            </div>
+        <div class="form-body">
             <div class="number-type">
                 <img src="/images/calc/people.png">
                 <input class="selector" type="number" id="count-people" min="0" max="5">
-                <div class="list-input calc-form form-body-right">
+                <div class="list-input calc-form form-body-right list-input-new">
                     <select class="form-body-right">
                         <option>Пункт 1</option>
                         <option>Пункт 2</option>
@@ -315,17 +359,19 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form0" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы</span>
-                    <div class="form-body-right">
-                        <span>взрослый</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox01"/>
-                            <label for="sub_checkbox01"></label>
-                        </div>
-                        <span>ребенок</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox02"/>
-                            <label for="sub_checkbox02"></label>
+                    <span>Кто Вы </span>
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type"><span>Тип номера </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="number-type">
@@ -347,7 +393,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#" ><span>Удалить</span><img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
+                                src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -355,17 +402,19 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form1" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы</span>
-                    <div class="form-body-right">
-                        <span>взрослый</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox11"/>
-                            <label for="sub_checkbox11"></label>
-                        </div>
-                        <span>ребенок</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox12"/>
-                            <label for="sub_checkbox12"></label>
+                    <span>Кто Вы </span>
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type"><span>Тип номера </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="number-type">
@@ -387,7 +436,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                    <a class="people-delete" href="#" ><span>Удалить</span><img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
+                                src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -395,17 +445,19 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form2" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы</span>
-                    <div class="form-body-right">
-                        <span>взрослый</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox21"/>
-                            <label for="sub_checkbox21"></label>
-                        </div>
-                        <span>ребенок</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="sub_checkbox22"/>
-                            <label for="sub_checkbox22"></label>
+                    <span>Кто Вы </span>
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type"><span>Тип номера </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="number-type">
@@ -427,7 +479,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#" ><span>Удалить</span><img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
+                                src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -435,17 +488,19 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form3" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы</span>
-                    <div class="form-body-right">
-                        <span>взрослый</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="checkBox33"/>
-                            <label for="checkBox33"></label>
-                        </div>
-                        <span>ребенок</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="checkBox34"/>
-                            <label for="checkBox34"></label>
+                    <span>Кто Вы </span>
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type"><span>Тип номера </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="number-type">
@@ -467,7 +522,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#" ><span>Удалить</span><img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
+                                src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -475,17 +531,19 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form4" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы</span>
-                    <div class="form-body-right">
-                        <span>взрослый</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="checkBox43"/>
-                            <label for="checkBox43"></label>
-                        </div>
-                        <span>ребенок</span>
-                        <div class="input-check">
-                            <input type="checkbox" id="checkBox44"/>
-                            <label for="checkBox44"></label>
+                    <span>Кто Вы </span>
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type"><span>Тип номера </span>
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                     <div class="number-type">
@@ -507,14 +565,16 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#" ><span>Удалить</span><img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
+                                src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div  class="form-footer">
+        <div class="form-footer">
             <div class="form-footer-title">
-                <small><span id="count-men">2</span> взрослых, <span id="count-baby">1</span> ребенок  </small><br>
+                <small><span id="count-men">2</span> взрослых, <span id="count-baby">1</span> ребенок</small>
+                <br>
                 <span>сумма <span id="count_mooney">10000</span> руб.</span>
             </div>
             <div class="form-footer-body">
@@ -534,34 +594,35 @@ $APPLICATION->SetTitle("test");
     </form>
 </div>
 <script>
- /*   $('.selector').change(function (e) {
-        var val = $('.selector').val();
-        for (var i = 0; i < val ; i++ ){
-            console.log(i);
-        }
-    });*/
+    /*   $('.selector').change(function (e) {
+           var val = $('.selector').val();
+           for (var i = 0; i < val ; i++ ){
+               console.log(i);
+           }
+       });*/
     document.getElementById('count-people').oninput = function () {
         if (this.value.length > 7) this.value = this.value.substr(0, 1);
         var val = $('#count-people').val();
-        for (var i = 0;i<5 ;i++ ){
-            $('#sub_form'+i).hide();
+        for (var i = 0; i < 5; i++) {
+            $('#sub_form' + i).hide();
         }
-        for (var j = 0;j<val ;j++ ){
-            $('#sub_form'+j).show();
+        for (var j = 0; j < val; j++) {
+            $('#sub_form' + j).show();
         }
     };
-    $('.people-delete').on('click',function () {
+    $('.people-delete').on('click', function () {
         var val = $('#count-people').val();
-        if (!(+val === 0 && +val === 6)){
-            val = val-1;
+        if (!(+val === 0 && +val === 6)) {
+            val = val - 1;
             $('#count-people').val(val);
-            for (var i = 0;i<5 ;i++ ){
-                $('#sub_form'+i).hide();
+            for (var i = 0; i < 5; i++) {
+                $('#sub_form' + i).hide();
             }
-            for (var j = 0;j<val ;j++ ){
-                $('#sub_form'+j).show();
+            for (var j = 0; j < val; j++) {
+                $('#sub_form' + j).show();
             }
         }
     });
 </script>
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
