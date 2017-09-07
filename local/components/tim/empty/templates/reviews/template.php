@@ -354,6 +354,17 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
                             </div>
                         </div>
                     </a>
+                    <a href="#elAboutBox5-video" class="it-video elAboutBox_fancy">
+                        <div class="it-video-popap" id="elAboutBox5-video" style="display: none;">
+                            <iframe src="https://www.youtube.com/embed/V7xmtzHz0hM" frameborder="0"></iframe>
+                        </div>
+                        <div class="it-video-body" style="background-image: url('https://i.ytimg.com/vi_webp/V7xmtzHz0hM/sddefault.webp');">
+                            <div class="it-video-body-stab">
+                                <div class="it-text">Отзыв о санатории Лесная поляна г. Пятигорск</div>
+                                <div class="it-play elIndexVideo_play"></div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
         </div>
 	</section>

@@ -8,6 +8,8 @@ body {
 	color:#000
 }
 
+
+
 div,a,span,i,input,textarea {
 	font-family:'Fira Sans',sans-serif;
 	font-size:14px;
@@ -6457,4 +6459,40 @@ body .menu_parent:after {
 @media only screen and (max-width: 1000px){
 	.tab-pane #comments .owl-prev {left: -33px!important;}
 	.tab-pane #comments .owl-next {right: -33px!important;}
+}
+
+/* 404 */
+.el404 {text-align: center; }
+.el404 * {
+	font-size: 16px;
+	color: #6d6c6c;
+	text-transform: uppercase;}
+.el404 .images {margin: 45px 0;}
+.el404 .title {
+	font-size: 30px;
+	line-height: 36px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+.el404 .text {
+	margin-bottom: 20px;
+}
+.el404 .link {
+	margin-bottom: 20px;
+}
+.el404 .link a {
+	font-size: 19px;
+	color: #1881d7;}
+.el404 .link a:hover {text-decoration: underline;}
+.el404 .button a {
+	display: inline-block;
+	padding: 4px 13px;
+	background: #5db5db;
+	text-transform: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+}
+.el404 .button a:hover {
+	background: #1cb5fe;
 }

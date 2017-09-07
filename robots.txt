@@ -30,12 +30,14 @@ Disallow: /*?utm_source=
 Disallow: /*?page=
 Disallow: /*?size=
 Disallow: /*?sort=
+Disallow: /*?utm_network=
+Disallow: *.xls
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
-Sitemap: http://putevochka.com/sitemap.xml
+Sitemap: https://putevochka.com/sitemap.xml
 
 User-Agent: Yandex
 Disallow: */index.php
@@ -69,13 +71,15 @@ Disallow: /*?utm_source=
 Disallow: /*?page=
 Disallow: /*?size=
 Disallow: /*?sort=
+Disallow: /*?utm_network=
+Disallow: *.xls
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
-Host: putevochka.com
-Sitemap: http://putevochka.com/sitemap.xml
+Host: https://putevochka.com
+Sitemap: https://putevochka.com/sitemap.xml
 
 User-Agent: Googlebot
 Disallow: */index.php
@@ -109,9 +113,11 @@ Disallow: /*?utm_source=
 Disallow: /*?page=
 Disallow: /*?size=
 Disallow: /*?sort=
+Disallow: /*?utm_network=
+Disallow: *.xls
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
-Sitemap: http://putevochka.com/sitemap.xml
+Sitemap: https://putevochka.com/sitemap.xml

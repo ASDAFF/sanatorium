@@ -30,8 +30,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $assets->addCss(SITE_DIR . 'js/fancybox/jquery.fancybox.css');
 	$assets->addCss(SITE_DIR . 'js/owl/owl.carousel.css');
 
-	$assets->addCss(SITE_DIR . 'css/zcallback_widget.css');
 	$assets->addCss(SITE_DIR . 'css/style.css');
+	$assets->addCss(SITE_DIR . 'css/zcallback_widget.css');
     $assets->addCss(SITE_DIR . 'css/media.css');
 	
 	$APPLICATION->ShowHead();
