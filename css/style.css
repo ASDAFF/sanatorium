@@ -3862,7 +3862,8 @@ textarea:required+.required:after {
 }
 
 .programs {
-	font-size:0
+	font-size:0;
+	margin-top:34px;
 }
 
 .programs-item {
