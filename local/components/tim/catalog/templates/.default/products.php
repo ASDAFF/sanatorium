@@ -168,14 +168,6 @@ foreach ($products as $id => $item)
 ?>
 </div><?
 
-if ($component->seo['TEXT1'])
-{
-	?>
-    <div class="engBox-body">
-        <div class="engText"><?= $component->seo['TEXT1'] ?></div>
-    </div><?
-}
-
 //
 // Постраничка
 //
@@ -287,6 +279,14 @@ if ($iEnd > 1) {
     </div>
     </div><?
 
+}
+
+if ($component->seo['TEXT1'])
+{
+	?>
+    <div class="engBox-body">
+        <div class="engText"><?= $component->seo['TEXT1'] ?></div>
+    </div><?
 }
 
 
