@@ -64,6 +64,7 @@ foreach ($products as $id => $item)
 	        if ($item['PROFILES'])
 	        {
 		        ?>
+				<noindex>
 		        <b>Направление лечения:</b>
 	            <span><?
 		        foreach ($item['PROFILES'] as $i => $pid)
@@ -74,7 +75,8 @@ foreach ($products as $id => $item)
 			        echo $profile['NAME'];
 		        }
 		        ?>
-                </span><?
+                </span>
+				</noindex><?
 	        }
 
 			//
@@ -149,7 +151,7 @@ foreach ($products as $id => $item)
                 от <b><?= $item['PRICE'] ?></b> руб
             </div>
             <span>за человека в сутки</span>
-            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a>
+            <noindex><a rel="nofollow" href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a></noindex>
         </div><?
 
 		if ($actions)

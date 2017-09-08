@@ -1245,6 +1245,11 @@ footer .it-city {
 	margin:15px 0 0
 }
 
+.el-search-list .item .text>noindex {
+	display:block;
+	margin:15px 0 0
+}
+
 .el-search-list .item .el-icon-list li {
 	display:inline-block
 }

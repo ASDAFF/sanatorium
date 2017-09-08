@@ -40,6 +40,10 @@ Allow: /bitrix/panel/
 Sitemap: https://putevochka.com/sitemap.xml
 
 User-Agent: Yandex
+Clean-param: sort /
+Clean-param: p-from /
+Clean-param: size /
+Clean-param: page /
 Disallow: */index.php
 Disallow: /bitrix/
 Disallow: /*show_include_exec_time=
@@ -68,9 +72,6 @@ Disallow: /*BACKURL=
 Disallow: /*BACK_URL=
 Disallow: /*back_url_admin=
 Disallow: /*?utm_source=
-Disallow: /*?page=
-Disallow: /*?size=
-Disallow: /*?sort=
 Disallow: /*?utm_network=
 Disallow: *.xls
 Allow: /bitrix/components/
