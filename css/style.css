@@ -1285,7 +1285,7 @@ footer .it-city {
 	font-size:12px
 }
 
-.el-search-list .item .inf > .btn {
+.el-search-list .item .inf .btn {
 	padding:5px;
 	margin:10px 0;
 	display:block;
@@ -1296,7 +1296,7 @@ footer .it-city {
 	font-size:15px
 }
 
-.el-search-list .item .inf > .btn:hover {
+.el-search-list .item .inf .btn:hover {
 	background:#ff8a00;
 	color:#fff
 }
