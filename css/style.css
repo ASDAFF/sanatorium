@@ -1238,6 +1238,11 @@ footer .it-city {
 	border-bottom:1px solid transparent
 }
 
+.el-search-list .item .text .san-city {
+	margin-top: 2px;
+	color:#ff8a00;
+}
+
 .el-search-list .item .text>b {
 	display:block;
 	margin:15px 0 0
@@ -1245,7 +1250,7 @@ footer .it-city {
 
 .el-search-list .item .text>noindex {
 	display:block;
-	margin:15px 0 0
+	margin:6px 0 0
 }
 
 .el-search-list .item .el-icon-list li {

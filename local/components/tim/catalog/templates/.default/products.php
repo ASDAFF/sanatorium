@@ -56,7 +56,8 @@ foreach ($products as $id => $item)
             <img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>">
         </div>
         <div class="text">
-			<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div><?
+			<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div>
+			<div class="san-city">г. <?= $city['NAME'] ?></div><?
 
 	        //
 	        // Профили лечения
@@ -148,10 +149,10 @@ foreach ($products as $id => $item)
             </div>
 
             <div class="money">
-                от <b><?= $item['PRICE'] ?></b> руб
+                от <b><?= $item['PRICE'] ?></b> руб.
             </div>
             <span>за человека в сутки</span>
-            <noindex><a rel="nofollow" href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Подробнее</a></noindex>
+            <noindex><a rel="nofollow" href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Заказать</a></noindex>
         </div><?
 
 		if ($actions)

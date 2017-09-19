@@ -91,7 +91,7 @@ $file = new \CFile();
 							<div class="text eng-animations">
 								<b><?= $item['NAME'] ?></b>
 								<span>КМВ, <?= $city['NAME'] ?></span>
-								<i>Подробнее</i>
+								<i>Заказать</i>
 							</div>
 							<div class="money"><b>от <?= $item['PRICE'] ?> р.</b><span>СУТКИ</span></div>
 

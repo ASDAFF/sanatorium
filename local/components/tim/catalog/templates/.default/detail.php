@@ -157,7 +157,7 @@ $currentTab = $tabs[$tabCode];
             <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
-        <div id="cron-title"><h1>Санаторий «<?= $product['NAME'] ?>»<span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
+        <div id="cron-title"><h1>Санаторий <?= $product['NAME'] ?><span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
     </div>
 </div>
 <div class="engBox-body page-card" itemscope itemtype="http://schema.org/Hotel">
@@ -176,7 +176,7 @@ $currentTab = $tabs[$tabCode];
         // Адрес
         //
         ?>
-        <a href="#map" id="content-top" itemprop="address"><?= $product['ADDRESS'] ?></a><?
+        <a href="#map" id="content-top">Адрес: <span itemprop="address"><?= $product['ADDRESS'] ?></span></a><?
 
         //
         // Картинки
