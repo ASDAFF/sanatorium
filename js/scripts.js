@@ -117,11 +117,28 @@ var SearchExtDisplay = {
 		}
 	}
 }
+var _form_check = {
+    init: function () {
+        this.form_check = $('input[name="_check"]');
 
-
+        this.form_check.each(function(index, element){
+            $(element).on('click', _form_check.click);
+        });
+    },
+    click: function (){
+        if ($(this).prop("checked")) {
+            $(this).prop("checked",true);
+            $('.'+$(this).attr('data-class')).addClass('active');
+        } else {
+            $(this).prop("checked",false);
+            $('.'+$(this).attr('data-class')).removeClass('active');
+        }
+    }
+};
 $(document).ready(function () {
-	// Якоря
+    _form_check.init(); /* Чекбокс */
 
+	// Якоря
     $('a[href^="#"]#content-top').on('click', function(event) {
         event.preventDefault(); // отменяем стандартное действие
 

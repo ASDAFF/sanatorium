@@ -1,9 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("test");
-?>
-
-<script>
+?><script>
     $(function () {
         $.datepicker.regional['ru'] = {
             closeText: 'Закрыть',
@@ -229,6 +227,7 @@ $APPLICATION->SetTitle("test");
     }
 
     .form-submit button {
+cursor:pointer;
         border: solid;
         width: 100%;
         background: url(/images/calc/2arrow.png) #5fb3dd no-repeat;
@@ -283,6 +282,21 @@ $APPLICATION->SetTitle("test");
     .list-input-new{
         margin-top: 4px;
     }
+    .unchecked{
+    pointer-events: none;
+    cursor: none;
+    }
+    .confidentiality{
+        font-size: 12px;
+    }
+.confidentiality input{
+-webkit-appearance : checkbox;
+    }
+.confidentiality a{
+  font-size: 12px;
+        color: #0e67e1;
+
+}
 </style>
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
@@ -308,14 +322,14 @@ $APPLICATION->SetTitle("test");
             <div class="form-body float-body" style="display: block;">
                 <div class="float-block new-float-block">
                     <div class="who-you-are">
-                        <span>Кто Вы </span>
+                        Кто Вы 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Взрослый</option>
                                 <option>Ребенок</option>
                             </select>
                         </div>
-                        <div class="number-type"><span>Тип номера </span>
+                        <div class="number-type">Тип номера 
                             <div class="list-input calc-form form-body-right">
                                 <select class="form-body-right">
                                     <option>Пункт 1</option>
@@ -324,7 +338,7 @@ $APPLICATION->SetTitle("test");
                             </div>
                         </div>
                         <div class="number-type">
-                            <span>Размещение </span>
+                            Размещение 
                             <div class="list-input calc-form form-body-right">
                                 <select class="form-body-right">
                                     <option>На основном месте</option>
@@ -333,7 +347,7 @@ $APPLICATION->SetTitle("test");
                             </div>
                         </div>
                         <div class="number-type first-number-type">
-                            <span>Программа </span>
+                            Программа 
                             <div class="list-input calc-form form-body-right">
                                 <select class="form-body-right">
                                     <option>Программа 3</option>
@@ -359,14 +373,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form0" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы </span>
+                    Кто Вы 
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type"><span>Тип номера </span>
+                    <div class="number-type">Тип номера 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -375,7 +389,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Размещение </span>
+                        Размещение 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -384,7 +398,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Программа </span>
+                        Программа 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -393,8 +407,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
-                                src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -402,14 +415,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form1" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы </span>
+                    Кто Вы 
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type"><span>Тип номера </span>
+                    <div class="number-type">Тип номера 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -418,7 +431,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Размещение </span>
+                        Размещение 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -427,7 +440,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Программа </span>
+                        Программа 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -436,8 +449,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
-                                src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -445,14 +457,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form2" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы </span>
+                    Кто Вы 
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type"><span>Тип номера </span>
+                    <div class="number-type">Тип номера 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -461,7 +473,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Размещение </span>
+                        Размещение 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -470,7 +482,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Программа </span>
+                        Программа 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -479,8 +491,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
-                                src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -488,14 +499,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form3" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы </span>
+                    Кто Вы 
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type"><span>Тип номера </span>
+                    <div class="number-type">Тип номера 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -504,7 +515,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Размещение </span>
+                        Размещение 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -513,7 +524,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Программа </span>
+                        Программа 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -522,8 +533,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
-                                src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -531,14 +541,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form4" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    <span>Кто Вы </span>
+                    Кто Вы 
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type"><span>Тип номера </span>
+                    <div class="number-type">Тип номера 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -547,7 +557,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Размещение </span>
+                        Размещение 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -556,7 +566,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        <span>Программа </span>
+                        Программа 
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -565,8 +575,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#"><span>Удалить</span><img src="/images/calc/people.png"><img
-                                src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -582,14 +591,19 @@ $APPLICATION->SetTitle("test");
                 <br>
                 <input class="selector" placeholder="Введите телефон">
             </div>
+            <div class="confidentiality"><label>
+        <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')">
+    </label>Настоящим
+    подтверждаю, что я ознакомлен и согласен с условиями
+    <a href="/uploads/conf.doc">политики конфиденциальности</a></div>
             <div class="form-submit">
-                <button type="submit">
+                <button type="submit" id="sub_form" class="unchecked">
                     <div class="form-submit-text">
                         Забронировать отдых<br>
                         и получить скидку
                     </div>
                 </button>
-            </div>
+           </div>
         </div>
     </form>
 </div>
@@ -623,6 +637,4 @@ $APPLICATION->SetTitle("test");
             }
         }
     });
-</script>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</script><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

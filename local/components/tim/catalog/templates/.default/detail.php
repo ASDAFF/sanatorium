@@ -330,7 +330,17 @@ $currentTab = $tabs[$tabCode];
 
                     <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
                     <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
-                    <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
+
+
+                    <div class="_form-check">
+                        <input name="_check" type="checkbox" id="checkbox-lic" data-class="_form-check-btn"/>
+                        <label for="checkbox-lic" class='checkbox-tr-btn'>
+                            Я ознакомлен <a target="_blank" href="/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
+                        </label>
+                    </div>
+                    <div class="_form-check-btn">
+                        <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
+                    </div>
                 </div>
             </form>
 	        <div id="bronx" class="okno" style="display: none"></div>

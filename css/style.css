@@ -6502,3 +6502,28 @@ body .menu_parent:after {
 .el404 .button a:hover {
 	background: #1cb5fe;
 }
+
+/*
+       * Обработака персональных данных
+   */
+._form-check {font-size: 12px; color: #a8a39f;
+	font-style: italic;}
+._form-check input {vertical-align: middle;}
+._form-check label {vertical-align: middle;
+	border: none!important;
+	background: none!important;
+	outline: none!important;
+	box-shadow: none!important;}
+._form-check label a {color: #2f2f2f!important; text-decoration: underline!important;}
+
+._form-check-btn {opacity: 0.3;}
+._form-check-btn,
+._form-check-btn * {cursor: default; pointer-events: none;}
+
+._form-check-btn.active {opacity: 1;}
+._form-check-btn.active,
+._form-check-btn.active * {cursor: pointer; pointer-events: auto; color: #2f2f2f;}
+
+.application_form ._form-check ,
+._form-check label a {font-size: 11px;}
+.application_form ._form-check {margin-bottom: -20px;}
