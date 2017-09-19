@@ -77,6 +77,7 @@ class Room
 				'NAME' => $item['NAME'],
 				'PREVIEW_PICTURE' => $item['PREVIEW_PICTURE'],
 				'PHOTO' => $item['PROPERTY_MORE_PHOTO_VALUE'],
+				'PRICES_ORIG' => $item['PROPERTY_PRICES_VALUE']['TEXT'],
 				'PRICES' => json_decode($item['PROPERTY_PRICES_VALUE']['TEXT'], true),
 				'PRICE' => intval($item['PROPERTY_PRICE_VALUE']),
 				'PRICE_ADD' => intval($item['PROPERTY_PRICE_ADD_VALUE']),
@@ -551,5 +552,18 @@ class Room
             'success' => false,
         ));
 	}
+
+	/**
+     * Обновляет цены на номер (при импорте из файла)
+	 * @param $roomId
+	 * @param $prices
+	 */
+	public static function updatePrices($roomId, $prices)
+    {
+        $iblockElement = new \CIBlockElement();
+		$iblockElement->SetPropertyValuesEx($roomId, self::IBLOCK_ID, array(
+		        'PRICES' => $prices,
+        ));
+    }
 
 }

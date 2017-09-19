@@ -271,7 +271,11 @@ $currentTab = $tabs[$tabCode];
 			</div>
 		</div>
     </div>
-    </div>
+    </div><?
+
+	//include ('calc.php');
+
+    ?>
     <div class="engBox-right card-form">
         <div id="right-form">
             <form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
@@ -345,7 +349,9 @@ $currentTab = $tabs[$tabCode];
             </form>
 	        <div id="bronx" class="okno" style="display: none"></div>
         </div>
-    </div>
+    </div><?
+
+    ?>
     <div class="engBox-right"><?
         $APPLICATION->IncludeComponent('tim:empty', 'banners');
         ?>

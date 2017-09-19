@@ -8,8 +8,6 @@ body {
 	color:#000
 }
 
-
-
 div,a,span,i,input,textarea {
 	font-family:'Fira Sans',sans-serif;
 	font-size:14px;
@@ -6467,6 +6465,259 @@ body .menu_parent:after {
 	.tab-pane #comments .owl-next {right: -33px!important;}
 }
 
+/* Калькулятор стоимости путевки */
+.new-form {
+	margin-top: 22px;
+}
+
+.form-title {
+	padding-left: 22px;
+	padding-right: 22px;
+	height: 66px;
+}
+
+.form-title {
+	text-transform: uppercase;
+	color: white;
+	background-color: #ff8a00;
+
+}
+
+.form-title span {
+	font-family: Candara, serif;
+	font-weight: bold;
+}
+
+.form-title-first {
+	font-size: 24px;
+}
+
+.form-title-second {
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.form-body {
+	background-color: #2c9ed7;
+	color: white;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.form-body input {
+	vertical-align: middle;
+}
+
+.form-body-right {
+	float: right;
+}
+
+.form-body input[type="checkbox"] {
+	-webkit-appearance: checkbox;
+}
+
+.who-you-are .form-body-right span {
+	color: black;
+}
+
+.calendar {
+	display: inline-block;
+	width: 100%;
+}
+
+.calendar .left-block,
+.calendar .right-block {
+	width: 40%;
+}
+
+.calendar .middle-block {
+	width: 20%;
+}
+
+.calendar div {
+	text-align: center;
+	float: left;
+	display: block;
+}
+
+.data-form-input {
+	border: none;
+	background-color: #f3f3f3;
+	color: gray;
+	border-radius: 5px;
+	text-align: center;
+	width: 85px;
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.middle-block {
+	padding-top: 20px;
+}
+
+.calendar {
+	font-size: 10px;
+}
+
+.list-input.calc-form select {
+	width: 120px;
+	border-radius: 5px;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.list-input.calc-form select {
+	line-height: 1.5;
+	text-indent: 1px;
+	border: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.input-check {
+	padding-left: 13px;
+	display: inline-block;
+	*display: inline; /* inline-block ie7 fix */
+	*zoom: 1;
+	vertical-align: text-top;
+	position: relative;
+	cursor: pointer;
+}
+
+.input-check input {
+	width: 19px;
+	height: 19px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	cursor: pointer;
+	z-index: 10;
+	opacity: 0;
+}
+
+.input-check label:before {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 19px;
+	height: 19px;
+	background: rgba(0, 0, 0, 0) url(/images/calc/check_box_uncheck.png) no-repeat;
+	z-index: 5;
+	content: '';
+}
+
+.list-input.calc-form select {
+	background: url(/images/calc/arrow_up_deact.png) no-repeat right #ffffff;
+}
+
+.list-input.calc-form select:focus {
+	background: url(/images/calc/arrow_up.png) no-repeat right #ffffff
+}
+
+.input-check input:checked + label:before {
+	background: url(/images/calc/check_box.png) no-repeat;
+}
+
+.list-input.calc-form .form-body-right {
+	font-size: 10px;
+}
+
+.float-block {
+	margin-top: 10px;
+	padding: 5px 10px 25px;
+	border: 2px solid #fe8a01;
+}
+
+.float-body {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.calculator {
+	background-color: #2c9ed7;
+}
+
+.people-delete {
+	float: right;
+	color: black;
+	cursor: pointer;
+}
+
+.people-delete img {
+	padding-left: 10px;
+	vertical-align: middle;
+}
+
+.number-type {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.number-type img {
+	vertical-align: middle;
+}
+
+.selector {
+	text-align: center;
+	width: 57px;
+	border-radius: 6px;
+}
+
+.float-body {
+	padding-bottom: 15px;
+}
+
+.form-submit button {
+	border: 2px solid #ff8a00;
+	width: 100%;
+	background: url(/images/calc/2arrow.png) #5fb3dd no-repeat;
+	background-position-x: 8px;
+	background-size: 30px;
+	background-position-y: 11px;
+}
+
+.form-footer {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.form-submit-text {
+	color: white;
+	padding: 10px 5px 10px 35px;
+}
+
+.form-submit-text {
+	line-height: 15px;
+}
+
+.form-footer-body .selector {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.form-footer {
+	padding-bottom: 25px;
+}
+
+.form-footer-title {
+	padding-left: 20%;
+	padding-right: 20%;
+	color: white;
+}
+.first-number-type{
+	padding-bottom: 0;
+}
+.list-input-new{
+	margin-top: 4px;
+}
+.first-person .delete-user {
+	display: none;
+}
+.first-person .float-block{
+	padding-bottom: 6px;
+}
+
+
 /* 404 */
 .el404 {text-align: center; }
 .el404 * {
@@ -6527,3 +6778,7 @@ body .menu_parent:after {
 .application_form ._form-check ,
 ._form-check label a {font-size: 11px;}
 .application_form ._form-check {margin-bottom: -20px;}
+
+div#jivo-iframe-container.jivo-iframe-container-right.jivo-state-widget {
+	z-index: 999;
+}

@@ -198,11 +198,10 @@ var Filters = {
 var Detail = {
 	productId: 0,
 	map: false,
+
 	init: function() {
 		this.tabs = $('#content-menu-show');
 		if (this.tabs.length) {
-			this.reserveForm = $('#formx');
-			this.reserveResult = $('#bronx');
 			this.productId = this.tabs.data('id');
 			this.h1TabSpan = $('.js-tab-name');
 			this.bcDetail = $('.js-bc-detail');
@@ -210,8 +209,9 @@ var Detail = {
 			this.bcLast = $('.js-bc-last');
 			this.productName = this.bcDetail.text();
 
-			this.reserveForm.on('submit', this.reserve);
+			this.reserveFormInit();
 
+			//this.calcInit();
 
 			// Переключение табов при клике
 			this.tabs.find('a').click(this.tabClick);
@@ -225,6 +225,41 @@ var Detail = {
 		}
 		this.showSlider();
 		this.ProgramsPopup();
+	},
+
+	reserveFormInit: function () {
+		this.reserveForm = $('#formx');
+		this.reserveResult = $('#bronx');
+
+		this.inputName = this.reserveForm.find($('input[name="name"]'));
+		this.inputNameLog = this.reserveForm.find($('[data-input="name"]'));
+		this.inputNameValue = false;
+
+		this.inputPhone = this.reserveForm.find($('input[name="phone"]'));
+		this.inputPhoneLog = this.reserveForm.find($('[data-input="phone"]'));
+		this.inputPhoneValue = false;
+
+		this.inputName.keyup(this.itValidName);
+		this.inputPhone.keyup(this.itValidPhone);
+		this.reserveForm.on('submit', this.reserve);
+	},
+	itValidName: function () {
+		if (Detail.inputName.val().length < 1) {
+			Detail.inputNameLog.text('Введите Имя');
+			Detail.inputNameValue = false;
+		} else {
+			Detail.inputNameLog.text('');
+			Detail.inputNameValue = true;
+		}
+	},
+	itValidPhone: function () {
+		if (Detail.inputPhone.val().length < 11) {
+			Detail.inputPhoneLog.text('Введите номер телефона (минимум 11 цифр)');
+			Detail.inputPhoneValue = false;
+		} else {
+			Detail.inputPhoneLog.text('');
+			Detail.inputPhoneValue = true;
+		}
 	},
 
 	popstate: function (e) {
@@ -289,7 +324,7 @@ var Detail = {
 		tab.addClass('active').siblings('.active').removeClass('active');
 		var tabSpan = '';
 		var tabName = Detail.productName;
-		if (id != '#main') {
+		if (id !== '#main') {
 			tabName = a.text();
 			tabSpan = ': ' + tabName;
 			Detail.bcDetail.show();
@@ -315,6 +350,13 @@ var Detail = {
 		}
 	},
 	reserve: function() {
+
+		Detail.itValidName();
+		Detail.itValidPhone();
+
+		if (!Detail.inputNameValue || !Detail.inputPhoneValue)
+			return false;
+
 		var form_data = Detail.reserveForm.serialize();
 		$.ajax({
 			type: 'POST',
@@ -355,6 +397,301 @@ var Detail = {
 			preset: 'twirl#violetIcon'
 		});
 		Detail.map.geoObjects.add(Detail.pm);
+	},
+	calcInit: function() {
+
+		this.dateFrom = $('#datepicker');
+		this.dateTo = $('#datepicker2');
+
+		this.resPersons = $('.js-persons');
+		this.resSum = $('.js-sum');
+		this.priceForm = $('#price-form');
+		this.firstPerson = $('.first-person');
+		this.otherPersons = $('.other-persons');
+		this.peopleCount = $('#count-people');
+		this.peopleCount.on('input', this.peopleCountChange);
+		this.otherPersons.on('click', '.people-delete', this.deletePeople);
+		this.priceForm.on('change', '.js-age', this.fieldChange);
+		this.priceForm.on('change', '.js-room', this.fieldChange);
+		this.priceForm.on('change', '.js-place', this.fieldChange);
+		this.priceForm.on('change', '.js-programm', this.calculate);
+		this.priceForm.on('submit', this.submitCalc);
+
+		$.datepicker.regional['ru'] = {
+			closeText: 'Закрыть',
+			prevText: '&#x3c;Пред',
+			nextText: 'След&#x3e;',
+			currentText: 'Сегодня',
+			monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+				'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+			monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн',
+				'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+			dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+			dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+			dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			maxDate: '25.12.2017',
+			isRTL: false,
+			onSelect: function() {
+				Detail.calculate();
+			}
+		};
+		$.datepicker.setDefaults($.datepicker.regional['ru']);
+
+		this.dateFrom.datepicker();
+		this.dateTo.datepicker();
+	},
+	peopleCountChange: function() {
+		var count = Detail.peopleCount.val();
+		if (count > 6)
+			count = 6;
+		else if (count < 1)
+			count = 1;
+
+		var curCount = Detail.otherPersons.children().length + 1;
+
+		if (count > curCount) {
+			var original = Detail.otherPersons.children('.form-body:last');
+			if (!original.length)
+				original = Detail.firstPerson.children('.form-body:last');
+			for (var i = curCount; i < count; i++) {
+				Detail.otherPersons.append(original.clone());
+				var block = Detail.otherPersons.children('.form-body:last');
+				Detail.correctBlock(block);
+			}
+		}
+		else if (count < curCount) {
+			for (var j = count; j < curCount; j++) {
+				Detail.otherPersons.children('.form-body:last').remove();
+			}
+		}
+		Detail.calculate();
+	},
+	deletePeople: function() {
+		var count = Detail.peopleCount.val() - 1;
+		Detail.peopleCount.val(count);
+		$(this).closest('.form-body').remove();
+		Detail.calculate();
+	},
+	fieldChange: function() {
+		var block = $(this).closest('.form-body');
+		Detail.correctBlock(block);
+		Detail.calculate();
+	},
+	correctBlock: function(block) {
+		var age = block.find('.js-age').val();
+		var roomSelect = block.find('.js-room');
+		var room = roomSelect.val();
+		var placeSelect = block.find('.js-place');
+		var place = placeSelect.val();
+		var progSelect = block.find('.js-programm');
+		var prog = progSelect.val();
+
+		// Номер
+		var availRooms = roomsByAge[age];
+		if (!availRooms[room]) {
+			roomSelect.val(0);
+			room = 0;
+		}
+		roomSelect.children('option').each(function() {
+			var v = $(this).val();
+			if (v) {
+				if (availRooms[v]) {
+					if ($(this).prop('disabled'))
+						$(this).removeAttr('disabled');
+				}
+				else {
+					if (!$(this).prop('disabled'))
+						$(this).prop('disabled', 'disabled');
+				}
+			}
+		});
+
+		// Размещение
+		var availPlaces = placeByAgeRoom[age + '|' + room];
+		if (!availPlaces[place]) {
+			if (availPlaces['M'])
+				place = 'M';
+			else if (availPlaces['A'])
+				place = 'A';
+			placeSelect.val(place);
+		}
+		placeSelect.children('option').each(function() {
+			var v = $(this).val();
+			if (availPlaces[v]) {
+				if ($(this).prop('disabled'))
+					$(this).removeAttr('disabled');
+			}
+			else {
+				if (!$(this).prop('disabled'))
+					$(this).prop('disabled', 'disabled');
+			}
+		});
+
+		// Программа
+		var availProg = programmByAgeRoomPlace[age + '|' + room + '|' + place];
+		if (!availProg[prog]) {
+			progSelect.val(0);
+		}
+		progSelect.children('option').each(function() {
+			var v = $(this).val();
+			if (v) {
+				if (availProg[v]) {
+					if ($(this).prop('disabled'))
+						$(this).removeAttr('disabled');
+				}
+				else {
+					if (!$(this).prop('disabled'))
+						$(this).prop('disabled', 'disabled');
+				}
+			}
+		});
+	},
+	calculate: function() {
+		Detail.correct = false;
+		var result = 0;
+		var cnt0 = 0;
+		var cnt1 = 0;
+
+		var from = Detail.dateFrom.datepicker('getDate');
+		var to = Detail.dateTo.datepicker('getDate');
+
+		if (!from || !to)
+			return false;
+
+		var d = to - from;
+		if (d < 0)
+			return false;
+
+		var days = from.getDate();
+
+		var di = d / 86400000;
+		var dates = [];
+		for (var i = 0; i <= di; i++) {
+			from.setDate(days + i);
+			var m1 = from.getMonth() + 1;
+			var d1 = from.getDate();
+			dates.push([d1, m1]);
+		}
+
+		var datesLength = dates.length;
+		if (datesLength <= 0)
+			return false;
+
+		Detail.correct = true;
+		Detail.priceForm.find('.who-you-are').each(function() {
+			var age = $(this).find('.js-age').val();
+			var room = $(this).find('.js-room').val();
+			var point = $(this).find('.js-place').val();
+			var programm = $(this).find('.js-programm').val();
+			var priceIndex = point;
+			if (age !== '0') {
+				priceIndex += age;
+				cnt1++;
+			}
+			else
+				cnt0++;
+
+			var personCorrect = true;
+			var roomPrices = prices[room];
+			if (roomPrices) {
+				var progPrices = roomPrices[programm];
+				if (progPrices) {
+					for (var dm = 0; dm < datesLength; dm++) {
+						var d2 = dates[dm][0];
+						var m2 = dates[dm][1];
+						var dateCorrect = false;
+						for (var int in progPrices) {
+							if (progPrices.hasOwnProperty(int)) {
+								var intPrices = progPrices[int];
+								var intSplit = int.split('-');
+								var intFrom = intSplit[0];
+								var intFromSplit = intFrom.split('.');
+								var intTo = intSplit[1];
+								var intToSplit = intTo.split('.');
+								var intFromD = parseInt(intFromSplit[0]);
+								var intFromM = parseInt(intFromSplit[1]);
+								var intToD = parseInt(intToSplit[0]);
+								var intToM = parseInt(intToSplit[1]);
+								if (Detail.dateInInt(d2, m2, intFromD, intFromM, intToD, intToM)) {
+									if (intPrices.hasOwnProperty(priceIndex)) {
+										var price1 = intPrices[priceIndex];
+										result = result + price1;
+										dateCorrect = true;
+									}
+									break;
+								}
+							}
+						}
+						if (!dateCorrect)
+							personCorrect = false;
+					}
+				}
+				else
+					personCorrect = false;
+			}
+			else
+				personCorrect = false;
+
+			if (!personCorrect)
+				Detail.correct = false;
+		});
+
+		var resPersons = '';
+		if (cnt0 > 0) {
+			if (cnt0 === 1)
+				resPersons = '1 взрослый';
+			else
+				resPersons = cnt0 + ' взрослых';
+		}
+		if (cnt1 > 0) {
+			if (resPersons)
+				resPersons += ', ';
+			if (cnt1 === 1)
+				resPersons += '1 ребёнок';
+			else
+				resPersons += cnt1 + ' детей';
+		}
+		Detail.resPersons.html(resPersons);
+
+		var resSum = 'сумма ' + result + ' руб.';
+		Detail.resSum.html(resSum);
+	},
+	dateInInt: function(d, m, d1, m1, d2, m2) {
+		var NY = Detail.dateCmp(d1, m1, d2, m2) < 0;
+		var cmp1 = Detail.dateCmp(d, m, d1, m1);
+		var cmp2 = Detail.dateCmp(d, m, d2, m2);
+		if (NY) {
+			if (cmp1 <= 0 || cmp2 >= 0)
+				return true;
+		}
+		else {
+			if (cmp1 <= 0 && cmp2 >= 0)
+				return true;
+		}
+
+		return false;
+	},
+	dateCmp: function(d1, m1, d2, m2) {
+		if (m1 > m2)
+			return -2;
+		else if (m1 < m2)
+			return 2;
+		else if (d1 > d2)
+			return -1;
+		else if (d1 < d2)
+			return 1;
+		else
+			return 0;
+	},
+	submitCalc: function() {
+		if (Detail.correct)
+			return true;
+		else {
+			//
+			return false;
+		}
 	}
 };
 

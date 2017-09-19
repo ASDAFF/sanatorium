@@ -22,6 +22,9 @@ class Programms
 	{
 		$return = array();
 
+		if (!$ids)
+			return $return;
+
 		$iblockElement = new \CIBlockElement();
 		$rsItems = $iblockElement->GetList(array(), array(
 			'IBLOCK_ID' => self::IBLOCK_ID,

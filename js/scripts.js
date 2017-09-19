@@ -683,7 +683,6 @@ var engInputValid = {
 		};
     },
     itValidPhone: function () {
-        console.log('проверка телефона');
         if(engInputValid.inputPhone.val().length < 11){
             engInputValid.inputPhoneLog.text('Введите номер телефона (минимум 11 цифр)');
             engInputValid.inputPhoneValue = false;
@@ -695,11 +694,6 @@ var engInputValid = {
     itClick: function () {
         engInputValid.itValidName();
         engInputValid.itValidPhone();
-
-        console.log('Клик');
-
-        console.log(engInputValid.inputNameValue);
-        console.log(engInputValid.inputPhoneValue);
 
 		if(engInputValid.inputNameValue == false){
 			return false;
