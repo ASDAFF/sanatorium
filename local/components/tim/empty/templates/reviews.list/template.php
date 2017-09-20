@@ -20,7 +20,15 @@ if (!$reviews['ITEMS'])
         <div class="engBox-center">
             <div id="content">
                 <form class="review-form service-reviews" id="review-form">
-                    <input type="hidden" name="service" value="0">
+                    <input type="hidden" name="service" value="0"><?
+
+                    if ($sanatoriumId)
+					{
+						?>
+                        <input type="hidden" name="san" value="<?= $sanatoriumId ?>"><?
+					}
+
+                    ?>
                     <div class="feedback-form-ttl">Оставить отзыв о санатории</div>
                     <div class="feedback-form-left">
                         <div class="feedback-form__input">
