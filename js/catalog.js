@@ -211,7 +211,7 @@ var Detail = {
 
 			this.reserveFormInit();
 
-			//this.calcInit();
+			this.calcInit();
 
 			// Переключение табов при клике
 			this.tabs.find('a').click(this.tabClick);
@@ -400,6 +400,10 @@ var Detail = {
 	},
 	calcInit: function() {
 
+		this.priceForm = $('#price-form');
+		if (!this.priceForm.length)
+			return false;
+
 		this.dateFrom = $('#datepicker');
 		this.dateTo = $('#datepicker2');
 
@@ -416,6 +420,8 @@ var Detail = {
 		this.priceForm.on('change', '.js-place', this.fieldChange);
 		this.priceForm.on('change', '.js-programm', this.calculate);
 		this.priceForm.on('submit', this.submitCalc);
+
+		$("#numb-phone").mask("+7(999) 999-9999");
 
 		$.datepicker.regional['ru'] = {
 			closeText: 'Закрыть',

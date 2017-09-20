@@ -273,83 +273,86 @@ $currentTab = $tabs[$tabCode];
     </div>
     </div><?
 
-	//include ('calc.php');
+    if (false)
+	    include ('calc.php');
+    else
+	{
+		?>
+		<div class="engBox-right card-form">
+			<div id="right-form">
+				<form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
+					<div class="controlgroup mobile" style="color: #505050;">
+						<div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
 
-    ?>
-    <div class="engBox-right card-form">
-        <div id="right-form">
-            <form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
-                <div class="controlgroup mobile" style="color: #505050;">
-                    <div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
+						<input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
+						<input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
 
-                    <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
-                    <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
+						<div style="margin-top: 5px; ">
+							<div style="float: right;">
+								<select id="car-type" name="adults" class="input-right">
+									<option>0</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+							<div style=" padding: 4px 8px;">Взрослых</div>
+						</div>
+						<br>
+						<div style="margin-bottom: 15px;">
+							<div style="float: right">
+								<select id="car-type2" name="child" class="input-right">
+									<option>0</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+							<div style="padding: 4px 8px;">Детей</div>
+						</div>
 
-                    <div style="margin-top: 5px; ">
-                        <div style="float: right;">
-                            <select id="car-type" name="adults" class="input-right">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div style=" padding: 4px 8px;">Взрослых</div>
-                    </div>
-                    <br>
-                    <div style="margin-bottom: 15px;">
-                        <div style="float: right">
-                            <select id="car-type2" name="child" class="input-right">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div style="padding: 4px 8px;">Детей</div>
-                    </div>
+						<select id="car-type3" name="room" class="input-right icon-key">
+							<option value="0">Выберите номер</option><?
+							foreach ($product['ROOMS'] as $room)
+							{
+								?>
+								<option value="<?= $room['ID'] ?>"><?= $room['NAME'] ?></option><?
+							}
+							?>
+						</select>
+						<br><br>
 
-                    <select id="car-type3" name="room" class="input-right icon-key">
-                        <option value="0">Выберите номер</option><?
-                        foreach ($product['ROOMS'] as $room)
-                        {
-                            ?>
-                            <option value="<?= $room['ID'] ?>"><?= $room['NAME'] ?></option><?
-                        }
-                        ?>
-                    </select>
-                    <br><br>
+						<div class="engInputLog" data-input="name"></div>
+						<input type="text" name="name" placeholder="Введите имя *"
+							   autocomplete="off" class="icon-user" required />
 
-                    <div class="engInputLog" data-input="name"></div>
-                    <input type="text" name="name" placeholder="Введите имя *"
-                           autocomplete="off" class="icon-user" required />
+						<div class="engInputLog" data-input="phone"></div>
+						<input type="text" name="phone" placeholder="Введите номер телефона *"
+							   autocomplete="off" class="icon-phone2" required />
 
-                    <div class="engInputLog" data-input="phone"></div>
-                    <input type="text" name="phone" placeholder="Введите номер телефона *"
-                           autocomplete="off" class="icon-phone2" required />
-
-                    <input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
-                    <label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
+						<input name="transfer" type="checkbox" class="checkbox-trf" id="checkbox-tr"/>
+						<label for="checkbox-tr" class='checkbox-tr-btn'>Бесплатный трансфер</label>
 
 
-                    <div class="_form-check">
-                        <input name="_check" type="checkbox" id="checkbox-lic" data-class="_form-check-btn"/>
-                        <label for="checkbox-lic" class='checkbox-tr-btn'>
-                            Я ознакомлен <a target="_blank" href="/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
-                        </label>
-                    </div>
-                    <div class="_form-check-btn">
-                        <input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
-                    </div>
-                </div>
-            </form>
-	        <div id="bronx" class="okno" style="display: none"></div>
-        </div>
-    </div><?
+						<div class="_form-check">
+							<input name="_check" type="checkbox" id="checkbox-lic" data-class="_form-check-btn"/>
+							<label for="checkbox-lic" class='checkbox-tr-btn'>
+								Я ознакомлен <a target="_blank" href="/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
+							</label>
+						</div>
+						<div class="_form-check-btn">
+							<input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
+						</div>
+					</div>
+				</form>
+				<div id="bronx" class="okno" style="display: none"></div>
+			</div>
+		</div><?
+	}
 
     ?>
     <div class="engBox-right"><?

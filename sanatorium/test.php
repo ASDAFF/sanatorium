@@ -597,9 +597,9 @@ $APPLICATION->SetTitle("test");
                 <span>сумма <span id="count_mooney">10000</span> руб.</span>
             </div>
             <div class="form-footer-body">
-                <input class="selector" placeholder="Введите имя">
+                <input class="selector" placeholder="Введите имя" required />
                 <br>
-                <input id="numb-phone" class="selector" placeholder="Введите телефон">
+                <input id="numb-phone" class="selector" placeholder="Введите телефон" required />
             </div>
             <div class="confidentiality"><label>
         <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')">
@@ -655,47 +655,48 @@ $APPLICATION->SetTitle("test");
 <div class="engBox-body clearfix">
     <div class="engBox-center">
         <div id="content">
-<form class="review-form" id="review-form">
-    <input type="hidden" name="service" value="0">
-    <div class="feedback-form-ttl">Оставить отзыв о санатории</div>
-    <div class="feedback-form-left">
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-name" name="name" placeholder="Ваше имя" required="">
-            <i class="i-feedback-form-name"></i>
-            <span class="required"></span>
+            <form class="review-form" id="review-form">
+                <input type="hidden" name="service" value="0">
+                <div class="feedback-form-ttl">Оставить отзыв о санатории</div>
+                <div class="feedback-form-left">
+                    <div class="feedback-form__input">
+                        <input type="text" class="feedback-form-name" name="name" placeholder="Ваше имя" required="">
+                        <i class="i-feedback-form-name"></i>
+                        <span class="required"></span>
+                    </div>
+                    <div class="feedback-form__input">
+                        <input type="text" class="feedback-form-city" name="city" placeholder="Ваш город">
+                        <i class="i-feedback-form-city"></i>
+                    </div>
+                    <div class="feedback-form__input">
+                        <input type="text" class="feedback-form-tel" name="mail" placeholder="E-mail" required="">
+                        <i class="i-feedback-form-mail"></i>
+                        <span class="required"></span>
+                    </div>
+                </div>
+                <div class="feedback-form-right">
+                    <div class="feedback-form-right-sanatorium">
+                        <textarea placeholder="Ваш комментарий" name="txt" required=""></textarea>
+                        <span class="required"></span>
+                    </div>
+                </div>
+                <div class="feedback-form-line">
+                    <div class="feedback-form-star">
+                        <span>Плохо</span>
+                        <div class="mark">
+                            <input type="radio" id="star5" name="mark" value="5"><label for="star5" title="5">5</label>
+                            <input type="radio" id="star4" name="mark" value="4"><label for="star4" title="4">4</label>
+                            <input type="radio" id="star3" name="mark" value="3"><label for="star3" title="3">3</label>
+                            <input type="radio" id="star2" name="mark" value="2"><label for="star2" title="2">2</label>
+                            <input type="radio" id="star1" name="mark" value="1"><label for="star1" title="1">1</label>
+                        </div>
+                        <span>Хорошо</span>
+                    </div>
+                    <button class="feedback-form-btn" type="submit">Оставить отзыв</button>
+                    <div class="js-feedback-tnx" style="display:none;">Спасибо, Ваш отзыв принят!</div>
+                </div>
+            </form>
         </div>
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-city" name="city" placeholder="Ваш город">
-            <i class="i-feedback-form-city"></i>
-        </div>
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-tel" name="mail" placeholder="E-mail" required="">
-            <i class="i-feedback-form-mail"></i>
-            <span class="required"></span>
-        </div></div>
-    <div class="feedback-form-right">
-        <div class="feedback-form-right-sanatorium">
-            <textarea placeholder="Ваш комментарий" name="txt" required=""></textarea>
-            <span class="required"></span>
-        </div>
-    </div>
-    <div class="feedback-form-line">
-        <div class="feedback-form-star">
-            <span>Плохо</span>
-            <div class="mark">
-                <input type="radio" id="star5" name="mark" value="5"><label for="star5" title="5">5</label>
-                <input type="radio" id="star4" name="mark" value="4"><label for="star4" title="4">4</label>
-                <input type="radio" id="star3" name="mark" value="3"><label for="star3" title="3">3</label>
-                <input type="radio" id="star2" name="mark" value="2"><label for="star2" title="2">2</label>
-                <input type="radio" id="star1" name="mark" value="1"><label for="star1" title="1">1</label>
-            </div>
-            <span>Хорошо</span>
-        </div>
-        <button class="feedback-form-btn" type="submit">Оставить отзыв</button>
-        <div class="js-feedback-tnx" style="display:none;">Спасибо, Ваш отзыв принят!</div>
-    </div>
-</form>
-</div>
     </div>
 </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

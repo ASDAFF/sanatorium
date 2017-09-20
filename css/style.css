@@ -6493,7 +6493,7 @@ body .menu_parent:after {
 	text-transform: uppercase;
 	color: white;
 	background-color: #ff8a00;
-
+	padding-top: 10px;
 }
 
 .form-title span {
@@ -6503,6 +6503,7 @@ body .menu_parent:after {
 
 .form-title-first {
 	font-size: 24px;
+	line-height: 24px;
 }
 
 .form-title-second {
@@ -6564,15 +6565,16 @@ body .menu_parent:after {
 }
 
 .middle-block {
-	padding-top: 20px;
+	padding-top: 17px;
 }
 
 .calendar {
 	font-size: 10px;
+	padding: 8px 0 0 0;
 }
 
 .list-input.calc-form select {
-	width: 120px;
+	width: 138px;
 	border-radius: 5px;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
 }
@@ -6633,6 +6635,7 @@ body .menu_parent:after {
 
 .list-input.calc-form .form-body-right {
 	font-size: 10px;
+	color: gray;
 }
 
 .float-block {
@@ -6650,6 +6653,10 @@ body .menu_parent:after {
 	background-color: #2c9ed7;
 }
 
+.calculator div {
+	font-size: 12px;
+}
+
 .people-delete {
 	float: right;
 	color: black;
@@ -6664,6 +6671,9 @@ body .menu_parent:after {
 .number-type {
 	padding-top: 5px;
 	padding-bottom: 5px;
+}
+.number-type > span {
+	font-size: 12px;
 }
 
 .number-type img {
@@ -6715,6 +6725,7 @@ body .menu_parent:after {
 .form-footer-title {
 	padding-left: 20%;
 	padding-right: 20%;
+	padding-bottom: 4px;
 	color: white;
 }
 .first-number-type{
@@ -6728,6 +6739,13 @@ body .menu_parent:after {
 }
 .first-person .float-block{
 	padding-bottom: 6px;
+}
+.confidentiality {
+	margin: 0 0 10px;
+}
+.confidentiality a {
+	font-size: 12px;
+	color: #0e67e1;
 }
 
 

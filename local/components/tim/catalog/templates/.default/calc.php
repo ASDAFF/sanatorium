@@ -136,9 +136,15 @@ foreach ($product['ROOMS'] as $room)
                 <span class="js-sum"></span>
             </div>
             <div class="form-footer-body">
-                <input class="selector" placeholder="Введите имя" required>
+                <input class="selector" placeholder="Введите имя" required />
                 <br>
-                <input class="selector" placeholder="Введите телефон" required>
+                <input id="numb-phone" class="selector" placeholder="Введите телефон" required />
+            </div>
+            <div class="confidentiality">
+                <label>
+                    <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')" required />
+                </label>Настоящим подтверждаю, что я ознакомлен и согласен с условиями
+                <a href="/uploads/conf.doc">политики конфиденциальности</a>
             </div>
             <div class="form-submit">
                 <button type="submit">
