@@ -1,4 +1,4 @@
-<?
+te<?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("test");
 ?><script>
@@ -23,9 +23,17 @@ $APPLICATION->SetTitle("test");
 
         $("#datepicker").datepicker();
         $("#datepicker2").datepicker();
+        $("#numb-phone").mask("+7(999) 999-9999");
     });
 </script>
 <style>
+    .calculator div{
+        font-size: 12px;
+    }
+    .error{
+        border: 1.5px solid !important;
+        border-color: red !important;
+    }
     .new-form {
         margin-top: 22px;
     }
@@ -119,7 +127,7 @@ $APPLICATION->SetTitle("test");
     }
 
     .list-input.calc-form select {
-        width: 120px;
+        width: 135px;
         border-radius: 5px;
         box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
@@ -180,6 +188,8 @@ $APPLICATION->SetTitle("test");
 
     .list-input.calc-form .form-body-right {
         font-size: 10px;
+        margin-top: 3px;
+        color: gray;
     }
 
     .float-block {
@@ -225,9 +235,10 @@ $APPLICATION->SetTitle("test");
     .float-body {
         padding-bottom: 15px;
     }
-
+    .form-submit{
+        cursor: pointer;
+    }
     .form-submit button {
-cursor:pointer;
         border: solid;
         width: 100%;
         background: url(/images/calc/2arrow.png) #5fb3dd no-repeat;
@@ -274,7 +285,7 @@ cursor:pointer;
         color: white;
     }
     .first-number-type{
-        padding-bottom: 0;
+        padding-bottom: 5px;
     }
     .new-float-block{
         padding-bottom: 3px;
@@ -295,7 +306,6 @@ cursor:pointer;
 .confidentiality a{
   font-size: 12px;
         color: #0e67e1;
-
 }
 </style>
 <div class="engBox-right card-form new-form">
@@ -362,12 +372,12 @@ cursor:pointer;
             <div class="number-type">
                 <img src="/images/calc/people.png">
                 <input class="selector" type="number" id="count-people" min="0" max="5">
-                <div class="list-input calc-form form-body-right list-input-new">
+                <!--<div class="list-input calc-form form-body-right list-input-new">
                     <select class="form-body-right">
                         <option>Пункт 1</option>
                         <option>Пункт 2</option>
                     </select>
-                </div>
+                </div>-->
             </div>
         </div>
         <div id="sub_form0" class="form-body float-body">
@@ -589,7 +599,7 @@ cursor:pointer;
             <div class="form-footer-body">
                 <input class="selector" placeholder="Введите имя">
                 <br>
-                <input class="selector" placeholder="Введите телефон">
+                <input id="numb-phone" class="selector" placeholder="Введите телефон">
             </div>
             <div class="confidentiality"><label>
         <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')">
