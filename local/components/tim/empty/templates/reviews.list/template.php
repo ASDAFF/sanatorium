@@ -25,7 +25,7 @@ if (!$reviews['ITEMS'])
                     if ($sanatoriumId)
 					{
 						?>
-                        <input type="hidden" name="san" value="<?= $sanatoriumId ?>"><?
+                        <input type="hidden" name="sid" value="<?= $sanatoriumId ?>"><?
 					}
 
                     ?>

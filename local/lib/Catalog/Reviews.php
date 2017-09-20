@@ -249,7 +249,18 @@ class Reviews
 		$mail = trim(htmlspecialchars($_POST['mail']));
 		$mark = intval($_POST['mark']);
 		$service = $_POST['service'] ? 1 : 0;
-		$san = trim(htmlspecialchars($_POST['san']));
+		$sid = intval($_POST['sid']);
+		$san = '';
+		if ($sid)
+		{
+			$sanatorium = Sanatorium::getById($sid);
+			if ($sanatorium)
+				$san = $sanatorium['NAME'];
+			else
+				$sid = 0;
+		}
+		if (!$san)
+			$san = trim(htmlspecialchars($_POST['san']));
 
 		$errors = array();
 
@@ -281,6 +292,7 @@ class Reviews
 					'DATE' => $date,
 					'SERVICE' => $service,
 					'SANATORIUM' => $san,
+					'SANATORIUM_ID' => $sid,
 				),
 			);
 			$id = $el->Add($fields);
@@ -294,6 +306,7 @@ class Reviews
 					'DATE' => $date,
 					'SERVICE' => $service ? 'да' : 'нет',
 					'SANATORIUM' => $san,
+					'SANATORIUM_ID' => $sid,
 				);
 				\CEvent::Send('NEW_REVIEW', 's1', $eventFields);
 			}
