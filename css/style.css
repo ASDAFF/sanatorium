@@ -2470,7 +2470,13 @@ footer {
 	height:175px;
 	padding:7px 10px
 }
-
+.feedback-form-right-sanatorium textarea{
+	width:100%;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	height:130px;
+	padding:7px 10px
+}
 .prices-feedback .feedback-form-right textarea {
 	height:130px
 }
@@ -4717,7 +4723,9 @@ div[id^="slider-popap-"].flexslider .slides img {
 	width:1px;
 	border-right:1px solid #646464
 }
-
+.sanatorium__input{
+	margin
+}
 .feedback-form__input,.feedback-form__txt {
 	position:relative
 }
