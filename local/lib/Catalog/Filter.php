@@ -110,6 +110,7 @@ class Filter
 		$flags = Flags::getAll();
 		foreach ($flags as $name => $items)
 			$return[] = array(
+				'TYPE' => 'flags',
 				'NAME' => $name,
 				'ITEMS' => $items,
 			);

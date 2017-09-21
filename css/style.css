@@ -4340,6 +4340,51 @@ div[id^="slider-popap-"].flexslider .slides img {
 	background-position:-360px -100px
 }
 
+.icon-allinc {
+	background-position:-420px -100px
+}
+
+.icon-ot-1 {
+	background-position:0 -150px
+}
+.icon-ot-4 {
+	background-position:-60px -150px
+}
+.icon-detskie {
+	background-position:-120px -150px
+}
+.icon-lowprice {
+	background-position:-180px -150px
+}
+.icon-vsya-semya {
+	background-position:-240px -150px
+}
+.icon-invalidnost {
+	background-position:-300px -150px
+}
+.icon-pensionery {
+	background-position:-360px -150px
+}
+.icon-pozhilye {
+	background-position:-420px -150px
+}
+
+.icon-mama-i-ditya {
+	background-position:0 -200px
+}
+.icon-s-detmi {
+	background-position:-60px -200px
+}
+.icon-treatment {
+	background-position:-120px -200px
+}
+.icon-radon {
+	background-position:-180px -200px
+}
+.icon-swedish {
+	background-position:-240px -200px
+}
+
 .programs-title .icon {
 	background-image:url(/images/profili__icons.png);
 	background-repeat:no-repeat
@@ -6745,7 +6790,7 @@ body .menu_parent:after {
 }
 .confidentiality a {
 	font-size: 12px;
-	color: #0e67e1;
+	color: #fff;
 }
 
 

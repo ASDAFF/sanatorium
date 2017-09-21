@@ -5,6 +5,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 /** @var array $arParams */
 /** @var array $arResult */
 /** @var array $products */
+/** @var array $filter */
 /** @global CMain $APPLICATION */
 /** @var Local\Catalog\TimCatalog $component */
 
@@ -26,6 +27,54 @@ if (count($products) <= 0)
 {
     ?>
     <p class="empty">Не найдено ни одного подходящего санатория. Попробуйте отключить какой-нибудь фильтр</p><?
+}
+
+//
+// Собираем массив из меток и элементов инфраструктуры
+// в нужной последовательности (сначала фильтруемые)
+//
+$icons = array();
+$ex = array();
+foreach ($filter['GROUPS'] as $group)
+{
+	foreach ($group['ITEMS'] as $code => $item)
+	{
+        if ($item['CHECKED'])
+		{
+			if ($group['TYPE'] == 'infra')
+            {
+				$ex[$item['ID']] = true;
+				$icons[] = array(
+                    'TYPE' => 'infra',
+                    'ID' => $item['ID'],
+                    'NAME' => $item['NAME'],
+                    'CODE' => $code,
+                );
+            }
+            elseif ($group['TYPE'] == 'flags')
+			{
+				$icons[] = array(
+					'TYPE' => 'flags',
+					'ID' => $item['CODE'],
+					'NAME' => $item['NAME'],
+					'CODE' => $code,
+				);
+			}
+		}
+	}
+}
+$infra = \Local\Catalog\Infra::getAll();
+foreach ($infra['ITEMS'] as $infraItem)
+{
+    if ($ex[$infraItem['ID']])
+        continue;
+
+	$icons[] = array(
+		'TYPE' => 'infra',
+		'ID' => $infraItem['ID'],
+		'NAME' => $infraItem['NAME'],
+		'CODE' => $infraItem['CODE'],
+	);
 }
 
 $file = new \CFile();
@@ -88,22 +137,34 @@ foreach ($products as $id => $item)
 		        ?>
 		        <b>Дополнительные параметры:</b>
 		        <div class="el-icon-list"><?
-			        $infra = \Local\Catalog\Infra::getAll();
 			        $cnt = 0;
-			        foreach ($infra['ITEMS'] as $infraItem)
+			        foreach ($icons as $icoItem)
 			        {
-				        $distance = $infraItem['CODE'] == 'buvet' && $item['DISTANCE'];
-				        if (in_array($infraItem['ID'], $item['INFRA']) || $distance)
+			            $distance = false;
+			            $exist = false;
+			            if ($icoItem['TYPE'] == 'infra')
+						{
+							$distance = $icoItem['CODE'] == 'buvet' && $item['DISTANCE'];
+							$exist = in_array($icoItem['ID'], $item['INFRA']) || $distance;
+						}
+						elseif ($icoItem['TYPE'] == 'flags')
+                        {
+                            // в этом случе уже отфильтровано
+							$exist = true;
+                        }
+
+				        if ($exist)
 				        {
-					        $name = $infraItem['NAME'];
+					        $name = $icoItem['NAME'];
 					        if ($distance)
 						        $name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
 
 					        ?>
 					        <li>
-					        <i class="in-icon icon-<?= $infraItem['CODE'] ?>"></i>
-					        <span><?= $name ?></span>
+                                <i class="in-icon icon-<?= $icoItem['CODE'] ?>"></i>
+                                <span><?= $name ?></span>
 					        </li><?
+
 					        $cnt++;
 					        if ($cnt >= 4)
 						        break;
