@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://russiatourism.ru/operators/widget/js/widget.js"></script>
+<script type="text/javascript" src="https://russiatourism.ru/operators/widget/js/widget.js"></script>
 <!-- Russiatourism.ru Widget -->
 <div id="russiatourism_widget"></div>
 <script type="text/javascript">
