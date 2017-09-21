@@ -4258,7 +4258,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 }
 
 .in-icon {
-	background-image:url(/images/infra_icons.png);
+	background-image:url(/images/infra_icons.png?v=1);
 	background-repeat:no-repeat;
 	height:50px
 }
