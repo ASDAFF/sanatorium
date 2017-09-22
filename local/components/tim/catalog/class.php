@@ -33,7 +33,7 @@ class TimCatalog extends \CBitrixComponent
 	/**
 	 * @var array Количество элементов на странице
 	 */
-	public $pageSizes = array(10, 25, 40);
+	public $pageSizes = array(15, 25, 40);
 	private $defaultPageSize = 25;
 
 	/**
