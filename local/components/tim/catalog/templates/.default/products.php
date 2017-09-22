@@ -213,7 +213,7 @@ foreach ($products as $id => $item)
                 от <b><?= $item['PRICE'] ?></b> руб.
             </div>
             <span>за человека в сутки</span>
-            <noindex><a rel="nofollow" href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Заказать</a></noindex>
+            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Заказать</a>
         </div><?
 
 		if ($actions)
