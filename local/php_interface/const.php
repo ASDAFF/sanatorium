@@ -1,5 +1,4 @@
 <?
 $host = \COption::GetOptionInt('main', 'server_name');
-$http = $_SERVER['REQUEST_SCHEME'];
-$href = $http . '://' . $host;
+$href = 'https://' . $host;
 define('P_HREF', $href);
