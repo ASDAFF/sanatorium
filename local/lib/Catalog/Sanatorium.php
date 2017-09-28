@@ -508,8 +508,7 @@ class Sanatorium
     {
         //return Filter::$CATALOG_PATH . $city . '/' . ($item['CODE'] ? $item['CODE'] : $item['ID']) . '/';
         $host = \COption::GetOptionInt('main', 'server_name');
-        $http = $_SERVER['REQUEST_SCHEME'];
-        return $http . '://' . $item['CODE'] . '.' . $host . '/';
+        return 'https://' . $item['CODE'] . '.' . $host . '/';
     }
 
     /**
