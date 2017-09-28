@@ -172,7 +172,18 @@ h1 span,.h1 span {
 	display:inline-block
 }
 
+.left a.icon2 {
+	font-weight:400;
+	font-size:16px;
+	padding:11px 11px 11px 35px;
+	display:inline-block
+}
+
 .head_pun a:hover {
+	color:#2a93b9!important;
+	text-decoration:underline
+}
+.left a.icon2:hover {
 	color:#2a93b9!important;
 	text-decoration:underline
 }
@@ -772,6 +783,143 @@ footer .it-city {
 .btn-okno:hover {
 	background:#ff8a00!important;
 	color:#fff!important
+}
+
+
+
+.detail-sanatorium {
+	display:block;
+	padding:10px 20px;
+	width:100%
+}
+
+.detail-sanatorium .title {
+	position:relative;
+	text-align:center;
+	font-size:18px;
+	text-transform:uppercase;
+	padding:5px 0
+}
+
+.detail-sanatorium .title:after {
+	content:'';
+	bottom:0;
+	display:block;
+	margin:auto;
+	width:80px;
+	height:2px;
+	bottom:-7px;
+	position:relative;
+	background:#2c9ed7
+}
+
+.detail-sanatorium p {
+	font-size:14px;
+	line-height:1.4
+}
+
+.btn-detail-sanatorium {
+	padding:10px 15px!important;
+	margin:10px 0!important;
+	font-size:15px!important;
+	border-radius:4px;
+	background:#ffdcb2!important;
+	border:1px solid #ff8a00!important;
+	color:#ff8a00!important;
+	font-weight:400!important
+}
+
+.btn-detail-sanatorium:hover {
+	background:#ff8a00!important;
+	color:#fff!important
+}
+.left .images, .center .images{
+	display: inherit;
+}
+.left .images .img {
+	padding:15px 10px;
+	padding-right:0;
+	width:50%;
+	overflow:hidden;
+	max-width:180px;
+	float:left
+}
+.center .images .img {
+	padding-right:0;
+	width:25%;
+	overflow:hidden;
+	float:left;
+	min-width: 200px;
+	max-width: 500px;
+	height: 200px;
+}
+
+.left .images .img img {
+	width:100%;
+	max-width:250px;
+	max-height:140px;
+	height:100%;
+	width:auto
+}
+
+@media only screen and (max-width: 550px) {
+	.center .images .img {
+		padding-right:0;
+		width:25%;
+		overflow:hidden;
+		float:left;
+		min-width: 150px;
+		max-width: 500px;
+		height: 150px;
+	}
+}
+
+@media only screen and (max-width: 920px) {
+	.center .images .img {
+		width:33.33333%;
+	}
+}
+@media only screen and (max-width: 715px) {
+	.center .images .img {
+		width: 50%;
+	}
+}
+
+.center .images .img img {
+	width:100%;
+	height:100%;
+	position: absolute
+}
+
+.left .images .img .border{
+	border:2px solid #fff;
+	overflow:hidden;
+	padding:1px;
+	position:relative;
+	cursor:pointer;
+	display:block
+}
+.center .images .img .border {
+	border:2px solid #fff;
+	overflow:hidden;
+	padding:1px;
+	position:relative;
+	cursor:pointer;
+	display:block;
+	height: 100%;
+	width: 100%
+}
+
+.left .images .img .border:hover, .center .images .img .border:hover {
+	border:2px solid #ff8a00
+}
+
+.left .images .img .border:hover:before, .center .images .img .border:hover:before {
+	content:'';
+	width:100%;
+	height:100%;
+	position:absolute;
+	background:rgba(255,138,0,0.31) url(../images/plus.png) center no-repeat
 }
 
 #reviewStars-input input:checked ~ label,#reviewStars-input label,#reviewStars-input label:hover,#reviewStars-input label:hover ~ label {
@@ -4080,9 +4228,28 @@ div[id^="slider-popap-"].flexslider .slides img {
 .infra-box .infra-list {
 	padding-left:0
 }
-
+.infra-box-san{
+	display: table;
+	min-width: -webkit-fill-available
+}
 .infra-box .infra-list li:before {
 	display:none
+}
+.infra-box-san .infra-list li {
+	height:50px;
+	line-height:50px;
+	font-size:0;
+	width:33%
+}
+.infra-box-san .infra-list{
+	width: auto;
+	display: flex;
+	vertical-align: top;
+}
+@media only screen and (max-width: 600px) {
+	.infra-box-san .infra-list{
+		display: block;
+	}
 }
 
 .infra-list li {
@@ -5080,6 +5247,52 @@ div[id^="slider-popap-"].flexslider .slides img {
 	background: url(/css/../images/elIndexVideo-text-bg.png);
 	background-size: 100%;
 }
+.owl-item .it-text {position: absolute; width: 45%;
+	bottom: 0; left: 0; min-height: 10%;
+	font-size: 18px; font-weight: 500; color: #fff;
+	text-transform: uppercase; text-align: left;
+	padding: 14px 18px 0;
+
+	background: url(/css/../images/elIndexFoto-text-bg_cr.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.owl-item .it-text span{
+	text-transform: uppercase;
+	color: #fff;
+	cursor: pointer;
+	font: 17px Arial;
+	text-align: center;
+	position: absolute;
+	left: 5%;
+	bottom: 15%;
+}
+@media only screen and (max-width: 1200px){
+	.owl-item .it-text span{
+		font-size: 15px
+	}
+}
+@media only screen and (max-width: 1050px){
+	.owl-item .it-text span{
+		font-size: 14px
+	}
+}
+@media only screen and (max-width: 1000px){
+	.owl-item .it-text span{
+		font-size: 13px
+	}
+}
+@media only screen and (max-width: 665px){
+	.owl-item .it-text {
+		width: 60%;
+	}
+}
+@media only screen and (max-width: 515px){
+	.owl-item .it-text {
+		width: 85%;
+		min-height: 15%
+	}
+}
 .elIndexVideo .it-text span { max-width: 170px;
 	line-height: 15px;
 	display: inline-block;}
@@ -5732,7 +5945,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 	background:linear-gradient(to right,#ffe8cc,#fff)
 }
 
-.engSprite,#haad_pun-bnt:before,.header-time-work:before,.header-adress:before,.header-account:before,.header-phone:before,.head_pun li a.icon1:before,.head_pun li a.icon2:before,.eng-icon-city:before,.eng-icon-city-grey:before,#comments .item > .date:before,.icon-phome-mega:before,#cron-right .rating .star span:before,#cron-right .rating .star:before,#cron-right .rating .star span.on:before,.rating .star:before,.rating .star span:before,.rating .star span.on.on:before,.page-card #content-top:before,.owl-theme .owl-controls .owl-buttons div:before,.searchbox-icon:before,#engBtnTop:before,.icon-comment:before,.icon-phone:before,nav a#pull:after,body .menu_parent:after,#comments .item:after,.el-search-select fieldset label span.ui-state-checked:before,.el-search .line>.city>span>span:before,.searchbox-close:before,.phone-icon:before,.place-icon:before,.el-page li.prev span:before,.el-page li.prev a:before,.el-page li.next span:before,.el-page li.next a:before {
+.engSprite,#haad_pun-bnt:before,.header-time-work:before,.header-adress:before,.header-account:before,.header-phone:before,.head_pun li a.icon1:before,.head_pun li a.icon2:before,.left a.icon2:before,.eng-icon-city:before,.eng-icon-city-grey:before,#comments .item > .date:before,.icon-phome-mega:before,#cron-right .rating .star span:before,#cron-right .rating .star:before,#cron-right .rating .star span.on:before,.rating .star:before,.rating .star span:before,.rating .star span.on.on:before,.page-card #content-top:before,.owl-theme .owl-controls .owl-buttons div:before,.searchbox-icon:before,#engBtnTop:before,.icon-comment:before,.icon-phone:before,nav a#pull:after,body .menu_parent:after,#comments .item:after,.el-search-select fieldset label span.ui-state-checked:before,.el-search .line>.city>span>span:before,.searchbox-close:before,.phone-icon:before,.place-icon:before,.el-page li.prev span:before,.el-page li.prev a:before,.el-page li.next span:before,.el-page li.next a:before {
 	content:'';
 	position:absolute;
 	left:0;
@@ -5826,6 +6039,9 @@ div[id^="slider-popap-"].flexslider .slides img {
 	left:0;
 	top:9px;
 	background-position:-215px -44px
+}
+.left a.icon2 {
+	position:relative
 }
 
 @media only screen and (max-width: 700px) {

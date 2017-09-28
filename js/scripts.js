@@ -199,7 +199,7 @@ $(document).ready(function () {
 		padding: '0',
 		helpers: {
 			overlay: {
-			  locked: true 
+			  locked: true
 			}
 		}
 	});

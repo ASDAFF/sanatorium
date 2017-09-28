@@ -1,7 +1,8 @@
 te<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("test");
-?><script>
+?>
+<script>
     $(function () {
         $.datepicker.regional['ru'] = {
             closeText: 'Закрыть',
@@ -27,13 +28,15 @@ $APPLICATION->SetTitle("test");
     });
 </script>
 <style>
-    .calculator div{
+    .calculator div {
         font-size: 12px;
     }
-    .error{
+
+    .error {
         border: 1.5px solid !important;
         border-color: red !important;
     }
+
     .new-form {
         margin-top: 22px;
     }
@@ -235,10 +238,12 @@ $APPLICATION->SetTitle("test");
     .float-body {
         padding-bottom: 15px;
     }
-    .form-submit{
+
+    .form-submit {
         cursor: pointer;
     }
-    .form-submit{
+
+    .form-submit {
         border: solid;
         width: 100%;
         background: url(/images/calc/2arrow.png) #5fb3dd no-repeat;
@@ -284,29 +289,36 @@ $APPLICATION->SetTitle("test");
         padding-right: 20%;
         color: white;
     }
-    .first-number-type{
+
+    .first-number-type {
         padding-bottom: 5px;
     }
-    .new-float-block{
+
+    .new-float-block {
         padding-bottom: 3px;
     }
-    .list-input-new{
+
+    .list-input-new {
         margin-top: 4px;
     }
-    .unchecked{
-    pointer-events: none;
-    cursor: none;
+
+    .unchecked {
+        pointer-events: none;
+        cursor: none;
     }
-    .confidentiality{
+
+    .confidentiality {
         font-size: 12px;
     }
-.confidentiality input{
--webkit-appearance : checkbox;
+
+    .confidentiality input {
+        -webkit-appearance: checkbox;
     }
-.confidentiality a{
-  font-size: 12px;
+
+    .confidentiality a {
+        font-size: 12px;
         color: #0e67e1;
-}
+    }
 </style>
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
@@ -329,45 +341,45 @@ $APPLICATION->SetTitle("test");
                 </div>
             </div>
         </div>
-            <div class="form-body float-body" style="display: block;">
-                <div class="float-block new-float-block">
-                    <div class="who-you-are">
-                        Кто Вы 
+        <div class="form-body float-body" style="display: block;">
+            <div class="float-block new-float-block">
+                <div class="who-you-are">
+                    Кто Вы
+                    <div class="list-input calc-form form-body-right">
+                        <select class="form-body-right">
+                            <option>Взрослый</option>
+                            <option>Ребенок</option>
+                        </select>
+                    </div>
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
-                                <option>Взрослый</option>
-                                <option>Ребенок</option>
+                                <option>Пункт 1</option>
+                                <option>Пункт 2</option>
                             </select>
                         </div>
-                        <div class="number-type">Тип номера 
-                            <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right">
-                                    <option>Пункт 1</option>
-                                    <option>Пункт 2</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="number-type">
+                        Размещение
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>На основном месте</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
-                        <div class="number-type">
-                            Размещение 
-                            <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right">
-                                    <option>На основном месте</option>
-                                    <option>Пункт 2</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="number-type first-number-type">
-                            Программа 
-                            <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right">
-                                    <option>Программа 3</option>
-                                    <option>Пункт 2</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="number-type first-number-type">
+                        Программа
+                        <div class="list-input calc-form form-body-right">
+                            <select class="form-body-right">
+                                <option>Программа 3</option>
+                                <option>Пункт 2</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <div class="form-body">
             <div class="number-type">
                 <img src="/images/calc/people.png">
@@ -383,14 +395,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form0" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    Кто Вы 
+                    Кто Вы
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type">Тип номера 
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -399,7 +411,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Размещение 
+                        Размещение
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -408,7 +420,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Программа 
+                        Программа
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -417,7 +429,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img
+                                    src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -425,14 +438,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form1" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    Кто Вы 
+                    Кто Вы
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type">Тип номера 
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -441,7 +454,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Размещение 
+                        Размещение
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -450,7 +463,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Программа 
+                        Программа
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -459,7 +472,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img
+                                    src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -467,14 +481,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form2" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    Кто Вы 
+                    Кто Вы
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type">Тип номера 
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -483,7 +497,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Размещение 
+                        Размещение
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -492,7 +506,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Программа 
+                        Программа
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -501,7 +515,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img
+                                    src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -509,14 +524,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form3" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    Кто Вы 
+                    Кто Вы
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type">Тип номера 
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -525,7 +540,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Размещение 
+                        Размещение
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -534,7 +549,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Программа 
+                        Программа
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -543,7 +558,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img
+                                    src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -551,14 +567,14 @@ $APPLICATION->SetTitle("test");
         <div id="sub_form4" class="form-body float-body">
             <div class="float-block">
                 <div class="who-you-are">
-                    Кто Вы 
+                    Кто Вы
                     <div class="list-input calc-form form-body-right">
                         <select class="form-body-right">
                             <option>Взрослый</option>
                             <option>Ребенок</option>
                         </select>
                     </div>
-                    <div class="number-type">Тип номера 
+                    <div class="number-type">Тип номера
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Пункт 1</option>
@@ -567,7 +583,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Размещение 
+                        Размещение
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>На основном месте</option>
@@ -576,7 +592,7 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="number-type">
-                        Программа 
+                        Программа
                         <div class="list-input calc-form form-body-right">
                             <select class="form-body-right">
                                 <option>Программа 3</option>
@@ -585,7 +601,8 @@ $APPLICATION->SetTitle("test");
                         </div>
                     </div>
                     <div class="delete-user">
-                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img src="/images/calc/minus.png"></a>
+                        <a class="people-delete" href="#">Удалить<img src="/images/calc/people.png"><img
+                                    src="/images/calc/minus.png"></a>
                     </div>
                 </div>
             </div>
@@ -602,16 +619,16 @@ $APPLICATION->SetTitle("test");
                 <input id="numb-phone" class="selector" placeholder="Введите телефон">
             </div>
             <div class="confidentiality"><label>
-        <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')">
-    </label>Настоящим
-    подтверждаю, что я ознакомлен и согласен с условиями
-    <a href="/uploads/conf.doc">политики конфиденциальности</a></div>
+                    <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')">
+                </label>Настоящим
+                подтверждаю, что я ознакомлен и согласен с условиями
+                <a href="/uploads/conf.doc">политики конфиденциальности</a></div>
             <div class="form-submit form-submit-text">
                 <p>
-                        Забронировать отдых<br>
-                        и получить скидку
+                    Забронировать отдых<br>
+                    и получить скидку
                 </p>
-                    </div>
+            </div>
 
         </div>
     </form>
@@ -648,53 +665,264 @@ $APPLICATION->SetTitle("test");
     });
 
 
-
 </script>
+                    <!-- НАЧАЛО ВЁРСТКИ ДЕТАЛЬНОЙ СТРАНИЦЫ САНАТОРИЯ -->
+                    <div class="tab-pane active" id="rooms">
+                        <div id="room496" class="detail-sanatorium" style="">
+                            <div class="title">1 местный 1 комнатный 1 категория</div>
+                            <div class="el-nomer-popap">
+                                <div class="left">
+                                    <a class="icon2" href="/sanatorium/essentuki/tselebnyy-klyuch/rooms/">&#8592; Все номера санатория</a>
+                                    <div class="images">
+                                    <div class="img">
+                                        <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                                            <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                                        </a>
+                                    </div>
+                                        <div class="img">
+                                            <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                                                <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                                            </a>
+                                        </div>
+                                        <div class="img">
+                                            <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                                                <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                                            </a>
+                                        </div>
+                                        <div class="img">
+                                            <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                                                <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                                            </a>
+                                        </div>
+                                        <div class="img">
+                                            <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                                                <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <input id="popup-bron-btn" type="button" data-id="496"
+                                               class="btn-detail-sanatorium ui-widget ui-controlgroup-item ui-button ui-corner-right"
+                                               value="ЗАБРОНИРОВАТЬ" role="button">
+                                    </div>
+                                    <div class="info-bottom">
+                                        <div class="right">
+                                            <div class="text">
+                                                <b>Площадь:</b> 14 м2 <br> <b>Кроватей: </b>Односпальных: 1 <br><br> <b>В
+                                                    стоимость включено:</b><br>проживание, питание, лечение.<br><br> <b>Вместимость
+                                                    номера:</b><br>
+                                                <ul>
+                                                    <li><span class="first">основных мест - 1 шт</span></li>
+                                                </ul>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <div class="inf">
+                                            <div class="price-start"><span
+                                                        class="txt">Цена за номер в сутки от</span><span class="num">3150р</span>
+                                            </div>
+                                            <i class="price-start-details">(в стоимость проживания входит
+                                                лечение по общетерапевтической путевке)</i>
+                                            <div class="tit">Стоимость основных мест:</div>
+                                            <ul>
+                                                <li>
+                                                    <span class="first">основное взрослое (с подселением)</span>
+                                                    <span class="second">3150р</span>
+                                                </li>
+                                                <li>
+                                                    <span class="first">детское</span></li>
+                                                <li>
+                                                    <span class="first">размещение одним (выкуп номера)</span> <span
+                                                            class="second">3150р</span></li>
+                                            </ul>
+                                            <div class="tit">Стоимость дополнительных мест:</div>
+                                            <ul>
+                                                <li>
+                                                    <span class="first">взрослое</span></li>
+                                                <li>
+                                                    <span class="first">детское</span></li>
 
-<div class="engBox-body clearfix">
+                                            </ul>
+                                        </div>
+                                        <div class="icon">
+                                            <b>Удобства:</b>
+                                            <div class="infra-box infra-box-san">
+                                                <ul class="infra-list">
+                                                    <li><i class="in-icon icon-apteka"></i><span>Аптека</span></li>
+                                                    <li>
+                                                        <i class="in-icon icon-magazin"></i><span>Магазин пром. товаров</span>
+                                                    </li>
+                                                    <li><i class="in-icon icon-solyarij"></i><span>Солярий</span></li>
+                                                </ul>
+                                                <ul class="infra-list">
+                                                    <li><i class="in-icon icon-biblioteka"></i><span>Библиотека</span>
+                                                    </li>
+                                                    <li><i class="in-icon icon-nastol-tennis"></i><span>Настольный теннис</span>
+                                                    </li>
+                                                    <li>
+                                                        <i class="in-icon icon-trenazhory"></i><span>Тренажерный зал</span>
+                                                    </li>
+                                                </ul>
+                                                <ul class="infra-list">
+                                                    <li>
+                                                        <i class="in-icon icon-detskaya"></i><span>Детская площадка</span>
+                                                    </li>
+                                                    <li><i class="in-icon icon-sauna"></i><span>Сауна</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- КОНЕЦ ВЁРСТКИ ДЕТАЛЬНОЙ СТРАНИЦЫ САНАТОРИЯ -->
+
+<!--НАЧАЛО ВЁРСТКИ КНОПКИ СЛАЙДЕРА ДЛЯ ПЕРЕХОДА КО ВСЕМ ФОТОГРАФИЯМ САНАТОРИЯ-->
+<div class="engBox-body page-card" itemscope="" itemtype="http://schema.org/Hotel">
     <div class="engBox-center">
         <div id="content">
-<form class="review-form" id="review-form">
-    <input type="hidden" name="service" value="0">
-    <div class="feedback-form-ttl">Оставить отзыв о санатории</div>
-    <div class="feedback-form-left">
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-name" name="name" placeholder="Ваше имя" required="">
-            <i class="i-feedback-form-name"></i>
-            <span class="required"></span>
-        </div>
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-city" name="city" placeholder="Ваш город">
-            <i class="i-feedback-form-city"></i>
-        </div>
-        <div class="feedback-form__input">
-            <input type="text" class="feedback-form-tel" name="mail" placeholder="E-mail" required="">
-            <i class="i-feedback-form-mail"></i>
-            <span class="required"></span>
-        </div></div>
-    <div class="feedback-form-right">
-        <div class="feedback-form-right-sanatorium">
-            <textarea placeholder="Ваш комментарий" name="txt" required=""></textarea>
-            <span class="required"></span>
+            <span itemprop="name" style="display:none;">Машук Аква-Терм</span>
+            <span itemprop="priceRange" style="display:none;">5580</span>
+            <span itemprop="starRating" style="display:none;">5</span>
+            <span itemprop="telephone" style="display:none;">88007752604</span>
+            <div itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+                <meta itemprop="latitude" content="44.081275051071">
+                <meta itemprop="longitude" content="43.091748380951">
+            </div>        <a href="#map" id="content-top">Адрес: <span itemprop="address">г. Железноводск, п. Иноземцево, ул. Родниковая, 22</span></a>        <span itemprop="image" style="display:none;">https://putevochka.com/upload/resize_cache/iblock/e5a/830_525_13caaba1070cbf9e466b07e0411acd2b4/e5ad79d51ddb2cadfe6b65e2e42ed531.jpg</span>
+            <div id="sync1" class="owl-carousel owl-theme" itemprop="photos" style="opacity: 1; display: block;">                <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 45920px; left: 0px; display: block;"><div class="owl-item" style="width: 820px;"><div class="item" ><img src="/upload/resize_cache/iblock/e5a/830_525_13caaba1070cbf9e466b07e0411acd2b4/e5ad79d51ddb2cadfe6b65e2e42ed531.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div><div class="it-text"><span>смотреть все фотографии</span></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/a1a/830_525_13caaba1070cbf9e466b07e0411acd2b4/a1aa1af35791b5887255662fc6987dba.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/1b5/830_525_13caaba1070cbf9e466b07e0411acd2b4/1b54ff040bf8e36d3b866b014669dc55.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/7f5/760_424_13caaba1070cbf9e466b07e0411acd2b4/7f59dfc1b29d3403982dde1f568e5401.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/920/830_525_13caaba1070cbf9e466b07e0411acd2b4/92041b99ce0455aed058d59020dc4543.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/06a/830_525_13caaba1070cbf9e466b07e0411acd2b4/06afc633197b5c27fcbdb791547daadc.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/4db/830_525_13caaba1070cbf9e466b07e0411acd2b4/4dbd67c79d6aaec368c9086c3dd87907.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/965/830_525_13caaba1070cbf9e466b07e0411acd2b4/9659c6f08c2fa6ea7accb9ce904f72c5.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/332/830_525_13caaba1070cbf9e466b07e0411acd2b4/33289447c12893e1be3a64a49ec6e788.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/8d1/830_525_13caaba1070cbf9e466b07e0411acd2b4/8d14d874062e14f5c418a0b8eb339ac8.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/6af/830_525_13caaba1070cbf9e466b07e0411acd2b4/6af22050ce02933cb9f6b0eb09415d52.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/9b1/830_525_13caaba1070cbf9e466b07e0411acd2b4/9b141cac08c11696a7158234347c8159.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/9c8/830_525_13caaba1070cbf9e466b07e0411acd2b4/9c86e25759ad118fd6d8a9476535a19b.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/c71/830_525_13caaba1070cbf9e466b07e0411acd2b4/c71f99fe5f390366047a916ff3470c1c.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/0ca/830_525_13caaba1070cbf9e466b07e0411acd2b4/0ca66f284ba4f7a23e3ac65a70387a25.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/7d6/830_525_13caaba1070cbf9e466b07e0411acd2b4/7d678d7bdeb03810b3cdd7ed33933e31.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/9f7/830_525_13caaba1070cbf9e466b07e0411acd2b4/9f71272161bdb017b5e7c07f5dc9d9ba.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/507/830_525_13caaba1070cbf9e466b07e0411acd2b4/507750dce9a0f30f4ee81c96b4003230.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/64f/830_525_13caaba1070cbf9e466b07e0411acd2b4/64fac3b1b2029c448d64a4faeb0342c6.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/26b/830_525_13caaba1070cbf9e466b07e0411acd2b4/26b80012ae3eaea99d1279d1a0fc5138.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/0a3/830_525_13caaba1070cbf9e466b07e0411acd2b4/0a344cd25c747061be26299953d2c94e.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/56d/830_525_13caaba1070cbf9e466b07e0411acd2b4/56da243a4642ca9bfca279cdc480f849.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/617/830_525_13caaba1070cbf9e466b07e0411acd2b4/61707e1cc09078680f833a1d4f93ba6b.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/1b2/830_525_13caaba1070cbf9e466b07e0411acd2b4/1b2d6f398cc24cfdf37ef812474e7727.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/72b/830_525_13caaba1070cbf9e466b07e0411acd2b4/72b58ed825411e96c5210c8f9348d34d.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/442/830_525_13caaba1070cbf9e466b07e0411acd2b4/4428880357cfc15f032b590ef454fb9a.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/66a/830_525_13caaba1070cbf9e466b07e0411acd2b4/66a5d27de5293cfc2f8638d3e7a9178b.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 820px;"><div class="item"><img src="/upload/resize_cache/iblock/9e5/830_525_13caaba1070cbf9e466b07e0411acd2b4/9e52263debaf7f2f7577a39307552859.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div></div></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"></div><div class="owl-next"></div></div></div></div>
+            <div id="sync2" class="owl-carousel owl-theme" style="opacity: 1; display: block;">                <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 4648px; left: 0px; display: block;"><div class="owl-item synced" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/e5a/830_525_13caaba1070cbf9e466b07e0411acd2b4/e5ad79d51ddb2cadfe6b65e2e42ed531.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/a1a/830_525_13caaba1070cbf9e466b07e0411acd2b4/a1aa1af35791b5887255662fc6987dba.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/1b5/830_525_13caaba1070cbf9e466b07e0411acd2b4/1b54ff040bf8e36d3b866b014669dc55.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/7f5/760_424_13caaba1070cbf9e466b07e0411acd2b4/7f59dfc1b29d3403982dde1f568e5401.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/920/830_525_13caaba1070cbf9e466b07e0411acd2b4/92041b99ce0455aed058d59020dc4543.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/06a/830_525_13caaba1070cbf9e466b07e0411acd2b4/06afc633197b5c27fcbdb791547daadc.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/4db/830_525_13caaba1070cbf9e466b07e0411acd2b4/4dbd67c79d6aaec368c9086c3dd87907.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/965/830_525_13caaba1070cbf9e466b07e0411acd2b4/9659c6f08c2fa6ea7accb9ce904f72c5.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/332/830_525_13caaba1070cbf9e466b07e0411acd2b4/33289447c12893e1be3a64a49ec6e788.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/8d1/830_525_13caaba1070cbf9e466b07e0411acd2b4/8d14d874062e14f5c418a0b8eb339ac8.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/6af/830_525_13caaba1070cbf9e466b07e0411acd2b4/6af22050ce02933cb9f6b0eb09415d52.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/9b1/830_525_13caaba1070cbf9e466b07e0411acd2b4/9b141cac08c11696a7158234347c8159.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/9c8/830_525_13caaba1070cbf9e466b07e0411acd2b4/9c86e25759ad118fd6d8a9476535a19b.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/c71/830_525_13caaba1070cbf9e466b07e0411acd2b4/c71f99fe5f390366047a916ff3470c1c.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/0ca/830_525_13caaba1070cbf9e466b07e0411acd2b4/0ca66f284ba4f7a23e3ac65a70387a25.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/7d6/830_525_13caaba1070cbf9e466b07e0411acd2b4/7d678d7bdeb03810b3cdd7ed33933e31.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/9f7/830_525_13caaba1070cbf9e466b07e0411acd2b4/9f71272161bdb017b5e7c07f5dc9d9ba.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/507/830_525_13caaba1070cbf9e466b07e0411acd2b4/507750dce9a0f30f4ee81c96b4003230.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/64f/830_525_13caaba1070cbf9e466b07e0411acd2b4/64fac3b1b2029c448d64a4faeb0342c6.jpg" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/26b/830_525_13caaba1070cbf9e466b07e0411acd2b4/26b80012ae3eaea99d1279d1a0fc5138.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/0a3/830_525_13caaba1070cbf9e466b07e0411acd2b4/0a344cd25c747061be26299953d2c94e.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/56d/830_525_13caaba1070cbf9e466b07e0411acd2b4/56da243a4642ca9bfca279cdc480f849.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/617/830_525_13caaba1070cbf9e466b07e0411acd2b4/61707e1cc09078680f833a1d4f93ba6b.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/1b2/830_525_13caaba1070cbf9e466b07e0411acd2b4/1b2d6f398cc24cfdf37ef812474e7727.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/72b/830_525_13caaba1070cbf9e466b07e0411acd2b4/72b58ed825411e96c5210c8f9348d34d.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/442/830_525_13caaba1070cbf9e466b07e0411acd2b4/4428880357cfc15f032b590ef454fb9a.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/66a/830_525_13caaba1070cbf9e466b07e0411acd2b4/66a5d27de5293cfc2f8638d3e7a9178b.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div><div class="owl-item" style="width: 83px;"><div class="item"><img src="/upload/resize_cache/iblock/9e5/830_525_13caaba1070cbf9e466b07e0411acd2b4/9e52263debaf7f2f7577a39307552859.JPG" alt="Санаторий Машук Аква-Терм Железноводск" title="Санаторий Машук Аква-Терм Железноводск"></div></div></div></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+
         </div>
     </div>
-    <div class="feedback-form-line">
-        <div class="feedback-form-star">
-            <span>Плохо</span>
-            <div class="mark">
-                <input type="radio" id="star5" name="mark" value="5"><label for="star5" title="5">5</label>
-                <input type="radio" id="star4" name="mark" value="4"><label for="star4" title="4">4</label>
-                <input type="radio" id="star3" name="mark" value="3"><label for="star3" title="3">3</label>
-                <input type="radio" id="star2" name="mark" value="2"><label for="star2" title="2">2</label>
-                <input type="radio" id="star1" name="mark" value="1"><label for="star1" title="1">1</label>
+
+</div>
+<!--КОНЕЦ ВЁРСТКИ КНОПКИ СЛАЙДЕРА ДЛЯ ПЕРЕХОДА КО ВСЕМ ФОТОГРАФИЯМ САНАТОРИЯ-->
+
+<!--НАЧАЛО ВЁРСТКИ ВСЕХ ФОТОГРАФИЙ САНАТОРИЯ (ПЛИТКА)-->
+<div id="cron_full">
+    <div id="cron" class="engBox-body">
+        <div id="cron-right">
+            <div class="rating-title">Рейтинг</div>
+            <div class="rating" title="3.6">			        <div class="star"><span class="on"></span></div>			        <div class="star"><span class="on"></span></div>			        <div class="star"><span class="on"></span></div>			        <div class="star"><span class="on" style="width:60%"></span></div>			        <div class="star"><span class="of"></span></div>	        </div>
+            <div>
+                Цена от <b>1720</b> руб<br><span>за человека в сутки</span>
             </div>
-            <span>Хорошо</span>
         </div>
-        <span class="feedback-form-btn-span">Оставить отзыв</span>
-        <div class="js-feedback-tnx" style="display:none;">Спасибо, Ваш отзыв принят!</div>
+        <div id="cron-crox">
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a itemprop="url" href="/"><span itemprop="title">Главная</span></a></span> -
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" id="breadcrumb-1"><a itemprop="url" href="/sanatorium/"><span itemprop="title">Санатории</span></a></span> -
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-3" id="breadcrumb-2"><a itemprop="url" href="/sanatorium/essentuki/"><span itemprop="title">Ессентуки</span></a></span> -
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="/sanatorium/essentuki/tselebnyy-klyuch/" style="display:none;"><span itemprop="title">Целебный ключ</span></a></span>
+            <span class="js-bc-sep" style="display:none;"> - </span><span class="js-bc-last">Целебный ключ</span>
+        </div>
+        <div id="cron-title"><h1>Санаторий Целебный ключ<span class="js-tab-name"></span></h1></div>
     </div>
-</form>
 </div>
+<div class="engBox-body page-card" itemscope="" itemtype="http://schema.org/Hotel">
+    <div class="engBox-body clearfix">
+        <div class="center">
+            <div class="images">
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-w/0a/1f/91/0b/caption.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-w/0a/1f/91/0b/caption.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+                <div class="img">
+                    <a href="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg"  class="border various">
+                        <img src="/upload/resize_cache/iblock/0f2/375_1000_1a0e135b89fe9395d0e82863650ebcf5b/0f216567e1b5d96a0960547e859c1197.jpg" alt="1 местный 1 комнатный 1 категория Целебный ключ" title="1 местный 1 комнатный 1 категория Целебный ключ">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+
+<!--КОНЕЦ ВЁРСТКИ ВСЕХ ФОТОГРАФИЙ САНАТОРИЯ (ПЛИТКА)-->
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
