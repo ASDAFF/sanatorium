@@ -506,7 +506,10 @@ class Sanatorium
      */
     public static function getDetailUrl($item, $city)
     {
-        return Filter::$CATALOG_PATH . $city . '/' . ($item['CODE'] ? $item['CODE'] : $item['ID']) . '/';
+        //return Filter::$CATALOG_PATH . $city . '/' . ($item['CODE'] ? $item['CODE'] : $item['ID']) . '/';
+        $host = \COption::GetOptionInt('main', 'server_name');
+        $http = $_SERVER['REQUEST_SCHEME'];
+        return $http . '://' . $item['CODE'] . '.' . $host . '/';
     }
 
     /**
@@ -688,7 +691,7 @@ class Sanatorium
 				?>
                 <div>
                     <div class="elPriceDocumentBtn">Посмотреть цены с учетом сезонности и программы лечения можно <a
-                                href="<?= $path ?>" target="_blank">здесь</a></div>
+                                href="<?= P_HREF ?><?= $path ?>" target="_blank">здесь</a></div>
                 </div><?
 			}
 
@@ -835,8 +838,8 @@ class Sanatorium
 	        </ul>
 	        <p>До заезда в санаторий, необходимо заранее проконсультироваться с врачом и оформить санаторно-курортную карту, это сэкономит Ваше время и обеспечит возможность начать курс лечения в соответствии со сроком пребывания по путевке.</p>
 	        <p>При отсутствии санаторно-курортной карты при заезде в санаторий, у гостей есть возможность оформить ее за дополнительную плату. Срок оформления санаторно-курортной карты в этом случае может занимать от 1 до 3 рабочих дней. Дни по путевке, в течение которых оформляется санаторно-курортная карта в санатории, не продлеваются и не компенсируются. </p>
-	        <a class="docs-link" href="/upload/voucher.docx" download>Ваучер (обменная путевка)</a>
-	        <a class="docs-link" href="/upload/contract.doc" download>Договор с туристом</a><?
+	        <a class="docs-link" href="<?= P_HREF ?>/upload/voucher.docx" download>Ваучер (обменная путевка)</a>
+	        <a class="docs-link" href="<?= P_HREF ?>/upload/contract.doc" download>Договор с туристом</a><?
         }
         elseif ($tabCode == 'reviews')
 		{

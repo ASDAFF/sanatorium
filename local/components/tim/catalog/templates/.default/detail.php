@@ -151,10 +151,7 @@ $currentTab = $tabs[$tabCode];
             </div>
         </div>
         <div id="cron-crox">
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a itemprop="url" href="/"><span itemprop="title">Главная</span></a></span> -
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" id="breadcrumb-1"><a itemprop="url" href="/sanatorium/"><span itemprop="title">Санатории</span></a></span> -
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-3" id="breadcrumb-2"><a itemprop="url" href="/sanatorium/<?= $product['CITY']['CODE'] ?>/"><span itemprop="title"><?= $product['CITY']['NAME'] ?></span></a></span> -
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" id="breadcrumb-3"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
         <div id="cron-title"><h1>Санаторий <?= $product['NAME'] ?><span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
@@ -341,7 +338,7 @@ $currentTab = $tabs[$tabCode];
 						<div class="_form-check">
 							<input name="_check" type="checkbox" id="checkbox-lic" data-class="_form-check-btn"/>
 							<label for="checkbox-lic" class='checkbox-tr-btn'>
-								Я ознакомлен <a target="_blank" href="/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
+								Я ознакомлен <a target="_blank" href="<?= P_HREF ?>/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
 							</label>
 						</div>
 						<div class="_form-check-btn">

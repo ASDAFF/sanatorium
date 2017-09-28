@@ -40,7 +40,7 @@ if ($iFinish > $iEnd) {
 				$href = $urlPage . ($iCur - 1);
 			?>
 			<li class="prev">
-			<a href="<?= $href ?>" data-page="<?= ($iCur - 1) ?>"></a>
+			<a href="<?= P_HREF ?><?= $href ?>" data-page="<?= ($iCur - 1) ?>"></a>
 			</li><?
 		} else {
 			?>
@@ -52,7 +52,7 @@ if ($iFinish > $iEnd) {
 			$href = $url;
 			?>
 			<li>
-			<a href="<?= $href ?>" data-page="1">1</a>
+			<a href="<?= P_HREF ?><?= $href ?>" data-page="1">1</a>
 			</li><?
 
 			if ($iStart > 2) {
@@ -75,7 +75,7 @@ if ($iFinish > $iEnd) {
 					$href = $urlPage . $i;
 				?>
 				<li>
-				<a href="<?= $href ?>" data-page="<?= $i ?>"><?= $i ?></a>
+				<a href="<?= P_HREF ?><?= $href ?>" data-page="<?= $i ?>"><?= $i ?></a>
 				</li><?
 			}
 		}
@@ -90,14 +90,14 @@ if ($iFinish > $iEnd) {
 			$href = $urlPage . $iEnd;
 			?>
 			<li>
-			<a href="<?= $href ?>" data-page="<?= $iEnd ?>"><?= $iEnd ?></a>
+			<a href="<?= P_HREF ?><?= $href ?>" data-page="<?= $iEnd ?>"><?= $iEnd ?></a>
 			</li><?
 		}
 		if ($iCur < $iEnd) {
 			$href = $urlPage . ($iCur + 1);
 			?>
 			<li class="next">
-			<a href="<?= $href ?>" data-page="<?= ($iCur + 1) ?>"></a>
+			<a href="<?= P_HREF ?><?= $href ?>" data-page="<?= ($iCur + 1) ?>"></a>
 			</li><?
 		} else {
 			?>

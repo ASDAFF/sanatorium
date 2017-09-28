@@ -14,7 +14,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<tr>
 				<td><b class="search"></b></td>
 				<td>
-					<a href="/search/?q=<?= $arResult['~QUERY'] ?>">Искать "<?= $arResult['~QUERY'] ?>" в новостях и
+					<a href="<?= P_HREF ?>/search/?q=<?= $arResult['~QUERY'] ?>">Искать "<?= $arResult['~QUERY'] ?>" в новостях и
 						статьях</a>
 				</td>
 			</tr>
@@ -25,7 +25,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<tr>
 				<td><b class="index"></b></td>
 				<td>
-					<a href="/">Перейти на главную</a>
+					<a href="<?= P_HREF ?>/">Перейти на главную</a>
 				</td>
 			</tr>
 		</table>
@@ -35,7 +35,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<tr>
 				<td><b class="sanatorium"></b></td>
 				<td>
-					<a href="/sanatorium/">Все санатории</a>
+					<a href="<?= P_HREF ?>/sanatorium/">Все санатории</a>
 				</td>
 			</tr>
 		</table>

@@ -27,7 +27,7 @@ $page = $_REQUEST['page'];
 						$APPLICATION->SetPageProperty('title', 'Акции в ' . $city['UF_PREDL']);
 					}
 					?>
-					<li<?= $active ?>><a href="/action/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a></li><?
+					<li<?= $active ?>><a href="<?= P_HREF ?>/action/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a></li><?
 				}
 				?>
 			</ul>

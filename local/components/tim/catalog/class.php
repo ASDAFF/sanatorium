@@ -99,20 +99,44 @@ class TimCatalog extends \CBitrixComponent
 	{
 		$url = urldecode($_SERVER['REQUEST_URI']);
 		$urlDirs = explode('/', $url);
-		$code = $urlDirs[3];
-		if ($code && count($urlDirs) > 4)
-			if (is_numeric($code))
-				$this->product = Sanatorium::getById($code);
-			else
-				$this->product = Sanatorium::getByCode($code);
+
+		if ($this->arParams['SANATORIUM_ID'])
+		{
+			$this->product = Sanatorium::getById($this->arParams['SANATORIUM_ID']);
+			if ($this->product)
+			{
+				$this->tabCode = $urlDirs[1];
+				if (substr($this->tabCode, 0, 1) == '?')
+					$this->tabCode = '';
+			}
+		}
+		else
+		{
+			$code = $urlDirs[3];
+			if ($code && count($urlDirs) > 4)
+				if (is_numeric($code))
+					$this->product = Sanatorium::getById($code);
+				else
+					$this->product = Sanatorium::getByCode($code);
+
+			if ($this->product)
+			{
+				$this->tabCode = $urlDirs[4];
+				if (substr($this->tabCode, 0, 1) == '?')
+					$this->tabCode = '';
+
+				$tabPath = '';
+				if ($this->tabCode)
+					$tabPath .= $this->tabCode . '/';
+
+				LocalRedirect(DEFAULT_HTTP . '://' . $this->product['CODE'] . '.' . DEFAULT_HOST . '/' . $tabPath, true, '301 Moved Permanently');
+			}
+		}
 
 		if ($this->product)
 		{
 			// Счетчик просмотренных
 			Sanatorium::viewedCounters($this->product['ID']);
-			$this->tabCode = $urlDirs[4];
-			if (substr($this->tabCode, 0, 1) == '?')
-				$this->tabCode = '';
 		}
 		else
 		{

@@ -264,7 +264,11 @@ var Detail = {
 
 	popstate: function (e) {
 		var href = e.target.location.pathname;
-		var a = $('#tabs a[href="' + href + '"]:first');
+		var ar = href.split('/');
+		var code = ar[1];
+		if (code === '')
+			code = 'main';
+		var a = $('#tabs a#tab-' + code + ':first');
 		var li = a.parent();
 		if (!li.is('.active')) {
 			Detail.showTab(a, li);

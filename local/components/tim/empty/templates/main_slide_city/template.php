@@ -14,7 +14,7 @@ $city = \Local\Catalog\City::getAll(true);
 		{
 			?>
 			<div>
-				<a href="/sanatorium/<?= $item['CODE'] ?>/" class="item">
+				<a href="<?= P_HREF ?>/sanatorium/<?= $item['CODE'] ?>/" class="item">
 					<div class="img">
 						<img src="<?= $item['PICTURE'] ?>" alt="<?=$item['NAME']?>"/>
 					</div>

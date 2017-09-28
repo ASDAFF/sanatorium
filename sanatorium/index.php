@@ -9,13 +9,14 @@ if ($isAjax)
 	define('PUBLIC_AJAX_MODE', true);
 	define('STOP_STATISTICS', true);
 	define('NO_AGENT_CHECK', true);
-	require $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
 }
 else
 	require $_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php';
 
 $APPLICATION->IncludeComponent('tim:catalog', '', array(
 	'AJAX' => $isAjax,
+	'SANATORIUM_ID' => $d3SanatoriumId,
 ));
 
 if (!$isAjax)

@@ -3,10 +3,10 @@
 <?if (!empty($arResult)):?>
 <ul>
 	<li class="parent">
-		<a href="/about/">О сервисе</a>
+		<a href="<?= P_HREF ?>/about/">О сервисе</a>
 		<ul class="p-submenu">
 			<? foreach($arResult as $item): ?>
-				<li <?if ($item["SELECTED"]):?> class="active"<?endif?>><a href="<?=$item['LINK']?>"><?=$item['TEXT']?></a></li>
+				<li <?if ($item["SELECTED"]):?> class="active"<?endif?>><a href="<?= P_HREF ?><?=$item['LINK']?>"><?=$item['TEXT']?></a></li>
 			<? endforeach; ?>
 		</ul>
 	</li>

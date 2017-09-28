@@ -216,11 +216,12 @@ class Room
 					?>
 				</div>
 				<div class="inf">
+                    цена
 					<div class="money">
-						от <b><?= $room['PRICE'] ?></b> руб
+						от <b><?= $room['PRICE'] ?></b> руб.
 					</div>
-					<span>за номер в сутки</span>
-					<a href="#room<?= $room['ID'] ?>" class="btn various">Подробнее</a>
+					<span>за человека в сутки</span>
+					<a href="#room<?= $room['ID'] ?>" class="btn various">Забронировать</a>
 				</div><?
 
 				//

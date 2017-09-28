@@ -51,7 +51,7 @@ $citiesData = [
 	$active = $_REQUEST['city'] ? '' : ' class="active"';
 	$cityCode = '';
     ?>
-    <div class="left"><a<?= $active ?> href="/maps/">Карта санаториев КМВ</a></div>
+    <div class="left"><a<?= $active ?> href="<?= P_HREF ?>/maps/">Карта санаториев КМВ</a></div>
     <div class="right"><?
 
 		foreach ($cities['ITEMS'] as $city)
@@ -66,7 +66,7 @@ $citiesData = [
 				$APPLICATION->SetPageProperty('title', 'Санатории ' . $city['UF_RODIT'] . ' на карте');
 			}
 			?>
-            <a<?= $active ?> href="/maps/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a><?
+            <a<?= $active ?> href="<?= P_HREF ?>/maps/<?= $city['CODE'] ?>/"><?= $city['NAME'] ?></a><?
 
 			$citiesData[$city['CODE']] = [
                 'TITLE' => 'Санатории ' . $city['UF_RODIT'] . ' на карте',

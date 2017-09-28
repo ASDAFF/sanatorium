@@ -72,7 +72,7 @@ $APPLICATION->ShowPanel();
 			<?if($APPLICATION->GetCurDir() == '/'):?>
 					 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
 			<?else:?>
-				<a href="<?=SITE_DIR?>">
+				<a href="<?= P_HREF ?><?=SITE_DIR?>">
 			  		 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
 				</a>
 			<?endif;?>
@@ -135,14 +135,14 @@ $APPLICATION->ShowPanel();
 	</div>
 	<div class="head_pun_full">
 		<ul class="engBox-body clearfix bl head_pun">
-			<li><a class="icon1" href="/about/vigody/">Путевки по цене санатория</a></li>
-			<li><a class="icon2" href="/about/vigody/">Бесплатный трансфер</a></li>
+			<li><a class="icon1" href="<?= P_HREF ?>/about/vigody/">Путевки по цене санатория</a></li>
+			<li><a class="icon2" href="<?= P_HREF ?>/about/vigody/">Бесплатный трансфер</a></li>
 			<li class="sale">
 				<p class="sale-text">
 					<b>Нашли дешевле?</b>
 					<span>Предложим скидку!</span>
 				</p>
-				<a class="sale-link" href="/about/vigody/" id="haad_pun-bnt">
+				<a class="sale-link" href="<?= P_HREF ?>/about/vigody/" id="haad_pun-bnt">
                     Оплата путевки в день заезда!
                 </a>
 			</li>
