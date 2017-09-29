@@ -12,10 +12,10 @@ ErrorDocument 404 /404.php
   RewriteEngine On
 
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-  RewriteRule ^index\.php$ http://putevochka.com/ [R=301,L] 
+  RewriteRule ^index\.php$ https://putevochka.com/ [R=301,L] 
 
   RewriteCond %{HTTP_HOST} ^www\.putevochka\.com$ [NC]
-  RewriteRule ^(.*)$ http://putevochka.com/$1 [L,R=301]
+  RewriteRule ^(.*)$ https://putevochka.com/$1 [L,R=301]
 
   RewriteCond %{HTTP_HOST} ^(.*)\.putevochka\.com$ [NC]
   RewriteCond %{REQUEST_URI} /(rooms|video|action|reviews|map)/$
