@@ -129,7 +129,7 @@ class TimCatalog extends \CBitrixComponent
 				if ($this->tabCode)
 					$tabPath .= $this->tabCode . '/';
 
-				LocalRedirect(DEFAULT_HTTP . '://' . $this->product['CODE'] . '.' . DEFAULT_HOST . '/' . $tabPath, true, '301 Moved Permanently');
+				LocalRedirect('https://' . $this->product['CODE'] . '.putevochka.com/' . $tabPath, true, '301 Moved Permanently');
 			}
 		}
 
