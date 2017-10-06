@@ -11,7 +11,7 @@ $product = $component->product;
 
 $alt = 'Санаторий ' . $product['NAME'] . ' ' . $product['CITY']['NAME'];
 $file = new \CFile();
-$pics = array();
+$ogPhoto = '';
 $arWaterMark = array(
 	array(
 		'name' => 'watermark',
@@ -20,20 +20,6 @@ $arWaterMark = array(
 		'file' => $_SERVER['DOCUMENT_ROOT'] . '/images/watermarks/big.png',
 	),
 );
-foreach ($product['PICTURES'] as $value)
-{
-	$img = $file->ResizeImageGet(
-		$value,
-		array(
-			'width' => 10000,
-			'height' => 196
-		),
-		BX_RESIZE_IMAGE_PROPORTIONAL,
-		true,
-		$arWaterMark
-	);
-	$pics[] = $img;
-}
 
 ?>
 <div id="cron_full">
@@ -84,11 +70,22 @@ foreach ($product['PICTURES'] as $value)
 					true,
 					$arWaterMark
 				);
-				$orig = $file->GetPath($value);
+				$imgOrig = $file->ResizeImageGet(
+					$value,
+					array(
+						'width' => 10000,
+						'height' => 1000
+					),
+					BX_RESIZE_IMAGE_PROPORTIONAL,
+					true,
+					$arWaterMark
+				);
+				if (!$ogPhoto)
+					$ogPhoto = $imgOrig['src'];
 
 				?>
                 <div class="img">
-                    <a href="<?= $orig ?>" class="border various">
+                    <a href="<?= $imgOrig['src'] ?>" class="border various">
                         <img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" />
                     </a>
                 </div><?
@@ -109,6 +106,6 @@ $APPLICATION->SetPageProperty('description', $desc);
 $APPLICATION->SetPageProperty('og_title', $title);
 $APPLICATION->SetPageProperty('og_description', $desc);
 $APPLICATION->SetPageProperty('og_url', $APPLICATION->GetCurDir());
-if ($pics[0]['src'])
-	$APPLICATION->SetPageProperty('og_image', P_HREF . $pics[0]['src']);
+if ($ogPhoto)
+	$APPLICATION->SetPageProperty('og_image', P_HREF . $ogPhoto);
 $APPLICATION->SetPageProperty('og_type', 'website');

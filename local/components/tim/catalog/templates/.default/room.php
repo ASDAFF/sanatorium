@@ -81,12 +81,22 @@ $ogPhoto = '';
 							true,
 							$arWaterMark
 						);
-						$orig = $file->GetPath($id);
+
+						$imgOrig = $file->ResizeImageGet(
+							$id,
+							array(
+								'width' => 10000,
+								'height' => 1000
+							),
+							BX_RESIZE_IMAGE_PROPORTIONAL,
+							true,
+							$arWaterMark
+						);
 						if (!$ogPhoto)
-							$ogPhoto = $orig;
+							$ogPhoto = $imgOrig['src'];
 						?>
                         <div class="img">
-                            <a href="<?= $orig ?>" class="border various">
+                            <a href="<?= $imgOrig['src'] ?>" class="border various">
                                 <img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" />
                             </a>
                         </div><?
@@ -220,7 +230,8 @@ else
     <div id="right-form">
         <form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
             <div class="controlgroup mobile" style="color: #505050;">
-                <div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки или забронировать номер</span></div>
+                <span class="form-title-first">Заполните форму</span>
+                <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
 
                 <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
                 <input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">

@@ -43,8 +43,8 @@ foreach ($product['ROOMS'] as $room)
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
         <div class="form-title">
-            <span class="form-title-first">Заполните форму</span><br>
-            <span class="form-title-second">Чтобы узнать стоймость путевки</span>
+            <span class="form-title-first">Заполните форму</span>
+            <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
         </div>
         <div class="form-body">
             <div class="calendar">

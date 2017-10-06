@@ -213,7 +213,7 @@ $currentTab = $tabs[$tabCode];
             }
             ?>
         </div>
-        <div class="all-photo-cont"><a href="<?= $product['DETAIL_PAGE_URL'] ?>photo/" class="all-photo"><span>смотреть все фотографии</span></a></div>
+        <div class="all-photo-cont"><a target="_blank" href="<?= $product['DETAIL_PAGE_URL'] ?>photo/" class="all-photo"><span>смотреть все фотографии</span></a></div>
         <div id="sync2" class="owl-carousel"><?
 	        foreach ($pics as $img)
             {
@@ -280,7 +280,8 @@ $currentTab = $tabs[$tabCode];
 			<div id="right-form">
 				<form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
 					<div class="controlgroup mobile" style="color: #505050;">
-						<div class="title">Заполните форму<br><span>чтобы узнать стоимость путевки</span></div>
+                        <span class="form-title-first">Заполните форму</span>
+                        <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
 
 						<input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
 						<input type="text" id="datepicker2" name="date_off" placeholder="Дата выезда" class="icon-date">
