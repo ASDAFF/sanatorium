@@ -193,8 +193,13 @@ foreach ($products as $id => $item)
 			            <div class="star"><span class="<?= $cl ?>"<?= $style ?>></span></div><?
 		            }
 		            ?>
-                </div>
-	            <span><?= $reviewsCountTitle ?></span><?
+                </div><?
+
+				if ($reviewsCount)
+				{
+				    ?>
+                    <a href="<?= $item['DETAIL_PAGE_URL'] ?>reviews/"><span><?= $reviewsCountTitle ?></span></a><?
+				}
 
 	            $cnt = $item['ROOMS_COUNT'];
 	            if ($cnt)
