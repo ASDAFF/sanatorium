@@ -80,6 +80,7 @@ Allow: /bitrix/panel/
 Clean-param: sort&p-from&size&page&print /
 Host: <?= $_SERVER['HTTP_HOST'] ?>
 
+
 User-Agent: Googlebot
 Disallow: */index.php
 Disallow: /bitrix/
