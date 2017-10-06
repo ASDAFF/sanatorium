@@ -114,7 +114,6 @@ foreach ($products as $id => $item)
 	        if ($item['PROFILES'])
 	        {
 		        ?>
-				<noindex>
 		        <b>Направление лечения:</b>
 	            <span><?
 		        foreach ($item['PROFILES'] as $i => $pid)
@@ -125,8 +124,7 @@ foreach ($products as $id => $item)
 			        echo $profile['NAME'];
 		        }
 		        ?>
-                </span>
-				</noindex><?
+                </span><?
 	        }
 
 			//
