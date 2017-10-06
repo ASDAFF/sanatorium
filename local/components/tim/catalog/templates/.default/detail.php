@@ -344,7 +344,7 @@ $currentTab = $tabs[$tabCode];
 							</label>
 						</div>
 						<div class="_form-check-btn">
-							<input type="submit" id="form_btn" class="btn" value="Узнать стоимость со скидкой">
+                            <div class="btn"> Узнать стоимость со скидкой </div>
 						</div>
 					</div>
 				</form>

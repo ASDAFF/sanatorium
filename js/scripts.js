@@ -552,7 +552,7 @@ var Review = {
         this.btn = this.form.find('.feedback-form-btn');
 		this.tnxDiv = this.form.find('.js-feedback-tnx');
 
-		this.form.submit(this.send);
+		this.form.on('click', '.feedback-form-btn-span', this.send);
 	},
 	send: function () {
 		var form_data = Review.form.serialize();
@@ -588,7 +588,7 @@ var Feedback = {
 
 		this.btn = this.form.find('.feedback-form-btn');
 		this.tnx = this.form.find('.js-submit-tnx');
-		this.form.submit(this.send);
+		this.form.on('click', '.feedback-form-btn-span', this.send);
 	},
 	send: function () {
 		var form_data = Feedback.form.serialize();

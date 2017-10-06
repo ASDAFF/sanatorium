@@ -110,7 +110,7 @@ $reviews = \Local\Catalog\Reviews::getList($isService, $cityId, $page);
 			</div>
 			<span>Хорошо</span>
 		</div>
-		<input class="feedback-form-btn" type="submit" value="Оставить отзыв">
+        <span class="feedback-form-btn feedback-form-btn-span">Оставить отзыв</span>
 		<div class="js-feedback-tnx" style="display:none;">Спасибо, Ваш отзыв принят!</div>
 	</div>
 </form>

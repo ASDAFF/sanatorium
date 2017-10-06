@@ -243,7 +243,7 @@ var Detail = {
 
 		this.inputName.keyup(this.itValidName);
 		this.inputPhone.keyup(this.itValidPhone);
-		this.reserveForm.on('submit', this.reserve);
+		this.reserveForm.on('click', '._form-check-btn .btn', this.reserve);
 	},
 	itValidName: function () {
 		if (Detail.inputName.val().length < 1) {

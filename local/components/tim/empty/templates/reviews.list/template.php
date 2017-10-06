@@ -64,7 +64,7 @@ if (!$reviews['ITEMS'])
                             </div>
                             <span>Хорошо</span>
                         </div>
-                        <button class="feedback-form-btn" type="submit">Оставить отзыв</button>
+                        <span class="feedback-form-btn feedback-form-btn-span">Оставить отзыв</span>
                         <div class="js-feedback-tnx" style="display:none;">Спасибо, Ваш отзыв принят!</div>
                     </div>
                 </form>

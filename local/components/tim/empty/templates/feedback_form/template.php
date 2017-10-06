@@ -28,7 +28,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 					<input type="checkbox" id="mail-t" name="mail"><label for="mail-t">Ответьте мне по электронной
 						почте</label>
 				</div>
-				<input class="feedback-form-btn" type="submit" value="Задать вопрос">
+                <span class="feedback-form-btn feedback-form-btn-span">Задать вопрос</span>
 				<div class="js-submit-tnx" style="display:none;">Спасибо за ваш вопрос!</div>
 			</div>
 		</form>
