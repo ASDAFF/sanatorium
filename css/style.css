@@ -887,8 +887,7 @@ footer .it-city {
 
 .center .images .img img {
 	width:100%;
-	height:100%;
-	position: absolute
+	height:100%
 }
 
 .left .images .img .border{
@@ -2694,18 +2693,10 @@ footer {
 }
 
 .feedback-form-btn-span {
-	float: right;
-	width: 160px;
-	height: 33px;
-	text-transform: uppercase;
-	border: none;
-	border-radius: 5px;
-	color: #fff;
-	background: #ff8a00;
-	padding-top: 9px;
-	cursor: pointer;
+	padding-top: 6px;
 	text-align: center;
-	font: 15px Arial;
+	font-size: 15px;
+	font-family:'Fira Sans',sans-serif;
 }
 
 .feedback-form input::-webkit-input-placeholder {
@@ -7065,11 +7056,14 @@ body .menu_parent:after {
 
 ._form-check-btn {opacity: 0.3;}
 ._form-check-btn,
-._form-check-btn * {cursor: default; pointer-events: none;}
+._form-check-btn * {cursor: default; pointer-events: none; text-align: center;}
+._form-check-btn div{border-radius: 3px;}
+
 
 ._form-check-btn.active {opacity: 1;}
 ._form-check-btn.active,
-._form-check-btn.active * {cursor: pointer; pointer-events: auto; color: #2f2f2f;}
+._form-check-btn.active * {cursor: pointer; pointer-events: auto; color: #2f2f2f; text-align: center;}
+._form-check-btn.active div{border-radius: 3px;}
 
 .application_form ._form-check ,
 ._form-check label a {font-size: 11px;}
