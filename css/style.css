@@ -140,12 +140,12 @@ h1 span,.h1 span {
 .head_full {
 	width:100%;
 	background:#2c9ed7;
-	height:46px;
+	/*height:46px;*/
 }
 
 .p-head li {
 	display:inline-block;
-	height:46px;
+	/*height:46px;*/
 }
 
 .p-head li a {
@@ -160,7 +160,7 @@ h1 span,.h1 span {
 
 .head_pun_full {
 	background:#f0f0f0;
-	height:47px;
+	/*height:47px;*/
 }
 
 .head_pun li {
@@ -3267,7 +3267,7 @@ footer {
 header {
 	display:table;
 	width: 100%;
-	height: 163px;
+	/*height: 163px;*/
 }
 
 .header-line_wbg {
