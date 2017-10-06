@@ -1,4 +1,7 @@
-User-Agent: *
+<?
+header("Content-Type: text/plain");
+
+?>User-Agent: *
 Disallow: */index.php
 Disallow: /bitrix/
 Disallow: /*show_include_exec_time=
