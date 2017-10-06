@@ -37,7 +37,6 @@ class Import
 		$select = array(
 			'ID', 'NAME', 'CODE',
 			'PROPERTY_PROGRAMMS',
-			'PROPERTY_PRICE_PDF',
 		);
 		$rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
 		while ($item = $rsItems->GetNext())
@@ -61,13 +60,23 @@ class Import
                 'ROOMS' => $rms,
 			);
 
-			if ($sanatorium['PRICE_PDF'])
+			$path = $_SERVER['DOCUMENT_ROOT'] . '/prices/' . $item['CODE'] . '/';
+			$files = scandir($path);
+			$priceFilename = '';
+			foreach ($files as $filename)
+			{
+				if ($filename != '.' && $filename != '..')
+				{
+					$priceFilename = $filename;
+					break;
+				}
+			}
+			if ($priceFilename)
             {
-            	if ($sanatorium['ID'] != 476)
-            		continue;
+            	//if ($sanatorium['ID'] != 476) continue;
 
                 $price++;
-				$this->importSanatorium($sanatorium);
+				$this->importSanatorium($sanatorium, $path . $priceFilename);
             }
 			$all++;
 		}
@@ -80,17 +89,15 @@ class Import
 	/**
      * Импорт цен для санатория
 	 * @param $sanatorium
+	 * @param $file
 	 * @return bool
 	 */
-	private function importSanatorium($sanatorium)
+	private function importSanatorium($sanatorium, $file)
 	{
 		$this->log('Санаторий "' . $sanatorium['NAME'] . '" [' . $sanatorium['ID'] . ']');
 
-		$file = \CFile::GetPath($sanatorium['PRICE_PDF']);
-		$this->log($file);
-
 		require_once $_SERVER["DOCUMENT_ROOT"] . '/local/lib/PHPExcel.php';
-		$excel = \PHPExcel_IOFactory::load($_SERVER["DOCUMENT_ROOT"] . $file);
+		$excel = \PHPExcel_IOFactory::load($file);
 
 		$sheet = $excel->getSheet(0);
 		$ar = $sheet->toArray();

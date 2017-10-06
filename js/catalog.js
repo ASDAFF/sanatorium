@@ -220,6 +220,8 @@ var Detail = {
 			// На первую вкладку
 			this.bcDetail.click(this.toMainTab);
 
+			$('.el-nomer a').click(this.showPopup);
+
 			if (typeof ymaps != 'undefined')
 				ymaps.ready(this.mapInit);
 		}
@@ -294,6 +296,22 @@ var Detail = {
 	toMainTab: function () {
 		var a = Detail.tabs.find('a:first');
 		Detail.goTab(a);
+		return false;
+	},
+
+	showPopup: function() {
+		var a = $(this);
+		if (a.hasClass('btn')) {
+			var roomId = a.data('id');
+			Detail.reserveForm.find('select[name="room"]').val(roomId).selectmenu('refresh');
+			Detail.reserveForm.find('input[name="name"]').focus();
+			$('html, body').animate({scrollTop: $(Detail.reserveForm).offset().top - 100}, 500);
+		}
+		else {
+			var item = $(this).closest('.item');
+			var popup = item.children('.okno');
+			$.fancybox.open(popup);
+		}
 		return false;
 	},
 

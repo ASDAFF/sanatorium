@@ -72,9 +72,14 @@ class TimCatalog extends \CBitrixComponent
 	public $product = array();
 
 	/**
-	 * @var array код вкладки
+	 * @var string код вкладки
 	 */
 	public $tabCode = '';
+
+	/**
+	 * @var array номер
+	 */
+	public $room = array();
 
 	/**
 	 * @var array элементы
@@ -108,6 +113,16 @@ class TimCatalog extends \CBitrixComponent
 				$this->tabCode = $urlDirs[1];
 				if (substr($this->tabCode, 0, 1) == '?')
 					$this->tabCode = '';
+
+				if ($this->tabCode == 'rooms')
+				{
+					$roomCode = $urlDirs[2];
+					if (substr($roomCode, 0, 1) == '?')
+						$roomCode = '';
+
+					if ($roomCode)
+						$this->room = Room::getByCode($this->product, $roomCode);
+				}
 			}
 		}
 		else

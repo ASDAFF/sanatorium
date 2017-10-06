@@ -147,11 +147,11 @@ $currentTab = $tabs[$tabCode];
 		        ?>
 	        </div>
             <div>
-                Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб<br><span>за человека в сутки</span>
+                <div class="price">Цена от <b><?= $product['PRODUCT']['PRICE'] ?></b> руб</div><span>за человека в сутки</span>
             </div>
         </div>
         <div id="cron-crox">
-            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title"><?= $product['NAME'] ?></span></a></span>
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" class="js-bc-detail" href="<?= $product['DETAIL_PAGE_URL'] ?>"<?= $style ?>><span itemprop="title">Санаторий <?= $product['NAME'] ?></span></a></span>
             <span class="js-bc-sep"<?= $style ?>> - </span><span class="js-bc-last"><?= $tabName ?></span>
         </div>
         <div id="cron-title"><h1>Санаторий <?= $product['NAME'] ?><span class="js-tab-name"><?= $tabH1 ?></span></h1></div>
@@ -213,6 +213,7 @@ $currentTab = $tabs[$tabCode];
             }
             ?>
         </div>
+        <div class="all-photo-cont"><a href="<?= $product['DETAIL_PAGE_URL'] ?>photo/" class="all-photo"><span>смотреть все фотографии</span></a></div>
         <div id="sync2" class="owl-carousel"><?
 	        foreach ($pics as $img)
             {
@@ -370,7 +371,7 @@ $APPLICATION->SetPageProperty('keywords', $currentTab['KW']);
 
 $APPLICATION->SetPageProperty('og_title', $currentTab['TITLE']);
 $APPLICATION->SetPageProperty('og_description', $currentTab['DESCR']);
-$APPLICATION->SetPageProperty('og_url', 'https://putevochka.com' . $APPLICATION->GetCurDir());
+$APPLICATION->SetPageProperty('og_url', P_HREF . $APPLICATION->GetCurDir());
 if ($pics[0]['src'])
-    $APPLICATION->SetPageProperty('og_image', 'https://putevochka.com' . $pics[0]['src']);
+    $APPLICATION->SetPageProperty('og_image', P_HREF . $pics[0]['src']);
 $APPLICATION->SetPageProperty('og_type', 'website');

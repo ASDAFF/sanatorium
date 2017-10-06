@@ -122,7 +122,7 @@ $APPLICATION->ShowPanel();
 
 			?>
 			<div class="nav_search">
-				<form class="searchbox" action="/sanatorium/">
+				<form class="searchbox" action="<?= P_HREF ?>/sanatorium/">
 					<input type="search" placeholder="Введите название санатория......" name="q"
 					       class="searchbox-input" onkeyup="buttonUp();" required>
 					<input type="submit" class="searchbox-submit" value="Найти">

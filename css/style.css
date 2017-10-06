@@ -139,11 +139,13 @@ h1 span,.h1 span {
 
 .head_full {
 	width:100%;
-	background:#2c9ed7
+	background:#2c9ed7;
+	height:46px;
 }
 
 .p-head li {
-	display:inline-block
+	display:inline-block;
+	height:46px;
 }
 
 .p-head li a {
@@ -157,7 +159,8 @@ h1 span,.h1 span {
 }
 
 .head_pun_full {
-	background:#f0f0f0
+	background:#f0f0f0;
+	height:47px;
 }
 
 .head_pun li {
@@ -218,7 +221,6 @@ nav a#pull {
 	z-index:5; width: 100%;
 	top:0;
 }
-
 .head_pun_full.set-fixed {
 	position:fixed;
 	z-index:4;
@@ -2287,7 +2289,7 @@ footer .it-city {
 		position:absolute;
 		left:0;
 		right:0;
-		top:45px;
+		top:46px;
 		background:#fff;
 		z-index:2;
 		display:none!important;
@@ -3262,7 +3264,11 @@ footer {
 .reviewStars-input .star-15 {
 	left:265px
 }
-header {display: table; width: 100%;}
+header {
+	display:table;
+	width: 100%;
+	height: 163px;
+}
 
 .header-line_wbg {
 	height:70px;
@@ -5224,7 +5230,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 	font-size:18px;
 	font-weight:600;
 	color:#fff;
-	background:url(../images/elIndexVideo-text-bg.png);
+	background:url(/images/elIndexVideo-text-bg.png);
 	background-repeat:no-repeat;
 	background-size:contain
 }
@@ -5235,51 +5241,57 @@ div[id^="slider-popap-"].flexslider .slides img {
 	text-transform: uppercase; text-align: left;
 	padding: 14px 18px 0;
 
-	background: url(/css/../images/elIndexVideo-text-bg.png);
+	background: url(/images/elIndexVideo-text-bg.png);
 	background-size: 100%;
 }
-.owl-item .it-text {position: absolute; width: 45%;
-	bottom: 0; left: 0; min-height: 10%;
-	font-size: 18px; font-weight: 500; color: #fff;
+.all-photo-cont {
+	position: relative;
+	margin: -50px 0 10px;
+	height: 40px;
+	padding: 0 5px;
+}
+.all-photo {
+	position: absolute;
+	width: 45%;
+	bottom: 0;
+	left: 5px;
+	min-height: 10%;
 	text-transform: uppercase; text-align: left;
-	padding: 14px 18px 0;
-
-	background: url(/css/../images/elIndexFoto-text-bg_cr.png);
+	padding: 26px 18px 10px;
+	background: url(/images/elIndexFoto-text-bg_cr.png) 100% no-repeat;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-.owl-item .it-text span{
+.all-photo span{
 	text-transform: uppercase;
 	color: #fff;
 	cursor: pointer;
 	font: 17px Arial;
+	font-weight: 500;
 	text-align: center;
-	position: absolute;
-	left: 5%;
-	bottom: 15%;
 }
 @media only screen and (max-width: 1200px){
-	.owl-item .it-text span{
+	.all-photo span{
 		font-size: 15px
 	}
 }
 @media only screen and (max-width: 1050px){
-	.owl-item .it-text span{
+	.all-photo span{
 		font-size: 14px
 	}
 }
 @media only screen and (max-width: 1000px){
-	.owl-item .it-text span{
+	.all-photo span{
 		font-size: 13px
 	}
 }
 @media only screen and (max-width: 665px){
-	.owl-item .it-text {
+	.all-photo {
 		width: 60%;
 	}
 }
 @media only screen and (max-width: 515px){
-	.owl-item .it-text {
+	.all-photo {
 		width: 85%;
 		min-height: 15%
 	}
@@ -5290,7 +5302,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 
 .elIndexVideo .it-play {position:absolute; top:36%; left:50%; margin-left: -25px;
 	width:50px; height:50px;
-	background-image:url(../images/elIndexVideo-play.png);
+	background-image:url(/images/elIndexVideo-play.png);
 	background-size:contain;
 	background-repeat:no-repeat;
 	cursor:pointer;

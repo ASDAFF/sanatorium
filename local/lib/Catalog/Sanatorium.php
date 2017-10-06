@@ -530,7 +530,7 @@ class Sanatorium
                 __FUNCTION__,
                 $id,
             ),
-            static::CACHE_PATH . __FUNCTION__ . '/',
+            static::CACHE_PATH . __FUNCTION__ . '1/',
             static::CACHE_TIME
         );
         if (!$refreshCache && $extCache->initCache()) {
@@ -684,13 +684,23 @@ class Sanatorium
         }
         elseif ($tabCode == 'rooms')
         {
-			if ($sanatorium['PRICE_PDF'])
+            $path = $_SERVER['DOCUMENT_ROOT'] . '/prices/' . $sanatorium['CODE'] . '/';
+            $files = scandir($path);
+            $priceFilename = '';
+            foreach ($files as $filename)
+            {
+                if ($filename != '.' && $filename != '..')
+                {
+					$priceFilename = $filename;
+					break;
+                }
+            }
+			if ($priceFilename)
 			{
-			    $path = \CFile::GetPath($sanatorium['PRICE_PDF']);
 				?>
                 <div>
                     <div class="elPriceDocumentBtn">Посмотреть цены с учетом сезонности и программы лечения можно <a
-                                href="<?= P_HREF ?><?= $path ?>" target="_blank">здесь</a></div>
+                                href="/<?= $sanatorium['CODE'] ?>/<?= $priceFilename ?>" target="_blank">здесь</a></div>
                 </div><?
 			}
 

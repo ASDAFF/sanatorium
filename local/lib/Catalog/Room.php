@@ -42,7 +42,7 @@ class Room
 			return $return;
 
 		$select = array(
-			'ID', 'NAME', 'IBLOCK_ID', 'PREVIEW_PICTURE',
+			'ID', 'NAME', 'CODE', 'IBLOCK_ID', 'PREVIEW_PICTURE',
 			'PROPERTY_MORE_PHOTO',
 			'PROPERTY_PRICES',
 			'PROPERTY_PRICE',
@@ -75,6 +75,7 @@ class Room
 			$return[$item['ID']] = array(
 				'ID' => $item['ID'],
 				'NAME' => $item['NAME'],
+				'CODE' => $item['CODE'],
 				'PREVIEW_PICTURE' => $item['PREVIEW_PICTURE'],
 				'PHOTO' => $item['PROPERTY_MORE_PHOTO_VALUE'],
 				'PRICES_ORIG' => $item['PROPERTY_PRICES_VALUE']['TEXT'],
@@ -125,6 +126,23 @@ class Room
 		}
 
 		return $return;
+	}
+
+	/**
+     * Возвращает номер санатория по коду
+	 * @param $sanatorium
+	 * @param $code
+	 * @return array
+	 */
+	public static function getByCode($sanatorium, $code)
+	{
+		foreach ($sanatorium['ROOMS'] as $item)
+        {
+            if ($item['CODE'] == $code)
+                return $item;
+        }
+
+		return array();
 	}
 
 	/**
@@ -184,12 +202,12 @@ class Room
 		<div class="el-nomer">
 			<div class="item">
 				<div class="img">
-					<a href="#room<?= $room['ID'] ?>" class="border various">
+					<a href="/rooms/<?= $room['CODE'] ?>/" class="border various">
 						<img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" />
 					</a>
 				</div>
 				<div class="text">
-					<div class="el-nomer-head"><a href="#room<?= $room['ID'] ?>" class="title various"><?= $room['NAME'] ?></a></div>
+					<div class="el-nomer-head"><a href="/rooms/<?= $room['CODE'] ?>/" class="title various"><?= $room['NAME'] ?></a></div>
 					<b>Площадь:</b> <?= $room['SIZE'] ?> м2 <br><br><?
 
 					if ($room['DOUBLE_BED'] || $room['SINGLE_BED'])
@@ -221,7 +239,7 @@ class Room
 						от <b><?= $room['PRICE'] ?></b> руб.
 					</div>
 					<span>за человека в сутки</span>
-					<a href="#room<?= $room['ID'] ?>" class="btn various">Забронировать</a>
+					<a href="/rooms/<?= $room['CODE'] ?>/" data-id="<?= $room['ID'] ?>" class="btn various">Забронировать</a>
 				</div><?
 
 				//
