@@ -3459,6 +3459,7 @@ ul.bl {
 	width:388px;
 	overflow: hidden;
 	height: 39px;
+	display: table;
 }
 
 nav.p-head {
@@ -3567,13 +3568,14 @@ nav.p-head {
 .searchbox-input {
 	height:33px;
 	line-height:33px;
-	border-radius:5px
+	border-radius:5px;
+	position: unset !important;
 }
 
 .searchbox-submit {
 	position:absolute;
 	top:5px;
-	height:33px;
+	height:35px;
 	line-height:33px;
 	background:#ff9c00;
 	color:#fff;
