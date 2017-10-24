@@ -11,6 +11,9 @@ ErrorDocument 404 /404.php
   Options +FollowSymLinks
   RewriteEngine On
 
+  RewriteCond %{HTTPS} =off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
+
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
   RewriteRule ^index\.php$ https://putevochka.com/ [R=301,L] 
 
