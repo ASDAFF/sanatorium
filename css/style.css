@@ -864,6 +864,13 @@ footer .it-city {
 	width:auto
 }
 
+.left ul li:before {
+	all:initial !important;
+}
+.left ul {
+	padding-left:0px !important;
+}
+
 @media only screen and (max-width: 550px) {
 	.center .images .img {
 		padding-right:0;
