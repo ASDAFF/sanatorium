@@ -112,6 +112,14 @@ $tabs = array(
 	),
 );
 
+foreach ($tabs as $code => $tab)
+{
+	$upCode = strtoupper($code);
+	foreach ($tab as $k => $v)
+		if ($product['SEO'][$upCode][$k])
+			$tabs[$code][$k] = $product['SEO'][$upCode][$k];
+}
+
 $tabName = $product['NAME'];
 $tabH1 = '';
 $style = ' style="display:none;"';

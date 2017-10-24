@@ -530,13 +530,16 @@ class Sanatorium
                 __FUNCTION__,
                 $id,
             ),
-            static::CACHE_PATH . __FUNCTION__ . '1/',
+            static::CACHE_PATH . __FUNCTION__ . '2/',
             static::CACHE_TIME
         );
         if (!$refreshCache && $extCache->initCache()) {
             $return = $extCache->getVars();
         } else {
             $extCache->startDataCache();
+
+            $seoProps = array('MAIN', 'ROOMS', 'PROGRAMMS', 'INFRA', 'CHILD', 'VIDEO', 'ACTION', 'DOCS', 'REVIEWS', 'MAP');
+            $seoPos = array('TITLE', 'DESCR', 'KW');
 
             $iblockElement = new \CIBlockElement();
             $filter = array(
@@ -554,6 +557,36 @@ class Sanatorium
                 'PROPERTY_VIDEO',
                 'PROPERTY_YMAP',
                 'PROPERTY_PRICE_PDF',
+				'PROPERTY_SEO_MAIN_TITLE',
+				'PROPERTY_SEO_MAIN_DESCR',
+				'PROPERTY_SEO_MAIN_KW',
+				'PROPERTY_SEO_ROOMS_TITLE',
+				'PROPERTY_SEO_ROOMS_DESCR',
+				'PROPERTY_SEO_ROOMS_KW',
+				'PROPERTY_SEO_PROGRAMMS_TITLE',
+				'PROPERTY_SEO_PROGRAMMS_DESCR',
+				'PROPERTY_SEO_PROGRAMMS_KW',
+				'PROPERTY_SEO_INFRA_TITLE',
+				'PROPERTY_SEO_INFRA_DESCR',
+				'PROPERTY_SEO_INFRA_KW',
+				'PROPERTY_SEO_CHILD_TITLE',
+				'PROPERTY_SEO_CHILD_DESCR',
+				'PROPERTY_SEO_CHILD_KW',
+				'PROPERTY_SEO_VIDEO_TITLE',
+				'PROPERTY_SEO_VIDEO_DESCR',
+				'PROPERTY_SEO_VIDEO_KW',
+				'PROPERTY_SEO_ACTION_TITLE',
+				'PROPERTY_SEO_ACTION_DESCR',
+				'PROPERTY_SEO_ACTION_KW',
+				'PROPERTY_SEO_DOCS_TITLE',
+				'PROPERTY_SEO_DOCS_DESCR',
+				'PROPERTY_SEO_DOCS_KW',
+				'PROPERTY_SEO_REVIEWS_TITLE',
+				'PROPERTY_SEO_REVIEWS_DESCR',
+				'PROPERTY_SEO_REVIEWS_KW',
+				'PROPERTY_SEO_MAP_TITLE',
+				'PROPERTY_SEO_MAP_DESCR',
+				'PROPERTY_SEO_MAP_KW',
             );
             $rsItems = $iblockElement->GetList(array(), $filter, false, false, $select);
             if ($item = $rsItems->GetNext())
@@ -573,6 +606,11 @@ class Sanatorium
                     $pictures[] = $picId;
                 $rooms = Room::getBySanatorium($item['ID']);
 	            $programms = Programms::getByIds($item['PROPERTY_PROGRAMMS_VALUE']);
+	            $seo = array();
+	            foreach ($seoProps as $prop)
+					foreach ($seoPos as $pos)
+						$seo[$prop][$pos] = $item['PROPERTY_SEO_' . $prop . '_' . $pos . '_VALUE'];
+
                 $return = array(
                     'ID' => $item['ID'],
                     'NAME' => $item['NAME'],
@@ -594,6 +632,7 @@ class Sanatorium
                     'PRODUCT' => $product,
                     'ROOMS' => $rooms,
                     'PROGRAMMS' => $programms,
+					'SEO' => $seo,
                 );
 
                 $extCache->endDataCache($return);

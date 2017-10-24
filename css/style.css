@@ -6767,14 +6767,10 @@ body .menu_parent:after {
 .form-title {
 	padding-left: 22px;
 	padding-right: 22px;
-	height: 66px;
-}
-
-.form-title {
-	text-transform: uppercase;
+	height: 78px;
 	color: white;
 	background-color: #ff8a00;
-
+	margin: 0 0 5px;
 }
 
 .form-title span {
@@ -6785,18 +6781,19 @@ body .menu_parent:after {
 .form-title-first {
 	display: block;
 	font-size: 24px;
-	color: #ff9a00;
+	color: #fff;
 	font-weight: 500;
 	text-align: center;
 	text-transform: uppercase;
+	line-height: 28px;
+	padding: 5px 0 2px;
 }
 
 .form-title-second {
 	display: inline-block;
 	font-size: 15px;
 	text-align: center;
-	line-height: 20px;
-	margin: 0 0 10px;
+	line-height: 17px;
 }
 
 .form-body {
@@ -7020,6 +7017,7 @@ body .menu_parent:after {
 }
 .confidentiality {
 	margin: 0 0 10px;
+	font-size: 12px;
 }
 .confidentiality a {
 	font-size: 12px;

@@ -28,7 +28,6 @@ class Import
 		$this->log(date('d.m.Y') . ' Начало импорта');
 
 		$all = 0;
-		$price = 0;
 
 		$iblockElement = new \CIBlockElement();
 		$filter = array(
@@ -73,16 +72,15 @@ class Import
 			}
 			if ($priceFilename)
             {
-            	//if ($sanatorium['ID'] != 476) continue;
+            	//if ($sanatorium['ID'] != 470) continue;
 
-                $price++;
 				$this->importSanatorium($sanatorium, $path . $priceFilename);
             }
+            else
+				$this->log('Не найден файл с ценами для санатория: ' . $item['NAME'] . ' (' . $item['CODE'] . ')');
+
 			$all++;
 		}
-
-		$this->log('Всего санаториев: ' . $all);
-		$this->log('Из них с файлами цен: ' . $price);
 
     }
 
@@ -94,11 +92,13 @@ class Import
 	 */
 	private function importSanatorium($sanatorium, $file)
 	{
-		$this->log('Санаторий "' . $sanatorium['NAME'] . '" [' . $sanatorium['ID'] . ']');
+		$this->log($sanatorium['NAME'] . ' [' . $sanatorium['ID'] . ']');
 
 		require_once $_SERVER["DOCUMENT_ROOT"] . '/local/lib/PHPExcel.php';
 		$excel = \PHPExcel_IOFactory::load($file);
 
+		$result = [];
+		$cnt = 0;
 		$sheet = $excel->getSheet(0);
 		$ar = $sheet->toArray();
 
@@ -106,8 +106,6 @@ class Import
 		$programmId = 0;
 		$dates = [];
 		$persons = [];
-		$result = [];
-		$cnt = 0;
 		foreach ($ar as $row)
 		{
 			if ($values)
@@ -140,50 +138,50 @@ class Import
 					if (!$programmId)
 						$values = false;
 				}
-                elseif (trim($row[0]) == 'Категория номеров, согласно классификации санатория')
+				elseif (trim($row[0]) == 'Категория номеров, согласно классификации санатория')
 				{
 					foreach ($row as $i => $td)
 					{
-					    if (!$i)
-					        continue;
-					    if (!$dates[$i])
-					        continue;
+						if (!$i)
+							continue;
+						if (!$dates[$i])
+							continue;
 
 						$val = trim($td);
 						if (!$val)
-						    continue;
+							continue;
 
 						$code = '';
 						if ($val == 'Весь номер при размещении в нём 1 человека')
 							$code = 'F';
-                        elseif ($val == 'Основное место в номере')
+						elseif ($val == 'Основное место в номере')
 							$code = 'M';
-                        elseif ($val == 'Доп. место')
+						elseif ($val == 'Доп. место')
 							$code = 'A';
-                        elseif ($val == 'Доп.  место')
+						elseif ($val == 'Доп.  место')
 							$code = 'A';
-                        elseif (strpos($val, 'Основное место на ребенка') === 0)
+						elseif (strpos($val, 'Основное место на ребенка') === 0)
 						{
 							$prt = explode('до', substr($val, 52));
 							$prt1 = $prt[0];
 							$prt2 = $prt[1];
 							if (intval($prt1) || $prt1 === '0')
-							    if (intval($prt2))
-							        $code = 'M' . intval($prt1) . '-' . intval($prt2);
+								if (intval($prt2))
+									$code = 'M' . intval($prt1) . '-' . intval($prt2);
 						}
-                        elseif (strpos($val, 'Доп. место на ребенка') === 0)
+						elseif (strpos($val, 'Доп. место на ребенка') === 0)
 						{
 							$prt = explode('до', substr($val, 43));
 							$prt1 = $prt[0];
 							$prt2 = $prt[1];
 							if (intval($prt1) || $prt1 === '0')
 								if (intval($prt2))
-							        $code = 'A' . intval($prt1) . '-' . intval($prt2);
+									$code = 'A' . intval($prt1) . '-' . intval($prt2);
 						}
 
 						if ($code)
 							$persons[$i] = $code;
-                        else
+						else
 							$this->log('Не распознан заголовок: "' . $val . '"');
 					}
 				}
@@ -191,13 +189,13 @@ class Import
 				{
 
 				}
-                elseif (trim($row[0]) == 'Стоимость указана на человека в сутки в рублях.')
+				elseif (trim($row[0]) == 'Стоимость указана на человека в сутки в рублях.')
 				{
 					$values = false;
 				}
 				elseif ($row[0])
 				{
-				    if ($programmId)
+					if ($programmId)
 					{
 						$val = trim($row[0]);
 						$ar = explode('(', $val);
@@ -208,7 +206,7 @@ class Import
 							$this->log('Не найден ID номера по названию: ' . $roomName);
 						else
 						{
-						    $roomId = $room['ID'];
+							$roomId = $room['ID'];
 							foreach ($row as $i => $td)
 							{
 								if ($persons[$i] && $dates[$i])
@@ -277,14 +275,16 @@ class Import
 			}
 		}
 
-		$this->log('Всего цен распознано: ' . $cnt);
+		if (!$cnt)
+			$this->log('Ни одной цены не распознано');
 
-		foreach ($sanatorium['ROOMS'] as $room)
+		foreach ($sanatorium['ROOMS'] as $name => $room)
 		{
 			$newPrices = json_encode($result[$room['ID']], JSON_UNESCAPED_UNICODE);
 			if ($newPrices != $room['PRICES'])
 			{
 				Room::updatePrices($room['ID'], $newPrices);
+				$this->log($name . ' - цены изменились');
 			}
 		}
 

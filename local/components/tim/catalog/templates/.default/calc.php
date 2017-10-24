@@ -1,4 +1,6 @@
 <?
+/** @var Local\Catalog\TimCatalog $component */
+
 $ages = ['Взрослый'];
 $roomsByAge = [];
 $placeByAgeRoom = [];
@@ -83,8 +85,9 @@ foreach ($product['ROOMS'] as $room)
                                     <option value="0">(выберите номер)</option><?
 									foreach ($product['ROOMS'] as $room)
 									{
+										$selected = ($room['ID'] == $component->room['ID']) ? ' selected="selected"' : '';
 										?>
-                                        <option value="<?= $room['ID'] ?>"><?= $room['NAME'] ?></option><?
+                                        <option value="<?= $room['ID'] ?>"<?= $selected ?>><?= $room['NAME'] ?></option><?
 									}
 									?>
                                 </select>
