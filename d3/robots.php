@@ -34,6 +34,8 @@ Disallow: /*?page=
 Disallow: /*?size=
 Disallow: /*?sort=
 Disallow: /*?utm_network=
+Disallow: /*?utm_phrase=
+Disallow: /*?utm_placement=
 Disallow: *.xls
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
@@ -71,13 +73,15 @@ Disallow: /*BACK_URL=
 Disallow: /*back_url_admin=
 Disallow: /*?utm_source=
 Disallow: /*?utm_network=
+Disallow: /*?utm_phrase=
+Disallow: /*?utm_placement=
 Disallow: *.xls
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
-Clean-param: sort&p-from&size&page&print /
+Clean-param: sort&p-from&size&page&print&p-to&q&click-link&rb_clickid&__utmzi__1__&_vis_hash&_vis_opt_preview_combination&_vis_test_id&banner-test-tags&city&clientAction /
 Host: https://<?= $_SERVER['HTTP_HOST'] ?>
 
 
@@ -114,6 +118,8 @@ Disallow: /*?page=
 Disallow: /*?size=
 Disallow: /*?sort=
 Disallow: /*?utm_network=
+Disallow: /*?utm_phrase=
+Disallow: /*?utm_placement=
 Disallow: *.xls
 Disallow: /sanatorium/kislovodsk/radon/
 Disallow: /sanatorium/pyatigorsk/hronicheskaya-ustalost/
