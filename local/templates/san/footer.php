@@ -81,7 +81,8 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             <div class="center">Сервис бронирования путевок в санатории</div>
             <div class="right">
                 <a href="<?= P_HREF ?>/contacts/">Контакты</a><br />
-                <a href="<?= P_HREF ?>/maps/">Санатории на карте</a>
+                <a href="<?= P_HREF ?>/maps/">Санатории на карте</a><br />
+                <a href="https://26.u-on.ru/">Личный кабинет туриста</a>
                 <!--<a href=""><img src="/images/webmaster.png"></a>-->
             </div>
             <div class="right">
