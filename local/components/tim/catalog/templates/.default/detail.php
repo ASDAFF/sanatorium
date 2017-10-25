@@ -180,8 +180,7 @@ $currentTab = $tabs[$tabCode];
         //
         // Адрес
         //
-        ?>
-        <a href="#map" id="content-top">Адрес: <span itemprop="address"><?= $product['ADDRESS'] ?></span></a><?
+
 
         //
         // Картинки

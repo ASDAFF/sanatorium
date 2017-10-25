@@ -697,7 +697,7 @@ class Sanatorium
 	        echo $sanatorium['DETAIL_TEXT'];
 
 			?>
-            <div class="programs"><?
+            <div class="programs"><noindex><?
 			foreach ($sanatorium['PRODUCT']['PROFILES'] as $pr)
 			{
 				$profile = Profiles::getById($pr);
@@ -717,9 +717,14 @@ class Sanatorium
                 </div><?
 			}
 			?>
-            </div><?
+			</noindex></div><?
 
 			echo $sanatorium['FEEDING_TAB'];
+
+			?>
+			<a href="javascript:void(0);" id="content-top">Местоположение: <span itemprop="address"><?= $sanatorium['ADDRESS'] ?></span></a>
+			<script type="text/javascript">var yMapPoint = [<?= $sanatorium['YMAP'] ?>];</script>
+			<div id="dmap" style="width:100%; height:500px"></div><?
         }
         elseif ($tabCode == 'rooms')
         {
