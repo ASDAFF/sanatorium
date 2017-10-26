@@ -79,7 +79,7 @@ $file = new \CFile();
 									<i>Забронировать</i>
 								</div>
 							</a>
-                            <span class="action-mark"><b class="action-mark__text">Акция!</b></span>
+                            <a href="<?= $sanatorium['DETAIL_PAGE_URL'] ?>action/" class="action-mark"><b class="action-mark__text">Акция!</b></a>
 						</div>
 						<div class="actions-content">
 							<div class="actions-title"><?= $item['NAME'] ?></div><?

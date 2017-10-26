@@ -81,8 +81,7 @@ $file = new \CFile();
 		$alt = $alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
 		$actions = \Local\Catalog\Action::getBySanatorium($item['ID']);
 
-		?>
-		<div class="prices-item">
+		?><div class="prices-item">
 			<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="item">
 				<div class="img"><img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>" ></div>
 				<div class="text eng-animations">
@@ -135,7 +134,7 @@ $file = new \CFile();
             if ($actions)
             {
                 ?>
-                <span class="action-mark"><b class="action-mark__text">Акция!</b></span><?
+                <a href="<?= $item['DETAIL_PAGE_URL'] ?>action/" class="action-mark"><b class="action-mark__text">Акция!</b></a><?
             }
 
 		?>

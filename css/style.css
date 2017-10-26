@@ -1608,15 +1608,15 @@ footer .it-city {
 	text-align:center
 }
 
-.el-sanat-list>.title {
-	padding:33px 20px 15px;
+.index-title {
+	padding:15px 20px;
 	text-align:center;
 	font-size:30px;
 	font-weight:600;
 	color:#333
 }
 
-.el-sanat-list > .title:after {
+.index-title:after {
 	content:'';
 	display:block;
 	margin:10px auto 0;
@@ -1625,7 +1625,7 @@ footer .it-city {
 	background:#ff8a00
 }
 
-.el-sanat-list>.title>span {
+.index-title>span {
 	display:block;
 	font-weight:400;
 	color:#333
@@ -2953,7 +2953,8 @@ footer {
 	border-bottom:none;
 	margin:0;
 	border-bottom-left-radius:0;
-	border-bottom-right-radius:0
+	border-bottom-right-radius:0;
+	display:block;
 }
 
 .prices-item {
@@ -2968,6 +2969,14 @@ footer {
 	border-bottom-left-radius:10px;
 	padding-bottom:10px;
 	position: relative;
+}
+
+.index .prices-item {
+	padding-bottom: 0;
+}
+.prices.index .el-sanat-list .item {
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
 }
 
 .banners {

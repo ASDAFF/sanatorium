@@ -141,7 +141,7 @@ $file = new \CFile();
                         if ($actions)
                         {
                             ?>
-                            <span class="action-mark"><b class="action-mark__text">Акция!</b></span><?
+                            <a href="<?= $item['DETAIL_PAGE_URL'] ?>action/" class="action-mark"><b class="action-mark__text">Акция!</b></a><?
                         }
 
 					?>

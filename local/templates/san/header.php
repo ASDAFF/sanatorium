@@ -68,19 +68,30 @@ $APPLICATION->ShowPanel();
 ?>
 <header class="header">
 	<div class="header-line_wbg engBox-body">
-		<div class="header-logo">
-			<?if($APPLICATION->GetCurDir() == '/'):?>
-					 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
-			<?else:?>
-				<a href="<?= P_HREF ?><?=SITE_DIR?>">
-			  		 <?$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));?>
-				</a>
-			<?endif;?>
+		<div class="header-logo"><?
 
+			if (defined('INDEX_PAGE')) {
+				$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));
+			}
+			else
+			{
+				?>
+				<a href="<?= P_HREF ?><?=SITE_DIR?>"><?
 
+					$APPLICATION->IncludeFile(SITE_DIR."include/logo.php",array(),array("MODE"=>"html"));
 
-</div>
-		<div class="header-time-work"><?$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));?></div>
+					?>
+				</a><?
+			}
+
+			?>
+		</div>
+		<div class="header-time-work"><?
+
+			$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));
+
+			?>
+		</div>
         <div class="header-soc">
             <a href="tel:+96201689865">
                 <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">
@@ -92,16 +103,17 @@ $APPLICATION->ShowPanel();
             <img src="/images/engIcon-telegram.png" alt="Telegram">
             </a>
         </div>
-<!--            <div class="header-adress">--><?//$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php",array(),array("MODE"=>"text"));?><!--</div>-->
-<!--            <div class="header-account"><a href="#" data-link="https://26.u-on.ru/">Личный кабинет</a></div>-->
+		<div class="header-phone"><?
 
-		<div class="header-phone">
-			<?$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php",array(),array("MODE"=>"html"));?>
+			$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php",array(),array("MODE"=>"html"));
+
+			?>
 		</div>
 	</div>
 	<div class="head_full">
-		<nav class='engBox-body main-menu p-head'>
-			<?$APPLICATION->IncludeComponent(
+		<nav class='engBox-body main-menu p-head'><?
+
+			$APPLICATION->IncludeComponent(
 				'bitrix:menu', 
 				'topHor', 
 				array(
