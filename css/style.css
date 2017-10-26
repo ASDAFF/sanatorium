@@ -1110,11 +1110,26 @@ footer .it-city {
 
 .action-mark {
 	background:url(../images/action.png) no-repeat;
-	width: 82px;
-	height: 82px;
+	width: 112px;
+	height: 54px;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 10px;
+	left: -17px;
+}
+.el-search-list .action-mark {
+	top: 30px;
+	left: -7px;
+}
+
+
+.action-mark__text {
+	transform: rotate(-6deg);
+	display: inline-block;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 500;
+	padding: 13px 27px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.28);
 }
 
 #slider-range,#slider-range-ext {
@@ -1617,7 +1632,7 @@ footer .it-city {
 }
 
 .el-sanat-list .item {
-	overflow:hidden;
+	overflow: hidden;
 	text-align:left;
 	position:relative;
 	display:inline-block;
@@ -1627,8 +1642,11 @@ footer .it-city {
 	height:195px;
 	margin:2px
 }
+.el-sanat-list .item .wrap{
 
-.el-sanat-list .item:hover>.text {
+}
+
+.el-sanat-list .item:hover .text {
 	bottom:0;
 	padding:90px 10px 0
 }

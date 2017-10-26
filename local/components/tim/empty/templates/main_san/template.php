@@ -47,7 +47,7 @@ $file = new \CFile();
                 if ($actions)
                 {
                     ?>
-                    <div class="action-mark"></div><?
+                    <span class="action-mark"><b class="action-mark__text">Акция!</b></span><?
                 }
 
 			?>

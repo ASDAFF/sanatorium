@@ -222,7 +222,7 @@ foreach ($products as $id => $item)
 		if ($actions)
 		{
 			?>
-            <div class="action-mark"></div><?
+            <span class="action-mark"><b class="action-mark__text">Акция!</b></span><?
 		}
 
 		?>
