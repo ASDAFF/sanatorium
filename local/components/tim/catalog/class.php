@@ -129,10 +129,16 @@ class TimCatalog extends \CBitrixComponent
 		{
 			$code = $urlDirs[3];
 			if ($code && count($urlDirs) > 4)
+			{
+				$redirect = Sanatorium::checkRedirect($code);
+				if ($redirect)
+					LocalRedirect('https://' . $redirect . '.putevochka.com', true, '301 Moved Permanently');
+
 				if (is_numeric($code))
 					$this->product = Sanatorium::getById($code);
 				else
 					$this->product = Sanatorium::getByCode($code);
+			}
 
 			if ($this->product)
 			{

@@ -967,5 +967,59 @@ class Sanatorium
         $phpCache->CleanDir(static::CACHE_PATH . 'getById');
     }
 
+	public static function checkRedirect($code)
+	{
+		$ar = [
+			'30-letiya-pobedy' => 'sanatoriy-30-letiya-pobedy',
+			'bukovaya-roshcha' => 'sanatoriy-bukovaya-roshcha',
+			'geolog-kazakhstan' => 'sanatoriy-geolog-kazakhstan',
+			'gorkogo' => 'sanatoriy-gorkogo',
+			'goryachiy-klyuch' => 'sanatoriy-goryachiy-klyuch',
+			'dzhinal-' => 'sanatoriy-dzhinal',
+			'dimitrova' => 'sanatoriy-dimitrova',
+			'don' => 'sanatoriy-don',
+			'dubovaya-roshcha' => 'sanatoriy-dubovaya-roshcha',
+			'dubrava' => 'sanatoriy-dubrava',
+			'zarya' => 'sanatoriy-zarya',
+			'zdorove' => 'sanatoriy-zdorove',
+			'istok' => 'sanatoriy-istok',
+			'istochnik' => 'sanatoriy-istochnik',
+			'kavkaz' => 'sanatoriy-kavkaz',
+			'kazakhstan' => 'sanatoriy-kazakhstan',
+			'kalinina' => 'sanatoriy-kalinina',
+			'kolos' => 'sanatoriy-kolos',
+			'krepost' => 'sanatoriy-krepost',
+			'krugozor' => 'sanatoriy-krugozor',
+			'lermontova' => 'sanatoriy-lermontova',
+			'metallurg' => 'sanatoriy-metallurg',
+			'moskva' => 'sanatoriy-moskva',
+			'nadezhda' => 'sanatoriy-nadezhda',
+			'narzan' => 'sanatoriy-narzan',
+			'niva' => 'sanatoriy-niva',
+			'ordzhonikidze' => 'sanatoriy-ordzhonikidze',
+			'piket' => 'sanatoriy-piket',
+			'plaza' => 'sanatoriy-plaza',
+			'plazaspa' => 'sanatoriy-plaza-spa',
+			'rodnik' => 'sanatoriy-rodnik',
+			'rossiya' => 'sanatoriy-rossiya',
+			'runo' => 'sanatoriy-runo',
+			'rus' => 'sanatoriy-rus',
+			'semashko' => 'sanatoriy-semashko',
+			'sechenova' => 'sanatoriy-sechenova',
+			'solnechnyy' => 'sanatoriy-solnechnyy',
+			'uzbekistan' => 'sanatoriy-uzbekistan',
+			'ukraina' => 'sanatoriy-ukraina',
+			'tsentrooyuz' => 'sanatoriy-tsentro-syuz',
+			'tsentrosoyuz-kislovodsk-' => 'sanatoriy-tsentrosoyuz-kislovodsk',
+			'shakher' => 'sanatoriy-shahter',
+			'elbrus' => 'sanatoriy-elbrus',
+		];
+
+		if ($ar[$code])
+			return $ar[$code];
+
+		return false;
+	}
+
 }
 

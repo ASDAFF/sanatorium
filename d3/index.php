@@ -7,7 +7,13 @@ $d3 = '';
 if (count($hostParts) === 3)
 	$d3 = $hostParts[0];
 if ($d3 && $d3 != 'www')
+{
+	$redirect = \Local\Catalog\Sanatorium::checkRedirect($d3);
+	if ($redirect)
+		LocalRedirect('https://' . $redirect . '.putevochka.com', true, '301 Moved Permanently');
+
 	$d3SanatoriumId = \Local\Catalog\Sanatorium::getIdByCode($d3);
+}
 
 if ($d3SanatoriumId)
 	require($_SERVER["DOCUMENT_ROOT"] . "/sanatorium/index.php");
