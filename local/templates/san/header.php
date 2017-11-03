@@ -86,14 +86,14 @@ $APPLICATION->ShowPanel();
 
 			?>
 		</div>
-		<div class="header-time-work"><?
-
-			$APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));
-
-			?>
+		<div class="header-time-work">
+            <a href="https://26.u-on.ru/" target="_blank" title="Личный кабинет"><?
+                $APPLICATION->IncludeFile(SITE_DIR."include/timeWork.php",array(),array("MODE"=>"text"));
+                ?>
+            </a>
 		</div>
         <div class="header-soc">
-            <a href="tel:+96201689865">
+            <a href="tel:+9620168986">
                 <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">
             </a>
             <a href="tel:+9620168986">
