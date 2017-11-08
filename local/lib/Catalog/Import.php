@@ -28,6 +28,8 @@ class Import
 		$this->log(date('d.m.Y') . ' Начало импорта');
 
 		$all = 0;
+		$dataEncoded = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/upload/import/result.json');
+		$data = unserialize($dataEncoded);
 
 		$iblockElement = new \CIBlockElement();
 		$filter = array(
@@ -74,7 +76,8 @@ class Import
             {
             	//if ($sanatorium['ID'] != 470) continue;
 
-				$this->importSanatorium($sanatorium, $path . $priceFilename);
+				$sanData = $data[$sanatorium['CODE']];
+				$this->importSanatorium($sanatorium, $sanData);
             }
             else
 				$this->log('Не найден файл с ценами для санатория: ' . $item['NAME'] . ' (' . $item['CODE'] . ')');
@@ -87,20 +90,20 @@ class Import
 	/**
      * Импорт цен для санатория
 	 * @param $sanatorium
-	 * @param $file
+	 * @param $ar
 	 * @return bool
 	 */
-	private function importSanatorium($sanatorium, $file)
+	private function importSanatorium($sanatorium, $ar)
 	{
 		$this->log($sanatorium['NAME'] . ' [' . $sanatorium['ID'] . ']');
 
-		require_once $_SERVER["DOCUMENT_ROOT"] . '/local/lib/PHPExcel.php';
-		$excel = \PHPExcel_IOFactory::load($file);
+		//require_once $_SERVER["DOCUMENT_ROOT"] . '/local/lib/PHPExcel.php';
+		//$excel = \PHPExcel_IOFactory::load($file);
 
 		$result = [];
 		$cnt = 0;
-		$sheet = $excel->getSheet(0);
-		$ar = $sheet->toArray();
+		//$sheet = $excel->getSheet(0);
+		//$ar = $sheet->toArray();
 
 		$values = false;
 		$programmId = 0;
