@@ -74,9 +74,9 @@ class Import
 			}
 			if ($priceFilename)
             {
-            	//if ($sanatorium['ID'] != 470) continue;
+            	//if ($sanatorium['ID'] != 393) continue;
 
-				$sanData = $data[$sanatorium['CODE']];
+				$sanData = $data[$item['CODE']];
 				$this->importSanatorium($sanatorium, $sanData);
             }
             else
@@ -97,13 +97,8 @@ class Import
 	{
 		$this->log($sanatorium['NAME'] . ' [' . $sanatorium['ID'] . ']');
 
-		//require_once $_SERVER["DOCUMENT_ROOT"] . '/local/lib/PHPExcel.php';
-		//$excel = \PHPExcel_IOFactory::load($file);
-
 		$result = [];
 		$cnt = 0;
-		//$sheet = $excel->getSheet(0);
-		//$ar = $sheet->toArray();
 
 		$values = false;
 		$programmId = 0;
@@ -165,7 +160,7 @@ class Import
 							$code = 'A';
 						elseif (strpos($val, 'Основное место на ребенка') === 0)
 						{
-							$prt = explode('до', substr($val, 52));
+							$prt = explode('до', substr($val, 29));
 							$prt1 = $prt[0];
 							$prt2 = $prt[1];
 							if (intval($prt1) || $prt1 === '0')
@@ -174,7 +169,7 @@ class Import
 						}
 						elseif (strpos($val, 'Доп. место на ребенка') === 0)
 						{
-							$prt = explode('до', substr($val, 43));
+							$prt = explode('до', substr($val, 24));
 							$prt1 = $prt[0];
 							$prt2 = $prt[1];
 							if (intval($prt1) || $prt1 === '0')
