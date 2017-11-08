@@ -17,16 +17,16 @@ class TimCatalog extends \CBitrixComponent
 			'FIELD' => 'SEARCH',
 			'NAME' => 'релевантности',
 		),
-		'rating' => array(
-			'ORDER_DEFAULT' => 'desc',
-			'FIELD' => 'PROPERTY_RATING',
-			'NAME' => 'рейтингу санатория',
-			'DEFAULT' => true,
-		),
 		'price' => array(
 			'ORDER_DEFAULT' => 'asc',
 			'FIELD' => 'PROPERTY_PRICE',
 			'NAME' => 'цене путевки',
+			'DEFAULT' => true,
+		),
+		'rating' => array(
+			'ORDER_DEFAULT' => 'desc',
+			'FIELD' => 'PROPERTY_RATING',
+			'NAME' => 'рейтингу санатория',
 		),
 	);
 

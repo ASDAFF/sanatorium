@@ -66,10 +66,18 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
 <?endif;?>
 <div id="phone">
     <div class="engBox-body">
+        <?/*
+        <div class="phone__block_skype">
+            <a href="" title="Консультация куруртолога">
+                <i class="phone__block_skype__icon"></i>
+                <span>Заказть бесплатную консультацию врача</span>
+            </a>
+        </div>
         <div class="phone"><i class="icon-phome-mega"></i><a>8 800 775 2604</a></div>
         <div class="text">Исходящие вызовы по России бесплатны.<br>
             Проконсультируем вас по любому вопросу, поможем подобрать подходящие путевки для вас и вашей семьи
         </div>
+        */?>
     </div>
 </div>
 <footer>
