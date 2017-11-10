@@ -867,6 +867,118 @@ jQuery(document).ready(function () {
 	 ._tabs-nav : Стиль меню >li>a id ='val'
 	 ._tabs : Табы переключения div id ='val'
 	 */
+
+    /**
+	 * Send form (doctor consult) with 152-FZ check
+     */
+    //interval object for add red border
+    var interval = new IntervalObj();
+    function IntervalObj() {
+        var timer = false;
+        this.start = function (el) {
+            if (!this.isRunning()) {
+                var i = 0;
+                timer = setInterval(function () {
+                    if (!el.hasClass('inactive')) {
+                        interval.stop(el.closest('form').find('.page__doctor__form__field__accept'));
+                        formPassed = true;
+                        return;
+                    }
+                    el.closest('form').find('.page__doctor__form__field__accept').css({'border': '1px solid ' + (i % 2 === 0 ? 'transparent' : 'red')});
+
+                    if (++i >= 7) {
+                        interval.stop(el.closest('form').find('.page__doctor__form__field__accept'));
+                        return;
+                    }
+                }, 500);
+            }
+        };
+        this.stop = function (acceptBlock) {
+            clearInterval(timer);
+            acceptBlock.css({'border': '1px solid transparent'});
+            timer = false;
+        };
+        this.isRunning = function () {
+            return timer !== false;
+        };
+    }
+
+    $('.page__doctor__form__button').on('click', function (e) {
+
+    	e.preventDefault();
+
+        var el = $(this),
+			formPassed = !el.hasClass('inactive');
+
+        //need show red border, make it! :)
+        if(!formPassed)
+        {
+            interval.start(el, formPassed);
+        }
+
+        //ok, 152-FZ is passed..
+        if(formPassed)
+		{
+			//stop interval
+			interval.stop(el.closest('form').find('.page__doctor__form__field__accept'));
+
+            var curForm = $(this).closest('form'),
+                waitElement = $(this).get(0),
+                formData = new FormData(curForm.get(0));
+
+            //show ajax loader
+            BX.showWait(waitElement);
+
+            //send request
+            $.ajax({
+                url: curForm.attr('action'),
+                data: formData,
+                dataType: 'json',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function(ans) {
+
+                    curForm
+						.find('.page__doctor__form__field')
+							.css({'border': '1px solid #c2c1c1'})
+						.end()
+						.find('.page__doctor__form__field__error')
+							.empty();
+
+                    //show errors
+                    if (ans && ans.errors)
+                    {
+                        for(var inputName in ans.errors)
+                        {
+                            curForm.find('[name="' + inputName + '"]').first().closest('.page__doctor__form__field')
+                                .css({border: '1px solid red'}).find('.page__doctor__form__field__error').html(ans.errors[inputName]);
+                        }
+                    }
+                    else
+                    {
+                        //ok, show message
+                        $.fancybox('<div style="padding:25px;margin:15px;text-align:center;color:green">Заявка успешно отправлена</div>');
+                    }
+
+                    //hide ajax loader
+                    BX.closeWait(waitElement);
+                },
+				error: function() {
+                    //hide ajax loader
+                    BX.closeWait(waitElement);
+				}
+            })
+		}
+    });
+    //check checkbox (...)
+    $('.page__doctor__form__field__accept .accept-send').on('change', function() {
+        $(this).closest('form').find('.page__doctor__form__button').toggleClass('inactive')
+		//all ok, stop interval
+		if($(this).is(':checked'))
+			interval.stop($(this).closest('form').find('.page__doctor__form__field__accept'));
+    });
+
 });
 
 

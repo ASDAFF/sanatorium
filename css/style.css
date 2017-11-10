@@ -7275,3 +7275,25 @@ input:-webkit-autofill {
 
 
 
+.page__doctor__form__field__error {
+	display:block;
+}
+.page__doctor__form__button.inactive {
+	opacity: 0.3;
+}
+.page__doctor__form__field__accept {
+	border: 1px solid transparent;
+	padding: 5px;
+	margin: 9px auto;
+	color: #000;
+}
+.page__doctor__form__field__accept input[type="checkbox"].accept-send {
+	-webkit-appearance: checkbox;
+	cursor: pointer;
+}
+.page__doctor__form__field__accept label {
+	cursor: pointer;
+}
+.page__doctor__form__field__accept a {
+	text-decoration: underline;
+}

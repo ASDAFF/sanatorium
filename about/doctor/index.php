@@ -28,34 +28,50 @@ $APPLICATION->SetTitle("Консультация куруртолога");
                 <div class="page-inner">
                     <div class="page-inner-menu">
                         <div class="page__doctor__form">
-                            <div class="page__doctor__form__field">
-                                <input class="page__doctor__form__field__input" name="name" placeholder="Имя" required="" type="text">
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <input class="page__doctor__form__field__input" name="name" placeholder="Телефон" required="" type="text">
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <input class="page__doctor__form__field__input" name="name" placeholder="E-mail" required="" type="text">
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <textarea class="page__doctor__form__field__text" placeholder="Ваш вопрос" name="txt" required=""></textarea>
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_file"></i>
-                                <input class="page__doctor__form__field__input" name="name" placeholder="Прикрепить домен" required="" type="file">
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_date"></i>
-                                <input id="datepicker" class="page__doctor__form__field__input" name="name" placeholder="Дата звонка" required="" type="text">
-                            </div>
-                            <div class="page__doctor__form__field">
-                                <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_time"></i>
-                                <input class="page__doctor__form__field__input" name="name" placeholder="Время звонка" required="" type="text">
-                            </div>
-                            <div class="page__doctor__form__button">
-                                <span>Заказть консультацию курортолога</span>
-                                <i class="page__doctor__form__button__icon"></i>
-                            </div>
+                            <form method="post" action="/ajax/consult.php" enctype="multipart/form-data" class="consult-form">
+                                <div class="page__doctor__form__field">
+                                    <input class="page__doctor__form__field__input" name="name" placeholder="Имя" required="" type="text">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <input class="page__doctor__form__field__input" name="phone" placeholder="Телефон" required="" type="text">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <input class="page__doctor__form__field__input" name="email" placeholder="E-mail" required="" type="text">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <textarea class="page__doctor__form__field__text" placeholder="Ваш вопрос" name="query" required=""></textarea>
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_file"></i>
+                                    <input class="page__doctor__form__field__input" name="file" placeholder="Прикрепить файл" required="" type="file">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_date"></i>
+                                    <input id="datepicker" class="page__doctor__form__field__input" name="call_date" placeholder="Дата звонка" required="" type="text">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field">
+                                    <i class="page__doctor__form__field__input__icon page__doctor__form__field__input__icon_time"></i>
+                                    <input class="page__doctor__form__field__input" name="call_time" placeholder="Время звонка" required="" type="text">
+                                    <div class="page__doctor__form__field__error"></div>
+                                </div>
+                                <div class="page__doctor__form__field__accept page__doctor__form__field">
+                                    <input type="checkbox" class="accept-send" value="1" id="accept" />
+                                    <label for="accept">
+                                        Я ознакомлен
+                                        <a target="_blank" href="/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
+                                    </label>
+                                </div>
+                                <div class="page__doctor__form__button inactive">
+                                    <span>Заказать консультацию курортолога</span>
+                                    <i class="page__doctor__form__button__icon"></i>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="page-inner-content">
