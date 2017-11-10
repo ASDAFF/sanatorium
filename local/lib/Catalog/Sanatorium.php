@@ -835,7 +835,7 @@ class Sanatorium
         }
 		elseif ($tabCode == 'newyear')
 		{
-			echo $sanatorium['NEW_YEAR_TAB'];
+			?><noindex><?= $sanatorium['NEW_YEAR_TAB'] ?></noindex><?
 		}
         elseif ($tabCode == 'video')
         {
