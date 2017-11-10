@@ -400,6 +400,7 @@ class Sanatorium
                 'PROPERTY_ROOMS_COUNT',
                 'PROPERTY_RATING',
                 'PROPERTY_YMAP',
+				'PROPERTY_NEW_YEAR_TAB'
             ));
             while ($item = $rsItems->GetNext()) {
                 $product = self::getSimpleById($item['ID']);
@@ -421,6 +422,7 @@ class Sanatorium
                 $product['ROOMS_COUNT'] = $item['PROPERTY_ROOMS_COUNT_VALUE'];
                 $product['YMAP'] = $item['PROPERTY_YMAP_VALUE'];
                 $product['RATING'] = round($item['PROPERTY_RATING_VALUE'] / 2) / 10;
+                $product['NEW_YEAR_TAB'] = $item['~PROPERTY_NEW_YEAR_TAB_VALUE']['TEXT'];
 
                 $return['ITEMS'][$item['ID']] = $product;
             }
@@ -554,6 +556,7 @@ class Sanatorium
                 'PROPERTY_RATING',
                 'PROPERTY_FEEDING_TAB',
                 'PROPERTY_CHILD_TAB',
+                'PROPERTY_NEW_YEAR_TAB',
                 'PROPERTY_VIDEO',
                 'PROPERTY_YMAP',
                 'PROPERTY_PRICE_PDF',
@@ -625,6 +628,7 @@ class Sanatorium
                     'RATING' => round($item['PROPERTY_RATING_VALUE'] / 2) / 10,
                     'FEEDING_TAB' => $item['~PROPERTY_FEEDING_TAB_VALUE']['TEXT'],
                     'CHILD_TAB' => $item['~PROPERTY_CHILD_TAB_VALUE']['TEXT'],
+                    'NEW_YEAR_TAB' => $item['~PROPERTY_NEW_YEAR_TAB_VALUE']['TEXT'],
                     'VIDEO' => $item['~PROPERTY_VIDEO_VALUE'],
                     'PRICE_PDF' => $item['PROPERTY_PRICE_PDF_VALUE'],
                     'CITY' => $city,
@@ -829,6 +833,10 @@ class Sanatorium
         {
 	        echo $sanatorium['CHILD_TAB'];
         }
+		elseif ($tabCode == 'newyear')
+		{
+			echo $sanatorium['NEW_YEAR_TAB'];
+		}
         elseif ($tabCode == 'video')
         {
 			foreach ($sanatorium['VIDEO'] as $video)

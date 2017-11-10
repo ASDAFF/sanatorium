@@ -110,6 +110,13 @@ $tabs = array(
 			' : карта. Информация о санатории «' . $product['TITLE'] . '» на официальном сайте сервиса «' . $siteName . '».',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' карта',
 	),
+	'newyear' => array(
+		'NAME' => 'Новый Год',
+		'TITLE' => 'Санаторий «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] . ' новый год 2018 — «' . $siteName . '»',
+		'DESCR' => 'Цены на новый год 2018 в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'] .
+			'. Забронируйте санаторий «' . $product['TITLE'] . '» на новый год по телефону ' . $phone,
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' карта',
+	),
 );
 
 foreach ($tabs as $code => $tab)

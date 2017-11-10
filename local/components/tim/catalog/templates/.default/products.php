@@ -102,7 +102,15 @@ foreach ($products as $id => $item)
     <div class="el-search-list engBox-body">
     <div class="item">
         <div class="img">
-            <img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>">
+			<img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>"><?
+
+			if ($item['NEW_YEAR_TAB'])
+			{
+				?>
+				<a href="<?= $item['DETAIL_PAGE_URL'] ?>newyear/" class="new-year-mark"></a><?
+			}
+
+			?>
         </div>
         <div class="text">
 			<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div>
