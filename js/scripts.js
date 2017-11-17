@@ -961,6 +961,12 @@ jQuery(document).ready(function () {
                         $.fancybox('<div style="padding:25px;margin:15px;text-align:center;color:green">Заявка успешно отправлена</div>');
                     }
 
+                    if(ans && ans.gtmObject)
+					{
+						window.dataLayer = window.dataLayer || [];
+						window.dataLayer.push(ans.gtmObject);
+					}
+
                     //hide ajax loader
                     BX.closeWait(waitElement);
                 },

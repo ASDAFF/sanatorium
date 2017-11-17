@@ -92,6 +92,12 @@ $APPLICATION->ShowPanel();
                 ?>
             </a>
 		</div>
+        <div class="phone__header__block_skype">
+            <a href="/about/doctor/" title="Консультация куруртолога">
+                <span>Закажите консультацию курортолога</span>
+                <i class="phone__header__block_skype__icon"></i>
+            </a>
+        </div>
         <div class="header-soc">
             <a href="tel:+9620168986">
                 <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">

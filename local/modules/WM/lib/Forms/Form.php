@@ -259,6 +259,7 @@ class Form
             //'date' => '\\WM\\Forms\\Validators\\DateValidator',
             'ip' => '\\WM\\Forms\\Validators\\IpValidator',
             'length' => '\\WM\\Forms\\Validators\\LengthValidator',
+            'regex' => '\\WM\\Forms\\Validators\\RegexValidator',
             'numerical' => '\\WM\\Forms\\Validators\\NumericValidator',
             'phone' => '\\WM\\Forms\\Validators\\PhoneValidator',
             'required' => '\\WM\\Forms\\Validators\\EmptyValidator',

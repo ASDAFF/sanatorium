@@ -3362,7 +3362,7 @@ a.header-phone-link {
 	line-height:15px;
 	color:#505050
 }
-.header-soc {display:inline-block; line-height:normal; vertical-align:middle; width: 38%;
+.header-soc {display:inline-block; line-height:normal; vertical-align:middle; width: 20%;
 	text-align: right;
 	padding: 10px 30px;}
 .header-soc a {}
@@ -5736,7 +5736,7 @@ div[id^="slider-popap-"].flexslider .slides img {
 .elAboutBox4 .it-text {
 	margin-top:20px;
 	text-align:justify;
-	font-size:13px
+	font-size:17px
 }
 
 .elAboutBox4 .it-text ul li {
@@ -7137,6 +7137,13 @@ div#jivo-iframe-container.jivo-iframe-container-right.jivo-state-widget {
 	margin-bottom: 10px;
 	color: #fff;
 }
+.phone__block_skype a{
+	border-radius: 24px;
+	padding-right: 10px;
+}
+.phone__block_skype a:hover {
+	background: #4ba7cf;
+}
 .phone__block_skype span {
 	max-width: 150px;
 	display: inline-block;
@@ -7149,8 +7156,68 @@ div#jivo-iframe-container.jivo-iframe-container-right.jivo-state-widget {
 	vertical-align: middle;
 	 width: 41px;
 	 height: 47px;
-	 background: url("../images/icon_skype_no_border.png");
+	 background: url("../images/icon_skype_no_border.png") no-repeat;
  }
+
+.phone__header__block_skype {
+	display: inline-block;
+	vertical-align: middle;
+	width: 27%;
+	text-align: center;
+}
+.phone__header__block_skype a{
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	padding: 3px 38px 2px 5px;
+	color: #fff;
+	background: #2c9ed7;
+	border-radius: 5px;
+	text-align: center;
+}
+.phone__header__block_skype a:hover {
+	background: #ff8a00;
+}
+.phone__header__block_skype span {
+	max-width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: 300;
+}
+.phone__header__block_skype__icon{
+	position: absolute;
+	right: -13px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 60px;
+	height: 70px;
+	background: url("/css/../images/icon_skype.png") no-repeat;
+	background-size: auto auto;
+	background-size: auto auto;
+	top: -14px;
+	background-size: contain;
+}
+@media(max-width: 800px) {
+	.phone__header__block_skype{
+		text-align: right;
+	}
+	.phone__header__block_skype a {
+		padding: 0;
+		background: transparent!important;
+	}
+
+	.phone__header__block_skype span {
+		display: none;
+	}
+	.phone__header__block_skype__icon{
+		width: 50px;
+		height: 60px;
+		position: relative;
+		top: -4px;
+		right: auto;
+	}
+}
 
 
 .page__doctor {}
@@ -7307,3 +7374,5 @@ input:-webkit-autofill {
 .page__doctor__form__field__accept a {
 	text-decoration: underline;
 }
+
+#widget_iframe {width: 100%!important; max-width: 332px!important; }

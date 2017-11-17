@@ -354,7 +354,7 @@ $currentTab = $tabs[$tabCode];
 						<div class="_form-check">
 							<input name="_check" type="checkbox" id="checkbox-lic" data-class="_form-check-btn"/>
 							<label for="checkbox-lic" class='checkbox-tr-btn'>
-								Я ознакомлен <a target="_blank" href="<?= P_HREF ?>/contacts/Dogovor.compressed.pdf">c положением об обработке и защите персональных данных.</a>
+								Я ознакомлен <a target="_blank" href="<?= P_HREF ?>/upload/ПОЛОЖЕНИЕ о персональных данных.docx">c положением об обработке и защите персональных данных.</a>
 							</label>
 						</div>
 						<div class="_form-check-btn">
