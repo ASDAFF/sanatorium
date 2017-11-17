@@ -285,7 +285,7 @@ $currentTab = $tabs[$tabCode];
     </div>
     </div><?
 
-    if (false)
+    if (true)
 	    include ('calc.php');
     else
 	{
