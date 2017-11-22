@@ -7014,6 +7014,10 @@ body .menu_parent:after {
 	background-position-y: 11px;
 }
 
+.form-submit button.disabled {
+	border: 2px solid #5fb3dd;
+}
+
 .form-footer {
 	padding-right: 30px;
 	padding-left: 30px;
@@ -7022,10 +7026,11 @@ body .menu_parent:after {
 .form-submit-text {
 	color: white;
 	padding: 10px 5px 10px 35px;
+	line-height: 15px;
 }
 
-.form-submit-text {
-	line-height: 15px;
+button.disabled .form-submit-text {
+	color: #ccc;
 }
 
 .form-footer-body .selector {

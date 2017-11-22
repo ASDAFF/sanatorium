@@ -426,6 +426,8 @@ var Detail = {
 		if (!this.priceForm.length)
 			return false;
 
+		this.reserveResults = $('#reserve-results');
+
 		this.dateFrom = $('#datepicker');
 		this.dateTo = $('#datepicker2');
 
@@ -435,6 +437,7 @@ var Detail = {
 		this.firstPerson = $('.first-person');
 		this.otherPersons = $('.other-persons');
 		this.peopleCount = $('#count-people');
+		this.calcSubmit = $('#calc-submit');
 		this.peopleCount.on('input', this.peopleCountChange);
 		this.otherPersons.on('click', '.people-delete', this.deletePeople);
 		this.priceForm.on('change', '.js-age', this.fieldChange);
@@ -469,6 +472,8 @@ var Detail = {
 
 		this.dateFrom.datepicker();
 		this.dateTo.datepicker();
+
+		Detail.calculate();
 	},
 	peopleCountChange: function() {
 		var count = Detail.peopleCount.val();
@@ -577,7 +582,7 @@ var Detail = {
 		});
 	},
 	calculate: function() {
-		Detail.correct = false;
+		Detail.correct = true;
 		var result = 0;
 		var cnt0 = 0;
 		var cnt1 = 0;
@@ -586,85 +591,97 @@ var Detail = {
 		var to = Detail.dateTo.datepicker('getDate');
 
 		if (!from || !to)
-			return false;
+			Detail.correct = false;
 
-		var d = to - from;
-		if (d < 0)
-			return false;
-
-		var days = from.getDate();
-
-		var di = d / 86400000;
-		var dates = [];
-		for (var i = 0; i <= di; i++) {
-			from.setDate(days + i);
-			var m1 = from.getMonth() + 1;
-			var d1 = from.getDate();
-			dates.push([d1, m1]);
+		if (Detail.correct) {
+			var d = to - from;
+			if (d < 0)
+				Detail.correct = false;
 		}
 
-		var datesLength = dates.length;
-		if (datesLength <= 0)
-			return false;
+		if (Detail.correct) {
+			var days = from.getDate();
 
-		Detail.correct = true;
-		Detail.priceForm.find('.who-you-are').each(function() {
-			var age = $(this).find('.js-age').val();
-			var room = $(this).find('.js-room').val();
-			var point = $(this).find('.js-place').val();
-			var programm = $(this).find('.js-programm').val();
-			var priceIndex = point;
-			if (age !== '0') {
-				priceIndex += age;
-				cnt1++;
+			var di = d / 86400000;
+			var dates = [];
+			for (var i = 0; i <= di; i++) {
+				from.setDate(days + i);
+				var m1 = from.getMonth() + 1;
+				var d1 = from.getDate();
+				dates.push([d1, m1]);
 			}
-			else
-				cnt0++;
 
-			var personCorrect = true;
-			var roomPrices = prices[room];
-			if (roomPrices) {
-				var progPrices = roomPrices[programm];
-				if (progPrices) {
-					for (var dm = 0; dm < datesLength; dm++) {
-						var d2 = dates[dm][0];
-						var m2 = dates[dm][1];
-						var dateCorrect = false;
-						for (var int in progPrices) {
-							if (progPrices.hasOwnProperty(int)) {
-								var intPrices = progPrices[int];
-								var intSplit = int.split('-');
-								var intFrom = intSplit[0];
-								var intFromSplit = intFrom.split('.');
-								var intTo = intSplit[1];
-								var intToSplit = intTo.split('.');
-								var intFromD = parseInt(intFromSplit[0]);
-								var intFromM = parseInt(intFromSplit[1]);
-								var intToD = parseInt(intToSplit[0]);
-								var intToM = parseInt(intToSplit[1]);
-								if (Detail.dateInInt(d2, m2, intFromD, intFromM, intToD, intToM)) {
-									if (intPrices.hasOwnProperty(priceIndex)) {
-										var price1 = intPrices[priceIndex];
-										result = result + price1;
-										dateCorrect = true;
+			var datesLength = dates.length;
+			if (datesLength <= 0)
+				Detail.correct = false;
+		}
+
+		if (Detail.correct) {
+			Detail.priceForm.find('.who-you-are').each(function () {
+				var age = $(this).find('.js-age').val();
+				var room = $(this).find('.js-room').val();
+				var point = $(this).find('.js-place').val();
+				var programm = $(this).find('.js-programm').val();
+				var priceIndex = point;
+				if (age !== '0') {
+					priceIndex += age;
+					cnt1++;
+				}
+				else
+					cnt0++;
+
+				var personCorrect = true;
+				var roomPrices = prices[room];
+				if (roomPrices) {
+					var progPrices = roomPrices[programm];
+					if (progPrices) {
+						for (var dm = 0; dm < datesLength; dm++) {
+							var d2 = dates[dm][0];
+							var m2 = dates[dm][1];
+							var dateCorrect = false;
+							for (var int in progPrices) {
+								if (progPrices.hasOwnProperty(int)) {
+									var intPrices = progPrices[int];
+									var intSplit = int.split('-');
+									var intFrom = intSplit[0];
+									var intFromSplit = intFrom.split('.');
+									var intTo = intSplit[1];
+									var intToSplit = intTo.split('.');
+									var intFromD = parseInt(intFromSplit[0]);
+									var intFromM = parseInt(intFromSplit[1]);
+									var intToD = parseInt(intToSplit[0]);
+									var intToM = parseInt(intToSplit[1]);
+									if (Detail.dateInInt(d2, m2, intFromD, intFromM, intToD, intToM)) {
+										if (intPrices.hasOwnProperty(priceIndex)) {
+											var price1 = intPrices[priceIndex];
+											result = result + price1;
+											dateCorrect = true;
+										}
+										break;
 									}
-									break;
 								}
 							}
+							if (!dateCorrect)
+								personCorrect = false;
 						}
-						if (!dateCorrect)
-							personCorrect = false;
 					}
+					else
+						personCorrect = false;
 				}
 				else
 					personCorrect = false;
-			}
-			else
-				personCorrect = false;
 
-			if (!personCorrect)
-				Detail.correct = false;
-		});
+				if (!personCorrect)
+					Detail.correct = false;
+			});
+		}
+
+		Detail.calcSubmit.prop('disabled', !Detail.correct);
+		console.log(Detail.correct);
+		if (Detail.correct)
+			Detail.calcSubmit.removeClass('disabled');
+		else
+			Detail.calcSubmit.addClass('disabled');
 
 		var resPersons = '';
 		if (cnt0 > 0) {
@@ -714,12 +731,29 @@ var Detail = {
 			return 0;
 	},
 	submitCalc: function() {
-		if (Detail.correct)
-			return true;
-		else {
-			//
-			return false;
+		if (Detail.correct) {
+			var form_data = Detail.priceForm.serialize();
+			$.ajax({
+				type: 'POST',
+				url: '/ajax/reserve_room.php',
+				data: form_data,
+				dataType: 'json',
+				success: function(data) {
+					if(data.success)
+					{
+						dataLayer = window.dataLayer || [];
+						dataLayer.push(data.gtmObject);
+						Detail.priceForm[0].reset();
+						Detail.reserveResults.html(data.message).show();
+					}
+					else
+						$.fancybox('<div class="errors feedback-popup-content">' + data.errors.join('<br>') + '</div>');
+				}
+			});
+
 		}
+
+		return false;
 	}
 };
 

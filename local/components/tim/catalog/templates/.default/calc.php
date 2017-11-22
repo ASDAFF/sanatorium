@@ -44,6 +44,7 @@ foreach ($product['ROOMS'] as $room)
 ?>
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
+		<input type="hidden" name="san" value="<?= $product['ID'] ?>" />
         <div class="form-title">
             <span class="form-title-first">Заполните форму</span>
             <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
@@ -52,14 +53,14 @@ foreach ($product['ROOMS'] as $room)
             <div class="calendar">
                 <div class="left-block">
                     Дата заезда<br>
-                    <input type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker">
+                    <input name="date_on" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker">
                 </div>
                 <div class="middle-block">
                     <img src="/images/calc/strelka.png">
                 </div>
                 <div class="right-block">
                     Дата выезда<br>
-                    <input type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker2">
+                    <input name="date_off" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker2">
                 </div>
             </div>
         </div>
@@ -69,7 +70,7 @@ foreach ($product['ROOMS'] as $room)
                     <div class="who-you-are">
                         <div class="number-type"><span>Возраст </span>
                             <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right js-age"><?
+                                <select name="age[]" class="form-body-right js-age"><?
 									foreach ($ages as $code => $age)
 									{
 										?>
@@ -81,7 +82,7 @@ foreach ($product['ROOMS'] as $room)
                         </div>
                         <div class="number-type"><span>Тип номера </span>
                             <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right js-room">
+                                <select name="room[]" class="form-body-right js-room">
                                     <option value="0">(выберите номер)</option><?
 									foreach ($product['ROOMS'] as $room)
 									{
@@ -96,7 +97,7 @@ foreach ($product['ROOMS'] as $room)
                         <div class="number-type">
                             <span>Размещение </span>
                             <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right js-place">
+                                <select name="place[]" class="form-body-right js-place">
                                     <option value="M">На основном месте</option>
                                     <option value="A">На дополнительном месте</option>
                                     <option value="F">Весь номер</option>
@@ -106,7 +107,7 @@ foreach ($product['ROOMS'] as $room)
                         <div class="number-type first-number-type">
                             <span>Программа </span>
                             <div class="list-input calc-form form-body-right">
-                                <select class="form-body-right js-programm">
+                                <select name="programm[]" class="form-body-right js-programm">
                                     <option value="0">(выберите программу)</option><?
 									foreach ($product['PROGRAMMS'] as $pr)
 									{
@@ -139,9 +140,9 @@ foreach ($product['ROOMS'] as $room)
                 <span class="js-sum"></span>
             </div>
             <div class="form-footer-body">
-                <input class="selector" placeholder="Введите имя" required />
+                <input name="name" class="selector" placeholder="Введите имя" required />
                 <br>
-                <input id="numb-phone" class="selector" placeholder="Введите телефон" required />
+                <input name="phone" id="numb-phone" class="selector" placeholder="Введите телефон" required />
             </div>
             <div class="confidentiality">
                 <label>
@@ -150,7 +151,7 @@ foreach ($product['ROOMS'] as $room)
                 <a href="<?= P_HREF ?>/uploads/conf.doc">политики конфиденциальности</a>
             </div>
             <div class="form-submit">
-                <button type="submit">
+                <button id="calc-submit" type="submit">
                     <div class="form-submit-text">
                         Забронировать отдых<br>
                         и получить скидку
@@ -158,6 +159,7 @@ foreach ($product['ROOMS'] as $room)
                 </button>
             </div>
         </div>
+		<div id="reserve-results" class="okno" style="display:none;"></div>
     </form>
 </div>
 <script>

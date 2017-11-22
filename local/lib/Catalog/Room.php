@@ -457,12 +457,46 @@ class Room
 
 		$name = trim(htmlspecialchars($_POST['name']));
 		$phone = trim(htmlspecialchars($_POST['phone']));
-		$roomId = intval($_POST['room']);
-		$adults = intval($_POST['adults']);
-		$child = intval($_POST['child']);
+		$sanId = intval($_POST['san']);
 		$date_on = trim(htmlspecialchars($_POST['date_on']));
 		$date_off = trim(htmlspecialchars($_POST['date_off']));
 		$transfer = $_POST['transfer'] == 'on';
+
+		$txt = '';
+
+		foreach ($_POST['room'] as $i => $roomId)
+		{
+			$txt .= "----------------------\n";
+			$age = $_POST['age'][$i];
+			$place = $_POST['place'][$i];
+			$programmId = $_POST['programm'][$i];
+
+			if ($age)
+				$txt .= 'Возраст: Ребенок ' . $age . ' лет';
+			else
+				$txt .= 'Возраст: Взрослый';
+
+			$txt .= "\n";
+
+			$room = self::getById($roomId);
+			$txt .= 'Номер: ' . $room['NAME'] . ' [' . $roomId . ']';
+
+			$txt .= "\n";
+
+			if ($place == 'M')
+				$txt .= 'Размещение: На основном месте';
+			elseif ($place == 'A')
+				$txt .= 'Размещение: На дополнительном месте';
+			elseif ($place == 'F')
+				$txt .= 'Размещение: Весь номер';
+
+			$txt .= "\n";
+
+			$programm = Programms::getByIds($programmId);
+			$txt .= 'Программа: ' . $programm[0]['NAME'] . ' [' . $programmId . ']';
+
+			$txt .= "\n";
+		}
 
         $errors = array();
 
@@ -472,39 +506,32 @@ class Room
         if(empty($phone))
             $errors[] = 'Введите номер телефона';
 
-        $sanName = $roomName = '';
+        $sanName = '';
 
 		if (empty($errors))
 		{
 			$props = array(
 				'PHONE' => $phone,
-				'ADULTS' => $adults,
-				'CHILD' => $child,
 				'FROM' => $date_on,
 				'TO' => $date_off,
 				'TRANSFER' => $transfer ? 1 : 0,
 			);
-			$roomName = '';
 			$sanName = '';
-			if ($roomId)
+			if ($sanId)
 			{
-				$room = self::getById($roomId);
-				if ($room)
-				{
-					$props['ROOM'] = $roomId;
-					$props['SANATORIUM'] = $room['SANATORIUM'];
-					$san = Sanatorium::getSimpleById($room['SANATORIUM']);
-					$sanName = $san['NAME'] . ' [' . $room['SANATORIUM'] . ']';
-					$roomName = $room['NAME'] . ' [' . $roomId . ']';
-				}
+				$san = Sanatorium::getSimpleById($sanId);
+				$props['SANATORIUM'] = $san['ID'];
+				$sanName = $san['NAME'] . ' [' . $san['ID'] . ']';
 			}
 
 			$el = new \CIBlockElement();
 			$fields = array(
 				'IBLOCK_ID' => self::RESERVE_IBLOCK_ID,
 				'NAME' => $name,
+				'DETAIL_TEXT' => $txt,
 				'PROPERTY_VALUES' => $props,
 			);
+			_log_array($fields);
 			$id = $el->Add($fields);
 			if ($id)
 			{
@@ -512,11 +539,9 @@ class Room
 					'NAME' => $name,
 					'PHONE' => $phone,
 					'SANATORIUM' => $sanName,
-					'ROOM' => $roomName,
-					'ADULTS' => $adults,
-					'CHILD' => $child,
 					'FROM' => $date_on,
 					'TO' => $date_off,
+					'DATA' => $txt,
 					'TRANSFER' => $transfer ? 'да' : 'нет',
 				);
 				//\CEvent::Send('ASPRO_SEND_FORM_ADMIN_20', 's1', $eventFields);
