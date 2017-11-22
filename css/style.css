@@ -7012,6 +7012,7 @@ body .menu_parent:after {
 	background-position-x: 8px;
 	background-size: 30px;
 	background-position-y: 11px;
+	cursor: pointer;
 }
 
 .form-submit button.disabled {
