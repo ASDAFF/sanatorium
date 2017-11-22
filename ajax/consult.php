@@ -60,7 +60,7 @@ if($form->validate())
             'NAME' => Helper::enc($form->getField('name')),
             'TEXT' => Helper::enc($form->getField('query')),
             'EMAIL' => Helper::enc($form->getField('email')),
-            'DATETIME' => Helper::enc($form->getField('email')),
+            'DATETIME' => Helper::enc($form->getField('call_date') . ' ' . $form->getField('call_time')),
             'PHONE' => Helper::enc($form->getField('phone')),
             'FILE_SRC' => (empty($fileId) ? '-' : Helper::getFullUrl(\CFile::GetPath($fileId))),
         )
@@ -70,17 +70,37 @@ if($form->validate())
     if(!$status && !empty($fileId))
         \CFile::Delete($fileId);
 
-    echo json_encode($status
-        ? array(
+    if($status)
+    {
+        echo json_encode(array(
             'success' => true,
             'gtmObject' => GTMFormSubmit::get()->setEvent()->setElementClasses('.consult-form')->setElements(array(
                 $form->getField('name'), $form->getField('query'), $form->getField('email'), $form->getField('phone'),
             ))->getResult()
-        )
-        : array(
-            'errors' => $form->getErrors()
-        )
-    );
+        ));
+        //u-an intergration
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => 'https://api.u-on.ru/259if83aN3CxKdHAA6Ow/lead/create.json',
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS =>
+                'source=' . urlencode('Заказ консультации курортолога') .
+                '&date_from=' . urlencode(Helper::enc($form->getField('call_date') . ' ' . $form->getField('call_time'))) .
+                '&u_name=' . urlencode(Helper::enc($form->getField('name'))) .
+                '&u_phone=' . urlencode(Helper::enc($form->getField('phone'))) .
+                (trim($form->getField('email')) ? '&u_email=' . urlencode(Helper::enc($form->getField('email'))) : '') .
+                '&note=' . Helper::enc($form->getField('query'))
+        ));
+        curl_exec($curl);
+        curl_close($curl);
+    }
+    else
+    {
+        echo json_encode(array('errors' => $form->getErrors()));
+    }
 }
 else
     echo json_encode(array('errors' => $form->getErrors()));

@@ -230,7 +230,7 @@ else
     <div id="right-form">
         <form method="POST" id="formx" data-form="bron" action="javascript:void(null);">
             <div class="controlgroup mobile" style="color: #505050;">
-                <span class="form-title-first">Заполните форму</span>
+                <span class="form-title-first" style="color:#ff8a00;">Заполните форму</span>
                 <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
 
                 <input type="text" id="datepicker" name="date_on" placeholder="Дата заезда" class="icon-date">
