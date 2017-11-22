@@ -531,7 +531,6 @@ class Room
 				'DETAIL_TEXT' => $txt,
 				'PROPERTY_VALUES' => $props,
 			);
-			_log_array($fields);
 			$id = $el->Add($fields);
 			if ($id)
 			{
