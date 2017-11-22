@@ -7017,6 +7017,7 @@ body .menu_parent:after {
 
 .form-submit button.disabled {
 	border: 2px solid #5fb3dd;
+	cursor: default;
 }
 
 .form-footer {
