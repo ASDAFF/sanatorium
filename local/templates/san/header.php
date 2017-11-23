@@ -99,7 +99,7 @@ $APPLICATION->ShowPanel();
             </a>
         </div>
         <div class="header-soc">
-            <a href="tel:+9620168986">
+            <a href="https://api.whatsapp.com/send?phone=9620168986" target="_blank">
                 <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">
             </a>
             <a href="tel:+9620168986">

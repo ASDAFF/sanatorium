@@ -148,7 +148,7 @@ foreach ($product['ROOMS'] as $room)
                 <label>
                     <input type="checkbox" onclick="$('#sub_form').toggleClass('unchecked')" required />
                 </label>Настоящим подтверждаю, что я ознакомлен и согласен с условиями
-                <a href="<?= P_HREF ?>/uploads/conf.doc">политики конфиденциальности</a>
+                <a href="<?= P_HREF ?>/upload/conf.docx">политики конфиденциальности</a>
             </div>
             <div class="form-submit">
                 <button id="calc-submit" type="submit">

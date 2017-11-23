@@ -17,7 +17,7 @@ if ($component->seo['TEXT'])
     </div><?
 }
 
-if(isset($_GET['test'])):?>
+//if(isset($_GET['test'])):?>
     <div class="engBox-body">
         <div class="form__banner">
             <div class="form__banner__text">
@@ -26,15 +26,14 @@ if(isset($_GET['test'])):?>
                 <span class="form__banner__text_footer">Оставьте заявку на отдых и мы Вам перезвоним! </span>
             </div>
             <div class="form__banner__body">
-                <form method="post" action="/ajax/sanatorium.php">
+                <form method="post" action="/ajax/sanatorium.php" class="js-sanatorium-form">
                     <div class="form__banner__input">
                         <input name="name" class="form__banner__input__control" type="text" placeholder="имя">
+                        <div class="form__banner__input__log"></div>
                     </div>
-                    <div class="form__banner__input form__banner__input_error">
+                    <div class="form__banner__input">
                         <input name="phone" class="form__banner__input__control" type="text" placeholder="телефон">
-                        <div class="form__banner__input__log">
-                            Вы не ввели телефон
-                        </div>
+                        <div class="form__banner__input__log"></div>
                     </div>
                     <div class="form__banner__btn">
                         <span class="form__banner__btn__control">отправить</span>
@@ -53,7 +52,7 @@ if(isset($_GET['test'])):?>
             </div>
         </div>
     </div>
-<?endif;
+<?//endif;
 
 //
 // Элементы

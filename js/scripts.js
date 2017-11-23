@@ -985,6 +985,49 @@ jQuery(document).ready(function () {
 			interval.stop($(this).closest('form').find('.page__doctor__form__field__accept'));
     });
 
+    $('.form__banner__btn__control').on('click', function(e) {
+    	e.preventDefault();
+		var curForm = $(this).closest('form'),
+			waitElement = this;
+
+		BX.showWait(waitElement);
+
+		$.post(curForm.attr('action'), curForm.serialize(), function(ans) {
+
+            curForm
+                .find('.form__banner__input')
+                .removeClass('form__banner__input_error')
+                .end()
+                .find('.form__banner__input__log')
+                .empty();
+            console.log(ans.errors);
+
+            //show errors
+            if (ans && ans.errors)
+            {
+                for(var inputName in ans.errors)
+                {
+                    curForm.find('[name="' + inputName + '"]').first().closest('.form__banner__input')
+                        .addClass('form__banner__input_error').find('.form__banner__input__log').html(ans.errors[inputName]);
+                }
+            }
+            else
+            {
+                //ok, show message
+                $.fancybox('<div style="padding:25px;margin:15px;text-align:center;color:green">Заявка успешно отправлена</div>');
+            }
+
+            if(ans && ans.gtmObject)
+            {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(ans.gtmObject);
+            }
+
+			BX.closeWait(waitElement);
+		}, 'json');
+
+	})
+
 });
 
 
