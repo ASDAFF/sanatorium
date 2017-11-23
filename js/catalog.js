@@ -736,27 +736,24 @@ var Detail = {
 			return 0;
 	},
 	submitCalc: function() {
-		if (Detail.correct) {
-			var form_data = Detail.priceForm.serialize();
-			$.ajax({
-				type: 'POST',
-				url: '/ajax/reserve_room.php',
-				data: form_data,
-				dataType: 'json',
-				success: function(data) {
-					if(data.success)
-					{
-						dataLayer = window.dataLayer || [];
-						dataLayer.push(data.gtmObject);
-						Detail.priceForm[0].reset();
-						Detail.reserveResults.html(data.message).show();
-					}
-					else
-						$.fancybox('<div class="errors feedback-popup-content">' + data.errors.join('<br>') + '</div>');
+		var form_data = Detail.priceForm.serialize();
+		$.ajax({
+			type: 'POST',
+			url: '/ajax/reserve_room.php',
+			data: form_data,
+			dataType: 'json',
+			success: function(data) {
+				if(data.success)
+				{
+					dataLayer = window.dataLayer || [];
+					dataLayer.push(data.gtmObject);
+					Detail.priceForm[0].reset();
+					Detail.reserveResults.html(data.message).show();
 				}
-			});
-
-		}
+				else
+					$.fancybox('<div class="errors feedback-popup-content">' + data.errors.join('<br>') + '</div>');
+			}
+		});
 
 		return false;
 	}
