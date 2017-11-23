@@ -45,10 +45,6 @@ foreach ($product['ROOMS'] as $room)
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
 		<input type="hidden" name="san" value="<?= $product['ID'] ?>" />
-        <div class="form-title">
-            <span class="form-title-first">Заполните форму</span>
-            <span class="form-title-second">чтобы узнать стоимость путевки или забронировать номер</span>
-        </div>
         <div class="form-body">
             <div class="calendar">
                 <div class="left-block">
@@ -133,13 +129,24 @@ foreach ($product['ROOMS'] as $room)
             </div>
         </div>
         <div class="other-persons"></div>
-        <div class="form-footer">
+		<div class="form-title" style="margin-top:10px;">
+			<span class="form-title-first" style="font-size:20px; padding-top:10px;">Введите свои данные</span>
+			<span class="form-title-second">чтобы узнать стоимость путевки</span>
+		</div>
+		<div class="form-footer"><?
+
+			//
+			// Тут показываем результат
+			//
+			?>
             <div class="form-footer-title">
                 <small class="js-persons"></small>
                 <br>
                 <span class="js-sum"></span>
-            </div>
-            <div class="form-footer-body">
+			</div><?
+
+			?>
+            <div class="form-footer-body" style="margin: 5px 0 0;">
                 <input name="name" class="selector" placeholder="Введите имя" required />
                 <br>
                 <input name="phone" id="numb-phone" class="selector" placeholder="Введите телефон" required />
@@ -152,9 +159,8 @@ foreach ($product['ROOMS'] as $room)
             </div>
             <div class="form-submit">
                 <button id="calc-submit" type="submit">
-                    <div class="form-submit-text">
-                        Забронировать отдых<br>
-                        и получить скидку
+                    <div class="form-submit-text" style="padding:18px 5px 18px 35px;">
+                        Узнать цену
                     </div>
                 </button>
             </div>

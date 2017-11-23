@@ -676,12 +676,11 @@ var Detail = {
 			});
 		}
 
-		Detail.calcSubmit.prop('disabled', !Detail.correct);
-		console.log(Detail.correct);
+		/*Detail.calcSubmit.prop('disabled', !Detail.correct);
 		if (Detail.correct)
 			Detail.calcSubmit.removeClass('disabled');
 		else
-			Detail.calcSubmit.addClass('disabled');
+			Detail.calcSubmit.addClass('disabled');*/
 
 		var resPersons = '';
 		if (cnt0 > 0) {
@@ -698,10 +697,16 @@ var Detail = {
 			else
 				resPersons += cnt1 + ' детей';
 		}
-		Detail.resPersons.html(resPersons);
 
-		var resSum = 'сумма ' + result + ' руб.';
-		Detail.resSum.html(resSum);
+		if (Detail.correct) {
+			Detail.resPersons.html(resPersons);
+			var resSum = 'сумма ' + result + ' руб.';
+			Detail.resSum.html(resSum);
+		}
+		else {
+			Detail.resPersons.html('');
+			Detail.resSum.html('');
+		}
 	},
 	dateInInt: function(d, m, d1, m1, d2, m2) {
 		var NY = Detail.dateCmp(d1, m1, d2, m2) < 0;
