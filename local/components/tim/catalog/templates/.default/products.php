@@ -400,3 +400,119 @@ if ($component->seo['TEXT1'])
 }
 
 
+if(isset($_GET['test'])):?>
+    <div class="sanatorium__recommendations">
+        <div class="engBox-body">
+            <div class="sanatorium__recommendations__title">
+                <i class="sanatorium__recommendations__title__icon"></i>
+                <span class="sanatorium__recommendations__title__text">Путевочка рекомендует лучшие санатории!</span>
+            </div>
+        </div>
+        <div class="el-search-list engBox-body">
+            <div class="item">
+                <div class="img">
+                    <img src="/upload/resize_cache/iblock/2d1/345_1000_1/2d19318d8604d69396197077369a0e3d.jpg"
+                         alt="Санаторий Целебный ключ Ессентуки" title="Санаторий Целебный ключ Ессентуки"></div>
+                <div class="text">
+                    <div class="san-name"><a href="https://tselebnyy-klyuch.putevochka.com/" class="title">Санаторий
+                            Целебный ключ</a></div>
+                    <div class="san-city">г. Ессентуки</div>
+                    <b>Направление лечения:</b>
+                    <span>Заболевания опорно-двигательного аппарата, Урологические заболевания, Гинекологические заболевания, Заболевания эндокринной системы и нарушения обмена веществ, Лечение гастроэнтерологических заболеваний                </span>
+                    <b>Дополнительные параметры:</b>
+                    <div class="el-icon-list">
+                        <li>
+                            <i class="in-icon icon-buvet"></i>
+                            <span>Расстояние до бювета: 50м</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-trenazhory"></i>
+                            <span>Тренажерный зал</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-nastol-tennis"></i>
+                            <span>Настольный теннис</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-magazin"></i>
+                            <span>Магазин пром. товаров</span>
+                        </li>
+                    </div>
+                </div>
+                <div class="inf">
+                    <div class="star"></div>
+                    <div class="comment">
+                        <div class="rating-title">Рейтинг</div>
+                        <div class="rating" title="3.6">
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on" style="width:60%"></span></div>
+                            <div class="star"><span class="of"></span></div>
+                        </div>
+                        <a href="https://tselebnyy-klyuch.putevochka.com/reviews/"><span>4 отзыва</span></a> <b>Доступно
+                            9 видов номеров</b></div>
+
+                    <div class="money">
+                        от <b>1960</b> руб.
+                    </div>
+                    <span>за человека в сутки</span>
+                    <a href="https://tselebnyy-klyuch.putevochka.com/" class="btn">Заказать</a>
+                </div>
+            </div>
+        </div>
+        <div class="el-search-list engBox-body">
+            <div class="item">
+                <div class="img">
+                    <img src="/upload/resize_cache/iblock/2d1/345_1000_1/2d19318d8604d69396197077369a0e3d.jpg"
+                         alt="Санаторий Целебный ключ Ессентуки" title="Санаторий Целебный ключ Ессентуки"></div>
+                <div class="text">
+                    <div class="san-name"><a href="https://tselebnyy-klyuch.putevochka.com/" class="title">Санаторий
+                            Целебный ключ</a></div>
+                    <div class="san-city">г. Ессентуки</div>
+                    <b>Направление лечения:</b>
+                    <span>Заболевания опорно-двигательного аппарата, Урологические заболевания, Гинекологические заболевания, Заболевания эндокринной системы и нарушения обмена веществ, Лечение гастроэнтерологических заболеваний                </span>
+                    <b>Дополнительные параметры:</b>
+                    <div class="el-icon-list">
+                        <li>
+                            <i class="in-icon icon-buvet"></i>
+                            <span>Расстояние до бювета: 50м</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-trenazhory"></i>
+                            <span>Тренажерный зал</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-nastol-tennis"></i>
+                            <span>Настольный теннис</span>
+                        </li>
+                        <li>
+                            <i class="in-icon icon-magazin"></i>
+                            <span>Магазин пром. товаров</span>
+                        </li>
+                    </div>
+                </div>
+                <div class="inf">
+                    <div class="star"></div>
+                    <div class="comment">
+                        <div class="rating-title">Рейтинг</div>
+                        <div class="rating" title="3.6">
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on"></span></div>
+                            <div class="star"><span class="on" style="width:60%"></span></div>
+                            <div class="star"><span class="of"></span></div>
+                        </div>
+                        <a href="https://tselebnyy-klyuch.putevochka.com/reviews/"><span>4 отзыва</span></a> <b>Доступно
+                            9 видов номеров</b></div>
+
+                    <div class="money">
+                        от <b>1960</b> руб.
+                    </div>
+                    <span>за человека в сутки</span>
+                    <a href="https://tselebnyy-klyuch.putevochka.com/" class="btn">Заказать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?endif;?>

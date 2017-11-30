@@ -102,10 +102,10 @@ $APPLICATION->ShowPanel();
             <a href="https://api.whatsapp.com/send?phone=9620168986" target="_blank">
                 <img src="/images/engIcon-whatsapp.png" alt="WhatsApp">
             </a>
-            <a href="tel:+9620168986">
+            <a href="viber://add?number=9620168986">
                 <img src="/images/engIcon-viber.png" alt="Viber">
             </a>
-            <a href="tg://resolve?domain=+9620168986">
+            <a href="https://t.me/Putevochka_sanatorii">
             <img src="/images/engIcon-telegram.png" alt="Telegram">
             </a>
         </div>

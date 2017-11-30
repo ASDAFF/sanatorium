@@ -467,12 +467,12 @@
     #phone div > .text {
         line-height:20px
     }
-
+    .sanatorium__recommendations .item ,
     #sanatorium .item {
         max-width:380px;
         margin:25px auto 0
     }
-
+    .sanatorium__recommendations .el-search-list .item>div,
     #sanatorium .el-search-list .item>div {
         width:100%;
         display:block;

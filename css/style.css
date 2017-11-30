@@ -3364,9 +3364,11 @@ a.header-phone-link {
 }
 .header-soc {display:inline-block; line-height:normal; vertical-align:middle; width: 20%;
 	text-align: right;
-	padding: 10px 30px;}
+	padding: 10px 30px;
+	position: relative;
+	top: -2px ;}
 .header-soc a {}
-.header-soc a img {width: 40px;}
+.header-soc a img {width: 32px;}
 
 .header-soc .it-icon-3 {width: 36px;
 	vertical-align: top;}
@@ -7575,4 +7577,77 @@ li.active [data-id='#newyear'] {
 	height: 70px;
 	top: -16px;
 	left: 67px;
+}
+
+/* Блок рекомендаций */
+.sanatorium__recommendations {}
+.sanatorium__recommendations .el-search-list {
+	padding-top: 0;
+	position: relative;
+	padding-bottom: 40px;
+}
+.sanatorium__recommendations .el-search-list:before,
+.sanatorium__recommendations .el-search-list:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	bottom: 18px;
+	left: 0;
+	background: #ff8900;
+}
+.sanatorium__recommendations .el-search-list:after {
+	width: 190px;
+	left: auto;
+	right: 0;
+	background: #dadbdb;
+}
+.sanatorium__recommendations__title {
+	position: relative;
+	display: inline-block;
+	width: auto;
+	height: 65px;
+	background-image: url("../images/sanatorium__recommendations__line.png");
+	background-repeat: repeat-x;
+	background-color: #ff8900;
+}
+.sanatorium__recommendations__title:after {
+	position: absolute;
+	right: -200px;
+	top: 0;
+	content: '';
+	display: inline-block;
+	background: url("../images/sanatorium__recommendations__line__right.png") no-repeat;
+	width: 200px;
+	height: 65px;
+}
+.sanatorium__recommendations__title__icon {
+	display: inline-block;
+	width: 72px;
+	height: 58px;
+	background: url("../images/sanatorium__recommendations__icon.png") no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: -5px;
+	left: 10px;
+}
+.sanatorium__recommendations__title__text {
+	display: inline-block;
+	font-size: 22px;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 20px 10px 20px 90px;
+}
+
+@media screen and (max-width: 900px) {
+	.sanatorium__recommendations__title{
+		width: 100%;
+		height: auto;
+	}
+	.sanatorium__recommendations__title:after {
+		display: none;
+	}
+	.sanatorium__recommendations__title__text {
+		font-size: 18px;
+	}
 }
