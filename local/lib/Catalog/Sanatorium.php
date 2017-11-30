@@ -963,6 +963,59 @@ class Sanatorium
 		}
 	}
 
+	/**
+	 * Возвращает санатории блока "рекомендуем"
+	 * @param bool $refreshCache
+	 * @return int|mixed
+	 */
+	public static function getTop($refreshCache = false)
+	{
+		$return = 0;
+
+		$extCache = new ExtCache(
+			array(
+				__FUNCTION__,
+			),
+			static::CACHE_PATH . __FUNCTION__ . '/',
+			static::CACHE_TIME
+		);
+		if (!$refreshCache && $extCache->initCache()) {
+			$return = $extCache->getVars();
+		} else {
+			$extCache->startDataCache();
+
+			$select = array(
+				'ID',
+				'NAME',
+			);
+
+			$iblockElement = new \CIBlockElement();
+			$ids = [];
+			$rsItems = $iblockElement->GetList(array(), array(
+				'IBLOCK_ID' => self::IBLOCK_ID,
+				'ACTIVE' => 'Y',
+				'PROPERTY_TOP' => 1,
+			), false, false, $select);
+			while ($item = $rsItems->Fetch())
+				$ids[] = $item['ID'];
+
+			if ($ids)
+			{
+				$items = self::get(
+					array('PROPERTY_RATING' => 'desc'),
+					$ids,
+					array('nPageSize' => 30, 'iNumPage' => 1)
+				);
+
+				$return = $items['ITEMS'];
+			}
+
+			$extCache->endDataCache($return);
+		}
+
+		return $return;
+	}
+
     /**
      * Очищает кеш каталога
      */

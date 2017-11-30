@@ -279,6 +279,185 @@ foreach ($products as $id => $item)
 </div><?
 
 //
+// Блок рекомендованных санаториев
+//
+if (count($products) < 15)
+{
+	$topSanatorium = \Local\Catalog\Sanatorium::getTop();
+	?>
+	<div class="sanatorium__recommendations">
+		<div class="engBox-body">
+			<div class="sanatorium__recommendations__title">
+				<i class="sanatorium__recommendations__title__icon"></i>
+				<span class="sanatorium__recommendations__title__text">Путевочка рекомендует лучшие санатории!</span>
+			</div>
+		</div><?
+
+		foreach ($topSanatorium as $id => $item)
+		{
+			$img = $file->ResizeImageGet(
+				$item['PREVIEW_PICTURE'],
+				array(
+					'width' => 345,
+					'height' => 1000
+				),
+				BX_RESIZE_IMAGE_PROPORTIONAL,
+				true
+			);
+			$city = \Local\Catalog\City::getById($item['CITY']);
+			$alt = 'Санаторий ' . $item['NAME'] . ' ' . $city['NAME'];
+			$reviewsCount = \Local\Catalog\Reviews::getCountBySanatorium($id);
+			$reviewsCountTitle = '';
+			if ($reviewsCount)
+				$reviewsCountTitle .= $reviewsCount . pluralize($reviewsCount, array(' отзыв', ' отзыва', ' отзывов'));
+
+			$actions = \Local\Catalog\Action::getBySanatorium($item['ID']);
+
+			?>
+			<div class="el-search-list engBox-body">
+			<div class="item">
+				<div class="img">
+					<img src="<?= $img['src'] ?>" alt="<?= $alt ?>" title="<?= $alt ?>"><?
+
+					if ($item['NEW_YEAR_TAB'])
+					{
+						?>
+					<a href="<?= $item['DETAIL_PAGE_URL'] ?>newyear/" class="new-year-mark"></a><?
+					}
+
+					?>
+				</div>
+				<div class="text">
+					<div class="san-name"><a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="title">Санаторий <?= $item['NAME'] ?></a></div>
+					<div class="san-city">г. <?= $city['NAME'] ?></div><?
+
+					//
+					// Профили лечения
+					//
+					if ($item['PROFILES'])
+					{
+						?>
+						<b>Направление лечения:</b>
+						<span><?
+						foreach ($item['PROFILES'] as $i => $pid)
+						{
+							if ($i)
+								echo ', ';
+							$profile = \Local\Catalog\Profiles::getById($pid);
+							echo $profile['NAME'];
+						}
+						?>
+						</span><?
+					}
+
+					//
+					// Инфраструктура
+					//
+					if ($item['INFRA'])
+					{
+						?>
+						<b>Дополнительные параметры:</b>
+						<div class="el-icon-list"><?
+						$cnt = 0;
+						foreach ($icons as $icoItem)
+						{
+							$distance = false;
+							$exist = false;
+							if ($icoItem['TYPE'] == 'infra')
+							{
+								$distance = $icoItem['CODE'] == 'buvet' && $item['DISTANCE'];
+								$exist = in_array($icoItem['ID'], $item['INFRA']) || $distance;
+							}
+							elseif ($icoItem['TYPE'] == 'flags')
+							{
+								// в этом случе уже отфильтровано
+								$exist = true;
+							}
+
+							if ($exist)
+							{
+								$name = $icoItem['NAME'];
+								if ($distance)
+									$name = 'Расстояние до бювета: ' . $item['DISTANCE'] . 'м';
+
+								?>
+								<li>
+								<i class="in-icon icon-<?= $icoItem['CODE'] ?>"></i>
+								<span><?= $name ?></span>
+								</li><?
+
+								$cnt++;
+								if ($cnt >= 4)
+									break;
+							}
+						}
+						?>
+						</div><?
+					}
+					?>
+				</div>
+				<div class="inf">
+					<div class="star"></div>
+					<div class="comment">
+						<div class="rating-title">Рейтинг</div>
+						<div class="rating" title="<?= $item['RATING'] ?>"><?
+							for ($i = 0; $i < 5; $i++)
+							{
+								$cl = 'of';
+								$style = '';
+								if ($item['RATING'] > $i)
+								{
+									$cl = 'on';
+									$x = ($item['RATING'] - $i) * 100;
+									if ($x < 100)
+										$style = ' style="width:' . $x . '%"';
+								}
+								?>
+								<div class="star"><span class="<?= $cl ?>"<?= $style ?>></span></div><?
+							}
+							?>
+						</div><?
+
+						if ($reviewsCount)
+						{
+							?>
+						<a href="<?= $item['DETAIL_PAGE_URL'] ?>reviews/"><span><?= $reviewsCountTitle ?></span></a><?
+						}
+
+						$cnt = $item['ROOMS_COUNT'];
+						if ($cnt)
+						{
+							$cnt .= pluralize($cnt, array(' вид', ' вида', ' видов'));
+							?>
+							<b>Доступно <?= $cnt ?> номеров</b><?
+						}
+
+						?>
+					</div>
+
+					<div class="money">
+						от <b><?= $item['PRICE'] ?></b> руб.
+					</div>
+					<span>за человека в сутки</span>
+					<a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="btn">Заказать</a>
+				</div><?
+
+				if ($actions)
+				{
+					?>
+				<a href="<?= $item['DETAIL_PAGE_URL'] ?>action/" class="action-mark"><b class="action-mark__text">Акция!</b></a><?
+				}
+
+				?>
+			</div>
+			</div><?
+		}
+
+		?>
+	</div><?
+}
+
+//
 // Постраничка
 //
 $iCur = $component->products['NAV']['PAGE'];
@@ -398,121 +577,3 @@ if ($component->seo['TEXT1'])
         <div class="engText"><?= $component->seo['TEXT1'] ?></div>
     </div><?
 }
-
-
-if(isset($_GET['test'])):?>
-    <div class="sanatorium__recommendations">
-        <div class="engBox-body">
-            <div class="sanatorium__recommendations__title">
-                <i class="sanatorium__recommendations__title__icon"></i>
-                <span class="sanatorium__recommendations__title__text">Путевочка рекомендует лучшие санатории!</span>
-            </div>
-        </div>
-        <div class="el-search-list engBox-body">
-            <div class="item">
-                <div class="img">
-                    <img src="/upload/resize_cache/iblock/2d1/345_1000_1/2d19318d8604d69396197077369a0e3d.jpg"
-                         alt="Санаторий Целебный ключ Ессентуки" title="Санаторий Целебный ключ Ессентуки"></div>
-                <div class="text">
-                    <div class="san-name"><a href="https://tselebnyy-klyuch.putevochka.com/" class="title">Санаторий
-                            Целебный ключ</a></div>
-                    <div class="san-city">г. Ессентуки</div>
-                    <b>Направление лечения:</b>
-                    <span>Заболевания опорно-двигательного аппарата, Урологические заболевания, Гинекологические заболевания, Заболевания эндокринной системы и нарушения обмена веществ, Лечение гастроэнтерологических заболеваний                </span>
-                    <b>Дополнительные параметры:</b>
-                    <div class="el-icon-list">
-                        <li>
-                            <i class="in-icon icon-buvet"></i>
-                            <span>Расстояние до бювета: 50м</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-trenazhory"></i>
-                            <span>Тренажерный зал</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-nastol-tennis"></i>
-                            <span>Настольный теннис</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-magazin"></i>
-                            <span>Магазин пром. товаров</span>
-                        </li>
-                    </div>
-                </div>
-                <div class="inf">
-                    <div class="star"></div>
-                    <div class="comment">
-                        <div class="rating-title">Рейтинг</div>
-                        <div class="rating" title="3.6">
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on" style="width:60%"></span></div>
-                            <div class="star"><span class="of"></span></div>
-                        </div>
-                        <a href="https://tselebnyy-klyuch.putevochka.com/reviews/"><span>4 отзыва</span></a> <b>Доступно
-                            9 видов номеров</b></div>
-
-                    <div class="money">
-                        от <b>1960</b> руб.
-                    </div>
-                    <span>за человека в сутки</span>
-                    <a href="https://tselebnyy-klyuch.putevochka.com/" class="btn">Заказать</a>
-                </div>
-            </div>
-        </div>
-        <div class="el-search-list engBox-body">
-            <div class="item">
-                <div class="img">
-                    <img src="/upload/resize_cache/iblock/2d1/345_1000_1/2d19318d8604d69396197077369a0e3d.jpg"
-                         alt="Санаторий Целебный ключ Ессентуки" title="Санаторий Целебный ключ Ессентуки"></div>
-                <div class="text">
-                    <div class="san-name"><a href="https://tselebnyy-klyuch.putevochka.com/" class="title">Санаторий
-                            Целебный ключ</a></div>
-                    <div class="san-city">г. Ессентуки</div>
-                    <b>Направление лечения:</b>
-                    <span>Заболевания опорно-двигательного аппарата, Урологические заболевания, Гинекологические заболевания, Заболевания эндокринной системы и нарушения обмена веществ, Лечение гастроэнтерологических заболеваний                </span>
-                    <b>Дополнительные параметры:</b>
-                    <div class="el-icon-list">
-                        <li>
-                            <i class="in-icon icon-buvet"></i>
-                            <span>Расстояние до бювета: 50м</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-trenazhory"></i>
-                            <span>Тренажерный зал</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-nastol-tennis"></i>
-                            <span>Настольный теннис</span>
-                        </li>
-                        <li>
-                            <i class="in-icon icon-magazin"></i>
-                            <span>Магазин пром. товаров</span>
-                        </li>
-                    </div>
-                </div>
-                <div class="inf">
-                    <div class="star"></div>
-                    <div class="comment">
-                        <div class="rating-title">Рейтинг</div>
-                        <div class="rating" title="3.6">
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on"></span></div>
-                            <div class="star"><span class="on" style="width:60%"></span></div>
-                            <div class="star"><span class="of"></span></div>
-                        </div>
-                        <a href="https://tselebnyy-klyuch.putevochka.com/reviews/"><span>4 отзыва</span></a> <b>Доступно
-                            9 видов номеров</b></div>
-
-                    <div class="money">
-                        от <b>1960</b> руб.
-                    </div>
-                    <span>за человека в сутки</span>
-                    <a href="https://tselebnyy-klyuch.putevochka.com/" class="btn">Заказать</a>
-                </div>
-            </div>
-        </div>
-    </div>
-<?endif;?>
