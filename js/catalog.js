@@ -462,7 +462,7 @@ var Detail = {
 			dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
 			dateFormat: 'dd.mm.yy',
 			firstDay: 1,
-			maxDate: '25.12.2017',
+			//maxDate: '25.12.2017',
 			isRTL: false,
 			onSelect: function() {
 				Detail.calculate();
@@ -476,6 +476,7 @@ var Detail = {
 		Detail.calculate();
 	},
 	peopleCountChange: function() {
+		return ;
 		var count = Detail.peopleCount.val();
 		if (count > 6)
 			count = 6;

@@ -38,9 +38,46 @@ $page = $_REQUEST['page'];
 </div><?
 
 ?>
+<br>
+    <div class="engBox-body">
+        <div class="form__banner">
+            <div class="form__banner__text">
+                <span class="form__banner__text_head">Хотите поехать в санаторий на Новый год?</span>
+                <span class="form__banner__text_center">У нас лучшие предложения!</span>
+                <span class="form__banner__text_footer">Оставьте заявку на отдых и мы Вам перезвоним! </span>
+            </div>
+            <div class="form__banner__body">
+                <form method="post" action="/ajax/sanatorium.php" class="js-sanatorium-form">
+                    <div class="form__banner__input">
+                        <input name="name" class="form__banner__input__control" type="text" placeholder="имя">
+                        <div class="form__banner__input__log"></div>
+                    </div>
+                    <div class="form__banner__input">
+                        <input name="phone" class="form__banner__input__control" type="text" placeholder="телефон">
+                        <div class="form__banner__input__log"></div>
+                    </div>
+                    <div class="form__banner__btn">
+                        <span class="form__banner__btn__control">отправить</span>
+                    </div>
+                </form>
+            </div>
+            <div class="form__banner__bg">
+                <div class="form__banner__bg_santa"></div>
+                <div class="form__banner__bg_snow_1"></div>
+                <div class="form__banner__bg_snow_2"></div>
+                <div class="form__banner__bg_snow_3"></div>
+                <div class="form__banner__bg_snow_4"></div>
+                <div class="form__banner__bg_snow_5"></div>
+                <div class="form__banner__bg_snow_6"></div>
+                <div class="form__banner__bg_snow_7"></div>
+            </div>
+        </div>
+    </div>
 <div class="engBox-body">
     <div class="engText"><!--seo_text1--></div>
-</div><?
+</div>
+
+<?
 
 if ($page <= 0)
 	$page = 1;

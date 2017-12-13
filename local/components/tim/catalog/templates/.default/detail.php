@@ -80,6 +80,12 @@ $tabs = array(
 			' : видео. Информация о санатории «' . $product['TITLE'] . '» на официальном сайте сервиса «' . $siteName . '».',
 		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' видео',
 	),
+	'reservation' => array(
+		'NAME' => 'Бронирование',
+		'TITLE' => 'Бронирование в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],
+		'DESCR' => '',
+		'KW' => $product['TITLE'] . ' в ' . $product['CITY']['UF_PREDL'] . ' бронировании',
+	),
 	'action' => array(
 		'NAME' => 'Акции',
 		'TITLE' => 'Акции в санатории «' . $product['TITLE'] . '» в ' . $product['CITY']['UF_PREDL'],

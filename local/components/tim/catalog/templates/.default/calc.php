@@ -45,22 +45,7 @@ foreach ($product['ROOMS'] as $room)
 <div class="engBox-right card-form new-form">
     <form class="calculator" id="price-form">
 		<input type="hidden" name="san" value="<?= $product['ID'] ?>" />
-        <div class="form-body">
-            <div class="calendar">
-                <div class="left-block">
-                    Дата заезда<br>
-                    <input name="date_on" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker">
-                </div>
-                <div class="middle-block">
-                    <img src="/images/calc/strelka.png">
-                </div>
-                <div class="right-block">
-                    Дата выезда<br>
-                    <input name="date_off" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker2">
-                </div>
-            </div>
-        </div>
-        <div class="first-person">
+        <div class="first-person" style="padding-top: 10px">
             <div class="form-body float-body">
                 <div class="float-block">
                     <div class="who-you-are">
@@ -71,20 +56,6 @@ foreach ($product['ROOMS'] as $room)
 									{
 										?>
                                         <option value="<?= $code ?>"><?= $age ?></option><?
-									}
-									?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="number-type"><span>Тип номера </span>
-                            <div class="list-input calc-form form-body-right">
-                                <select name="room[]" class="form-body-right js-room">
-                                    <option value="0">(выберите номер)</option><?
-									foreach ($product['ROOMS'] as $room)
-									{
-										$selected = ($room['ID'] == $component->room['ID']) ? ' selected="selected"' : '';
-										?>
-                                        <option value="<?= $room['ID'] ?>"<?= $selected ?>><?= $room['NAME'] ?></option><?
 									}
 									?>
                                 </select>
@@ -122,17 +93,47 @@ foreach ($product['ROOMS'] as $room)
                 </div>
             </div>
         </div>
+        <div class="form-title" style="margin-top:10px;">
+            <span class="form-title-first" style="font-size:20px; padding-top:10px;">Введите свои данные</span>
+            <span class="form-title-second">чтобы узнать стоимость путевки</span>
+        </div>
         <div class="form-body">
+            <div class="calendar">
+                <div class="left-block">
+                    Дата заезда<br>
+                    <input name="date_on" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker">
+                </div>
+                <div class="middle-block">
+                    <img src="/images/calc/strelka.png">
+                </div>
+                <div class="right-block">
+                    Дата выезда<br>
+                    <input name="date_off" type="text" class="data-form-input" placeholder="дд.мм.гг" id="datepicker2">
+                </div>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="number-type"><span>Тип номера </span>
+                <div class="list-input calc-form form-body-right">
+                    <select name="room[]" class="form-body-right js-room">
+                        <option value="0">(выберите номер)</option><?
+                        foreach ($product['ROOMS'] as $room)
+                        {
+                            $selected = ($room['ID'] == $component->room['ID']) ? ' selected="selected"' : '';
+                            ?>
+                            <option value="<?= $room['ID'] ?>"<?= $selected ?>><?= $room['NAME'] ?></option><?
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <div class="number-type">
                 <img src="/images/calc/people.png">
                 <input class="selector" type="number" id="count-people" min="1" max="6" value="1" />
             </div>
         </div>
         <div class="other-persons"></div>
-		<div class="form-title" style="margin-top:10px;">
-			<span class="form-title-first" style="font-size:20px; padding-top:10px;">Введите свои данные</span>
-			<span class="form-title-second">чтобы узнать стоимость путевки</span>
-		</div>
+
 		<div class="form-footer"><?
 
 			//

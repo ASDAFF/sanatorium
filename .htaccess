@@ -21,7 +21,7 @@ ErrorDocument 404 /404.php
   RewriteRule ^(.*)$ https://putevochka.com/$1 [L,R=301]
 
   RewriteCond %{HTTP_HOST} ^(.*)\.putevochka\.com$ [NC]
-  RewriteCond %{REQUEST_URI} /(rooms|video|action|reviews|map|photo|newyear)/$
+  RewriteCond %{REQUEST_URI} /(rooms|video|action|reviews|map|photo|newyear|reservation)/$
   RewriteCond %{REQUEST_FILENAME} !/d3/index.php$
   RewriteRule ^(.*)$ /d3/ [L]
   

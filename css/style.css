@@ -3364,11 +3364,9 @@ a.header-phone-link {
 }
 .header-soc {display:inline-block; line-height:normal; vertical-align:middle; width: 20%;
 	text-align: right;
-	padding: 10px 30px;
-	position: relative;
-	top: -2px ;}
+	padding: 10px 30px;}
 .header-soc a {}
-.header-soc a img {width: 32px;}
+.header-soc a img {width: 40px;}
 
 .header-soc .it-icon-3 {width: 36px;
 	vertical-align: top;}
@@ -6802,7 +6800,7 @@ body .menu_parent:after {
 
 /* Калькулятор стоимости путевки */
 .new-form {
-	margin-top: 22px;
+	margin-top: 2px;
 }
 
 .form-title {
@@ -6815,7 +6813,6 @@ body .menu_parent:after {
 }
 
 .form-title span {
-	font-family: Candara, serif;
 	font-weight: bold;
 }
 
@@ -7614,12 +7611,12 @@ li.active [data-id='#newyear'] {
 .sanatorium__recommendations__title:after {
 	position: absolute;
 	right: -200px;
-	top: 0;
 	content: '';
 	display: inline-block;
 	background: url("../images/sanatorium__recommendations__line__right.png") no-repeat;
 	width: 200px;
 	height: 65px;
+	top: 0px;
 }
 .sanatorium__recommendations__title__icon {
 	display: inline-block;
@@ -7650,4 +7647,34 @@ li.active [data-id='#newyear'] {
 	.sanatorium__recommendations__title__text {
 		font-size: 18px;
 	}
+}
+
+.block__form {
+	display: table;
+	width: 100%;
+}
+.block__form__left,
+.block__form__right {
+	display: table-cell;
+	width: 50%;
+}
+@media (max-width: 1000px) {
+	.block__form {
+		display: block;
+	}
+	.block__form__left,
+	.block__form__right {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* form hidden */
+
+.engBox-right .first-person {
+	margin-top: 2px;
+	display: none;
+}
+.engBox-right .form-title {
+	margin-top: 0!important;
 }

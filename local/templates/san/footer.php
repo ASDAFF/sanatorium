@@ -96,7 +96,9 @@ $APPLICATION->IncludeComponent('tim:empty', 'main_managers', array());
             </div>
         </div>
     </div>
-</footer><?
+</footer>
+    <link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css"><script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=88e962843199de15e4f55552d9751da1"; charset="UTF-8" async></script>
+<?
 
 $APPLICATION->IncludeComponent('tim:empty', 'bottom_filter', array());
 
@@ -105,7 +107,8 @@ $APPLICATION->IncludeFile(SITE_DIR . 'include/tmpl_body_bot.php');
 
 ?>
 <div id="engBtnTop"></div>
-</body>
+
+    </body>
 </html><?
 
 
