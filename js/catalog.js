@@ -475,6 +475,7 @@ var Detail = {
 		Detail.calculate();
 	},
 	peopleCountChange: function() {
+		return;
 		var count = Detail.peopleCount.val();
 		if (count > 6)
 			count = 6;
