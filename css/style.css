@@ -7054,6 +7054,9 @@ button.disabled .form-submit-text {
 .list-input-new{
 	margin-top: 4px;
 }
+.first-person {
+	padding-top: 10px;
+}
 .first-person .delete-user {
 	display: none;
 }
@@ -7671,10 +7674,10 @@ li.active [data-id='#newyear'] {
 
 /* form hidden */
 
-.engBox-right .first-person {
+.right-col .right-hidden {
 	margin-top: 2px;
 	display: none;
 }
-.engBox-right .form-title {
+.right-col .form-title {
 	margin-top: 0!important;
 }

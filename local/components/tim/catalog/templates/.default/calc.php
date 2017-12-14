@@ -42,10 +42,10 @@ foreach ($product['ROOMS'] as $room)
 	}
 
 ?>
-<div class="engBox-right card-form new-form">
+<div class="engBox-right card-form new-form right-col">
     <form class="calculator" id="price-form">
 		<input type="hidden" name="san" value="<?= $product['ID'] ?>" />
-        <div class="first-person" style="padding-top: 10px">
+        <div class="first-person right-hidden" style="padding-top: 10px">
             <div class="form-body float-body">
                 <div class="float-block">
                     <div class="who-you-are">
